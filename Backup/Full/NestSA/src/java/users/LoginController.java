@@ -3,40 +3,63 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controller;
+package users;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.sql.SQLException;
+import javax.naming.NamingException;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author Admin
+ * @author tranq
  */
-public class MainController extends HttpServlet {
+@WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
+public class LoginController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
-    private static final String SEARCH = "Search";
-    private static final String SEARCHCONTROLLER = "SearchController";
-    private static final String LOGINCONTROLLER = "LoginController";
+    private final String INVALID_PAGE = "invalid.html";
+    private final String ABOUT_PAGE = "about.html";
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = null;
-        String action = request.getParameter("btAction");
-        try{
-            if(action == null){
-                
-            }else if(action == "Đăng Nhập"){
-                url = LOGINCONTROLLER;
+        String userName = request.getParameter("txtUserName");
+        String password = request.getParameter("txtPassword");
+        String url = INVALID_PAGE;
+
+        try {
+
+            //1.Call model/dao
+            UserDAO dao = new UserDAO();
+            UserDTO result = dao.checkLogin(userName, password);
+
+            //2.Process result
+            if (result != null) {
+                url = ABOUT_PAGE;
+
             }
-        }finally{
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+
+        } catch (SQLException ex) {
+            log("LoginController _ SQL _ " + ex.getMessage());
+        } catch (NamingException ex) {
+            log("LoginController _ Naming _ " + ex.getMessage());
+
+        } finally {
+            response.sendRedirect(url);
         }
     }
 

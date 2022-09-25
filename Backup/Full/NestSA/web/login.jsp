@@ -31,25 +31,25 @@
                <div class="slider-tab"></div>
             </div>
             <div class="form-inner">
-               <form action="#" class="login">
+               <form action="MainController" class="login">
                   <div class="field">
-                     <input type="text" placeholder="Tài Khoản" required>
+                     <input type="text" placeholder="Tài Khoản" name="txtUserName" required>
                   </div>
                   <div class="field">
-                     <input type="password" placeholder="Mật Khẩu" required>
+                     <input type="password" placeholder="Mật Khẩu" name="txtPassword" required>
                   </div>
                   <div class="pass-link">
                      <a href="#">Quên Mật Khẩu?</a>
                   </div>
                   <div class="field btn">
                      <div class="btn-layer"></div>
-                     <input type="submit" value="Đăng Nhập">
+                     <input type="submit" value="Đăng Nhập" name="btAction">
                   </div>
                   <div class="signup-link">
                      Chưa Có Tài Khoản? <a href=""> Đăng Ký Ngay</a>
                   </div>
                </form>
-               <form action="#" class="signup">
+               <form action="MainController" class="signup">
                   <div class="field">
                      <input type="text" placeholder="Nhập Tên Tài Khoản" required>
                   </div>
@@ -61,7 +61,7 @@
                   </div>
                   <div class="field btn">
                      <div class="btn-layer"></div>
-                     <input type="submit" value=" Đăng Ký">
+                     <input type="submit" value=" Đăng Ký" name="btAction">
                   </div>
                </form>
             </div>

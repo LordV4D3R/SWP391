@@ -5,11 +5,13 @@
  */
 package users;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Admin
  */
-public class UserDTO {
+public class UserDTO implements Serializable{
     private int userId;
     private String password;
     private String address;
@@ -22,7 +24,8 @@ public class UserDTO {
     public UserDTO() {
     }
 
-    public UserDTO(int userId, String password, String address, String phone, String email, String fullName, String roleId, String userName) {
+    public UserDTO(int userId, String password, String address, String phone,
+            String email, String fullName, String roleId, String userName) {
         this.userId = userId;
         this.password = password;
         this.address = address;
