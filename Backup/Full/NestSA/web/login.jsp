@@ -51,13 +51,13 @@
                </form>
                <form action="MainController" class="signup">
                   <div class="field">
-                     <input type="text" placeholder="Nhập Tên Tài Khoản" required>
+                     <input type="text" placeholder="Nhập Tên Tài Khoản" name="txtRegisterUsername" required>
                   </div>
                   <div class="field">
-                     <input type="password" placeholder="Nhập Mật Khẩu" required>
+                     <input type="password" placeholder="Nhập Mật Khẩu" name="txtRegisterPassword" required>
                   </div>
                   <div class="field">
-                     <input type="password" placeholder="Nhập Lại Mật Khẩu" required>
+                     <input type="password" placeholder="Nhập Lại Mật Khẩu" name="txtConfirmPassword" required>
                   </div>
                   <div class="field btn">
                      <div class="btn-layer"></div>
