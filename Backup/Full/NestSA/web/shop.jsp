@@ -1,3 +1,10 @@
+<%-- 
+    Document   : shop
+    Created on : Sep 26, 2022, 12:48:19 PM
+    Author     : Admin
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <!-- Basic -->
@@ -471,9 +478,9 @@
                 <div class="col-xl-3 col-lg-3 col-sm-12 col-xs-12 sidebar-shop-left">
                     <div class="product-categori">
                         <div class="search-product">
-                            <form action="#">
-                                <input class="form-control" placeholder="Search here..." type="text">
-                                <button type="submit"> <i class="fa fa-search"></i> </button>
+                            <form action="MainController">
+                                <input class="form-control" placeholder="Search here..." type="text" name="search">
+                                <button type="submit" name = "btAction" value = "Search"> <i class="fa fa-search"></i> </button>
                             </form>
                         </div>
                         <div class="filter-sidebar-left">

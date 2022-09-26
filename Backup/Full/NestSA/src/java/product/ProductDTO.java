@@ -86,6 +86,11 @@ public class ProductDTO {
     public void setStatus(int status) {
         this.status = status;
     }
+
+    @Override
+    public String toString() {
+        return "ProductDTO{" + "productId=" + productId + ", name=" + name + ", quantity=" + quantity + ", image=" + image + ", description=" + description + ", categoryId=" + categoryId + ", status=" + status + '}';
+    }
     
     
 }
