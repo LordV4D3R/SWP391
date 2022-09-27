@@ -106,28 +106,28 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <a class="navbar-brand" href="index.html"><img src="images/logo.png" class="logo" alt=""></a>
+                        <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
                     </div>
                     <!-- End Header Navigation -->
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="index.html">Trang chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.html">Giới thiệu</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
                             <li class="dropdown active">
                                 <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Cửa hàng</a>
                                 <ul class="dropdown-menu">
-                                    <li><a href="shop.html">Sản phẩm</a></li>
-                                    <li><a href="shop-detail.html">Chi tiết sản phẩm</a></li>
-                                    <li><a href="cart.html">Giỏ hàng</a></li>
-                                    <li><a href="checkout.html">Thanh toán</a></li>
-                                    <li><a href="my-account.html">Tài khoản</a></li>
-                                    <li><a href="wishlist.html">Wishlist</a></li>
+                                    <li><a href="shop.jsp">Sản phẩm</a></li>
+                                    <li><a href="shop-detail.jsp">Chi tiết sản phẩm</a></li>
+                                    <li><a href="cart.jsp">Giỏ hàng</a></li>
+                                    <li><a href="checkout.jsp">Thanh toán</a></li>
+                                    <li><a href="my-account.jsp">Tài khoản</a></li>
+                                    <li><a href="wishlist.jsp">Wishlist</a></li>
                                 </ul>
                             </li>
-                            <li class="nav-item active"><a class="nav-link" href="gallery.html">Danh sách sản phẩm</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.html">Liên hệ</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="gallery.jsp">Danh sách sản phẩm</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
