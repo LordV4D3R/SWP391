@@ -13,12 +13,32 @@ public class ProductDTO {
     private int productId;
     private String name;
     private int quantity;
+    private double price;
     private String image;
     private String description;
     private String categoryId;
     private int status;
 
     public ProductDTO() {
+    }
+
+    public ProductDTO(int productId, String name, int quantity, double price, String image, String description, String categoryId, int status) {
+        this.productId = productId;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.status = status;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
     }
 
     public ProductDTO(int productId, String name, int quantity, String image, String description, String categoryId, int status) {
@@ -89,8 +109,10 @@ public class ProductDTO {
 
     @Override
     public String toString() {
-        return "ProductDTO{" + "productId=" + productId + ", name=" + name + ", quantity=" + quantity + ", image=" + image + ", description=" + description + ", categoryId=" + categoryId + ", status=" + status + '}';
+        return "ProductDTO{" + "productId=" + productId + ", name=" + name + ", quantity=" + quantity + ", price=" + price + ", image=" + image + ", description=" + description + ", categoryId=" + categoryId + ", status=" + status + '}';
     }
+
+    
     
     
 }

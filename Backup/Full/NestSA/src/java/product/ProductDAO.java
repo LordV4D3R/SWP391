@@ -20,10 +20,11 @@ import utils.DBUtils;
 public class ProductDAO {
 
     private static final String SEARCH = "SELECT productId, name, quantity, image, description, categotyId, status FROM product WHERE name LIKE ?";
-    private static final String VIEW = "SELECT productId, name, quantity, image, description, categotyId, status FROM product";
-    private static final String DELETE =" product SET status=0 WHERE proID=?";
-    private static final String UPDATE="UPDATE product SET name=?, quantity=?, image=?, categoty=? WHERE productId=? ";
-    private static final String CREATE="INSERT INTO product(name, quantity, image, description, categotyId) VALUES(?,?,?,?,?)";
+    private static final String VIEW = "SELECT pro.productId, pro.name, pro.quantity, pri.price ,pro.image, pro.description, pro.categotyId, pro.status "
+            + "FROM product pro, price pri WHERE pro.productId = pri.productId";
+    private static final String DELETE = " product SET status=0 WHERE proID=?";
+    private static final String UPDATE = "UPDATE product SET name=?, quantity=?, image=?, categoty=? WHERE productId=? ";
+    private static final String CREATE = "INSERT INTO product(name, quantity, image, description, categotyId) VALUES(?,?,?,?,?)";
 
     public List<ProductDTO> viewProduct() throws SQLException {
         List<ProductDTO> list = new ArrayList<>();
@@ -39,11 +40,12 @@ public class ProductDAO {
                     int productID = Integer.parseInt(rs.getString("productId"));
                     String name = rs.getString("name");
                     int quantity = Integer.parseInt(rs.getString("quantity"));
+                    double price = Double.parseDouble(rs.getString("price"));
                     String img = rs.getString("image");
                     String description = rs.getString("description");
                     String categoryID = rs.getString("categotyId");
                     int status = Integer.parseInt(rs.getString("status"));
-                    list.add(new ProductDTO(productID, name, quantity, img, description, categoryID, status));
+                    list.add(new ProductDTO(productID, name, quantity, price, img, description, categoryID, status));
                 }
             }
         } catch (Exception e) {
@@ -62,74 +64,88 @@ public class ProductDAO {
 
         return list;
     }
+
     public boolean create(ProductDTO product) throws ClassNotFoundException, SQLException {
-        boolean check=false;
-        Connection conn=null;
-        PreparedStatement ptm=null;
-        try{
-            conn=DBUtils.getConnection();
-            if(conn!=null){
-                ptm=conn.prepareStatement(CREATE);
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(CREATE);
                 ptm.setInt(1, product.getProductId());
                 ptm.setString(2, product.getName());
                 ptm.setInt(3, product.getQuantity());
                 ptm.setString(4, product.getImage());
                 ptm.setString(5, product.getDescription());
                 ptm.setString(6, product.getCategoryId());
-                check=ptm.executeUpdate()>0?true:false;
+                check = ptm.executeUpdate() > 0 ? true : false;
             }
-        }finally{
-            if(ptm!=null) ptm.close();
-            if(conn!=null) conn.close();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
         return check;
     }
-    
-    public boolean update(ProductDTO product) throws SQLException{
-        boolean check=false;
-        Connection conn=null;
-        PreparedStatement ptm=null;
-        try{
-            conn=DBUtils.getConnection();
-            if(conn!=null){
-                ptm= conn.prepareStatement(UPDATE);
-                 ptm.setString(1, product.getName());
+
+    public boolean update(ProductDTO product) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE);
+                ptm.setString(1, product.getName());
                 ptm.setInt(2, product.getQuantity());
                 ptm.setString(3, product.getImage());
                 ptm.setString(4, product.getDescription());
                 ptm.setString(5, product.getCategoryId());
-                check=ptm.executeUpdate()>0?true:false;
+                check = ptm.executeUpdate() > 0 ? true : false;
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
-            if(ptm!=null) ptm.close();
-            if(conn!=null) conn.close();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
         return check;
-        
+
     }
 
-    public boolean delete(ProductDTO product) throws SQLException{
-        boolean check=false;
-        Connection conn=null;
-        PreparedStatement ptm=null;
-        try{
-            conn=DBUtils.getConnection();
-            if(conn!=null){
-                ptm= conn.prepareStatement(UPDATE);
-                 ptm.setInt(1, product.getStatus());
-                check=ptm.executeUpdate()>0?true:false;
+    public boolean delete(ProductDTO product) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE);
+                ptm.setInt(1, product.getStatus());
+                check = ptm.executeUpdate() > 0 ? true : false;
             }
-        }catch(Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-        }finally{
-            if(ptm!=null) ptm.close();
-            if(conn!=null) conn.close();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
         return check;
-        
+
     }
+
     public List<ProductDTO> getListProduct(String search) throws SQLException {
         List<ProductDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -168,7 +184,7 @@ public class ProductDAO {
         return list;
 
     }
-    
+
     public static void main(String[] args) throws SQLException {
         ProductDAO dao = new ProductDAO();
         List<ProductDTO> list = dao.viewProduct();

@@ -7,45 +7,37 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import product.ProductDAO;
+import product.ProductDTO;
 
 /**
  *
  * @author Admin
  */
-public class MainController extends HttpServlet {
+public class ViewProductController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SEARCH = "Search";
-    private static final String SEARCH_CONTROLLER = "SearchController";
-    private static final String VIEW_PRODUCT = "View";
-    private static final String VIEW_PRODUCT_CONTROLLER = "ViewProductController";
-    private static final String LOGINCONTROLLER = "LoginController";
-
+    private static final String SUCCESS = "shop.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-        String action = request.getParameter("btAction");
         try {
-            if (action == null) {
-                log("Sai roi kia dcm");
-            } else if (action == "Đăng Nhập") {
-                url = LOGINCONTROLLER;
-            } else if (SEARCH.equals(action)) {
-                url = SEARCH_CONTROLLER;
-            } else if (VIEW_PRODUCT.equals(action)) {
-                url = VIEW_PRODUCT_CONTROLLER;
+            ProductDAO dao = new ProductDAO();
+            List<ProductDTO> listProduct = dao.viewProduct();
+            if (listProduct.size() > 0) {
+                request.setAttribute("VIEW_PRODUCT", listProduct);
+                url = SUCCESS;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log("Error at ViewProductController at: " + e.toString());
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
