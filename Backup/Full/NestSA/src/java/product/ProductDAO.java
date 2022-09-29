@@ -20,18 +20,11 @@ import utils.DBUtils;
 public class ProductDAO {
 
     private static final String SEARCH = "SELECT productId, name, quantity, image, description, categotyId, status FROM product WHERE name LIKE ?";
-<<<<<<< HEAD
-    private static final String VIEW = "SELECT productId, name, quantity, image, description, categoryId, status FROM product";
-    private static final String DELETE =" product SET status=0 WHERE proID=?";
-    private static final String UPDATE="UPDATE product SET name=?, quantity=?, image=?, categoty=? WHERE productId=? ";
-    private static final String CREATE="INSERT INTO product(name, quantity, image, description, categotyId) VALUES(?,?,?,?,?)";
-=======
     private static final String VIEW = "SELECT pro.productId, pro.name, pro.quantity, pri.price ,pro.image, pro.description, pro.categotyId, pro.status "
             + "FROM product pro, price pri WHERE pro.productId = pri.productId";
     private static final String DELETE = " product SET status=0 WHERE proID=?";
     private static final String UPDATE = "UPDATE product SET name=?, quantity=?, image=?, categoty=? WHERE productId=? ";
     private static final String CREATE = "INSERT INTO product(name, quantity, image, description, categotyId) VALUES(?,?,?,?,?)";
->>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
 
     public List<ProductDTO> viewProduct() throws SQLException {
         List<ProductDTO> list = new ArrayList<>();

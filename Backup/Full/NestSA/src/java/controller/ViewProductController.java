@@ -6,13 +6,9 @@
 package controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
-<<<<<<< HEAD
 import javax.servlet.annotation.WebServlet;
-=======
->>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,43 +17,18 @@ import product.ProductDTO;
 
 /**
  *
-<<<<<<< HEAD
- * @author thangbv
+ * <<<<<<< HEAD
+ * @a
+ *
+ * uthor thangbv
  */
 @WebServlet(name = "ViewProductController", urlPatterns = {"/ViewProductController"})
-public class ViewProductController extends HttpServlet {
-    private  static final String ERROR="error.jsp";
-    private  static final String SUCCESS="shop.jsp";
-    
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        String url=ERROR;
-        try {
-            ProductDAO dao= new ProductDAO();
-            List<ProductDTO> listProduct=dao.viewProduct();
-            if(listProduct.size()>0){
-                request.setAttribute("VIEW_PRODUCT", listProduct);
-                url=SUCCESS;
-            }
-        } catch (Exception e) {
-        }finally{
-=======
- * @author Admin
- */
+
 public class ViewProductController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
     private static final String SUCCESS = "shop.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -72,7 +43,6 @@ public class ViewProductController extends HttpServlet {
         } catch (Exception e) {
             log("Error at ViewProductController at: " + e.toString());
         } finally {
->>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

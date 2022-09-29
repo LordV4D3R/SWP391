@@ -116,9 +116,7 @@
                             <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
                             <li class="dropdown">
-<<<<<<< HEAD
                                 <a href="ViewProductController" class="nav-link">Cửa hàng</a>
-=======
                                 <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Cửa hàng</a>
                                 <ul class="dropdown-menu">
                                     <li><a href="ViewProductController">
@@ -129,14 +127,12 @@
                                     <li><a href="my-account.jsp">Tài khoản</a></li>
                                     <li><a href="wishlist.jsp">Wishlist</a></li>
                                 </ul>
->>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
-<<<<<<< HEAD
 
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
@@ -206,8 +202,6 @@
         <!-- Start Categories  -->
         <div class="categories-shop">
             <div class="container">
-=======
-
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
                         <ul>
@@ -318,7 +312,6 @@
         <!-- Start Categories  -->
         <div class="categories-shop">
             <div class="container">
->>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                 <div class="row">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
@@ -713,13 +706,8 @@
 
         <!-- Start copyright  -->
         <div class="footer-copyright">
-<<<<<<< HEAD
             <p class="footer-company">All Rights Reserved. &copy; 202   2 <a href="#">NestSongAn</a> Design By :
-                <a href="#">Team1SWP</a></p>
-=======
-            <p class="footer-company">All Rights Reserved. &copy; 2022 <a href="#">NestSongAn</a> Design By :
-                <a href="https://html.design/">Team1SWP</a></p>
->>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
+                <a href="#">Team1SWP</a></p>        
         </div>
         <!-- End copyright  -->
 
