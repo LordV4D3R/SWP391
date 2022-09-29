@@ -114,15 +114,7 @@
                             <li class="nav-item"><a class="nav-link" href="index.jsp">TRANG CHỦ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">GIỚI THIỆU</a></li>
                             <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">CỬA HÀNG</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="shop.jsp">Sản Phẩm</a></li>
-                                    <li><a href="shop-detail.jsp">Chi tiết các sản phẩm</a></li>
-                                    <li><a href="cart.jsp">Giỏ hàng</a></li>
-                                    <li><a href="checkout.jsp">Thanh toán</a></li>
-                                    <li><a href="my-account.jsp">Tài khoản</a></li>
-                                    <li><a href="wishlist.jsp">Wishlist</a></li>
-                                </ul>
+                                <a href="ViewProductController" class="nav-link">CỬA HÀNG</a>                               
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">BLOG</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">LIÊN HỆ</a></li>
@@ -135,57 +127,17 @@
                         <ul>
                             <li class="side-menu"><a href="#">
                                     <i class="fa fa-shopping-bag"></i>
+                                    <span class="badge">3</span>
                                     <p>Giỏ hàng</p>
                                 </a></li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
-                </div>
-                <!-- Start Side Menu -->
-                <!--            <div class="side">
-                                <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                                <li class="cart-box">
-                                    <ul class="cart-list">
-                                        <li>
-                                            <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                                            <h6><a href="#">Delica omtantur </a></h6>
-                                            <p>1x - <span class="price">$80.00</span></p>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                                            <h6><a href="#">Omnes ocurreret</a></h6>
-                                            <p>1x - <span class="price">$60.00</span></p>
-                                        </li>
-                                        <li>
-                                            <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                                            <h6><a href="#">Agam facilisis</a></h6>
-                                            <p>1x - <span class="price">$40.00</span></p>
-                                        </li>
-                                        <li class="total">
-                                            <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
-                                            <span class="float-right"><strong>Total</strong>: $180.00</span>
-                                        </li>
-                                    </ul>
-                                </li>
-                            </div>-->
-                <!-- End Side Menu -->
+                </div>             
             </nav>
             <!-- End Navigation -->
         </header>
         <!-- End Main Top -->
-
-        <!-- Start Top Search -->
-        <!--    <div class="top-search">
-                <div class="container">
-                    <div class="input-group">
-                        <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                        <input type="text" class="form-control" placeholder="Search">
-                        <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                    </div>
-                </div>
-            </div>-->
-        <!-- End Top Search -->
-
         <!-- Start All Title Box -->
         <div class="all-title-box">
             <div class="container">
@@ -193,7 +145,7 @@
                     <div class="col-lg-12">
                         <h2>Thanh Toán</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Cửa Hàng</a></li>
+                            <li class="breadcrumb-item"><a href="ViewProductController">Cửa Hàng</a></li>
                             <li class="breadcrumb-item active">Thanh Toán</li>
                         </ul>
                     </div>
@@ -333,7 +285,7 @@
                                     </div>
                                     <div class="custom-control custom-radio">
                                         <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
-                                        <label class="custom-control-label" for="debit">MoMo</label>
+                                        <label class="custom-control-label" for="debit">PayPal</label>
                                     </div>
                                     <div class="custom-control custom-radio">
                                         <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
@@ -404,7 +356,7 @@
                                     </div>
                                     <div class="rounded p-2 bg-light">
                                         <div class="media mb-2 border-bottom">
-                                            <div class="media-body"> <a href="detail.jsp"> Lorem ipsum dolor sit amet</a>
+                                            <div class="media-body"> <a href="shop-detail.jsp"> Lorem ipsum dolor sit amet</a>
                                                 <div class="small text-muted">Price: $80.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $80.00</div>
                                             </div>
                                         </div>
@@ -553,28 +505,28 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
-                                <h3>Business Time</h3>
+                                <h3>Giờ làm việc</h3>
                                 <ul class="list-time">
-                                    <li>Monday - Friday: 08.00am to 05.00pm</li> <li>Saturday: 10.00am to 08.00pm</li> <li>Sunday: <span>Closed</span></li>
+                                    <li>Thứ hai - Thứ Sáu: 08.00am to 05.00pm</li> <li>Thứ bảy - Chủ nhật: 10.00am to 08.00pm</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
-                                <h3>Newsletter</h3>
+                                <h3>Liên hệ</h3>
                                 <form class="newsletter-box">
                                     <div class="form-group">
                                         <input class="" type="email" name="Email" placeholder="Email Address*" />
                                         <i class="fa fa-envelope"></i>
                                     </div>
-                                    <button class="btn hvr-hover" type="submit">Submit</button>
+                                    <button class="btn hvr-hover" type="submit">Nhập</button>
                                 </form>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
-                                <h3>Social Media</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h3>Mạng xã hội</h3>
+                                <p>Các mạng xã hội chúng tôi đang sử dụng</p>
                                 <ul>
                                     <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
@@ -591,7 +543,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-widget">
-                                <h4>About Freshshop</h4>
+                                <h4>THông tin về NestSongAn</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
                             </div>
@@ -600,24 +552,23 @@
                             <div class="footer-link">
                                 <h4>Information</h4>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Customer Service</a></li>
-                                    <li><a href="#">Our Sitemap</a></li>
-                                    <li><a href="#">Terms &amp; Conditions</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="#">Giới thiệu</a></li>
+                                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+
+                                    <li><a href="#">Chính sách bảo mật</a></li>
+                                    <li><a href="#">Thông tin vận chuyển</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-link-contact">
-                                <h4>Contact Us</h4>
+                                <h4>Liên hệ với chúng tôi</h4>
                                 <ul>
                                     <li>
-                                        <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
                                     </li>
                                     <li>
-                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                                        <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
                                     </li>
                                     <li>
                                         <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
@@ -633,8 +584,8 @@
 
         <!-- Start copyright  -->
         <div class="footer-copyright">
-            <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
-                <a href="https://html.design/">html design</a></p>
+            <p class="footer-company">All Rights Reserved. &copy; 202   2 <a href="#">NestSongAn</a> Design By :
+                <a href="#">Team1SWP</a></p>
         </div>
         <!-- End copyright  -->
 

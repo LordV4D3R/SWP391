@@ -20,7 +20,7 @@ import utils.DBUtils;
 public class ProductDAO {
 
     private static final String SEARCH = "SELECT productId, name, quantity, image, description, categotyId, status FROM product WHERE name LIKE ?";
-    private static final String VIEW = "SELECT productId, name, quantity, image, description, categotyId, status FROM product";
+    private static final String VIEW = "SELECT productId, name, quantity, image, description, categoryId, status FROM product";
     private static final String DELETE =" product SET status=0 WHERE proID=?";
     private static final String UPDATE="UPDATE product SET name=?, quantity=?, image=?, categoty=? WHERE productId=? ";
     private static final String CREATE="INSERT INTO product(name, quantity, image, description, categotyId) VALUES(?,?,?,?,?)";
@@ -41,7 +41,7 @@ public class ProductDAO {
                     int quantity = Integer.parseInt(rs.getString("quantity"));
                     String img = rs.getString("image");
                     String description = rs.getString("description");
-                    String categoryID = rs.getString("categotyId");
+                    String categoryID = rs.getString("categoryId");
                     int status = Integer.parseInt(rs.getString("status"));
                     list.add(new ProductDTO(productID, name, quantity, img, description, categoryID, status));
                 }
