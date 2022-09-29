@@ -22,6 +22,8 @@ public class MainController extends HttpServlet {
     private static final String ERROR = "error.jsp";
     private static final String SEARCH = "Search";
     private static final String SEARCH_CONTROLLER = "SearchController";
+    private static final String VIEW_PRODUCT = "View";
+    private static final String VIEW_PRODUCT_CONTROLLER = "ViewProductController";
     private static final String LOGINCONTROLLER = "LoginController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -36,6 +38,8 @@ public class MainController extends HttpServlet {
                 url = LOGINCONTROLLER;
             } else if (SEARCH.equals(action)) {
                 url = SEARCH_CONTROLLER;
+            } else if (VIEW_PRODUCT.equals(action)) {
+                url = VIEW_PRODUCT_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();

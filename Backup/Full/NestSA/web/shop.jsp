@@ -51,6 +51,11 @@
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
                                 <option>$ VND</option>
+<<<<<<< HEAD
+=======
+                                <option>$ USD</option>
+                                <option>€ EUR</option>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                             </select>
                         </div>
                         <div class="right-phone-box">
@@ -108,6 +113,7 @@
                         <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
                     </div>
                     <!-- End Header Navigation -->
+<<<<<<< HEAD
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
@@ -139,6 +145,89 @@
             <!-- End Navigation -->
         </header>
         <!-- End Main Top -->
+=======
+
+                    <!-- Collect the nav links, forms, and other content for toggling -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
+                            <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Cửa hàng</a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="shop.jsp">Sản Phẩm</a></li>
+                                    <li><a href="shop-detail.jsp">Chi tiết các sản phẩm</a></li>
+                                    <li><a href="cart.jsp">Giỏ hàng</a></li>
+                                    <li><a href="checkout.jsp">Thanh toán</a></li>
+                                    <li><a href="my-account.jsp">Tài khoản</a></li>
+                                    <li><a href="wishlist.jsp">Wishlist</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
+                        </ul>
+                    </div>
+                    <!-- /.navbar-collapse -->
+
+                    <!-- Start Atribute Navigation -->
+                    <div class="attr-nav">
+                        <ul>
+                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                            <li class="side-menu"><a href="#">
+                                    <i class="fa fa-shopping-bag"></i>
+                                    <span class="badge">3</span>
+                                    <p>Giỏ hàng</p>
+                                </a></li>
+                        </ul>
+                    </div>
+                    <!-- End Atribute Navigation -->
+                </div>
+                <!-- Start Side Menu -->
+                <div class="side">
+                    <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                    <li class="cart-box">
+                        <ul class="cart-list">
+                            <li>
+                                <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                                <h6><a href="#">Delica omtantur </a></h6>
+                                <p>1x - <span class="price">$80.00</span></p>
+                            </li>
+                            <li>
+                                <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                                <h6><a href="#">Omnes ocurreret</a></h6>
+                                <p>1x - <span class="price">$60.00</span></p>
+                            </li>
+                            <li>
+                                <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                                <h6><a href="#">Agam facilisis</a></h6>
+                                <p>1x - <span class="price">$40.00</span></p>
+                            </li>
+                            <li class="total">
+                                <a href="#" class="btn btn-default hvr-hover btn-cart">VIEW CART</a>
+                                <span class="float-right"><strong>Total</strong>: $180.00</span>
+                            </li>
+                        </ul>
+                    </li>
+                </div>
+                <!-- End Side Menu -->
+            </nav>
+            <!-- End Navigation -->
+        </header>
+        <!-- End Main Top -->
+
+        <!-- Start Top Search -->
+        <div class="top-search">
+            <div class="container">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                    <input type="text" class="form-control" placeholder="Search">
+                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                </div>
+            </div>
+        </div>
+        <!-- End Top Search -->
+
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
         <!-- Start All Title Box -->
         <div class="all-title-box">
             <div class="container">
@@ -193,6 +282,7 @@
                             <div class="product-categorie-box">
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
+<<<<<<< HEAD
                                         <div class="row">
                                             <c:forEach items="${requestScope.VIEW_PRODUCT}" var="o">
 
@@ -221,6 +311,36 @@
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="list-view">
                                         <c:forEach items="${requestScope.VIEW_PRODUCT}" var="o">
+=======
+
+                                        <div class="row">
+                                            <c:forEach items="${requestScope.VIEW_PRODUCT}" var="o">
+                                                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                        <div class="products-single fix">
+                                                            <div class="box-img-hover">
+                                                                
+                                                                <img src="${o.image}" class="img-fluid" alt="Image">
+                                                                <div class="mask-icon">
+                                                                    <ul>
+                                                                        <li><a href="#" data-toggle="tooltip" data-placement="right"
+                                                                               title="View"><i class="fas fa-eye"></i></a></li>
+                                                                        
+                                                                    </ul>
+                                                                    <a class="cart" href="#">Thêm vào giỏ</a>
+                                                                </div>
+                                                            </div>
+                                                            <div class="why-text">
+                                                                <h4>${o.name}</h4>
+                                                                <h5>${o.price}</h5>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                            </c:forEach>
+                                        </div>
+
+                                    </div>
+                                    <div role="tabpanel" class="tab-pane fade" id="list-view">
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                         <div class="list-view-box">
                                             <div class="row">
                                                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
@@ -229,35 +349,163 @@
                                                             <div class="type-lb">
                                                                 <p class="new">New</p>
                                                             </div>
+<<<<<<< HEAD
                                                             <img src="${o.image}" class="img-fluid" alt="Image">
+=======
+                                                            <img src="images/img-pro-01.jpg" class="img-fluid" alt="Image">
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                                             <div class="mask-icon">
                                                                 <ul>
                                                                     <li><a href="#" data-toggle="tooltip"
                                                                            data-placement="right" title="View"><i
                                                                                 class="fas fa-eye"></i></a></li>
+<<<<<<< HEAD
 <!--                                                                    <li><a href="#" data-toggle="tooltip"
+=======
+                                                                    <li><a href="#" data-toggle="tooltip"
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                                                            data-placement="right" title="Compare"><i
                                                                                 class="fas fa-sync-alt"></i></a></li>
                                                                     <li><a href="#" data-toggle="tooltip"
                                                                            data-placement="right"
                                                                            title="Add to Wishlist"><i
+<<<<<<< HEAD
                                                                                 class="far fa-heart"></i></a></li>-->
                                                                 </ul>
+=======
+                                                                                class="far fa-heart"></i></a></li>
+                                                                </ul>
+
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
                                                     <div class="why-text full-width">
+<<<<<<< HEAD
                                                         <h4>${o.name}</h4>
                                                         <h5> <del>$ 60.00</del> $40.79</h5>
                                                         <p>${o.description}</p>
+=======
+                                                        <h4>Lorem ipsum dolor sit amet</h4>
+                                                        <h5> <del>$ 60.00</del> $40.79</h5>
+                                                        <p>Integer tincidunt aliquet nibh vitae dictum. In turpis sapien,
+                                                            imperdiet quis magna nec, iaculis ultrices ante. Integer vitae
+                                                            suscipit nisi. Morbi dignissim risus sit amet orci porta, eget
+                                                            aliquam purus
+                                                            sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in
+                                                            blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus,
+                                                            quis euismod ex volutpat in. Vestibulum eleifend eros ac
+                                                            lobortis aliquet.
+                                                            Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin
+                                                            quam. Praesent vulputate semper libero pulvinar consequat. Etiam
+                                                            ut placerat lectus.</p>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                                         <a class="btn hvr-hover" href="#">Add to Cart</a>
                                                     </div>
                                                 </div>
                                             </div>
+<<<<<<< HEAD
                                         </div> 
                                         </c:forEach>
+=======
+                                        </div>
+                                        <div class="list-view-box">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                    <div class="products-single fix">
+                                                        <div class="box-img-hover">
+                                                            <div class="type-lb">
+                                                                <p class="sale">Sale</p>
+                                                            </div>
+                                                            <img src="images/img-pro-02.jpg" class="img-fluid" alt="Image">
+                                                            <div class="mask-icon">
+                                                                <ul>
+                                                                    <li><a href="#" data-toggle="tooltip"
+                                                                           data-placement="right" title="View"><i
+                                                                                class="fas fa-eye"></i></a></li>
+                                                                    <li><a href="#" data-toggle="tooltip"
+                                                                           data-placement="right" title="Compare"><i
+                                                                                class="fas fa-sync-alt"></i></a></li>
+                                                                    <li><a href="#" data-toggle="tooltip"
+                                                                           data-placement="right"
+                                                                           title="Add to Wishlist"><i
+                                                                                class="far fa-heart"></i></a></li>
+                                                                </ul>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                                                    <div class="why-text full-width">
+                                                        <h4>Lorem ipsum dolor sit amet</h4>
+                                                        <h5> <del>$ 60.00</del> $40.79</h5>
+                                                        <p>Integer tincidunt aliquet nibh vitae dictum. In turpis sapien,
+                                                            imperdiet quis magna nec, iaculis ultrices ante. Integer vitae
+                                                            suscipit nisi. Morbi dignissim risus sit amet orci porta, eget
+                                                            aliquam purus
+                                                            sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in
+                                                            blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus,
+                                                            quis euismod ex volutpat in. Vestibulum eleifend eros ac
+                                                            lobortis aliquet.
+                                                            Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin
+                                                            quam. Praesent vulputate semper libero pulvinar consequat. Etiam
+                                                            ut placerat lectus.</p>
+                                                        <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="list-view-box">
+                                            <div class="row">
+                                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                    <div class="products-single fix">
+                                                        <div class="box-img-hover">
+                                                            <div class="type-lb">
+                                                                <p class="sale">Sale</p>
+                                                            </div>
+                                                            <img src="images/img-pro-03.jpg" class="img-fluid" alt="Image">
+                                                            <div class="mask-icon">
+                                                                <ul>
+                                                                    <li><a href="#" data-toggle="tooltip"
+                                                                           data-placement="right" title="View"><i
+                                                                                class="fas fa-eye"></i></a></li>
+                                                                    <li><a href="#" data-toggle="tooltip"
+                                                                           data-placement="right" title="Compare"><i
+                                                                                class="fas fa-sync-alt"></i></a></li>
+                                                                    <li><a href="#" data-toggle="tooltip"
+                                                                           data-placement="right"
+                                                                           title="Add to Wishlist"><i
+                                                                                class="far fa-heart"></i></a></li>
+                                                                </ul>
+
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                                                    <div class="why-text full-width">
+                                                        <h4>Lorem ipsum dolor sit amet</h4>
+                                                        <h5> <del>$ 60.00</del> $40.79</h5>
+                                                        <p>Integer tincidunt aliquet nibh vitae dictum. In turpis sapien,
+                                                            imperdiet quis magna nec, iaculis ultrices ante. Integer vitae
+                                                            suscipit nisi. Morbi dignissim risus sit amet orci porta, eget
+                                                            aliquam purus
+                                                            sollicitudin. Cras eu metus felis. Sed arcu arcu, sagittis in
+                                                            blandit eu, imperdiet sit amet eros. Donec accumsan nisi purus,
+                                                            quis euismod ex volutpat in. Vestibulum eleifend eros ac
+                                                            lobortis aliquet.
+                                                            Suspendisse at ipsum vel lacus vehicula blandit et sollicitudin
+                                                            quam. Praesent vulputate semper libero pulvinar consequat. Etiam
+                                                            ut placerat lectus.</p>
+                                                        <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                     </div>
                                 </div>
                             </div>
@@ -436,28 +684,49 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
+<<<<<<< HEAD
                                 <h3>Giờ làm việc</h3>
                                 <ul class="list-time">
                                     <li>Thứ hai - Thứ Sáu: 08.00am to 05.00pm</li> <li>Thứ bảy - Chủ nhật: 10.00am to 08.00pm</li>
+=======
+                                <h3>Business Time</h3>
+                                <ul class="list-time">
+                                    <li>Monday - Friday: 08.00am to 05.00pm</li>
+                                    <li>Saturday: 10.00am to 08.00pm</li>
+                                    <li>Sunday: <span>Closed</span></li>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
+<<<<<<< HEAD
                                 <h3>Liên hệ</h3>
+=======
+                                <h3>Newsletter</h3>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                 <form class="newsletter-box">
                                     <div class="form-group">
                                         <input class="" type="email" name="Email" placeholder="Email Address*" />
                                         <i class="fa fa-envelope"></i>
                                     </div>
+<<<<<<< HEAD
                                     <button class="btn hvr-hover" type="submit">Nhập</button>
+=======
+                                    <button class="btn hvr-hover" type="submit">Submit</button>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                 </form>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
+<<<<<<< HEAD
                                 <h3>Mạng xã hội</h3>
                                 <p>Các mạng xã hội chúng tôi đang sử dụng</p>
+=======
+                                <h3>Social Media</h3>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                 <ul>
                                     <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
@@ -474,25 +743,44 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-widget">
+<<<<<<< HEAD
                                 <h4>THông tin về NestSongAn</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
+=======
+                                <h4>About Freshshop</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                                    ut labore et dolore magna aliqua. </p>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-link">
                                 <h4>Information</h4>
                                 <ul>
+<<<<<<< HEAD
                                     <li><a href="#">Giới thiệu</a></li>
                                     <li><a href="#">Hướng dẫn mua hàng</a></li>
 
                                     <li><a href="#">Chính sách bảo mật</a></li>
                                     <li><a href="#">Thông tin vận chuyển</a></li>
+=======
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Customer Service</a></li>
+                                    <li><a href="#">Our Sitemap</a></li>
+                                    <li><a href="#">Terms &amp; Conditions</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Delivery Information</a></li>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-link-contact">
+<<<<<<< HEAD
                                 <h4>Liên hệ với chúng tôi</h4>
                                 <ul>
                                     <li>
@@ -503,6 +791,21 @@
                                     </li>
                                     <li>
                                         <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+=======
+                                <h4>Contact Us</h4>
+                                <ul>
+                                    <li>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston
+                                            Street Wichita,<br> KS 67213 </p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705
+                                                770</a></p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-envelope"></i>Email: <a
+                                                href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
                                     </li>
                                 </ul>
                             </div>
@@ -515,8 +818,14 @@
 
         <!-- Start copyright  -->
         <div class="footer-copyright">
+<<<<<<< HEAD
             <p class="footer-company">All Rights Reserved. &copy; 202   2 <a href="#">NestSongAn</a> Design By :
                 <a href="#">Team1SWP</a></p>
+=======
+            <p class="footer-company">All Rights Reserved. &copy; 2018 <a href="#">ThewayShop</a> Design By :
+                <a href="https://html.design/">html design</a>
+            </p>
+>>>>>>> 952a5293b74b04df0f19717f58d3ec2e375da93f
         </div>
         <!-- End copyright  -->
 
