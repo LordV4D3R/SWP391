@@ -24,35 +24,23 @@ import users.UserDTO;
 @WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
 
-    private final String INVALID_PAGE = "invalid.html";
-    private final String ABOUT_PAGE = "about.html";
+    private static final String INVALID_PAGE = "error.jsp";
+    private static final String SUCCESS = "ViewProductController";
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String userName = request.getParameter("txtUserName");
-        String password = request.getParameter("txtPassword");
         String url = INVALID_PAGE;
-
         try {
-
+            String userName = request.getParameter("txtUserName");
+            String password = request.getParameter("txtPassword");
             //1.Call model/dao
             UserDAO dao = new UserDAO();
             UserDTO result = dao.checkLogin(userName, password);
 
             //2.Process result
             if (result != null) {
-                url = ABOUT_PAGE;
-
+                url = SUCCESS;
             }
 
         } catch (SQLException ex) {

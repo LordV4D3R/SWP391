@@ -43,7 +43,7 @@
                   </div>
                   <div class="field btn">
                      <div class="btn-layer"></div>
-                     <input type="submit" value="Đăng Nhập" name="btAction">
+                     <input type="submit" value="Login" name="btAction">
                   </div>
                   <div class="signup-link">
                      Chưa Có Tài Khoản? <a href=""> Đăng Ký Ngay</a>

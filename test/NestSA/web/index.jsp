@@ -65,11 +65,13 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box">
-                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                        <div class="login-box" style="margin-right: 20px">
+                            <a href="login.jsp" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
+                            <a href="login.jsp" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>
+<!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
                                 <option>Đăng ký</option>
                                 <option>Đăng nhập</option>
-                            </select>
+                            </select>-->
                         </div>
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">

@@ -22,6 +22,7 @@ public class MainController extends HttpServlet {
     private static final String ERROR = "error.jsp";
     private static final String SEARCH = "Search";
     private static final String SEARCH_CONTROLLER = "SearchController";
+    private static final String LOGIN="Login";
     private static final String LOGINCONTROLLER = "LoginController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
@@ -32,7 +33,7 @@ public class MainController extends HttpServlet {
         try {
             if (action == null) {
                 log("Sai roi kia dcm");
-            } else if (action == "Đăng Nhập") {
+            } else if (action.equals(LOGIN)) {
                 url = LOGINCONTROLLER;
             } else if (SEARCH.equals(action)) {
                 url = SEARCH_CONTROLLER;
