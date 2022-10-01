@@ -13,7 +13,7 @@ public class ProductDTO {
     private int productId;
     private String name;
     private int quantity;
-    private float price;
+    private int price;
     private String image;
     private String description;
     private String categoryId;
@@ -22,7 +22,7 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
-    public ProductDTO(int productId, String name, int quantity, float price, String image, String description, String categoryId, int status) {
+    public ProductDTO(int productId, String name, int quantity, int price, String image, String description, String categoryId, int status) {
         this.productId = productId;
         this.name = name;
         this.quantity = quantity;
@@ -33,11 +33,11 @@ public class ProductDTO {
         this.status = status;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
+    public void setPrice(int price) {
         this.price = price;
     }
     

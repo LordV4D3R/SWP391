@@ -41,7 +41,7 @@ public class ProductDAO {
                     int productID = Integer.parseInt(rs.getString("productId"));
                     String name = rs.getString("name");
                     int quantity = Integer.parseInt(rs.getString("quantity"));
-                    float price = rs.getFloat("price");
+                    int price = rs.getInt("price");
                     String img = rs.getString("image");
                     String description = rs.getString("description");
                     String categoryID = rs.getString("categoryId");
