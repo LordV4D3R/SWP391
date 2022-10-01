@@ -7,50 +7,48 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import product.ProductDTO;
 
 /**
  *
- * @author Admin
+ * @author thangbv
  */
-public class MainController extends HttpServlet {
-
-    private static final String ERROR = "error.jsp";
-    private static final String SEARCH = "Search";
-    private static final String SEARCH_CONTROLLER = "SearchController";
-    private static final String LOGIN="Login";
-    private static final String LOGINCONTROLLER = "LoginController";
-    private static final String CART="Cart";
-    private static final String ADDCART_CONTROLLER = "AddCartController";
-    private static final String DETAIL="Detail";
-    private static final String DETAIL_CONTROLLER = "DetailController";
+@WebServlet(name = "DetailController", urlPatterns = {"/DetailController"})
+public class DetailController extends HttpServlet {
+    private static final String ERROR="error.jsp";
+    private static final String SUCCESS="shop-detail.jsp";
     
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-        String action = request.getParameter("btAction");
+        String url=ERROR;
         try {
-            if (action == null) {
-                log("Sai roi kia dcm");
-            } else if (action.equals(LOGIN)) {
-                url = LOGINCONTROLLER;
-            } else if (SEARCH.equals(action)) {
-                url = SEARCH_CONTROLLER;
-            }else if(action.equals(CART)){
-                url=ADDCART_CONTROLLER;
-            }else if(action.equals(DETAIL)){
-                url=DETAIL_CONTROLLER;
-            }
+            int id=Integer.parseInt(request.getParameter("id"));
+            String name=request.getParameter("name");
+            String img=request.getParameter("img");
+            String des=request.getParameter("des");
+            int quantity=Integer.parseInt(request.getParameter("quantity"));
+            int price=Integer.parseInt(request.getParameter("price"));
+            ProductDTO product= new ProductDTO(id, name, quantity, price, img, des);
+            request.setAttribute("PRODUCT", product);
+            url=SUCCESS;
         } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+        }finally{
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

@@ -22,7 +22,7 @@ import product.ProductDTO;
  * @author Admin
  */
 @WebServlet(name = "AddProductController", urlPatterns = {"/AddProductController"})
-public class AddProductController extends HttpServlet {
+public class AddCartController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
     private static final String SUCCRSS = "cart.jsp";
@@ -32,11 +32,11 @@ public class AddProductController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = SUCCRSS;
         try {
+            int id=Integer.parseInt(request.getParameter("id"));
             String img = request.getParameter("images");
             String name = request.getParameter("name");
             String price = request.getParameter("price");
             String quantity = request.getParameter("quantity");
-            String description = request.getParameter("description");
             HttpSession session = request.getSession();
             ProductDAO dao = new ProductDAO();
             List<ProductDTO> list = dao.viewProduct();

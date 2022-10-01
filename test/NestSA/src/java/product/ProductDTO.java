@@ -22,6 +22,17 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
+    // contructor for DetailController
+    public ProductDTO(int productId, String name, int quantity, int price, String image, String description) {
+        this.productId = productId;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+    }
+
+    
     public ProductDTO(int productId, String name, int quantity, int price, String image, String description, String categoryId, int status) {
         this.productId = productId;
         this.name = name;

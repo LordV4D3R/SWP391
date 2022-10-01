@@ -199,20 +199,21 @@
 
                                                         <div class="products-single fix">
                                                             <div class="box-img-hover">
-
-                                                                <img style="width: 320px; height: 225px" src="${o.image}" class="img-fluid" alt="Image">
-                                                                <div class="mask-icon">
-                                                                    <ul>
-                                                                        <li><a href="ViewProductDetailController" data-toggle="tooltip" data-placement="right"
-                                                                               title="View"><i class="fas fa-eye"></i></a></li>
-                                                                    </ul>                  
-                                                                    <a class="cart" href="AddProductController">Thêm vào giỏ</a>  
-                                                                    <!--url re-writing-->
-                                                                </div>
+                                                                <a href="MainController?btAction=Detail&id=${o.productId}&name=${o.name}&img=${o.image}&des=${o.description}&quantity=${o.quantity}&price=${o.price}"><img style="width: 320px; height: 225px" src="${o.image}" class="img-fluid" alt="Image"></a>
+                                                                <!--                                                                <div class="mask-icon">
+                                                                                                                                    <ul>
+                                                                                                                                        <li><a href="ViewProductDetailController" data-toggle="tooltip" data-placement="right"
+                                                                                                                                               title="View"><i class="fas fa-eye"></i></a></li>
+                                                                                                                                    </ul>                  
+                                                                                                                                    <a class="cart" href="">Thêm vào giỏ</a>  
+                                                                                                                                    url re-writing
+                                                                                                                                </div>-->
                                                             </div>
                                                             <div class="why-text">
-                                                                <h4>${o.name}</h4>
-                                                                <h5>${o.price}</h5>
+                                                                <a href="MainController?btAction=Detail&id=${o.productId}&name=${o.name}&img=${o.image}&des=${o.description}&quantity=${o.quantity}&price=${o.price}">
+                                                                    <h4>${o.name}</h4>
+                                                                </a> 
+                                                                <h5>${o.price}đ</h5>
                                                             </div>
                                                             <input type="hidden" name="images" value="${o.image}">
                                                             <input type="hidden" name="name" value="${o.name}">
