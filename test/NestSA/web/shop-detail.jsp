@@ -118,7 +118,7 @@
                         <li class="dropdown">
                             <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Cửa hàng</a>
                             <ul class="dropdown-menu">
-                                <li><a href="shop.jsp">Sản Phẩm</a></li>
+                                <li><a href="ViewProductController">Sản Phẩm</a></li>
                                 <li><a href="shop-detail.jsp">Chi tiết các sản phẩm</a></li>
                                 <li><a href="cart.jsp">Giỏ hàng</a></li>
                                 <li><a href="checkout.jsp">Thanh toán</a></li>
@@ -197,7 +197,7 @@
                 <div class="col-lg-12">
                     <h2>Chi tiết sản phảm</h2>
                     <ul class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="shop.jsp">Sản phẩm</a></li>
+                        <li class="breadcrumb-item"><a href="ViewProductController">Sản phẩm</a></li>
                         <li class="breadcrumb-item active">Chi tiết sản phẩm</li>
                     </ul>
                 </div>

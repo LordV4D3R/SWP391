@@ -195,7 +195,7 @@
                 <div class="inner-content">
                     <h1 class="heading">404</h1>
                     <p class="subheading">
-                        Looks like the page you were looking for is no longer here.  Go to <a href="" style="color:white;text-decoration: none">homepage</a>
+                        Looks like the page you were looking for is no longer here.  Go to <a href="index.jsp" style="color:white;text-decoration: none">homepage</a>
                     </p>
                 </div>
             </div>

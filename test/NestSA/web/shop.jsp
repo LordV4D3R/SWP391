@@ -168,13 +168,11 @@
                                         <select id="basic" class="selectpicker show-tick form-control"
                                                 data-placeholder="$ USD">
                                             <option data-display="Select">Theo</option>
-                                            <option value="1">Độ phổ biến</option>
-                                            <option value="2">Từ giá cao → giá thấp</option>
-                                            <option value="3">Từ giá thấp → Giá cao</option>
-                                            <option value="4">Mua nhiều nhất</option>
+                                            <option value="1">Từ giá cao → giá thấp</option>
+                                            <option value="2">Từ giá thấp → Giá cao</option>
                                         </select>
                                     </div>
-                                    <p>Showing all 4 results</p>
+                                    <!--                                    <p>Showing all 4 results</p>-->
                                 </div>
                                 <div class="col-12 col-sm-4 text-center text-sm-right">
                                     <ul class="nav nav-tabs ml-auto">
@@ -197,66 +195,69 @@
                                             <c:forEach items="${requestScope.VIEW_PRODUCT}" var="o">
 
                                                 <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                    <div class="products-single fix">
-                                                        <div class="box-img-hover">
+                                                    <form action="MainController">
 
-                                                            <img src="${o.image}" class="img-fluid" alt="Image">
-                                                            <div class="mask-icon">
-                                                                <ul>
-                                                                    <li><a href="shop-detail.jsp" data-toggle="tooltip" data-placement="right"
-                                                                           title="View"><i class="fas fa-eye"></i></a></li>
-                                                                </ul>                  
-                                                                    <a class="cart" href="#">Thêm vào giỏ</a>  
+                                                        <div class="products-single fix">
+                                                            <div class="box-img-hover">
+
+                                                                <img style="width: 320px; height: 225px" src="${o.image}" class="img-fluid" alt="Image">
+                                                                <div class="mask-icon">
+                                                                    <ul>
+                                                                        <li><a href="ViewProductDetailController" data-toggle="tooltip" data-placement="right"
+                                                                               title="View"><i class="fas fa-eye"></i></a></li>
+                                                                    </ul>                  
+                                                                    <a class="cart" href="AddProductController">Thêm vào giỏ</a>  
                                                                     <!--url re-writing-->
+                                                                </div>
                                                             </div>
+                                                            <div class="why-text">
+                                                                <h4>${o.name}</h4>
+                                                                <h5>${o.price}</h5>
+                                                            </div>
+                                                            <input type="hidden" name="images" value="${o.image}">
+                                                            <input type="hidden" name="name" value="${o.name}">
+                                                            <!--                                                            <input type="hidden" name="price" value="{o.price}">-->
+                                                            <input type="hidden" name="quantity" value="${o.quantity}">
+                                                            <input type="hidden" name="description" value="${o.description}">
                                                         </div>
-                                                        <div class="why-text">
-                                                            <h4>${o.name}</h4>
-                                                            <h5> Giá xèn</h5>
-                                                        </div>
-                                                    </div>
+                                                    </form>
                                                 </div>
                                             </c:forEach>
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="list-view">
                                         <c:forEach items="${requestScope.VIEW_PRODUCT}" var="o">
-                                        <div class="list-view-box">
-                                            <div class="row">
-                                                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
-                                                    <div class="products-single fix">
-                                                        <div class="box-img-hover">
-                                                            <div class="type-lb">
-                                                                <p class="new">New</p>
-                                                            </div>
-                                                            <img src="${o.image}" class="img-fluid" alt="Image">
-                                                            <div class="mask-icon">
-                                                                <ul>
-                                                                    <li><a href="#" data-toggle="tooltip"
-                                                                           data-placement="right" title="View"><i
-                                                                                class="fas fa-eye"></i></a></li>
-<!--                                                                    <li><a href="#" data-toggle="tooltip"
-                                                                           data-placement="right" title="Compare"><i
-                                                                                class="fas fa-sync-alt"></i></a></li>
-                                                                    <li><a href="#" data-toggle="tooltip"
-                                                                           data-placement="right"
-                                                                           title="Add to Wishlist"><i
-                                                                                class="far fa-heart"></i></a></li>-->
-                                                                </ul>
+                                            <div class="list-view-box">
+                                                <div class="row">
+                                                    <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
+                                                        <div class="products-single fix">
+                                                            <div class="box-img-hover">
+                                                                <div class="type-lb">
+                                                                    <p class="new">New</p>
+                                                                </div>
+                                                                <img src="${o.image}" class="img-fluid" alt="Image">
+                                                                <div class="mask-icon">
+                                                                    <ul>
+                                                                        <li><a href="#" data-toggle="tooltip"
+                                                                               data-placement="right" title="View">
+                                                                                <i class="fas fa-eye"></i>
+                                                                            </a>
+                                                                        </li>
+                                                                    </ul>
+                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                </div>
-                                                <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                    <div class="why-text full-width">
-                                                        <h4>${o.name}</h4>
-                                                        <h5> <del>$ 60.00</del> $40.79</h5>
-                                                        <p>${o.description}</p>
-                                                        <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                    <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
+                                                        <div class="why-text full-width" style="margin-bottom: 220px">
+                                                            <h4>${o.name}</h4>
+                                                            <h5>${o.price}</h5>
+                                                            <p>${o.description}</p>
+                                                            <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div> 
+                                            </div> 
                                         </c:forEach>
                                     </div>
                                 </div>
