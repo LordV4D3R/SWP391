@@ -157,7 +157,7 @@
         <!-- Start Cart  -->
         <div class="cart-box-main">
             <div class="container">
-                <div class="row new-account-login">
+<!--                <div class="row new-account-login">
                     <div class="col-sm-6 col-lg-6 mb-3">
                         <div class="title-left">
                             <h3>Đăng Nhập</h3>
@@ -204,7 +204,7 @@
                             <button type="submit" class="btn hvr-hover">Đăng ký</button>
                         </form>
                     </div>
-                </div>
+                </div>-->
                 <div class="row">
                     <div class="col-sm-6 col-lg-6 mb-3">
                         <div class="checkout-address">
@@ -233,6 +233,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="email">Địa chỉ</label>
+                                    <input type="email" class="form-control" id="email" placeholder="">
+                                    <div class="invalid-feedback"> Please enter a valid address for shipping updates. </div>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email">Email</label>
                                     <input type="email" class="form-control" id="email" placeholder="">
                                     <div class="invalid-feedback"> Please enter a valid address for shipping updates. </div>
                                 </div>

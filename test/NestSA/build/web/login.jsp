@@ -49,16 +49,19 @@
                      Chưa Có Tài Khoản? <a href=""> Đăng Ký Ngay</a>
                   </div>
                </form>
-               <form action="MainController">
+               <form action="MainController">                
                   <div class="field">
                      <input type="text" placeholder="Nhập Tên Tài Khoản" name="txtRegisterUsername" required>
                   </div>
+                   
                   <div class="field">
                      <input type="password" placeholder="Nhập Mật Khẩu" name="txtRegisterPassword" required>
                   </div>
+                   
                   <div class="field">
                      <input type="password" placeholder="Nhập Lại Mật Khẩu" name="txtConfirmPassword" required>
                   </div>
+                   
                   <div class="field btn">
                      <div class="btn-layer"></div>
                      <input type="submit" value=" Đăng Ký" name="btAction">
