@@ -13,6 +13,7 @@ public class ProductDTO {
     private int productId;
     private String name;
     private int quantity;
+    private float price;
     private String image;
     private String description;
     private String categoryId;
@@ -20,6 +21,26 @@ public class ProductDTO {
 
     public ProductDTO() {
     }
+
+    public ProductDTO(int productId, String name, int quantity, float price, String image, String description, String categoryId, int status) {
+        this.productId = productId;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.status = status;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
+    
 
     public ProductDTO(int productId, String name, int quantity, String image, String description, String categoryId, int status) {
         this.productId = productId;
