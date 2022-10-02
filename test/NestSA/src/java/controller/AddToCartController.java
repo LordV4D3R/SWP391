@@ -53,7 +53,9 @@ public class AddToCartController extends HttpServlet {
                         cart = new Cart();
                     }
                     cart.add(product);
+                    int quantityInCart=cart.getCart().size();
                     session.setAttribute("CART", cart);
+                    session.setAttribute("QUANTITY_IN_CART", quantityInCart);
                     request.setAttribute("CART_SUCCESS", "sản phẩm đã thêm vào giỏ hàng thành công, mời bạn tiếp tục mua sắm");
                     url = SUCCESS;
                 }

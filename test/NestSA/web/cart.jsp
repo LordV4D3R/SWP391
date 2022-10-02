@@ -4,6 +4,9 @@
     Author     : thangbv
 --%>
 
+<%@page import="product.ProductDTO"%>
+<%@page import="order.Cart"%>
+<%@page import="users.UserDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -128,7 +131,7 @@
                         <ul>
                             <li class="side-menu"><a href="#">
                                     <i class="fa fa-shopping-bag"></i>
-                                    <span class="badge">3</span>
+                                    <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>GIỎ HÀNG</p>
                                 </a></li>
                         </ul>
@@ -140,21 +143,24 @@
         </header>
         <!-- End Main Top -->
         <!-- Start All Title Box -->
-            <div class="all-title-box">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <h2>Cart</h2>
-                            <ul class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="ViewProductController">Shop</a></li>
-                                <li class="breadcrumb-item active">Cart</li>
-                            </ul>
-                        </div>
+        <div class="all-title-box">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h2>Cart</h2>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="ViewProductController">Shop</a></li>
+                            <li class="breadcrumb-item active">Cart</li>
+                        </ul>
                     </div>
                 </div>
             </div>
+        </div>
         <!-- End All Title Box -->
-
+        <%
+            Cart cart = (Cart) session.getAttribute("CART");
+            if (cart != null) {
+        %>
         <!-- Start Cart  -->
         <div class="cart-box-main">
             <div class="container">
@@ -173,24 +179,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>                                   
-                                    <c:forEach items="${sessionScope.CART}" var="o">
+                                    <%
+                                        int total = 0;
+                                        for (ProductDTO tea : cart.getCart().values()) {
+                                            total += tea.getPrice() * tea.getQuantity();
+                                    %>
                                     <tr>
                                         <td class="thumbnail-img">
                                             <a href="#">
-                                                <img class="img-fluid" src="${o.value.image}" alt="" />
+                                                <img class="img-fluid" src="<%= tea.getImage()%>" alt="" />
                                             </a>
                                         </td>
                                         <td class="name-pr">
                                             <a href="#">
-                                                ${o.value.name}
+                                                <%= tea.getName()%>
                                             </a>
                                         </td>
                                         <td class="price-pr">
-                                            <p>${o.value.price}</p>
+                                            <p><%= tea.getPrice()%></p>
                                         </td>
-                                        <td class="quantity-box"><input type="number" size="4" value="${o.value.quantity}" min="0" step="1" class="c-input-text qty text"></td>
+                                        <td class="quantity-box"><input type="number" size="4" value="<%= tea.getQuantity()%>" min="0" step="1" class="c-input-text qty text"></td>
                                         <td class="total-pr">
-                                            <p>$ 80.0</p>
+                                            <p><%= total%></p>
                                         </td>
                                         <td class="remove-pr">
                                             <a href="#">
@@ -198,13 +208,17 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    </c:forEach>
+                                    <%
+                                        }
+                                    %>
                                 </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
-
+                <%
+                    }
+                %>
                 <div class="row my-5">
                     <div class="col-lg-6 col-sm-6">
                         <div class="coupon-box">
@@ -218,9 +232,9 @@
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="update-box">
-                            
+
                             <input value="Cập nhật giỏ hàng" type="submit">
-                            
+
                         </div>
                     </div>
                 </div>

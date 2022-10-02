@@ -139,7 +139,7 @@
                         <li class="side-menu">
 			<a href="#">
 			<i class="fa fa-shopping-bag"></i>
-			<span class="badge">3</span>
+			<span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
 			<p>Giỏ hàng</p>
 			</a>
 			</li>
