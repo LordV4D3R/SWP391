@@ -12,6 +12,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import product.ProductDTO;
 
 /**
@@ -44,11 +45,13 @@ public class DetailController extends HttpServlet {
             int quantity=Integer.parseInt(request.getParameter("quantity"));
             int price=Integer.parseInt(request.getParameter("price"));
             ProductDTO product= new ProductDTO(id, name, quantity, price, img, des);
-            request.setAttribute("PRODUCT", product);
+            HttpSession session=request.getSession();
+            session.setAttribute("PRODUCT", product);
             url=SUCCESS;
         } catch (Exception e) {
         }finally{
-            request.getRequestDispatcher(url).forward(request, response);
+//            request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect(url);
         }
     }
 

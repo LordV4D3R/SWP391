@@ -7,49 +7,42 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import product.ProductDAO;
-import product.ProductDTO;
 
 /**
  *
- * @author Admin
+ * @author thangbv
  */
-@WebServlet(name = "AddProductController", urlPatterns = {"/AddProductController"})
-public class AddCartController extends HttpServlet {
+@WebServlet(name = "BuyNowController", urlPatterns = {"/BuyNowController"})
+public class BuyNowController extends HttpServlet {
 
-    private static final String ERROR = "error.jsp";
-    private static final String SUCCRSS = "cart.jsp";
-    
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = SUCCRSS;
-        try {
-            int id=Integer.parseInt(request.getParameter("id"));
-            String img = request.getParameter("images");
-            String name = request.getParameter("name");
-            String price = request.getParameter("price");
-            String quantity = request.getParameter("quantity");
-            HttpSession session = request.getSession();
-            ProductDAO dao = new ProductDAO();
-            List<ProductDTO> list = dao.viewProduct();
-            if (list.size() > 0) {
-                request.setAttribute("VIEW_PRODUCT", list);
-            }
-            if (session != null) {
-                
-            }
-        } catch (Exception e) {
-            log("Error at AddProductController at: " + e.toString());
-        } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+        try (PrintWriter out = response.getWriter()) {
+            /* TODO output your page here. You may use following sample code. */
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet BuyNowController</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet BuyNowController at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

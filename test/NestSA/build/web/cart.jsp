@@ -4,6 +4,7 @@
     Author     : thangbv
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -171,23 +172,23 @@
                                         <th>Xóa</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    
+                                <tbody>                                   
+                                    <c:forEach items="${sessionScope.CART}" var="o">
                                     <tr>
                                         <td class="thumbnail-img">
                                             <a href="#">
-                                                <img class="img-fluid" src="images/img-pro-01.jpg" alt="" />
+                                                <img class="img-fluid" src="${o.value.image}" alt="" />
                                             </a>
                                         </td>
                                         <td class="name-pr">
                                             <a href="#">
-                                                Lorem ipsum dolor sit amet
+                                                ${o.value.name}
                                             </a>
                                         </td>
                                         <td class="price-pr">
-                                            <p>$ 80.0</p>
+                                            <p>${o.value.price}</p>
                                         </td>
-                                        <td class="quantity-box"><input type="number" size="4" value="1" min="0" step="1" class="c-input-text qty text"></td>
+                                        <td class="quantity-box"><input type="number" size="4" value="${o.value.quantity}" min="0" step="1" class="c-input-text qty text"></td>
                                         <td class="total-pr">
                                             <p>$ 80.0</p>
                                         </td>
@@ -197,7 +198,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                    
+                                    </c:forEach>
                                 </tbody>
                             </table>
                         </div>

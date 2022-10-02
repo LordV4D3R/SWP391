@@ -157,6 +157,8 @@
 
         <!-- Start Shop Page  -->
         <div class="shop-box-inner">
+            <div style=" width: 855px;text-align: center;margin-left: 200px"><h2>${requestScope.CART_SUCCESS}</h2></div>
+            
             <div class="container">
                 <div class="row">
                     <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
@@ -172,7 +174,7 @@
                                             <option value="2">Từ giá thấp → Giá cao</option>
                                         </select>
                                     </div>
-                                    <!--                                    <p>Showing all 4 results</p>-->
+                                                                        <!--<p>sản phẩm đã thêm vào giỏ hàng thành công, mời bạn tiếp tục mua sắm</p>-->
                                 </div>
                                 <div class="col-12 col-sm-4 text-center text-sm-right">
                                     <ul class="nav nav-tabs ml-auto">

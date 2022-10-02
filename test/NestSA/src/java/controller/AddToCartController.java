@@ -7,54 +7,61 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import javax.servlet.RequestDispatcher;
+import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import order.Cart;
+import product.ProductDAO;
+import product.ProductDTO;
 
 /**
  *
  * @author Admin
  */
-public class MainController extends HttpServlet {
+@WebServlet(name = "AddToCartController", urlPatterns = {"/AddToCartController"})
+public class AddToCartController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SEARCH = "Search";
-    private static final String SEARCH_CONTROLLER = "SearchController";
-    private static final String LOGIN = "Login";
-    private static final String LOGINCONTROLLER = "LoginController";   
-    private static final String DETAIL = "Detail";
-    private static final String DETAIL_CONTROLLER = "DetailController";
-    private static final String BUY_NOW = "BuyNow";
-    private static final String BUY_NOW_CONTROLLER = "BuyNowController";
-    private static final String ADD_TO_CART = "AddToCart";
-    private static final String ADD_TO_CART_CONTROLLER = "AddToCartController";
+    private static final String OVER_QUANTITY = "shop-detail.jsp";
+    private static final String SUCCESS = "ViewProductController";   
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
-        String action = request.getParameter("btAction");
         try {
-            if (action == null) {
-                log("Sai roi kia dcm");
-            } else if (action.equals(LOGIN)) {
-                url = LOGINCONTROLLER;
-            } else if (SEARCH.equals(action)) {
-                url = SEARCH_CONTROLLER;
-            } else if (action.equals(ADD_TO_CART)) {
-                url = ADD_TO_CART_CONTROLLER;
-            } else if (action.equals(DETAIL)) {
-                url = DETAIL_CONTROLLER;
-            }else if(action.equals(BUY_NOW)){
-                url=BUY_NOW_CONTROLLER;
+            int id = Integer.parseInt(request.getParameter("id"));
+            String img = request.getParameter("img");
+            String name = request.getParameter("name");
+            int price = Integer.parseInt(request.getParameter("price"));
+            int buyQuantity = Integer.parseInt(request.getParameter("buyQuantity"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+            if (buyQuantity > quantity) {
+                request.setAttribute("OVER_QUANTITY", "Over quantity, please try again!!!");
+                url = OVER_QUANTITY;
+            } else {
+                HttpSession session = request.getSession();                
+                if (session != null) {
+                    Cart cart = (Cart) session.getAttribute("CART");
+                    ProductDTO product = new ProductDTO(id, name, buyQuantity, price, img);
+                    if (cart == null) {
+                        cart = new Cart();
+                    }
+                    cart.add(product);
+                    session.setAttribute("CART", cart);
+                    request.setAttribute("CART_SUCCESS", "sản phẩm đã thêm vào giỏ hàng thành công, mời bạn tiếp tục mua sắm");
+                    url = SUCCESS;
+                }
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log("Error at AddProductController at: " + e.toString());
         } finally {
-            RequestDispatcher rd = request.getRequestDispatcher(url);
-            rd.forward(request, response);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 

@@ -39,7 +39,33 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
+        <style>
+            .swp-btn{
+                /*width: 94px;*/
+                background: #b0b435;
+                border: none;
+                cursor: pointer;
+                padding: 10px 20px;
+                color: #ffffff;    
+                font-weight: 700;
+                outline: none;
+            }
+            .swp-btn:hover{
+                background: #000000;
+            }
+            .swp-btn-cart{
+                cursor: pointer;
+                padding: 10px 20px;
+                font-weight: 700;
+                color: #ffffff;
+                border: none;
+                background: #b0b435;
+                outline: none;
+            }
+            .swp-btn-cart:hover{
+                background: #000000;
+            }
+        </style>
     </head>
 
     <body>
@@ -162,62 +188,69 @@
                     <div class="col-xl-5 col-lg-5 col-md-6">
                         <div id="carousel-example-1" class="single-product-slider carousel slide" data-ride="carousel">
                             <div class="carousel-inner" role="listbox">
-                                <div class="carousel-item active"> <img class="d-block w-100" src="${requestScope.PRODUCT.image}" alt="First slide"> </div>
-<!--                                <div class="carousel-item"> <img class="d-block w-100" src="images/big-img-02.jpg" alt="Second slide"> </div>
-                                <div class="carousel-item"> <img class="d-block w-100" src="images/big-img-03.jpg" alt="Third slide"> </div>-->
+                                <div class="carousel-item active"> <img class="d-block w-100" src="${sessionScope.PRODUCT.image}" alt="First slide"> </div>
+                                <!--                                <div class="carousel-item"> <img class="d-block w-100" src="images/big-img-02.jpg" alt="Second slide"> </div>
+                                                                <div class="carousel-item"> <img class="d-block w-100" src="images/big-img-03.jpg" alt="Third slide"> </div>-->
                             </div>                         
-<!--                            <ol class="carousel-indicators">
-                                <li data-target="#carousel-example-1" data-slide-to="0" class="active">
-                                    <img class="d-block w-100 img-fluid" src="images/smp-img-01.jpg" alt="" />
-                                </li>
-                                <li data-target="#carousel-example-1" data-slide-to="1">
-                                    <img class="d-block w-100 img-fluid" src="images/smp-img-02.jpg" alt="" />
-                                </li>
-                                <li data-target="#carousel-example-1" data-slide-to="2">
-                                    <img class="d-block w-100 img-fluid" src="images/smp-img-03.jpg" alt="" />
-                                </li>
-                            </ol>-->
+                            <!--                            <ol class="carousel-indicators">
+                                                            <li data-target="#carousel-example-1" data-slide-to="0" class="active">
+                                                                <img class="d-block w-100 img-fluid" src="images/smp-img-01.jpg" alt="" />
+                                                            </li>
+                                                            <li data-target="#carousel-example-1" data-slide-to="1">
+                                                                <img class="d-block w-100 img-fluid" src="images/smp-img-02.jpg" alt="" />
+                                                            </li>
+                                                            <li data-target="#carousel-example-1" data-slide-to="2">
+                                                                <img class="d-block w-100 img-fluid" src="images/smp-img-03.jpg" alt="" />
+                                                            </li>
+                                                        </ol>-->
                         </div>
                     </div>
                     <div class="col-xl-7 col-lg-7 col-md-6">
                         <div class="single-product-details">
-                            <h2>${requestScope.PRODUCT.name}</h2>
-                            <h5>${requestScope.PRODUCT.price}VNĐ</h5>
+                            <h2>${sessionScope.PRODUCT.name}</h2>
+                            <h5>${sessionScope.PRODUCT.price}VNĐ</h5>
                             <!--<del>$ 60.00</del>-->
-                            <p class="available-stock"><span> More than ${requestScope.PRODUCT.quantity} available / <a href="#">8 sold </a></span><p>
+                            <p class="available-stock"><span> More than ${sessionScope.PRODUCT.quantity} available / <a href="#">8 sold </a></span><p>
                             <h4>Mô tả:</h4>
-                            <p>${requestScope.PRODUCT.description}</p>
-                            
-                            <ul>
-                                <li>
-                                    <div class="form-group quantity-box">
-                                        <label class="control-label">Số lượng</label>
-                                        <input class="form-control" value="0" min="0" type="number">                                        
-                                    </div>
-                                </li>
-                                <li style="display: flex;height: 91.13px;text-align: center;"><h3 style="padding-bottom: 0px;margin: auto 0;color: red;display: inline">over quantity, please try again!!!</h3></li>
-                            </ul>
-
-                            <div class="price-box-bar">
-                                <div class="cart-and-bay-btn">                        
-                                    <a class="btn hvr-hover" data-fancybox-close="" href="#">Mua liền</a>
-                                    <a class="btn hvr-hover" data-fancybox-close="" href="#">Thêm vào giỏ hàng</a>
+                            <p>${sessionScope.PRODUCT.description}</p>
+                            <form action="MainController">
+                                        
+                                <ul>
+                                    <li>
+                                        <div class="form-group quantity-box">
+                                            <label class="control-label">Số lượng</label>
+                                            <input class="form-control" value="1" min="1" type="number" name="buyQuantity">                                                     
+                                        </div>
+                                    </li>
+                                    <li style="display: flex;height: 91.13px;text-align: center;"><h3 style="padding-bottom: 0px;margin: auto 0;color: red;display: inline">${requestScope.OVER_QUANTITY}</h3></li>
+                                </ul>
+                                <div class="price-box-bar">
+                                    <div class="cart-and-bay-btn">
+                                        <input type="hidden" name="id" value="${sessionScope.PRODUCT.productId}">
+                                        <input type="hidden" name="name" value="${sessionScope.PRODUCT.name}">
+                                        <input type="hidden" name="price" value="${sessionScope.PRODUCT.price}">
+                                        <input type="hidden" name="img" value="${sessionScope.PRODUCT.image}">
+                                        <input type="hidden" name="quantity" value="${sessionScope.PRODUCT.quantity}">
+                                        <button type="submit" class="swp-btn" value="BuyNow" name="btAction">Mua Ngay</button>                                    
+                                        <button type="submit" class="swp-btn-cart" value="AddToCart" name="btAction">Thêm vào giỏ hàng</button>
+                                        <!--<a class="btn hvr-hover" data-fancybox-close="" href="#">Mua liền</a>-->
+                                        <!--<a class="btn hvr-hover" data-fancybox-close="" href="#">Thêm vào giỏ hàng</a>-->
+                                    </div>                              
                                 </div>
-                            </div>
-
-<!--                            <div class="add-to-btn">
-                                <div class="add-comp">
-                                    <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
-                                    <a class="btn hvr-hover" href="#"><i class="fas fa-sync-alt"></i> Add to Compare</a>
-                                </div>
-                                <div class="share-bar">
-                                    <a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                                    <a class="btn hvr-hover" href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a>
-                                    <a class="btn hvr-hover" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                                    <a class="btn hvr-hover" href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
-                                    <a class="btn hvr-hover" href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                                </div>
-                            </div>-->
+                            </form>
+                            <!--                            <div class="add-to-btn">
+                                                            <div class="add-comp">
+                                                                <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
+                                                                <a class="btn hvr-hover" href="#"><i class="fas fa-sync-alt"></i> Add to Compare</a>
+                                                            </div>
+                                                            <div class="share-bar">
+                                                                <a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                                                                <a class="btn hvr-hover" href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a>
+                                                                <a class="btn hvr-hover" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                                                                <a class="btn hvr-hover" href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+                                                                <a class="btn hvr-hover" href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                                                            </div>
+                                                        </div>-->
                         </div>
                     </div>
                 </div>
