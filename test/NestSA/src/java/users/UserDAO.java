@@ -90,14 +90,13 @@ public class UserDAO implements Serializable {
             con = DBUtils.getConnection();
 
             //2. create sql string
-            String sql = "Insert Into Registration(userId, password, roleId, userName) "
-                    + "Values(?, ?, ?, ?)";
+            String sql = "Insert Into users(password, roleId, userName) "
+                    + "Values(?, ?, ?)";
             //3. create stament
             stm = con.prepareStatement(sql);
-            stm.setInt(1, dto.getUserId());
-            stm.setString(2, dto.getPassword());
-            stm.setString(3, dto.getRoleId());
-            stm.setString(4, dto.getUserName());
+            stm.setString(1, dto.getPassword());
+            stm.setString(2, dto.getRoleId());
+            stm.setString(3, dto.getUserName());
 
             //4. execute stament
             int row = stm.executeUpdate();
