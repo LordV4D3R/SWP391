@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/product/ProductDTO.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/controller/LoginController.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/users/UserDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/web/login.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/product/ProductDAO.java</file>
+            <file>file:/C:/Users/thangbv/OneDrive/Desktop/swp/SWP391/test/NestSA/src/java/controller/MainController.java</file>
+            <file>file:/C:/Users/thangbv/OneDrive/Desktop/swp/SWP391/test/NestSA/src/java/controller/UpdateCartController.java</file>
+            <file>file:/C:/Users/thangbv/OneDrive/Desktop/swp/SWP391/test/NestSA/web/cart.jsp</file>
+            <file>file:/C:/Users/thangbv/OneDrive/Desktop/swp/SWP391/test/NestSA/web/shop.jsp</file>
         </group>
     </open-files>
 </project-private>

@@ -68,7 +68,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="login-box">
                             
-                            <a href="MainController?btAction=Logout" style="color: white">Logout</a>
+                            <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
                         </div>
                         </c:if>
                         <c:if test="${checkLogin == null}" >
