@@ -54,7 +54,7 @@
                             Chưa Có Tài Khoản? <a href=""> Đăng Ký Ngay</a>
                         </div>
                     </form>
-                    <form action="MainController" method="POST">                
+                        <form action="MainController" method="POST">                
                         <div class="field">
                             <input type="text" placeholder="Nhập Tên Tài Khoản" name="txtRegisterUsername" required>
                         </div>
@@ -69,7 +69,7 @@
 
                         <div class="field btn">
                             <div class="btn-layer"></div>
-                            <input type="submit" value=" Đăng Ký" name="btAction">
+                            <input type="submit" value="SignUp" name="btAction">
                         </div>
                     </form>
                 </div>

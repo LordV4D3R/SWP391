@@ -24,6 +24,8 @@ public class MainController extends HttpServlet {
     private static final String SEARCH_CONTROLLER = "SearchController";
     private static final String LOGIN = "Login";
     private static final String LOGINCONTROLLER = "LoginController";
+    private static final String REGISTER = "SignUp";
+    private static final String REGISTER_CONTROLLER = "RegisterController";
     private static final String DETAIL = "Detail";
     private static final String DETAIL_CONTROLLER = "DetailController";
     private static final String BUY_NOW = "BuyNow";
@@ -61,6 +63,8 @@ public class MainController extends HttpServlet {
                 url = UPDATE_CART_CONTROLLER;
             } else if (action.equals(LOGOUT)) {
                 url = LOGOUT_CONTROLLER;
+            } else if (action.equals(REGISTER)) {
+                url = REGISTER_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();
