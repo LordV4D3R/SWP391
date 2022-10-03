@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <!DOCTYPE html>
 <html lang="en">
@@ -57,7 +58,23 @@
                         <div class="right-phone-box">
                             <p>Hotline :- <a href="#"> +87378873548</a></p>
                         </div>
+                        <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
+                        <c:if test="${checkLogin != null}">
                         <div class="our-link">
+                            <ul>
+                                <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
+                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                        <div class="login-box">
+                            
+                            <a href="MainController?btAction=Logout" style="color: white">Logout</a>
+                        </div>
+                        </c:if>
+                        <c:if test="${checkLogin == null}" >
+                            <div class="our-link">
                             <ul>
                                 <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
                                 <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
@@ -73,6 +90,7 @@
                                 <option>Đăng nhập</option>
                             </select>-->
                         </div>
+                        </c:if>
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">
                                 <ul class="offer-box">
