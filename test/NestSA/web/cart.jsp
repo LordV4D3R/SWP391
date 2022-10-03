@@ -198,12 +198,12 @@
                                         <td class="price-pr">
                                             <p><%= tea.getPrice()%></p>
                                         </td>
-                                        <td class="quantity-box"><input type="number" size="4" value="<%= tea.getQuantity()%>" min="0" step="1" class="c-input-text qty text"></td>
+                                        <td class="quantity-box"><input type="number" size="4" value="<%= tea.getQuantity()%>" min="1" step="1" class="c-input-text qty text"></td>
                                         <td class="total-pr">
                                             <p><%= total%></p>
                                         </td>
                                         <td class="remove-pr">
-                                            <a href="#">
+                                            <a href="MainController?btAction=RemoveCart&id=<%=tea.getProductId()%>">
                                                 <i class="fas fa-times"></i>
                                             </a>
                                         </td>

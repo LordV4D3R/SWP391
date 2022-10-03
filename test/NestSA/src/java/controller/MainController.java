@@ -30,6 +30,10 @@ public class MainController extends HttpServlet {
     private static final String BUY_NOW_CONTROLLER = "BuyNowController";
     private static final String ADD_TO_CART = "AddToCart";
     private static final String ADD_TO_CART_CONTROLLER = "AddToCartController";
+    private static final String REMOVE_CART = "RemoveCart";
+    private static final String REMOVE_CART_CONTROLLER = "RemoveCartController";
+    private static final String UPDATE_CART = "UpdateCart";
+    private static final String UPDATE_CART_CONTROLLER = "UpdateCartController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -49,6 +53,10 @@ public class MainController extends HttpServlet {
                 url = DETAIL_CONTROLLER;
             }else if(action.equals(BUY_NOW)){
                 url=BUY_NOW_CONTROLLER;
+            }else if(action.equals(REMOVE_CART)){
+                url=REMOVE_CART_CONTROLLER;
+            }else if(action.equals(UPDATE_CART)){
+                url=UPDATE_CART_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();
