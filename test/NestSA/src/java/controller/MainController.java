@@ -23,7 +23,7 @@ public class MainController extends HttpServlet {
     private static final String SEARCH = "Search";
     private static final String SEARCH_CONTROLLER = "SearchController";
     private static final String LOGIN = "Login";
-    private static final String LOGINCONTROLLER = "LoginController";   
+    private static final String LOGINCONTROLLER = "LoginController";
     private static final String DETAIL = "Detail";
     private static final String DETAIL_CONTROLLER = "DetailController";
     private static final String BUY_NOW = "BuyNow";
@@ -34,6 +34,8 @@ public class MainController extends HttpServlet {
     private static final String REMOVE_CART_CONTROLLER = "RemoveCartController";
     private static final String UPDATE_CART = "UpdateCart";
     private static final String UPDATE_CART_CONTROLLER = "UpdateCartController";
+    private static final String LOGOUT = "Logout";
+    private static final String LOGOUT_CONTROLLER = "LogoutController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -51,12 +53,14 @@ public class MainController extends HttpServlet {
                 url = ADD_TO_CART_CONTROLLER;
             } else if (action.equals(DETAIL)) {
                 url = DETAIL_CONTROLLER;
-            }else if(action.equals(BUY_NOW)){
-                url=BUY_NOW_CONTROLLER;
-            }else if(action.equals(REMOVE_CART)){
-                url=REMOVE_CART_CONTROLLER;
-            }else if(action.equals(UPDATE_CART)){
-                url=UPDATE_CART_CONTROLLER;
+            } else if (action.equals(BUY_NOW)) {
+                url = BUY_NOW_CONTROLLER;
+            } else if (action.equals(REMOVE_CART)) {
+                url = REMOVE_CART_CONTROLLER;
+            } else if (action.equals(UPDATE_CART)) {
+                url = UPDATE_CART_CONTROLLER;
+            } else if (action.equals(LOGOUT)) {
+                url = LOGOUT_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();

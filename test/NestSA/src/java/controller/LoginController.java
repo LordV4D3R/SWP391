@@ -11,9 +11,11 @@ import java.sql.SQLException;
 import javax.naming.NamingException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import users.UserDAO;
 import users.UserDTO;
 
@@ -25,7 +27,10 @@ import users.UserDTO;
 public class LoginController extends HttpServlet {
 
     private static final String INVALID_PAGE = "error.jsp";
-    private static final String SUCCESS = "ViewProductController";
+    private static final String US = "US";
+    private static final String USER_PAGE = "ViewProductController";
+    private static final String AD = "AD";
+    private static final String ADMIN_PAGE = "Dashboard--- chua lam";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -40,7 +45,35 @@ public class LoginController extends HttpServlet {
 
             //2.Process result
             if (result != null) {
-                url = SUCCESS;
+                HttpSession session = request.getSession();
+                session.setAttribute("LOGIN_USER", result);
+                //Cookie remember me
+                String remember = request.getParameter("remember");
+                Cookie cUser = new Cookie("cUserName", userName);
+                Cookie cPass = new Cookie("cPassword", password);
+                Cookie cRemember = new Cookie("cRemember", remember);
+                if (remember != null) {
+                    cUser.setMaxAge(60 * 60 * 24); //1 ngay
+                    cPass.setMaxAge(60 * 60 * 24);
+                    cRemember.setMaxAge(60 * 60 * 24);
+                } else {
+                    cUser.setMaxAge(0);
+                    cPass.setMaxAge(0);
+                    cRemember.setMaxAge(0);
+                }
+                response.addCookie(cUser);
+                response.addCookie(cPass);
+                response.addCookie(cRemember);
+                String roleID = result.getRoleId();
+                if (AD.equals(roleID)) {
+                    url = ADMIN_PAGE;
+                } else if (US.equals(roleID)) {
+                    url = USER_PAGE;
+                } else {
+                    request.setAttribute("ERROR", "Your role is not supported!");
+                }
+            } else {
+                request.setAttribute("ERROR", "Your role is not supported!");
             }
 
         } catch (SQLException ex) {
@@ -49,7 +82,7 @@ public class LoginController extends HttpServlet {
             log("LoginController _ Naming _ " + ex.getMessage());
 
         } finally {
-            response.sendRedirect(url);
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
@@ -79,6 +112,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //Create Cookie
         processRequest(request, response);
     }
 

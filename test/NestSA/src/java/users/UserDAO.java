@@ -20,8 +20,9 @@ import utils.DBUtils;
  */
 public class UserDAO implements Serializable {
 
-    public UserDTO checkLogin(String userName, String password)
-            throws SQLException, NamingException {
+    private static final String LOGIN = "SELECT userId, username, password, address, phone, email, fullname, roleId FROM users WHERE username = ? AND password = ?";
+
+    public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
         Connection connection = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -32,40 +33,25 @@ public class UserDAO implements Serializable {
             connection = DBUtils.getConnection();
 
             if (connection != null) {
-
-                //2. Create SQL String
-                String sql = "Select userName, fullName, roleId "
-                        + "From user "
-                        + "Where userId = ? "
-                        + "And password = ? ";
-                //o day co dau "?" nen chung ta phai thiet lap tham so
-                //dua vao trong lenh bang ham set
-
-                //3. Create Statement to set SQL
-                stm = connection.prepareStatement(sql);
+                stm = connection.prepareStatement(LOGIN);
                 stm.setString(1, userName);
                 stm.setString(2, password);
-                //4. Execute Query
-                rs = stm.executeQuery();// boi vi cau lenh sql la Select nen
-                //phai dung executeQuery, neu cau lenh la insert, delete,
-                //update thi dung executeUpdate
-
-                //5. Process result
+                rs = stm.executeQuery();
                 if (rs.next()) {
-                    int userId = rs.getInt("userName");
+                    int userId = rs.getInt("userID");
                     String fullName = rs.getString("fullName");
                     String roleId = rs.getString("roleId");
                     String address = rs.getString("address");
                     String phone = rs.getString("phone");
                     String email = rs.getString("email");
-                    
+
                     result = new UserDTO(userId, password, address, phone, email,
                             fullName, roleId, userName);
                 }
-            }//end if connection is existed
-        }catch(ClassNotFoundException ex){
+            }
+        } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
-        }finally {
+        } finally {
             if (rs != null) {
                 rs.close();
             }
@@ -111,17 +97,17 @@ public class UserDAO implements Serializable {
             stm.setInt(1, dto.getUserId());
             stm.setString(2, dto.getPassword());
             stm.setString(3, dto.getRoleId());
-            stm.setString(4, dto.getUserName());            
-            
+            stm.setString(4, dto.getUserName());
+
             //4. execute stament
             int row = stm.executeUpdate();
             //5. proccess result
             if (row > 0) {
                 result = true;
             }
-        }catch(ClassNotFoundException ex){
+        } catch (ClassNotFoundException ex) {
             ex.printStackTrace();
-        }finally {
+        } finally {
 
             if (stm != null) {
                 stm.close();
@@ -133,4 +119,5 @@ public class UserDAO implements Serializable {
         }
         return result;
     }
+
 }

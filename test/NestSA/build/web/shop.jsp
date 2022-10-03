@@ -65,10 +65,8 @@
                     </div>
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="login-box">
-                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option>Đăng ký</option>
-                                <option>Đăng nhập</option>
-                            </select>
+                            <h4 style="color: white">Welcome ${sessionScope.LOGIN_USER.fullName}
+                            <a href="MainController?btAction=Logout" style="color: white">Logout</a>
                         </div>
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">
