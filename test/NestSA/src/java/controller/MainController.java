@@ -24,6 +24,8 @@ public class MainController extends HttpServlet {
     private static final String SEARCH_CONTROLLER = "SearchController";
     private static final String LOGIN = "Login";
     private static final String LOGINCONTROLLER = "LoginController";
+    private static final String REGISTER = "SignUp";
+    private static final String REGISTER_CONTROLLER = "RegisterController";
     private static final String DETAIL = "Detail";
     private static final String DETAIL_CONTROLLER = "DetailController";
     private static final String BUY_NOW = "BuyNow";
@@ -36,6 +38,8 @@ public class MainController extends HttpServlet {
     private static final String UPDATE_CART_CONTROLLER = "UpdateCartController";
     private static final String LOGOUT = "Logout";
     private static final String LOGOUT_CONTROLLER = "LogoutController";
+    private static final String VIEW_PRODUCT_BY_CATEGORY = "ViewProductByCategory";
+    private static final String VIEW_PRODUCT_BY_CATEGORY_CONTROLLER = "ViewProductByCategoryController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -59,6 +63,10 @@ public class MainController extends HttpServlet {
                 url = REMOVE_CART_CONTROLLER;
             } else if (action.equals(UPDATE_CART)) {
                 url = UPDATE_CART_CONTROLLER;
+            } else if (action.equals(VIEW_PRODUCT_BY_CATEGORY)) {
+                url = VIEW_PRODUCT_BY_CATEGORY_CONTROLLER;
+            } else if (action.equals(REGISTER)) {
+                url = REGISTER_CONTROLLER;
             } else if (action.equals(LOGOUT)) {
                 url = LOGOUT_CONTROLLER;
             }

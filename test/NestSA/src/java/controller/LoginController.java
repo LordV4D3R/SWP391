@@ -26,7 +26,7 @@ import users.UserDTO;
 @WebServlet(name = "LoginController", urlPatterns = {"/LoginController"})
 public class LoginController extends HttpServlet {
 
-    private static final String INVALID_PAGE = "error.jsp";
+    private static final String INVALID_PAGE = "login.jsp";
     private static final String US = "US";
     private static final String USER_PAGE = "ViewProductController";
     private static final String AD = "AD";
@@ -43,6 +43,7 @@ public class LoginController extends HttpServlet {
             UserDAO dao = new UserDAO();
             UserDTO result = dao.checkLogin(userName, password);
 
+            
             //2.Process result
             if (result != null) {
                 HttpSession session = request.getSession();
@@ -70,10 +71,10 @@ public class LoginController extends HttpServlet {
                 } else if (US.equals(roleID)) {
                     url = USER_PAGE;
                 } else {
-                    request.setAttribute("ERROR", "Your role is not supported!");
+                    request.setAttribute("LOGIN_ERROR", "Your role is not supported!");
                 }
             } else {
-                request.setAttribute("ERROR", "Your role is not supported!");
+                request.setAttribute("LOGIN_ERROR", "Sai mật khẩu hoặc tài khoản không tồn tại");
             }
 
         } catch (SQLException ex) {

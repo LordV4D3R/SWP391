@@ -26,7 +26,8 @@ import users.UserError;
 @WebServlet(name = "RegisterController", urlPatterns = {"/RegisterController"})
 public class RegisterController extends HttpServlet {
 
-    private final String LOGIN_PAGE = "";
+    private final String LOGIN_PAGE = "login.jsp";
+    private final String REGISTER_PAGE = "register.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -46,16 +47,19 @@ public class RegisterController extends HttpServlet {
 
         UserError errors = new UserError();
         boolean foundErr = false;
-        String url = null; //fix here
+        String url = REGISTER_PAGE; //fix here
         try {
-            if (confirm.trim().equals(password.trim())) {
+            if (!confirm.trim().equals(password.trim())) {
                 foundErr = true;
                 errors.setConfirmNotMatch("Those passwords didn’t match. Try again ");
+            }
+            if (foundErr) {
+                request.setAttribute("INSERT_ERRORS", errors);
             } else {
                 //insert to db - call dao 
                 UserDTO dto
-                        = new UserDTO(0, password, url, null,
-                                null, null, "C", username);
+                        = new UserDTO(password, null, null,
+                                null, null, "US", username);
                 //userID random then check it if it duplicate`
                 UserDAO dao = new UserDAO();
                 boolean result = dao.createAccount(dto);

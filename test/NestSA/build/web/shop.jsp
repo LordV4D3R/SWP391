@@ -344,7 +344,7 @@
                                             class="text-muted">(22)</small></a>
                                 </div>
                             </div>
-                            <div class="filter-price-left">
+<!--                            <div class="filter-price-left">
                                 <div class="title-left">
                                     <h3>Phân loại theo giá</h3>
                                 </div>
@@ -356,7 +356,7 @@
                                         <button class="btn hvr-hover" type="submit">Phân loại</button>
                                     </p>
                                 </div>
-                            </div>
+                            </div>-->
                         </div>
                     </div>
                 </div>

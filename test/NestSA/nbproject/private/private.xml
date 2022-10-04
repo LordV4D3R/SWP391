@@ -2,12 +2,20 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
+        <group/>
+=======
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/thangbv/OneDrive/Desktop/swp/SWP391/test/NestSA/src/java/controller/AddToCartController.java</file>
             <file>file:/C:/Users/thangbv/OneDrive/Desktop/swp/SWP391/test/NestSA/src/java/controller/MainController.java</file>
             <file>file:/C:/Users/thangbv/OneDrive/Desktop/swp/SWP391/test/NestSA/src/java/controller/UpdateCartController.java</file>
             <file>file:/C:/Users/thangbv/OneDrive/Desktop/swp/SWP391/test/NestSA/web/cart.jsp</file>
             <file>file:/C:/Users/thangbv/OneDrive/Desktop/swp/SWP391/test/NestSA/src/java/controller/LoginController.java</file>
+=======
+            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/product/ProductDAO.java</file>
+>>>>>>> 897faecfa0dc27a221289e8d6f57d6b563c24a0a
         </group>
+>>>>>>> 40dcb88be71f5ba1215564b6599660976a2bfa73
     </open-files>
 </project-private>
