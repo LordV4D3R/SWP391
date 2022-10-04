@@ -43,7 +43,24 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-
+        <style>
+            .update-cart{
+                border: none;
+                outline: none;
+                color:#FFFFFF;
+                background:#000000;
+                font-weight: 500;
+                cursor: pointer;
+                height: 50px;
+                padding:0 24px;
+                text-transform: uppercase;
+                margin-left: 358px;
+                transition: all 0.3s ease 0s;
+            }
+            .update-cart:hover{
+                background: #b0b435;
+            }
+        </style>
     </head>
 
     <body>
@@ -62,35 +79,35 @@
                         </div>
                         <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                         <c:if test="${checkLogin != null}">
-                        <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                            <div class="our-link">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
+                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box">                           
-                            <a href="MainController?btAction=Logout" style="color: white">Logout</a>
-                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box">                           
+                                <a href="MainController?btAction=Logout" style="color: white">Logout</a>
+                            </div>
                         </c:if>
                         <c:if test="${checkLogin == null}" >
                             <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
+                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box" style="margin-right: 20px">
-                            <a href="login.jsp" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
-                            <a href="login.jsp" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>
-<!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option>Đăng ký</option>
-                                <option>Đăng nhập</option>
-                            </select>-->
-                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box" style="margin-right: 20px">
+                                <a href="login.jsp" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
+                                <a href="login.jsp" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>
+                                <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                                                                <option>Đăng ký</option>
+                                                                <option>Đăng nhập</option>
+                                                            </select>-->
+                            </div>
                         </c:if>
                     </div>
                 </div>
@@ -198,9 +215,9 @@
                                         <td class="price-pr">
                                             <p><%= tea.getPrice()%></p>
                                         </td>
-                                        <td class="quantity-box"><input type="number" size="4" value="<%= tea.getQuantity()%>" min="1" step="1" class="c-input-text qty text"></td>
+                                        <td class="quantity-box"><input type="number" size="4" value="<%= tea.getQuantity()%>" min="1" step="1" class="c-input-text qty text" oninput="update(this,<%=tea.getProductId()%>)"></td>
                                         <td class="total-pr">
-                                            <p><%= total%></p>
+                                            <p><%= tea.getQuantity() * tea.getPrice()%></p>
                                         </td>
                                         <td class="remove-pr">
                                             <a href="MainController?btAction=RemoveCart&id=<%=tea.getProductId()%>">
@@ -232,9 +249,12 @@
                     </div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="update-box">
-
-                            <input value="Cập nhật giỏ hàng" type="submit">
-
+                            <form action="MainController">
+                                <button type="submit" name="btAction" value="UpdateCart" class="update-cart">
+                                    Cập nhật giỏ hàng
+                                </button>
+                                <!--<input value="Cập nhật giỏ hàng" type="submit">-->
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -476,6 +496,14 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
+        <script>
+            function update(input, x) {
+                let num = x;
+                console.log(num);
+                let name = num.toString();            
+                document.cookie = name + "=" + input.value;
+            }
+        </script>
     </body>
 
 </html>

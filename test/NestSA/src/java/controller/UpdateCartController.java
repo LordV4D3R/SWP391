@@ -9,9 +9,13 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import order.Cart;
+import product.ProductDTO;
 
 /**
  *
@@ -19,8 +23,10 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "UpdateCartController", urlPatterns = {"/UpdateCartController"})
 public class UpdateCartController extends HttpServlet {
-    private static final String ERROR="error.jsp";
-    private static final String SUCCESS="cart.jsp";
+
+    private static final String ERROR = "error.jsp";
+    private static final String SUCCESS = "cart.jsp";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -33,10 +39,37 @@ public class UpdateCartController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url=ERROR;
+        String url = ERROR;
         try {
+            Cookie[] cookies = request.getCookies();
+            String cookieId;
+            int quantity;
+            int id;
+            for (int i = 0; i < cookies.length; i++) {
+                cookieId = cookies[i].getName();
+                if (cookieId.matches(".*[0-9]")) {
+                    quantity = Integer.parseInt(cookies[i].getValue());
+                    id = Integer.parseInt(cookieId);
+                    cookies[i].setMaxAge(0);
+                    response.addCookie(cookies[i]);
+                    HttpSession session = request.getSession();
+                    if (session != null) {
+                        Cart cart = (Cart) session.getAttribute("CART");
+                        if (cart != null) {
+                            ProductDTO product = new ProductDTO();
+                            if (cart.getCart().containsKey(id)) {
+                                product = cart.getCart().get(id);
+                                product.setQuantity(quantity);
+                                cart.update(id, product);
+                                session.setAttribute("CART", cart);                                
+                            }
+                        }
+                    }
+                }
+            }            
+            url = SUCCESS;
         } catch (Exception e) {
-        }finally{
+        } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
     }
