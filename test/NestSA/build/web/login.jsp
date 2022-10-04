@@ -33,7 +33,11 @@
                 </div>
                 <div class="form-inner">
                     <c:set var="cookie" value="${pageContext.request.cookies}"/>
+                   
                     <form action="MainController" class="login" method="POST">
+                        <div class="pass-link">
+                            <a>${requestScope.LOGIN_ERROR}</a>
+                        </div>
                         <div class="field">
                             <input type="text" placeholder="Tài Khoản" name="txtUserName" value="${cookie.cUserName.value}" required>
                         </div>
@@ -54,7 +58,7 @@
                             Chưa Có Tài Khoản? <a href=""> Đăng Ký Ngay</a>
                         </div>
                     </form>
-                        <form action="MainController" method="POST">                
+                    <form action="MainController" method="POST">                
                         <div class="field">
                             <input type="text" placeholder="Nhập Tên Tài Khoản" name="txtRegisterUsername" required>
                         </div>
