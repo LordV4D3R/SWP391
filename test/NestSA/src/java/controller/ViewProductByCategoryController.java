@@ -7,11 +7,14 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import product.ProductDAO;
+import product.ProductDTO;
 
 /**
  *
@@ -28,7 +31,13 @@ public class ViewProductByCategoryController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            
+            String search = request.getParameter("categoryId");
+            ProductDAO dao = new ProductDAO();
+            List<ProductDTO> listProduct = dao.ViewByCategory(search);
+            if (listProduct.size() > 0) {
+                request.setAttribute("VIEW_PRODUCT", listProduct);
+                url = SUCCESS;
+            }
         } catch (Exception e) {
             log("Error at ViewProductByCategoryController at: " + e.toString());
         } finally {

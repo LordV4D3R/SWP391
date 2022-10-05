@@ -47,21 +47,29 @@ public class RegisterController extends HttpServlet {
 
         UserError errors = new UserError();
         boolean foundErr = false;
+        UserDAO dao = new UserDAO();
         String url = REGISTER_PAGE; //fix here
         try {
+            boolean checkDuplicate = dao.checkDuplicate(username);
+
             if (!confirm.trim().equals(password.trim())) {
                 foundErr = true;
-                errors.setConfirmNotMatch("Those passwords didn’t match. Try again ");
+                errors.setConfirmNotMatch("Mật Khẩu Không Khớp");
+            }
+            //duplicate
+            if (checkDuplicate) {
+                foundErr = true;
+                errors.setUsernameDuplicate("Tài khoản " + username + " đã tồn tại!!!");
             }
             if (foundErr) {
-                request.setAttribute("INSERT_ERRORS", errors);
+                request.setAttribute("INSERT_USER_ERRORS", errors);
             } else {
                 //insert to db - call dao 
                 UserDTO dto
                         = new UserDTO(password, null, null,
                                 null, null, "US", username);
                 //userID random then check it if it duplicate`
-                UserDAO dao = new UserDAO();
+//                UserDAO dao = new UserDAO();
                 boolean result = dao.createAccount(dto);
 
                 if (result) {
@@ -71,12 +79,7 @@ public class RegisterController extends HttpServlet {
             }
 
         } catch (SQLException ex) {
-            String msg = ex.getMessage();
-            log("RegisterController _ SQL _ " + msg);
-            if (msg.contains("duplicate")) {
-                errors.setUsernameDuplicate(username + " existed!!!");
-                request.setAttribute("INSERT_ERRORS", ex);
-            }
+            log("RegisterController _ SQL _ " + ex.getMessage());
         } catch (NamingException ex) {
             log("RegisterController _ Naming _ " + ex.getMessage());
         } finally {

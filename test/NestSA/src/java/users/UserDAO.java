@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
 import utils.DBUtils;
@@ -21,6 +22,8 @@ import utils.DBUtils;
 public class UserDAO implements Serializable {
 
     private static final String LOGIN = "SELECT userId, username, password, address, phone, email, fullname, roleId FROM users WHERE username = ? AND password = ?";
+
+    private static final String CHECK_DUPLICATE = "SELECT username FROM users WHERE username = ?";
 
     public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
         Connection connection = null;
@@ -65,6 +68,39 @@ public class UserDAO implements Serializable {
             }
         }
         return result;
+    }
+
+    public boolean checkDuplicate(String username)
+            throws SQLException, NamingException {
+        
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                stm = conn.prepareStatement(CHECK_DUPLICATE);
+                stm.setString(1, username);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    check = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
     }
 
     private List<UserDTO> accounts;

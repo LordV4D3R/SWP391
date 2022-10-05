@@ -63,7 +63,7 @@
                         <div class="our-link">
                             <ul>
                                 <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -77,7 +77,7 @@
                             <div class="our-link">
                             <ul>
                                 <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                             </ul>
                         </div>
                     </div>

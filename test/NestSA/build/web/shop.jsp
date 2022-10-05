@@ -58,36 +58,36 @@
                         </div>
                         <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                         <c:if test="${checkLogin != null}">
-                        <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                            <div class="our-link">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
+                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box">
-                            
-                            <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
-                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box">
+
+                                <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
+                            </div>
                         </c:if>
                         <c:if test="${checkLogin == null}" >
                             <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
+                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box" style="margin-right: 20px">
-                            <a href="login.jsp" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
-                            <a href="login.jsp" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>
-<!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option>Đăng ký</option>
-                                <option>Đăng nhập</option>
-                            </select>-->
-                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box" style="margin-right: 20px">
+                                <a href="login.jsp" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
+                                <a href="login.jsp" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>
+                                <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                                                                <option>Đăng ký</option>
+                                                                <option>Đăng nhập</option>
+                                                            </select>-->
+                            </div>
                         </c:if>
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">
@@ -134,7 +134,7 @@
                             <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
                             <li class="dropdown">
-                                <a href="#" class="nav-link ">Cửa hàng</a>                               
+                                <a href="ViewProductController" class="nav-link ">Cửa hàng</a>                               
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
@@ -177,7 +177,7 @@
         <!-- Start Shop Page  -->
         <div class="shop-box-inner">
             <div style=" width: 855px;text-align: center;margin-left: 200px"><h2>${requestScope.CART_SUCCESS}</h2></div>
-            
+
             <div class="container">
                 <div class="row">
                     <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
@@ -193,7 +193,7 @@
                                             <option value="2">Từ giá thấp → Giá cao</option>
                                         </select>
                                     </div>
-                                                                        <!--<p>sản phẩm đã thêm vào giỏ hàng thành công, mời bạn tiếp tục mua sắm</p>-->
+                                    <!--<p>sản phẩm đã thêm vào giỏ hàng thành công, mời bạn tiếp tục mua sắm</p>-->
                                 </div>
                                 <div class="col-12 col-sm-4 text-center text-sm-right">
                                     <ul class="nav nav-tabs ml-auto">
@@ -253,29 +253,21 @@
                                                 <div class="row">
                                                     <div class="col-sm-6 col-md-6 col-lg-4 col-xl-4">
                                                         <div class="products-single fix">
-                                                            <div class="box-img-hover">
-                                                                <div class="type-lb">
-                                                                    <p class="new">New</p>
-                                                                </div>
+                                                            <div class="box-img-hover">                                                               
                                                                 <img src="${o.image}" class="img-fluid" alt="Image">
-                                                                <div class="mask-icon">
-                                                                    <ul>
-                                                                        <li><a href="#" data-toggle="tooltip"
-                                                                               data-placement="right" title="View">
-                                                                                <i class="fas fa-eye"></i>
-                                                                            </a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-sm-6 col-md-6 col-lg-8 col-xl-8">
-                                                        <div class="why-text full-width" style="margin-bottom: 220px">
-                                                            <h4>${o.name}</h4>
-                                                            <h5>${o.price}</h5>
-                                                            <p>${o.description}</p>
-                                                            <a class="btn hvr-hover" href="#">Add to Cart</a>
+                                                        <div class="full-width" style="margin-bottom: 30px">
+                                                            <div style="text-align: justify;padding: 0 12px;background: #6666661c;">
+                                                                <h4 style="font-size: 24px;
+                                                                    font-weight: 700;
+                                                                    padding-bottom: 15px">${o.name}</h4>
+                                                                <h5 style="font-weight: 700;font-size: 18px">${o.price} VND</h5>
+                                                                <p>${o.description}</p>
+                                                            </div>
+                                                            <a class="btn hvr-hover" href="#" style="margin-top: 12px;color: #FFFFFF;font-weight: 700">Add to Cart</a>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -300,63 +292,62 @@
                                 </div>
                                 <div class="list-group list-group-collapse list-group-sm list-group-tree"
                                      id="list-group-men" data-children=".sub-men">
-                                    <div class="list-group-collapse sub-men">
-                                        <a class="list-group-item list-group-item-action" href="#sub-men1"
-                                           data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Fruits &
-                                            Drinks <small class="text-muted">(100)</small>
-                                        </a>
-                                        <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
-                                            <div class="list-group">
-                                                <a href="#" class="list-group-item list-group-item-action active">Fruits 1
-                                                    <small class="text-muted">(50)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Fruits 2 <small
-                                                        class="text-muted">(10)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Fruits 3 <small
-                                                        class="text-muted">(10)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Fruits 4 <small
-                                                        class="text-muted">(10)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Fruits 5 <small
-                                                        class="text-muted">(20)</small></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="list-group-collapse sub-men">
-                                        <a class="list-group-item list-group-item-action" href="#sub-men2"
-                                           data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Vegetables
-                                            <small class="text-muted">(50)</small>
-                                        </a>
-                                        <div class="collapse" id="sub-men2" data-parent="#list-group-men">
-                                            <div class="list-group">
-                                                <a href="#" class="list-group-item list-group-item-action">Vegetables 1
-                                                    <small class="text-muted">(10)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Vegetables 2
-                                                    <small class="text-muted">(20)</small></a>
-                                                <a href="#" class="list-group-item list-group-item-action">Vegetables 3
-                                                    <small class="text-muted">(20)</small></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery <small
-                                            class="text-muted">(150) </small></a>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery <small
-                                            class="text-muted">(11)</small></a>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery <small
-                                            class="text-muted">(22)</small></a>
+                                    <!--                                    <div class="list-group-collapse sub-men">
+                                                                            <a class="list-group-item list-group-item-action" href="#sub-men1"
+                                                                               data-toggle="collapse" aria-expanded="true" aria-controls="sub-men1">Fruits &
+                                                                                Drinks <small class="text-muted">(100)</small>
+                                                                            </a>
+                                                                            <div class="collapse show" id="sub-men1" data-parent="#list-group-men">
+                                                                                <div class="list-group">
+                                                                                    <a href="#" class="list-group-item list-group-item-action active">Fruits 1
+                                                                                        <small class="text-muted">(50)</small></a>
+                                                                                    <a href="#" class="list-group-item list-group-item-action">Fruits 2 <small
+                                                                                            class="text-muted">(10)</small></a>
+                                                                                    <a href="#" class="list-group-item list-group-item-action">Fruits 3 <small
+                                                                                            class="text-muted">(10)</small></a>
+                                                                                    <a href="#" class="list-group-item list-group-item-action">Fruits 4 <small
+                                                                                            class="text-muted">(10)</small></a>
+                                                                                    <a href="#" class="list-group-item list-group-item-action">Fruits 5 <small
+                                                                                            class="text-muted">(20)</small></a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="list-group-collapse sub-men">
+                                                                            <a class="list-group-item list-group-item-action" href="#sub-men2"
+                                                                               data-toggle="collapse" aria-expanded="false" aria-controls="sub-men2">Vegetables
+                                                                                <small class="text-muted">(50)</small>
+                                                                            </a>
+                                                                            <div class="collapse" id="sub-men2" data-parent="#list-group-men">
+                                                                                <div class="list-group">
+                                                                                    <a href="#" class="list-group-item list-group-item-action">Vegetables 1
+                                                                                        <small class="text-muted">(10)</small></a>
+                                                                                    <a href="#" class="list-group-item list-group-item-action">Vegetables 2
+                                                                                        <small class="text-muted">(20)</small></a>
+                                                                                    <a href="#" class="list-group-item list-group-item-action">Vegetables 3
+                                                                                        <small class="text-muted">(20)</small></a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>-->
+                                    <c:forEach var="c" items="${sessionScope.VIEW_CATEGORY}"> 
+                                        <a href="MainController?btAction=ViewProductByCategory&categoryId=${c.categoryId}" class="list-group-item list-group-item-action">${c.categoryName}<small
+                                                class="text-muted">(150) </small></a>
+
+                                    </c:forEach>
                                 </div>
                             </div>
-<!--                            <div class="filter-price-left">
-                                <div class="title-left">
-                                    <h3>Phân loại theo giá</h3>
-                                </div>
-                                <div class="price-box-slider">
-                                    <div id="slider-range"></div>
-                                    <p>
-                                        <input type="text" id="amount" readonly
-                                               style="border:0; color:#fbb714; font-weight:bold;">
-                                        <button class="btn hvr-hover" type="submit">Phân loại</button>
-                                    </p>
-                                </div>
-                            </div>-->
+                            <!--                            <div class="filter-price-left">
+                                                            <div class="title-left">
+                                                                <h3>Phân loại theo giá</h3>
+                                                            </div>
+                                                            <div class="price-box-slider">
+                                                                <div id="slider-range"></div>
+                                                                <p>
+                                                                    <input type="text" id="amount" readonly
+                                                                           style="border:0; color:#fbb714; font-weight:bold;">
+                                                                    <button class="btn hvr-hover" type="submit">Phân loại</button>
+                                                                </p>
+                                                            </div>
+                                                        </div>-->
                         </div>
                     </div>
                 </div>

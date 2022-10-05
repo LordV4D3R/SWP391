@@ -47,6 +47,10 @@ public class UserDTO implements Serializable {
         this.roleId = roleId;
         this.userName = userName;
     }
+    
+    public UserDTO(String userName){
+        this.userName = userName;
+    }
 
     public int getUserId() {
         return userId;
