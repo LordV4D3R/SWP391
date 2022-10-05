@@ -24,6 +24,7 @@ public class UserDAO implements Serializable {
     private static final String LOGIN = "SELECT userId, username, password, address, phone, email, fullname, roleId FROM users WHERE username = ? AND password = ?";
 
     private static final String CHECK_DUPLICATE = "SELECT username FROM users WHERE username = ?";
+
     public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
         Connection connection = null;
         PreparedStatement stm = null;
@@ -68,18 +69,20 @@ public class UserDAO implements Serializable {
         }
         return result;
     }
-    
-    public boolean checkDuplicate(String username) throws SQLException {
+
+    public boolean checkDuplicate(String username)
+            throws SQLException, NamingException {
+        
         boolean check = false;
         Connection conn = null;
-        PreparedStatement ptm = null;
+        PreparedStatement stm = null;
         ResultSet rs = null;
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                ptm = conn.prepareStatement(CHECK_DUPLICATE);
-                ptm.setString(1, username);
-                rs = ptm.executeQuery();
+                stm = conn.prepareStatement(CHECK_DUPLICATE);
+                stm.setString(1, username);
+                rs = stm.executeQuery();
                 if (rs.next()) {
                     check = true;
                 }
@@ -87,9 +90,15 @@ public class UserDAO implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (rs != null) rs.close();
-            if (ptm != null) ptm.close();
-            if (conn != null) conn.close();
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
         }
         return check;
     }
@@ -143,66 +152,6 @@ public class UserDAO implements Serializable {
             }
 
         }
-        return result;
-    }
-
-    private List<UserDTO> usernames;
-
-    public List<UserDTO> getUserNames() {
-        return usernames;
-    }
-
-    public boolean duplicateCreateAccount(String username)
-            throws NamingException, SQLException {
-
-        Connection con = null;
-        PreparedStatement stm = null;
-        ResultSet rs = null;
-
-        boolean result = false;
-        
-        try {
-            //1. Make connection
-            con = DBUtils.getConnection();
-
-            if (con != null) {
-                stm = con.prepareStatement(CHECK_DUPLICATE);
-                rs = stm.executeQuery();
-                
-                while (rs.next()) {
-                    String sqlUser = rs.getString("username");
-                    
-                    UserDTO dto = new UserDTO(sqlUser);
-                    
-                    if(this.usernames == null){
-                        this.usernames = new ArrayList<>();
-                    }
-                    this.usernames.add(dto);
-                    
-                    if(username.trim().equals(dto)){
-                        result = true;
-                    }
-                }
-                
-            }
-
-        } catch (ClassNotFoundException ex) {
-            ex.printStackTrace();
-
-        } finally {
-
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-
-            if (con != null) {
-                con.close();
-            }
-        }
-
         return result;
     }
 

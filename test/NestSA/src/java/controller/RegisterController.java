@@ -47,17 +47,17 @@ public class RegisterController extends HttpServlet {
 
         UserError errors = new UserError();
         boolean foundErr = false;
-        UserDAO duplicateDao = new UserDAO();
+        UserDAO dao = new UserDAO();
         String url = REGISTER_PAGE; //fix here
         try {
-            boolean duplicateUsername = duplicateDao.duplicateCreateAccount(username);
+            boolean checkDuplicate = dao.checkDuplicate(username);
 
             if (!confirm.trim().equals(password.trim())) {
                 foundErr = true;
                 errors.setConfirmNotMatch("Mật Khẩu Không Khớp");
             }
             //duplicate
-            if (duplicateUsername) {
+            if (checkDuplicate) {
                 foundErr = true;
                 errors.setUsernameDuplicate("Tài khoản " + username + " đã tồn tại!!!");
             }
@@ -69,7 +69,7 @@ public class RegisterController extends HttpServlet {
                         = new UserDTO(password, null, null,
                                 null, null, "US", username);
                 //userID random then check it if it duplicate`
-                UserDAO dao = new UserDAO();
+//                UserDAO dao = new UserDAO();
                 boolean result = dao.createAccount(dto);
 
                 if (result) {
