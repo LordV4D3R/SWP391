@@ -28,6 +28,8 @@ public class ProductDAO {
     private static final String VIEW_PRODUCT_BY_CATEGORY = "SELECT categoryId "
                                                          + "FROM product "
                                                          + "WHERE categoryId = ?";
+    private static final String VIEW_CATEGORY = "SELECT categoryId ,categoryname "
+                                              + "FROM category";
     private static final String DELETE = " product SET status=0 WHERE proID=?";
     private static final String UPDATE = "UPDATE product SET name=?, quantity=?, image=?, categoty=? WHERE productId=? ";
     private static final String CREATE = "INSERT INTO product(name, quantity, image, description, categotyId) VALUES(?,?,?,?,?)";
@@ -71,7 +73,33 @@ public class ProductDAO {
         return list;
     }
 
-    public List<ProductDTO> View_By_Category(String cateId) throws SQLException {
+    
+    public List<ProductDTO> ViewCategory() throws SQLException {
+        List<ProductDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(VIEW_CATEGORY);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String categoryId = rs.getString("categoryId");
+                    String categoryName = rs.getString("categoryName");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) rs.close();
+            if (ptm != null) ptm.close();
+            if (conn != null) conn.close();
+        }
+        return list;
+    }
+    
+    public List<ProductDTO> ViewByCategory(String cateId) throws SQLException {
         List<ProductDTO> list = new ArrayList<>();
         Connection conn = null;
         PreparedStatement ptm = null;

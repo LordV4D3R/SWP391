@@ -17,11 +17,32 @@ public class ProductDTO {
     private String image;
     private String description;
     private String categoryId;
+    private String categoryName;
     private int status;
 
     public ProductDTO() {
     }
 
+    public ProductDTO(int productId, String name, int quantity, int price, String image, String description, String categoryId, String categoryName, int status) {
+        this.productId = productId;
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+        this.status = status;
+    }
+
+    public String getCategoryName() {
+        return categoryName;
+    }
+
+    public void setCategoryName(String categoryName) {
+        this.categoryName = categoryName;
+    }
+    
     // contructor for DetailController
     public ProductDTO(int productId, String name, int quantity, int price, String image, String description) {
         this.productId = productId;
