@@ -32,7 +32,7 @@
                     <c:set var="errors" value="${requestScope.INSERT_USER_ERRORS}"/>
                     <c:if test="${not empty errors.usernameDuplicate}">
                         <div class="pass-link">
-                            <a>${requestScope.INSERT_USER_ERRORS}</a>
+                            <a>${errors.usernameDuplicate}</a>
                         </div>
                     </c:if>
                     <div class="field">
@@ -42,15 +42,31 @@
                     <div class="field">
                         <input type="password" placeholder="Nhập Mật Khẩu" name="txtRegisterPassword" required>
                     </div>
-                    
+
                     <c:if test="${not empty errors.confirmNotMatch}">
                         <div class="pass-link">
-                            <a>${requestScope.INSERT_USER_ERRORS}</a>
+                            <a>${errors.confirmNotMatch}</a>
                         </div>
                     </c:if>
-                    
+
                     <div class="field">
                         <input type="password" placeholder="Nhập Lại Mật Khẩu" name="txtConfirmPassword" required>
+                    </div>
+
+                    <div class="field">
+                        <input type="text" placeholder="Họ Và Tên (Không bắt buộc)" name="txtFullName" value="${param.txtFullName}">
+                    </div>
+
+                    <div class="field">
+                        <input type="text" placeholder="Email (Không bắt buộc)" name="txtEmail" value="${param.txtEmail}">
+                    </div>
+
+                    <div class="field">
+                        <input type="text" placeholder="Điện Thoại (Không bắt buộc)" name="txtPhone" value="${param.txtPhone}">
+                    </div>
+
+                    <div class="field">
+                        <input type="text" placeholder="Địa Chỉ (Không bắt buộc)" name="txtAddress" value="${param.txtAddress}">
                     </div>
 
                     <div class="field btn">

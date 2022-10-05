@@ -2,14 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
-        <group/>
-=======
         <group>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/controller/LoginController.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/web/index.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/web/login.jsp</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/src/java/controller/RegisterController.java</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/web/register.jsp</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/src/java/users/UserDAO.java</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/src/java/controller/LoginController.java</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/src/java/users/UserDTO.java</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/src/java/users/UserError.java</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/src/java/category/CategoryDAO.java</file>
         </group>
->>>>>>> ffa6880fc276f61221f168d26b97e4bfe739e771
     </open-files>
 </project-private>
