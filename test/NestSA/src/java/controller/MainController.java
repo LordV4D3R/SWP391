@@ -40,6 +40,8 @@ public class MainController extends HttpServlet {
     private static final String LOGOUT_CONTROLLER = "LogoutController";
     private static final String VIEW_PRODUCT_BY_CATEGORY = "ViewProductByCategory";
     private static final String VIEW_PRODUCT_BY_CATEGORY_CONTROLLER = "ViewProductByCategoryController";
+    private static final String VIEW_CATEGORY = "ViewCategory";
+    private static final String VIEW_CATEGORY_CONTROLLER = "ViewCategoryController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -69,6 +71,8 @@ public class MainController extends HttpServlet {
                 url = REGISTER_CONTROLLER;
             } else if (action.equals(LOGOUT)) {
                 url = LOGOUT_CONTROLLER;
+            } else if (action.equals(VIEW_CATEGORY)) {
+                url = VIEW_CATEGORY_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();
