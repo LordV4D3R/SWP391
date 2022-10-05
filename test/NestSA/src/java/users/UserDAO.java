@@ -21,6 +21,7 @@ import utils.DBUtils;
 public class UserDAO implements Serializable {
 
     private static final String LOGIN = "SELECT userId, username, password, address, phone, email, fullname, roleId FROM users WHERE username = ? AND password = ?";
+    private static final String CHECK_DUPLICATE = "SELECT username FROM users WHERE username = ?";
 
     public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
         Connection connection = null;
@@ -65,6 +66,31 @@ public class UserDAO implements Serializable {
             }
         }
         return result;
+    }
+    
+    public boolean checkDuplicate(String username) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(CHECK_DUPLICATE);
+                ptm.setString(1, username);
+                rs = ptm.executeQuery();
+                if (rs.next()) {
+                    check = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) rs.close();
+            if (ptm != null) ptm.close();
+            if (conn != null) conn.close();
+        }
+        return check;
     }
 
     private List<UserDTO> accounts;
