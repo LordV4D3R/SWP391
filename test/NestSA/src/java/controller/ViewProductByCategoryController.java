@@ -35,7 +35,7 @@ public class ViewProductByCategoryController extends HttpServlet {
             ProductDAO dao = new ProductDAO();
             List<ProductDTO> listProduct = dao.ViewByCategory(search);
             if (listProduct.size() > 0) {
-                request.setAttribute("VIEW_PRODUCT_BY_CATEGORY", listProduct);
+                request.setAttribute("VIEW_PRODUCT", listProduct);
                 url = SUCCESS;
             }
         } catch (Exception e) {

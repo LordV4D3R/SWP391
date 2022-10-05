@@ -336,12 +336,11 @@
                                                                                 </div>
                                                                             </div>
                                                                         </div>-->
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery <small
+                                    <c:forEach var="c" items="${sessionScope.VIEW_CATEGORY}"> 
+                                            <a href="MainController?btAction=ViewProductByCategory&categoryId=${c.categoryId}" class="list-group-item list-group-item-action">${c.categoryName}<small
                                             class="text-muted">(150) </small></a>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery <small
-                                            class="text-muted">(11)</small></a>
-                                    <a href="#" class="list-group-item list-group-item-action"> Grocery <small
-                                            class="text-muted">(22)</small></a>
+
+                                    </c:forEach>
                                 </div>
                             </div>
                             <!--                            <div class="filter-price-left">
