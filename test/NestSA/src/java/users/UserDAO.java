@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
 import utils.DBUtils;
@@ -21,6 +22,7 @@ import utils.DBUtils;
 public class UserDAO implements Serializable {
 
     private static final String LOGIN = "SELECT userId, username, password, address, phone, email, fullname, roleId FROM users WHERE username = ? AND password = ?";
+    private static final String CHECK_DUPLICATE = "SELECT username FROM users";
 
     public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
         Connection connection = null;
@@ -116,6 +118,66 @@ public class UserDAO implements Serializable {
             }
 
         }
+        return result;
+    }
+
+    private List<UserDTO> usernames;
+
+    public List<UserDTO> getUserNames() {
+        return usernames;
+    }
+
+    public boolean duplicateCreateAccount(String username)
+            throws NamingException, SQLException {
+
+        Connection con = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+
+        boolean result = false;
+        
+        try {
+            //1. Make connection
+            con = DBUtils.getConnection();
+
+            if (con != null) {
+                stm = con.prepareStatement(CHECK_DUPLICATE);
+                rs = stm.executeQuery();
+                
+                while (rs.next()) {
+                    String sqlUser = rs.getString("username");
+                    
+                    UserDTO dto = new UserDTO(sqlUser);
+                    
+                    if(this.usernames == null){
+                        this.usernames = new ArrayList<>();
+                    }
+                    this.usernames.add(dto);
+                    
+                    if(username.trim().equals(dto)){
+                        result = true;
+                    }
+                }
+                
+            }
+
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+
+        } finally {
+
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+
+            if (con != null) {
+                con.close();
+            }
+        }
+
         return result;
     }
 

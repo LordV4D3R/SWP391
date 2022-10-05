@@ -28,7 +28,10 @@
             </div>
 
             <div class="form-inner">   
-                <form action="MainController" method="POST">     
+                <form action="MainController" method="POST">    
+                    <div class="pass-link">
+                        <a>${requestScope.INSERT_USER_ERRORS}</a>
+                    </div>
 
                     <div class="field">
                         <input type="text" placeholder="Nhập Tên Tài Khoản" name="txtRegisterUsername" required>
@@ -47,7 +50,7 @@
                         <input type="submit" value="SignUp" name="btAction">
                     </div>
                     <div class="signup-link">
-                        Đã Có Tài Khoản?  <a href="login.jsp">Đăng Nhập</a>
+                        Đã Có Tài Khoản?<a href="login.jsp">Đăng Nhập</a>
                     </div>
                 </form>
                 <div/>
