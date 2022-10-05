@@ -52,7 +52,7 @@ public class RegisterController extends HttpServlet {
         try {
             boolean checkDuplicate = dao.checkDuplicate(username);
 
-            if (!confirm.trim().equals(password.trim())) {
+            if (!confirm.equals(password)) {
                 foundErr = true;
                 errors.setConfirmNotMatch("Mật Khẩu Không Khớp");
             }
@@ -68,7 +68,6 @@ public class RegisterController extends HttpServlet {
                 UserDTO dto
                         = new UserDTO(password, null, null,
                                 null, null, "US", username);
-                //userID random then check it if it duplicate`
 //                UserDAO dao = new UserDAO();
                 boolean result = dao.createAccount(dto);
 

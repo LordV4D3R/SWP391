@@ -29,18 +29,26 @@
 
             <div class="form-inner">   
                 <form action="MainController" method="POST">    
-                    <div class="pass-link">
-                        <a>${requestScope.INSERT_USER_ERRORS}</a>
-                    </div>
-
+                    <c:set var="errors" value="${requestScope.INSERT_USER_ERRORS}"/>
+                    <c:if test="${not empty errors.usernameDuplicate}">
+                        <div class="pass-link">
+                            <a>${requestScope.INSERT_USER_ERRORS}</a>
+                        </div>
+                    </c:if>
                     <div class="field">
-                        <input type="text" placeholder="Nhập Tên Tài Khoản" name="txtRegisterUsername" required>
+                        <input type="text" placeholder="Nhập Tên Tài Khoản" name="txtRegisterUsername" value ="${param.txtRegisterUsername}" required>
                     </div>
 
                     <div class="field">
                         <input type="password" placeholder="Nhập Mật Khẩu" name="txtRegisterPassword" required>
                     </div>
-
+                    
+                    <c:if test="${not empty errors.confirmNotMatch}">
+                        <div class="pass-link">
+                            <a>${requestScope.INSERT_USER_ERRORS}</a>
+                        </div>
+                    </c:if>
+                    
                     <div class="field">
                         <input type="password" placeholder="Nhập Lại Mật Khẩu" name="txtConfirmPassword" required>
                     </div>
