@@ -5,8 +5,6 @@
  */
 package controller;
 
-import category.CategoryDAO;
-import category.CategoryDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -15,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import product.ProductDAO;
 import product.ProductDTO;
 
@@ -25,10 +22,9 @@ import product.ProductDTO;
  */
 @WebServlet(name = "ViewProductController", urlPatterns = {"/ViewProductController"})
 public class ViewProductController extends HttpServlet {
-
-    private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "shop.jsp";
-
+    private  static final String ERROR="error.jsp";
+    private  static final String SUCCESS="shop.jsp";
+    
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -41,31 +37,16 @@ public class ViewProductController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
+        String url=ERROR;
         try {
-            boolean checkValidation = true;
-            ProductDAO dao = new ProductDAO();
-            CategoryDAO cDao = new CategoryDAO();
-            while (checkValidation) {
-                checkValidation = true;
-                List<ProductDTO> listProduct = dao.viewProduct();
-                if (listProduct.size() > 0) {
-                    request.setAttribute("VIEW_PRODUCT", listProduct);
-                    checkValidation = false;
-                    url = SUCCESS;
-                }
-                List<CategoryDTO> listCategory = cDao.ViewCategory();
-                if (listCategory.size() > 0) {
-                    HttpSession session = request.getSession();
-                    
-                    session.setAttribute("VIEW_CATEGORY", listCategory);
-                    checkValidation = false;
-                    url = SUCCESS;
-                } 
+            ProductDAO dao= new ProductDAO();
+            List<ProductDTO> listProduct=dao.viewProduct();
+            if(listProduct.size()>0){
+                request.setAttribute("VIEW_PRODUCT", listProduct);
+                url=SUCCESS;
             }
-
         } catch (Exception e) {
-        } finally {
+        }finally{
             request.getRequestDispatcher(url).forward(request, response);
         }
     }

@@ -25,10 +25,11 @@ public class ProductDAO {
     private static final String VIEW = "SELECT pro.productId, pro.name, pro.quantity, pri.price, pro.categoryId, pro.image, pro.description, pro.categoryId, pro.status "
                                      + "FROM product pro, price pri "
                                      + "WHERE pro.productId = pri.productId";
-    private static final String VIEW_PRODUCT_BY_CATEGORY = "SELECT pro.productId, pro.name, pro.quantity, pro.description, pro.categoryId, pro.image, pro.status, pri.price "
-                                                         + "FROM product pro, price pri "
-                                                         + "WHERE pro.productId = pri.productId "
-                                                         + "AND pro.categoryId = ?";
+    private static final String VIEW_PRODUCT_BY_CATEGORY = "SELECT categoryId "
+                                                         + "FROM product "
+                                                         + "WHERE categoryId = ?";
+    private static final String VIEW_CATEGORY = "SELECT categoryId ,categoryname "
+                                              + "FROM category";
     private static final String DELETE = " product SET status=0 WHERE proID=?";
     private static final String UPDATE = "UPDATE product SET name=?, quantity=?, image=?, categoty=? WHERE productId=? ";
     private static final String CREATE = "INSERT INTO product(name, quantity, image, description, categotyId) VALUES(?,?,?,?,?)";
@@ -72,6 +73,32 @@ public class ProductDAO {
         return list;
     }
 
+    
+    public List<ProductDTO> ViewCategory() throws SQLException {
+        List<ProductDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(VIEW_CATEGORY);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String categoryId = rs.getString("categoryId");
+                    String categoryName = rs.getString("categoryName");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) rs.close();
+            if (ptm != null) ptm.close();
+            if (conn != null) conn.close();
+        }
+        return list;
+    }
+    
     public List<ProductDTO> ViewByCategory(String cateId) throws SQLException {
         List<ProductDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -235,7 +262,7 @@ public class ProductDAO {
 
     public static void main(String[] args) throws SQLException {
         ProductDAO dao = new ProductDAO();
-        List<ProductDTO> list = dao.ViewByCategory("C01");
+        List<ProductDTO> list = dao.viewProduct();
         for (ProductDTO dto : list) {
             System.out.println(dto.toString());
         }

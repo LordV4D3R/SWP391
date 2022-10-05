@@ -42,11 +42,6 @@ public class ProductDTO {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-
-    public ProductDTO(String categoryId, String categoryName) {
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
-    }
     
     // contructor for DetailController
     public ProductDTO(int productId, String name, int quantity, int price, String image, String description) {
