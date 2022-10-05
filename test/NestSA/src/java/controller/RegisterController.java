@@ -44,17 +44,24 @@ public class RegisterController extends HttpServlet {
         String username = request.getParameter("txtRegisterUsername");
         String password = request.getParameter("txtRegisterPassword");
         String confirm = request.getParameter("txtConfirmPassword");
-        String fullName = request.getParameter("txtFullName");
-        String email = request.getParameter("txtEmail");
-        String phone = request.getParameter("txtPhone");
-        String address = request.getParameter("txtAddress");
+//        String fullName = request.getParameter("txtFullName");
+//        String email = request.getParameter("txtEmail");
+//        String phone = request.getParameter("txtPhone");
+//        String address = request.getParameter("txtAddress");
         UserError errors = new UserError();
         boolean foundErr = false;
         UserDAO dao = new UserDAO();
         String url = REGISTER_PAGE; //fix here
         try {
             boolean checkDuplicate = dao.checkDuplicate(username);
-
+            if(username.trim().length() > 50){
+                foundErr= true;
+                errors.setUsernameErr("Tài khoản không quá 50 kí tự");
+            }
+            if(password.trim().length() > 50){                
+                foundErr= true;
+                errors.setPasswordErr("Mật khẩu không quá 50 kí tự");
+            }
             if (!confirm.equals(password)) {
                 foundErr = true;
                 errors.setConfirmNotMatch("Mật Khẩu Không Khớp");
@@ -69,8 +76,8 @@ public class RegisterController extends HttpServlet {
             } else {
                 //insert to db - call dao 
                 UserDTO dto
-                        = new UserDTO(password, address, phone,
-                                email, fullName, "US", username);
+                        = new UserDTO(password, null, null,
+                                null, null, "US", username);
 //                UserDAO dao = new UserDAO();
                 boolean result = dao.createAccount(dto);
 
