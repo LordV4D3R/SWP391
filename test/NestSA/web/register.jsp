@@ -35,6 +35,11 @@
                             <a>${errors.usernameDuplicate}</a>
                         </div>
                     </c:if>
+                    <c:if test="${not empty errors.usernameErr}">
+                        <div class="pass-link">
+                            <a>${errors.usernameErr}</a>
+                        </div>
+                    </c:if>
                     <div class="field">
                         <input type="text" placeholder="Nhập Tên Tài Khoản" name="txtRegisterUsername" value ="${param.txtRegisterUsername}" required>
                     </div>
@@ -48,14 +53,21 @@
                             <a>${errors.confirmNotMatch}</a>
                         </div>
                     </c:if>
+                    
+                    <c:if test="${not empty errors.passwordErr}">
+                        <div class="pass-link">
+                            <a>${errors.passwordErr}</a>
+                        </div>
+                    </c:if>
 
                     <div class="field">
                         <input type="password" placeholder="Nhập Lại Mật Khẩu" name="txtConfirmPassword" required>
                     </div>
 
-                    <div class="field">
-                        <input type="text" placeholder="Họ Và Tên (Không bắt buộc)" name="txtFullName" value="${param.txtFullName}">
-                    </div>
+                    <%--
+                <div class="field">
+                    <input type="text" placeholder="Họ Và Tên (Không bắt buộc)" name="txtFullName" value="${param.txtFullName}">
+                </div>
 
                     <div class="field">
                         <input type="text" placeholder="Email (Không bắt buộc)" name="txtEmail" value="${param.txtEmail}">
@@ -68,7 +80,7 @@
                     <div class="field">
                         <input type="text" placeholder="Địa Chỉ (Không bắt buộc)" name="txtAddress" value="${param.txtAddress}">
                     </div>
-
+                    --%>
                     <div class="field btn">
                         <div class="btn-layer"></div>
                         <input type="submit" value="SignUp" name="btAction">

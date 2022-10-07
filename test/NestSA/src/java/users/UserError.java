@@ -16,7 +16,11 @@ public class UserError implements Serializable{
     private String passwordErr;
     private String confirmNotMatch;
     private String usernameDuplicate;
-
+    private String phoneErr;
+    private String emailErr;
+    private String fullNameErr;
+    
+    
     public UserError() {
     }
 
@@ -50,6 +54,48 @@ public class UserError implements Serializable{
 
     public void setUsernameDuplicate(String usernameDuplicate) {
         this.usernameDuplicate = usernameDuplicate;
+    }
+
+    /**
+     * @return the phoneErr
+     */
+    public String getPhoneErr() {
+        return phoneErr;
+    }
+
+    /**
+     * @param phoneErr the phoneErr to set
+     */
+    public void setPhoneErr(String phoneErr) {
+        this.phoneErr = phoneErr;
+    }
+
+    /**
+     * @return the emailErr
+     */
+    public String getEmailErr() {
+        return emailErr;
+    }
+
+    /**
+     * @param emailErr the emailErr to set
+     */
+    public void setEmailErr(String emailErr) {
+        this.emailErr = emailErr;
+    }
+
+    /**
+     * @return the fullNameErr
+     */
+    public String getFullNameErr() {
+        return fullNameErr;
+    }
+
+    /**
+     * @param fullNameErr the fullNameErr to set
+     */
+    public void setFullNameErr(String fullNameErr) {
+        this.fullNameErr = fullNameErr;
     }
     
     
