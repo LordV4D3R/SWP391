@@ -44,7 +44,10 @@ public class RegisterController extends HttpServlet {
         String username = request.getParameter("txtRegisterUsername");
         String password = request.getParameter("txtRegisterPassword");
         String confirm = request.getParameter("txtConfirmPassword");
-
+        String fullName = request.getParameter("txtFullName");
+        String email = request.getParameter("txtEmail");
+        String phone = request.getParameter("txtPhone");
+        String address = request.getParameter("txtAddress");
         UserError errors = new UserError();
         boolean foundErr = false;
         UserDAO dao = new UserDAO();
@@ -52,7 +55,7 @@ public class RegisterController extends HttpServlet {
         try {
             boolean checkDuplicate = dao.checkDuplicate(username);
 
-            if (!confirm.trim().equals(password.trim())) {
+            if (!confirm.equals(password)) {
                 foundErr = true;
                 errors.setConfirmNotMatch("Mật Khẩu Không Khớp");
             }
@@ -66,9 +69,8 @@ public class RegisterController extends HttpServlet {
             } else {
                 //insert to db - call dao 
                 UserDTO dto
-                        = new UserDTO(password, null, null,
-                                null, null, "US", username);
-                //userID random then check it if it duplicate`
+                        = new UserDTO(password, address, phone,
+                                email, fullName, "US", username);
 //                UserDAO dao = new UserDAO();
                 boolean result = dao.createAccount(dto);
 

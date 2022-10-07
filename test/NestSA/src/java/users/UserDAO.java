@@ -25,6 +25,8 @@ public class UserDAO implements Serializable {
 
     private static final String CHECK_DUPLICATE = "SELECT username FROM users WHERE username = ?";
 
+    private static final String CREATE_ACCOUNT = "Insert Into users(password, address, phone, email, fullName, roleId, userName) Values(?, ?, ?, ?, ?, ?, ?)";
+
     public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
         Connection connection = null;
         PreparedStatement stm = null;
@@ -72,7 +74,7 @@ public class UserDAO implements Serializable {
 
     public boolean checkDuplicate(String username)
             throws SQLException, NamingException {
-        
+
         boolean check = false;
         Connection conn = null;
         PreparedStatement stm = null;
@@ -125,20 +127,23 @@ public class UserDAO implements Serializable {
             //1. make connection
             con = DBUtils.getConnection();
 
-            //2. create sql string
-            String sql = "Insert Into users(password, roleId, userName) "
-                    + "Values(?, ?, ?)";
-            //3. create stament
-            stm = con.prepareStatement(sql);
-            stm.setString(1, dto.getPassword());
-            stm.setString(2, dto.getRoleId());
-            stm.setString(3, dto.getUserName());
+            if (con != null) {
+                //3. create stament
+                stm = con.prepareStatement(CREATE_ACCOUNT);
+                stm.setString(1, dto.getPassword());
+                stm.setString(2, dto.getAddress());
+                stm.setString(3, dto.getPhone());
+                stm.setString(4, dto.getEmail());
+                stm.setString(5, dto.getFullName());
+                stm.setString(6, dto.getRoleId());
+                stm.setString(7, dto.getUserName());
 
-            //4. execute stament
-            int row = stm.executeUpdate();
-            //5. proccess result
-            if (row > 0) {
-                result = true;
+                //4. execute stament
+                int row = stm.executeUpdate();
+                //5. proccess result
+                if (row > 0) {
+                    result = true;
+                }
             }
         } catch (ClassNotFoundException ex) {
             ex.printStackTrace();

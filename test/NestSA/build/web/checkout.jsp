@@ -215,7 +215,7 @@
                             <div class="title-left">
                                 <h3>Thông tin liên lạc</h3>
                             </div>
-                            <form class="needs-validation" novalidate>
+                            <form class="needs-validation" novalidate action="MainController">
                                 <!--                                <div class="row">
                                                                     <div class="col-md-6 mb-3">
                                                                         <label for="firstName">First name *</label>
@@ -231,24 +231,20 @@
                                 <div class="mb-3">
                                     <label for="username">Họ và tên</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="username" placeholder="" required>
-                                        <div class="invalid-feedback" style="width: 100%;"> Your full name is required. </div>
+                                        <input type="text" class="form-control" id="username" placeholder="" required name="username">                                       
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email">Địa chỉ</label>
-                                    <input type="email" class="form-control" id="email" placeholder="">
-                                    <div class="invalid-feedback"> Please enter a valid address for shipping updates. </div>
+                                    <input type="text" class="form-control" id="email" placeholder="" name="address">                                  
                                 </div>
                                 <div class="mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="">
-                                    <div class="invalid-feedback"> Please enter a valid address for shipping updates. </div>
+                                    <input type="email" class="form-control" id="email" placeholder="" name="email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="address">Số điện thoại</label>
-                                    <input type="number" class="form-control" id="address" placeholder="" required>
-                                    <div class="invalid-feedback"> Please enter your shipping address. </div>
+                                    <input type="number" class="form-control" id="address" placeholder="" required name="phone">                                 
                                 </div>
                                 <!--                                <div class="mb-3">
                                                                     <label for="address2">Address</label>
@@ -282,7 +278,7 @@
                                                                     <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
                                                                 </div>-->
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="save-info">
+                                    <input type="checkbox" class="custom-control-input" id="save-info" name="save">
                                     <label class="custom-control-label" for="save-info">Lưu lại thông tin cho lần mua sau</label>
                                 </div>
                                 <hr class="mb-4">
@@ -336,7 +332,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="mb-1"> </form>
+                                <hr class="mb-1"> 
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-6 mb-3">
@@ -352,12 +348,14 @@
                                             <label class="custom-control-label" for="shippingOption1">Giao hàng truyền thống</label> <span class="float-right font-weight-bold">FREE</span> </div>
                                         <div class="ml-4 mb-2 small">(1-2 ngày)</div>
                                         <div class="custom-control custom-radio">
-                                            <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio">
+                                            <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio" value="500">
                                             <label class="custom-control-label" for="shippingOption2">Giao hàng nhanh</label> <span class="float-right font-weight-bold">$10.00</span> </div>
                                         <div class="ml-4 mb-2 small">(Giao ngay trong ngày đặt hàng)</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>       
+                            <button type="submit" style="position: relative;bottom: -390px; z-index: 1">Thanh Toán</button>
+                            </form>
                             <%
                                 Cart cart = (Cart) session.getAttribute("CART");
                                 if (cart != null) {
@@ -425,7 +423,7 @@
                             <%
                                 }
                             %>
-                            <div class="col-12 d-flex shopping-box"> <a href="checkout.jsp" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>
+                            <div class="col-12 d-flex shopping-box"> <a href="#" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>
                         </div>
                     </div>
                 </div>
