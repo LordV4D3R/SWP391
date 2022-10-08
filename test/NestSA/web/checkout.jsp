@@ -4,6 +4,8 @@
     Author     : thangbv
 --%>
 
+<%@page import="product.ProductDTO"%>
+<%@page import="order.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -59,36 +61,36 @@
                         </div>
                         <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                         <c:if test="${checkLogin != null}">
-                        <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                            <div class="our-link">
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
+                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box">
-                            
-                            <a href="MainController?btAction=Logout" style="color: white">Logout</a>
-                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box">
+
+                                <a href="MainController?btAction=Logout" style="color: white">Logout</a>
+                            </div>
                         </c:if>
                         <c:if test="${checkLogin == null}" >
                             <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                                <ul>
+                                    <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
+                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box" style="margin-right: 20px">
-                            <a href="login.jsp" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
-                            <a href="login.jsp" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>
-<!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option>Đăng ký</option>
-                                <option>Đăng nhập</option>
-                            </select>-->
-                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box" style="margin-right: 20px">
+                                <a href="login.jsp" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
+                                <a href="login.jsp" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>
+                                <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                                                                <option>Đăng ký</option>
+                                                                <option>Đăng nhập</option>
+                                                            </select>-->
+                            </div>
                         </c:if>
                     </div>
                 </div>
@@ -159,129 +161,125 @@
         <!-- Start Cart  -->
         <div class="cart-box-main">
             <div class="container">
-<!--                <div class="row new-account-login">
-                    <div class="col-sm-6 col-lg-6 mb-3">
-                        <div class="title-left">
-                            <h3>Đăng Nhập</h3>
-                        </div>
-                        <h5><a data-toggle="collapse" href="#formLogin" role="button" aria-expanded="false">Nhấn vào đây để đăng nhập</a></h5>
-                        <form class="mt-3 collapse review-form-box" id="formLogin">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="InputEmail" class="mb-0">Tên đăng nhập</label>
-                                    <input type="email" class="form-control" id="InputEmail" placeholder="User Name"> </div>
-                                <div class="form-group col-md-6">
-                                    <label for="InputPassword" class="mb-0">Mật khẩu</label>
-                                    <input type="password" class="form-control" id="InputPassword" placeholder="Password"> </div>
-                            </div>
-                            <button type="submit" class="btn hvr-hover">Đăng nhập</button>
-                        </form>
-                    </div>
-                    <div class="col-sm-6 col-lg-6 mb-3">
-                        <div class="title-left">
-                            <h3>Đăng ký tài khoản</h3>
-                        </div>
-                        <h5><a data-toggle="collapse" href="#formRegister" role="button" aria-expanded="false">Nhấn vào đây để đăng ký</a></h5>
-                        <form class="mt-3 collapse review-form-box" id="formRegister">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label class="mb-0">Tên đăng nhập</label>
-                                    <input type="text" class="form-control" id="InputName" placeholder="User Name"> </div>
-                                <div class="form-group col-md-6">
-                                    <label class="mb-0">Mật khẩu</label>
-                                    <input type="password" class="form-control" id="InputLastname" placeholder="Password"> </div>
-                                <div class="form-group col-md-6">
-                                    <label class="mb-0">Họ và tên</label>
-                                    <input type="text" class="form-control" id="InputPassword1" placeholder="FullName"> </div>
-                                <div class="form-group col-md-6">
-                                    <label class="mb-0">Email</label>
-                                    <input type="text" class="form-control" id="InputEmail1" placeholder="Email"> </div>
-                                <div class="form-group col-md-6">
-                                    <label class="mb-0">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="InputPassword1" placeholder="Address"> </div>
-                                <div class="form-group col-md-6">
-                                    <label class="mb-0">Số điện thoại</label>
-                                    <input type="number" class="form-control" id="InputPassword1" placeholder="Phone"> </div>
-                            </div>
-                            <button type="submit" class="btn hvr-hover">Đăng ký</button>
-                        </form>
-                    </div>
-                </div>-->
+                <!--                <div class="row new-account-login">
+                                    <div class="col-sm-6 col-lg-6 mb-3">
+                                        <div class="title-left">
+                                            <h3>Đăng Nhập</h3>
+                                        </div>
+                                        <h5><a data-toggle="collapse" href="#formLogin" role="button" aria-expanded="false">Nhấn vào đây để đăng nhập</a></h5>
+                                        <form class="mt-3 collapse review-form-box" id="formLogin">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="InputEmail" class="mb-0">Tên đăng nhập</label>
+                                                    <input type="email" class="form-control" id="InputEmail" placeholder="User Name"> </div>
+                                                <div class="form-group col-md-6">
+                                                    <label for="InputPassword" class="mb-0">Mật khẩu</label>
+                                                    <input type="password" class="form-control" id="InputPassword" placeholder="Password"> </div>
+                                            </div>
+                                            <button type="submit" class="btn hvr-hover">Đăng nhập</button>
+                                        </form>
+                                    </div>
+                                    <div class="col-sm-6 col-lg-6 mb-3">
+                                        <div class="title-left">
+                                            <h3>Đăng ký tài khoản</h3>
+                                        </div>
+                                        <h5><a data-toggle="collapse" href="#formRegister" role="button" aria-expanded="false">Nhấn vào đây để đăng ký</a></h5>
+                                        <form class="mt-3 collapse review-form-box" id="formRegister">
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label class="mb-0">Tên đăng nhập</label>
+                                                    <input type="text" class="form-control" id="InputName" placeholder="User Name"> </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="mb-0">Mật khẩu</label>
+                                                    <input type="password" class="form-control" id="InputLastname" placeholder="Password"> </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="mb-0">Họ và tên</label>
+                                                    <input type="text" class="form-control" id="InputPassword1" placeholder="FullName"> </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="mb-0">Email</label>
+                                                    <input type="text" class="form-control" id="InputEmail1" placeholder="Email"> </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="mb-0">Địa chỉ</label>
+                                                    <input type="text" class="form-control" id="InputPassword1" placeholder="Address"> </div>
+                                                <div class="form-group col-md-6">
+                                                    <label class="mb-0">Số điện thoại</label>
+                                                    <input type="number" class="form-control" id="InputPassword1" placeholder="Phone"> </div>
+                                            </div>
+                                            <button type="submit" class="btn hvr-hover">Đăng ký</button>
+                                        </form>
+                                    </div>
+                                </div>-->
                 <div class="row">
                     <div class="col-sm-6 col-lg-6 mb-3">
                         <div class="checkout-address">
                             <div class="title-left">
                                 <h3>Thông tin liên lạc</h3>
                             </div>
-                            <form class="needs-validation" novalidate>
-<!--                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="firstName">First name *</label>
-                                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
-                                        <div class="invalid-feedback"> Valid first name is required. </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="lastName">Last name *</label>
-                                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
-                                        <div class="invalid-feedback"> Valid last name is required. </div>
-                                    </div>
-                                </div>-->
+                            <form class="needs-validation" novalidate action="MainController">
+                                <!--                                <div class="row">
+                                                                    <div class="col-md-6 mb-3">
+                                                                        <label for="firstName">First name *</label>
+                                                                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                                                                        <div class="invalid-feedback"> Valid first name is required. </div>
+                                                                    </div>
+                                                                    <div class="col-md-6 mb-3">
+                                                                        <label for="lastName">Last name *</label>
+                                                                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                                                                        <div class="invalid-feedback"> Valid last name is required. </div>
+                                                                    </div>
+                                                                </div>-->
                                 <div class="mb-3">
                                     <label for="username">Họ và tên</label>
                                     <div class="input-group">
-                                        <input type="text" class="form-control" id="username" placeholder="" required>
-                                        <div class="invalid-feedback" style="width: 100%;"> Your full name is required. </div>
+                                        <input type="text" class="form-control" id="username" placeholder="" required name="username">                                       
                                     </div>
                                 </div>
                                 <div class="mb-3">
                                     <label for="email">Địa chỉ</label>
-                                    <input type="email" class="form-control" id="email" placeholder="">
-                                    <div class="invalid-feedback"> Please enter a valid address for shipping updates. </div>
+                                    <input type="text" class="form-control" id="email" placeholder="" name="address">                                  
                                 </div>
                                 <div class="mb-3">
                                     <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" placeholder="">
-                                    <div class="invalid-feedback"> Please enter a valid address for shipping updates. </div>
+                                    <input type="email" class="form-control" id="email" placeholder="" name="email">
                                 </div>
                                 <div class="mb-3">
                                     <label for="address">Số điện thoại</label>
-                                    <input type="number" class="form-control" id="address" placeholder="" required>
-                                    <div class="invalid-feedback"> Please enter your shipping address. </div>
+                                    <input type="number" class="form-control" id="address" placeholder="" required name="phone">                                 
                                 </div>
-<!--                                <div class="mb-3">
-                                    <label for="address2">Address</label>
-                                    <input type="text" class="form-control" id="address2" placeholder=""> </div>
-                                <div class="row">
-                                    <div class="col-md-5 mb-3">
-                                        <label for="country">Country *</label>
-                                        <select class="wide w-100" id="country">
-                                            <option value="Choose..." data-display="Select">Choose...</option>
-                                            <option value="United States">United States</option>
-                                        </select>
-                                        <div class="invalid-feedback"> Please select a valid country. </div>
-                                    </div>
-                                    <div class="col-md-4 mb-3">
-                                        <label for="state">State *</label>
-                                        <select class="wide w-100" id="state">
-                                            <option data-display="Select">Choose...</option>
-                                            <option>California</option>
-                                        </select>
-                                        <div class="invalid-feedback"> Please provide a valid state. </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="zip">Zip *</label>
-                                        <input type="text" class="form-control" id="zip" placeholder="" required>
-                                        <div class="invalid-feedback"> Zip code required. </div>
-                                    </div>
-                                </div>-->
+                                <!--                                <div class="mb-3">
+                                                                    <label for="address2">Address</label>
+                                                                    <input type="text" class="form-control" id="address2" placeholder=""> </div>
+                                                                <div class="row">
+                                                                    <div class="col-md-5 mb-3">
+                                                                        <label for="country">Country *</label>
+                                                                        <select class="wide w-100" id="country">
+                                                                            <option value="Choose..." data-display="Select">Choose...</option>
+                                                                            <option value="United States">United States</option>
+                                                                        </select>
+                                                                        <div class="invalid-feedback"> Please select a valid country. </div>
+                                                                    </div>
+                                                                    <div class="col-md-4 mb-3">
+                                                                        <label for="state">State *</label>
+                                                                        <select class="wide w-100" id="state">
+                                                                            <option data-display="Select">Choose...</option>
+                                                                            <option>California</option>
+                                                                        </select>
+                                                                        <div class="invalid-feedback"> Please provide a valid state. </div>
+                                                                    </div>
+                                                                    <div class="col-md-3 mb-3">
+                                                                        <label for="zip">Zip *</label>
+                                                                        <input type="text" class="form-control" id="zip" placeholder="" required>
+                                                                        <div class="invalid-feedback"> Zip code required. </div>
+                                                                    </div>
+                                                                </div>-->
                                 <hr class="mb-4">
+                                <!--                                <div class="custom-control custom-checkbox">
+                                                                    <input type="checkbox" class="custom-control-input" id="same-address">
+                                                                    <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
+                                                                </div>-->
                                 <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="same-address">
-                                    <label class="custom-control-label" for="same-address">Shipping address is the same as my billing address</label>
-                                </div>
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="save-info">
-                                    <label class="custom-control-label" for="save-info">Save this information for next time</label>
+                                    <input type="checkbox" class="custom-control-input" id="save-info" name="save">
+                                    <label class="custom-control-label" for="save-info">Lưu lại thông tin cho lần mua sau</label>
                                 </div>
                                 <hr class="mb-4">
                                 <div class="title"> <span>Phương thức thanh toán</span> </div>
@@ -334,7 +332,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <hr class="mb-1"> </form>
+                                <hr class="mb-1"> 
                         </div>
                     </div>
                     <div class="col-sm-6 col-lg-6 mb-3">
@@ -350,65 +348,82 @@
                                             <label class="custom-control-label" for="shippingOption1">Giao hàng truyền thống</label> <span class="float-right font-weight-bold">FREE</span> </div>
                                         <div class="ml-4 mb-2 small">(1-2 ngày)</div>
                                         <div class="custom-control custom-radio">
-                                            <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio">
+                                            <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio" value="500">
                                             <label class="custom-control-label" for="shippingOption2">Giao hàng nhanh</label> <span class="float-right font-weight-bold">$10.00</span> </div>
                                         <div class="ml-4 mb-2 small">(Giao ngay trong ngày đặt hàng)</div>
                                     </div>
                                 </div>
-                            </div>
+                            </div>       
+                            <button type="submit" style="position: relative;bottom: -390px; z-index: 1">Thanh Toán</button>
+                            </form>
+                            <%
+                                Cart cart = (Cart) session.getAttribute("CART");
+                                if (cart != null) {
+                            %>
                             <div class="col-md-12 col-lg-12">
                                 <div class="odr-box">
                                     <div class="title-left">
                                         <h3>Giỏ Hàng</h3>
                                     </div>
-                                    <div class="rounded p-2 bg-light">
+                                    <%
+                                        int total = 0;
+                                        for (ProductDTO tea : cart.getCart().values()) {
+                                            total += tea.getPrice() * tea.getQuantity();
+                                    %>
+                                    <div class="rounded p-2 bg-light" style="margin-top: -16px;">
                                         <div class="media mb-2 border-bottom">
-                                            <div class="media-body"> <a href="shop-detail.jsp"> Lorem ipsum dolor sit amet</a>
-                                                <div class="small text-muted">Price: $80.00 <span class="mx-2">|</span> Qty: 1 <span class="mx-2">|</span> Subtotal: $80.00</div>
+                                            <div class="media-body"> <a href="shop-detail.jsp"><%= tea.getName()%></a>
+                                                <div class="small text-muted">Price: <%= tea.getPrice()%> VND<span class="mx-2">|</span> Qty: <%= tea.getQuantity()%><span class="mx-2">|</span> <%= tea.getQuantity() * tea.getPrice()%> VND</div>
                                             </div>
                                         </div>
                                     </div>
+                                    <%
+                                        }
+                                    %>
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-12">
                                 <div class="order-box">
                                     <div class="title-left">
                                         <h3>Hóa Đơn</h3>
-                                    </div>
+                                    </div>                                 
                                     <div class="d-flex">
                                         <div class="font-weight-bold">Sản phẩm</div>
                                         <div class="ml-auto font-weight-bold">Tổng tiền</div>
                                     </div>
                                     <hr class="my-1">
+                                    <!--                                    <div class="d-flex">
+                                                                            <h4>Sub Total</h4>
+                                                                            <div class="ml-auto font-weight-bold"> $ 440 </div>
+                                                                        </div>
+                                                                        <div class="d-flex">
+                                                                            <h4>Discount</h4>
+                                                                            <div class="ml-auto font-weight-bold"> $ 40 </div>
+                                                                        </div>
+                                                                        <hr class="my-1">
+                                                                        <div class="d-flex">
+                                                                            <h4>Coupon Discount</h4>
+                                                                            <div class="ml-auto font-weight-bold"> $ 10 </div>
+                                                                        </div>
+                                                                        <div class="d-flex">
+                                                                            <h4>Tax</h4>
+                                                                            <div class="ml-auto font-weight-bold"> $ 2 </div>
+                                                                        </div>-->
                                     <div class="d-flex">
-                                        <h4>Sub Total</h4>
-                                        <div class="ml-auto font-weight-bold"> $ 440 </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <h4>Discount</h4>
-                                        <div class="ml-auto font-weight-bold"> $ 40 </div>
-                                    </div>
-                                    <hr class="my-1">
-                                    <div class="d-flex">
-                                        <h4>Coupon Discount</h4>
-                                        <div class="ml-auto font-weight-bold"> $ 10 </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <h4>Tax</h4>
-                                        <div class="ml-auto font-weight-bold"> $ 2 </div>
-                                    </div>
-                                    <div class="d-flex">
-                                        <h4>Shipping Cost</h4>
+                                        <h4>Phí giao hàng</h4>
                                         <div class="ml-auto font-weight-bold"> Free </div>
                                     </div>
                                     <hr>
                                     <div class="d-flex gr-total">
-                                        <h5>Grand Total</h5>
-                                        <div class="ml-auto h5"> $ 388 </div>
+                                        <h5>Tổng Cộng</h5>
+                                        <div class="ml-auto h5"> <%= total%> VND</div>
                                     </div>
                                     <hr> </div>
                             </div>
-                            <div class="col-12 d-flex shopping-box"> <a href="checkout.jsp" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>
+                            <%
+                                }
+                            %>
+                            <div class="col-12 d-flex shopping-box"> <a href="#" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>
                         </div>
                     </div>
                 </div>
