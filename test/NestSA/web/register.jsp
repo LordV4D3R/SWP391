@@ -19,11 +19,11 @@
 
         <div class="container">
             <div class="title-text">
-                <div class="title login">
-                    Đăng Ký
-                </div>
-                <div class="title signup">
-                    Đăng Ký
+                <div class="title logo">
+                    <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
+                    <div class="login">
+                        Đăng Nhập
+                    </div>
                 </div>
             </div>
 
@@ -53,7 +53,7 @@
                             <a>${errors.confirmNotMatch}</a>
                         </div>
                     </c:if>
-                    
+
                     <c:if test="${not empty errors.passwordErr}">
                         <div class="pass-link">
                             <a>${errors.passwordErr}</a>
@@ -68,14 +68,28 @@
                 <div class="field">
                     <input type="text" placeholder="Họ Và Tên (Không bắt buộc)" name="txtFullName" value="${param.txtFullName}">
                 </div>
+                    --%>            
 
+                    <c:if test="${not empty errors.emailErr}">
+                        <div class="pass-link">
+                            <a>${errors.emailErr}</a> 
+                        </div>
+                    </c:if>
+
+                    <c:if test="${not empty errors.emailDuplicate}">
+                        <div class="pass-link">
+                            <a>${errors.emailDuplicate}</a> 
+                        </div>
+                    </c:if>
                     <div class="field">
-                        <input type="text" placeholder="Email (Không bắt buộc)" name="txtEmail" value="${param.txtEmail}">
+                        <input type="text" placeholder="Email" name="txtEmail" value="${param.txtEmail}" required>
                     </div>
 
-                    <div class="field">
-                        <input type="text" placeholder="Điện Thoại (Không bắt buộc)" name="txtPhone" value="${param.txtPhone}">
-                    </div>
+
+                    <%--
+                                        <div class="field">
+                                            <input type="text" placeholder="Điện Thoại (Không bắt buộc)" name="txtPhone" value="${param.txtPhone}">
+                                        </div>
 
                     <div class="field">
                         <input type="text" placeholder="Địa Chỉ (Không bắt buộc)" name="txtAddress" value="${param.txtAddress}">
@@ -86,7 +100,7 @@
                         <input type="submit" value="SignUp" name="btAction">
                     </div>
                     <div class="signup-link">
-                        Đã Có Tài Khoản?<a href="login.jsp">Đăng Nhập</a>
+                        Đã Có Tài Khoản?<a href="login.jsp"> Đăng Nhập</a>
                     </div>
                 </form>
                 <div/>

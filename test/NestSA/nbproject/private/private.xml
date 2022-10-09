@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/src/java/controller/RegisterController.java</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/web/login.jsp</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/web/register.jsp</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/src/java/users/UserDAO.java</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/web/about.jsp</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/web/checkout.jsp</file>
+            <file>file:/C:/An/Github/SWP391/test/NestSA/src/java/users/UserError.java</file>
+        </group>
     </open-files>
 </project-private>

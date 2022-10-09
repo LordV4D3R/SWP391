@@ -8,6 +8,8 @@ package controller;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,21 +47,30 @@ public class RegisterController extends HttpServlet {
         String password = request.getParameter("txtRegisterPassword");
         String confirm = request.getParameter("txtConfirmPassword");
 //        String fullName = request.getParameter("txtFullName");
-//        String email = request.getParameter("txtEmail");
+        String email = request.getParameter("txtEmail");
 //        String phone = request.getParameter("txtPhone");
 //        String address = request.getParameter("txtAddress");
+
+        
+        String regex = "^[A-Za-z0-9+_.-]+@(.+)$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(email);
+
         UserError errors = new UserError();
         boolean foundErr = false;
         UserDAO dao = new UserDAO();
         String url = REGISTER_PAGE; //fix here
         try {
+
             boolean checkDuplicate = dao.checkDuplicate(username);
-            if(username.trim().length() > 50){
-                foundErr= true;
+            boolean checkEmailDuplicate = dao.checkEmailDuplicate(email);
+
+            if (username.trim().length() > 50) {
+                foundErr = true;
                 errors.setUsernameErr("Tài khoản không quá 50 kí tự");
             }
-            if(password.trim().length() > 50){                
-                foundErr= true;
+            if (password.trim().length() > 50) {
+                foundErr = true;
                 errors.setPasswordErr("Mật khẩu không quá 50 kí tự");
             }
             if (!confirm.equals(password)) {
@@ -71,13 +82,23 @@ public class RegisterController extends HttpServlet {
                 foundErr = true;
                 errors.setUsernameDuplicate("Tài khoản " + username + " đã tồn tại!!!");
             }
+            //email duplicate
+            if (checkEmailDuplicate) {
+                foundErr = true;
+                errors.setEmailDuplicate("Email " + email + " đã được sử dụng!!!");
+            }
+            //email format
+            if (!matcher.matches()) {
+                foundErr = true;
+                errors.setEmailErr("Email xài cú pháp!!!");
+            }
             if (foundErr) {
                 request.setAttribute("INSERT_USER_ERRORS", errors);
             } else {
                 //insert to db - call dao 
                 UserDTO dto
                         = new UserDTO(password, null, null,
-                                null, null, "US", username);
+                                email, null, "US", username);
 //                UserDAO dao = new UserDAO();
                 boolean result = dao.createAccount(dto);
 

@@ -27,6 +27,7 @@ public class UserDAO implements Serializable {
 
     private static final String CREATE_ACCOUNT = "Insert Into users(password, address, phone, email, fullName, roleId, userName) Values(?, ?, ?, ?, ?, ?, ?)";
 
+    private static final String CHECK_EMAIL_DUPLICATE = "SELECT email FROM users WHERE email = ?";
     public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
         Connection connection = null;
         PreparedStatement stm = null;
@@ -158,6 +159,39 @@ public class UserDAO implements Serializable {
 
         }
         return result;
+    }
+
+    public boolean checkEmailDuplicate(String email)
+            throws SQLException, NamingException {
+        
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                stm = conn.prepareStatement(CHECK_EMAIL_DUPLICATE);
+                stm.setString(1, email);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    check = true;
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (stm != null) {
+                stm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
     }
 
 }
