@@ -15,13 +15,13 @@
     </head>
     <body>      
 
-        <div class="container">
+        <div class="container">           
             <div class="title-text">
-                <div class="title login">
-                    Đăng Nhập
-                </div>
-                <div class="title signup">
-                    Đăng Ký
+                <div class="title logo">
+                    <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
+                    <div class="login">
+                        Đăng Nhập
+                    </div>
                 </div>
             </div>
             <%-- 
