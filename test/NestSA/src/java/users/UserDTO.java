@@ -25,8 +25,17 @@ public class UserDTO implements Serializable {
     public UserDTO() {
     }
 
-    public UserDTO(int userId, String password, String address, String phone,
-            String email, String fullName, String roleId, String userName) {
+    //contructoer for update info
+    
+    public UserDTO(String address, String phone, String email, String fullName,int userId) {
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.fullName = fullName;
+        this.userId=userId;
+    }
+
+    public UserDTO(int userId, String password, String address, String phone, String email, String fullName, String roleId, String userName) {
         this.userId = userId;
         this.password = password;
         this.address = address;

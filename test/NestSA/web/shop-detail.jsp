@@ -66,6 +66,21 @@
             .swp-btn-cart:hover{
                 background: #000000;
             }
+            .buy-btn{
+                border-radius: 50%;
+                border: none;
+                color: #FFFFFF;
+                background: #b0b435;
+                cursor: pointer;
+                opacity: 0.8;
+                width: 32px;
+                height: 32px;
+                opacity: 0.8;
+            }           
+            .buy-btn:hover{
+                opacity: 1;
+                background: #000000;
+            }
         </style>
     </head>
 
@@ -154,7 +169,7 @@
                         <ul>
                             <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                             <li class="side-menu"><a href="cart.jsp">
-                                    <i class="fa fa-shopping-bag"></i>
+                                    <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>My Cart</p>
                                 </a></li>
@@ -211,47 +226,58 @@
                             <h2>${sessionScope.PRODUCT.name}</h2>
                             <h5>${sessionScope.PRODUCT.price}VNĐ</h5>
                             <!--<del>$ 60.00</del>-->
-                            <p class="available-stock"><span> More than ${sessionScope.PRODUCT.quantity} available / <a href="#">8 sold </a></span><p>
-                            <h4>Mô tả:</h4>
-                            <p>${sessionScope.PRODUCT.description}</p>
-                            <form action="MainController">
-                                        
-                                <ul>
-                                    <li>
-                                        <div class="form-group quantity-box">
-                                            <label class="control-label">Số lượng</label>
-                                            <input class="form-control" value="1" min="1" type="number" name="buyQuantity">                                                     
+                            <p class="available-stock"><span> More than ${sessionScope.PRODUCT.quantity} available<p>
+                                    <h4>Mô tả:</h4>
+                                    <p>${sessionScope.PRODUCT.description}</p>
+                                    <form action="MainController">
+
+                                        <ul style="border: none; display: flex;align-items: center">
+                                            <li style="width: auto;float: none;padding:0;margin-top: 20px;margin-right: 4px">
+                                                <button type="button" class="buy-btn" onclick="subtract()"><i class="fa fa-minus"></i></button>
+                                            </li>
+                                            <li style="width: auto;float: none;padding:0">
+                                                <div class="form-group quantity-box">
+                                                    <label class="control-label">Số lượng</label>
+                                                    <input class="form-control" value="1" min="1" type="number" name="buyQuantity" readonly="" id="increase">                                                     
+                                                </div>
+                                            </li>
+        <!--                                    <li style="display: flex;height: 91.13px;text-align: center;"><h3 style="padding-bottom: 0px;margin: auto 0;color: red;display: inline">${requestScope.OVER_QUANTITY}</h3></li>-->
+                                            <li style="width: auto;float: none;padding:0;margin-top: 20px;margin-left: 4px">
+                                                <button type="button" class="buy-btn" onclick="add()"><i class="fa fa-plus" ></i></button>
+                                            </li>
+<!--                                            <li>
+                                                <button type="submit" class="swp-btn" value="BuyNow" name="btAction">Mua Ngay</button> 
+                                            </li>-->
+                                        </ul>
+                                            
+                                        <!--class="price-box-bar"-->
+                                        <div>
+                                            <div class="cart-and-bay-btn">
+                                                <input type="hidden" name="id" value="${sessionScope.PRODUCT.productId}">
+                                                <input type="hidden" name="name" value="${sessionScope.PRODUCT.name}">
+                                                <input type="hidden" name="price" value="${sessionScope.PRODUCT.price}">
+                                                <input type="hidden" name="img" value="${sessionScope.PRODUCT.image}">
+                                                <input type="hidden" name="quantity" value="${sessionScope.PRODUCT.quantity}">
+                                                <button type="submit" class="swp-btn" value="BuyNow" name="btAction">Mua Ngay</button>                                    
+                                                <button type="submit" class="swp-btn-cart" value="AddToCart" name="btAction">Thêm vào giỏ hàng</button>
+                                                <!--<a class="btn hvr-hover" data-fancybox-close="" href="#">Mua liền</a>-->
+                                                <!--<a class="btn hvr-hover" data-fancybox-close="" href="#">Thêm vào giỏ hàng</a>-->
+                                            </div>                              
                                         </div>
-                                    </li>
-                                    <li style="display: flex;height: 91.13px;text-align: center;"><h3 style="padding-bottom: 0px;margin: auto 0;color: red;display: inline">${requestScope.OVER_QUANTITY}</h3></li>
-                                </ul>
-                                <div class="price-box-bar">
-                                    <div class="cart-and-bay-btn">
-                                        <input type="hidden" name="id" value="${sessionScope.PRODUCT.productId}">
-                                        <input type="hidden" name="name" value="${sessionScope.PRODUCT.name}">
-                                        <input type="hidden" name="price" value="${sessionScope.PRODUCT.price}">
-                                        <input type="hidden" name="img" value="${sessionScope.PRODUCT.image}">
-                                        <input type="hidden" name="quantity" value="${sessionScope.PRODUCT.quantity}">
-                                        <button type="submit" class="swp-btn" value="BuyNow" name="btAction">Mua Ngay</button>                                    
-                                        <button type="submit" class="swp-btn-cart" value="AddToCart" name="btAction">Thêm vào giỏ hàng</button>
-                                        <!--<a class="btn hvr-hover" data-fancybox-close="" href="#">Mua liền</a>-->
-                                        <!--<a class="btn hvr-hover" data-fancybox-close="" href="#">Thêm vào giỏ hàng</a>-->
-                                    </div>                              
-                                </div>
-                            </form>
-                            <!--                            <div class="add-to-btn">
-                                                            <div class="add-comp">
-                                                                <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
-                                                                <a class="btn hvr-hover" href="#"><i class="fas fa-sync-alt"></i> Add to Compare</a>
-                                                            </div>
-                                                            <div class="share-bar">
-                                                                <a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-                                                                <a class="btn hvr-hover" href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a>
-                                                                <a class="btn hvr-hover" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-                                                                <a class="btn hvr-hover" href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
-                                                                <a class="btn hvr-hover" href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
-                                                            </div>
-                                                        </div>-->
+                                    </form>
+                                    <!--                            <div class="add-to-btn">
+                                                                    <div class="add-comp">
+                                                                        <a class="btn hvr-hover" href="#"><i class="fas fa-heart"></i> Add to wishlist</a>
+                                                                        <a class="btn hvr-hover" href="#"><i class="fas fa-sync-alt"></i> Add to Compare</a>
+                                                                    </div>
+                                                                    <div class="share-bar">
+                                                                        <a class="btn hvr-hover" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+                                                                        <a class="btn hvr-hover" href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a>
+                                                                        <a class="btn hvr-hover" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+                                                                        <a class="btn hvr-hover" href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a>
+                                                                        <a class="btn hvr-hover" href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                                                                    </div>
+                                                                </div>-->
                         </div>
                     </div>
                 </div>
@@ -662,6 +688,22 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
+        <script>
+            function add(){                
+              const x=document.getElementById('increase').value;   
+              document.getElementById('increase').value=Number(x)+1;
+            }
+            
+            function subtract(){                
+              const x=document.getElementById('increase').value;   
+              if(x==1){
+                  
+              }else{
+                  document.getElementById('increase').value=Number(x)-1;
+              }
+              
+            }
+        </script>
     </body>
 
 </html>

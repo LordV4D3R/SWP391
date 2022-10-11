@@ -42,20 +42,6 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <style>
-            .checkout-btn-swp{           
-                margin-left: 434px;            
-                border: none;
-                background: #B0B435;
-                color: #FFFFFF;
-                font-size: 18px;
-                padding: 8px 20px; 
-                cursor: pointer
-            }
-            .checkout-btn-swp:hover{
-                background: #000000;
-            }
-        </style>
 
     </head>
 
@@ -98,8 +84,12 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="login-box" style="margin-right: 20px">
-                                <a href="login.jsp" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
-                                <a href="login.jsp" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>                             
+                                <a href="login.jsp" style="color: white;font-weight: bold">Đăng nhập/</a>
+                                <a href="login.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
+                                <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                                                                <option>Đăng ký</option>
+                                                                <option>Đăng nhập</option>
+                                                            </select>-->
                             </div>
                         </c:if>
                     </div>
@@ -139,7 +129,7 @@
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
                         <ul>
-                            <li class="side-menu"><a href="#">
+                            <li class="side-menu"><a href="checkout.jsp">
                                     <i class="fa fa-shopping-bag"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>Giỏ hàng</p>
@@ -170,71 +160,121 @@
 
         <!-- Start Cart  -->
         <div class="cart-box-main">
-            <div class="container">                
+            <div class="container">               
                 <div class="row">
                     <div class="col-sm-6 col-lg-6 mb-3">
                         <div class="checkout-address">
-                            <div class="title-left">
-                                <h3>Thông tin liên lạc</h3>
+                            <div class="title" style="border-bottom: 3px solid #000000;
+                                 ">
+                                <h3 style="font-size:18px;color:#1F1F1F;font-weight:700">Phương thức thanh toán</h3>
                             </div>
-                            <form class="needs-validation" action="MainController">                               
-                                <div class="mb-3">
-                                    <label for="username">Họ và tên</label>
-                                    <div class="input-group">
-                                        <input type="text" class="form-control" id="username" name="name" value="${sessionScope.LOGIN_USER.fullName}" required>                                                
+                            <div class="d-block my-3">
+                                <div class="custom-control custom-radio">
+                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked onchange="payment()" required>
+                                    <label class="custom-control-label" for="credit">Thanh toán trực tiếp</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" onchange="payment()" required>
+                                    <label class="custom-control-label" for="debit">Thẻ ngân hàng</label>
+                                </div>
+                                <div class="custom-control custom-radio">
+                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" onchange="payment()" required>
+                                    <label class="custom-control-label" for="paypal">PayPal</label>
+                                </div>
+                            </div>
+
+                            <div style="display:none" id="payment-swp">
+                                <div class="row">
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cc-name">Name on card</label>
+                                        <input type="text" class="form-control" id="cc-name" placeholder="" required> <small class="text-muted">Full name as displayed on card</small>
+                                        <div class="invalid-feedback"> Name on card is required </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <label for="cc-number">Credit card number</label>
+                                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                                        <div class="invalid-feedback"> Credit card number is required </div>
                                     </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="email">Địa chỉ</label>
-                                    <input type="text" class="form-control" id="email" name="address" value="${sessionScope.LOGIN_USER.address}" required>                                  
+                                <div class="row">
+                                    <div class="col-md-3 mb-3">
+                                        <label for="cc-expiration">Expiration</label>
+                                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                                        <div class="invalid-feedback"> Expiration date required </div>
+                                    </div>
+                                    <div class="col-md-3 mb-3">
+                                        <label for="cc-expiration">CVV</label>
+                                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                                        <div class="invalid-feedback"> Security code required </div>
+                                    </div>
+                                    <div class="col-md-6 mb-3">
+                                        <div class="payment-icon">
+                                            <ul>
+                                                <li><img class="img-fluid" src="images/payment-icon/1.png" alt=""></li>
+                                                <li><img class="img-fluid" src="images/payment-icon/2.png" alt=""></li>
+                                                <li><img class="img-fluid" src="images/payment-icon/3.png" alt=""></li>
+                                                <li><img class="img-fluid" src="images/payment-icon/5.png" alt=""></li>
+                                                <li><img class="img-fluid" src="images/payment-icon/7.png" alt=""></li>
+                                            </ul>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email" name="email" value="${sessionScope.LOGIN_USER.email}" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="address">Số điện thoại</label>
-                                    <input type="number" class="form-control" id="address" name="phone" value="${sessionScope.LOGIN_USER.phone}" required >                                 
-                                </div>
-                                <hr class="mb-4">
+                                <hr class="mb-1"> 
+                            </div>
 
-                                <div class="custom-control custom-checkbox">
-                                    <input type="checkbox" class="custom-control-input" id="save-info" name="save">
-                                    <label class="custom-control-label" for="save-info">Lưu lại thông tin cho lần mua sau</label>
-                                </div>    
-                                
-                            
                         </div>
                     </div>
-
                     <div class="col-sm-6 col-lg-6 mb-3">
-                        <div class="row">                                                   
+                        <div class="row">
+                            <div class="col-md-12 col-lg-12">
+                                <div class="shipping-method-box">
+                                    <div class="title-left">
+                                        <h3>Phương thức vận chuyển</h3>
+                                    </div>
+                                    <div class="mb-4">
+                                        <div class="custom-control custom-radio">
+                                            <input id="shippingOption1" name="shipping-option" class="custom-control-input" checked="checked" type="radio" onclick="shippingFee()" value="free">
+                                            <label class="custom-control-label" for="shippingOption1">Giao hàng truyền thống</label> <span class="float-right font-weight-bold" >FREE</span> 
+                                        </div>
+                                        <div class="ml-4 mb-2 small">(1-2 ngày)</div>
+                                        <div class="custom-control custom-radio">
+                                            <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio" value="fee" onclick="shippingFee()" >
+                                            <span style="float: right">VND</span>
+                                            <label class="custom-control-label" for="shippingOption2">Giao hàng nhanh</label> <span class="float-right font-weight-bold" >${requestScope.SHIPPING_FEE}</span>
+
+                                        </div>
+                                        <div class="ml-4 mb-2 small">(Giao ngay trong ngày đặt hàng)</div>
+                                    </div>
+                                </div>
+                            </div>       
+                            <!--<button type="submit" style="position: relative;bottom: -390px; z-index: 1">Thanh Toán</button>-->
+                            </form>
                             <%
                                 Cart cart = (Cart) session.getAttribute("CART");
                                 if (cart != null) {
                             %>
-                            <div class="col-md-12 col-lg-12">
-                                <div class="odr-box">
-                                    <div class="title-left">
-                                        <h3>Giỏ Hàng</h3>
+                            <!--                            <div class="col-md-12 col-lg-12">
+                                                            <div class="odr-box">
+                                                                <div class="title-left">
+                                                                    <h3>Giỏ Hàng</h3>
+                                                                </div>
+                            <%
+                                int total = 0;
+                                for (ProductDTO tea : cart.getCart().values()) {
+                                    total += tea.getPrice() * tea.getQuantity();
+                            %>
+                            <div class="rounded p-2 bg-light" style="margin-top: -16px;">
+                                <div class="media mb-2 border-bottom">
+                                    <div class="media-body"> <a href="shop-detail.jsp"><%= tea.getName()%></a>
+                                        <div class="small text-muted">Price: <%= tea.getPrice()%> VND<span class="mx-2">|</span> Qty: <%= tea.getQuantity()%><span class="mx-2">|</span> <%= tea.getQuantity() * tea.getPrice()%> VND</div>
                                     </div>
-                                    <%
-                                        int total = 0;
-                                        for (ProductDTO tea : cart.getCart().values()) {
-                                            total += tea.getPrice() * tea.getQuantity();
-                                    %>
-                                    <div class="rounded p-2 bg-light" style="margin-top: -16px;">
-                                        <div class="media mb-2 border-bottom">
-                                            <div class="media-body"> <a href="shop-detail.jsp"><%= tea.getName()%></a>
-                                                <div class="small text-muted">Price: <%= tea.getPrice()%> VND<span class="mx-2">|</span> Qty: <%= tea.getQuantity()%><span class="mx-2">|</span> <%= tea.getQuantity() * tea.getPrice()%> VND</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <%
-                                        }
-                                    %>
                                 </div>
                             </div>
+                            <%
+                                }
+                            %>
+                        </div>
+                    </div>-->
                             <div class="col-md-12 col-lg-12">
                                 <div class="order-box">
                                     <div class="title-left">
@@ -244,24 +284,32 @@
                                         <div class="font-weight-bold">Sản phẩm</div>
                                         <div class="ml-auto font-weight-bold">Tổng tiền</div>
                                     </div>
-                                    <hr class="my-1">                                                                      
-
+                                    <hr class="my-1">                                    
+                                    <div class="d-flex">
+                                        <h4>Phí giao hàng</h4>
+                                        <div class="ml-auto font-weight-bold"> Free </div>
+                                    </div>
+                                    <hr>
                                     <div class="d-flex gr-total">
                                         <h5>Tổng Cộng</h5>
-                                        <div class="ml-auto h5"> <%= total%> VND</div>
-                                        <input type="hidden" name="total" value="<%= total%>">
+                                        <div class="ml-auto h5" id="shipfee"> <%= total%> VND</div>
                                     </div>
                                     <hr> </div>
                             </div>
                             <%
                                 }
                             %>
-                            <button type="submit" class="checkout-btn-swp" name="btAction" value="SaveInfo">Thanh Toán</button>
-                            </form>
+                            <div class="col-12 d-flex shopping-box"> <a href="#" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>
                         </div>
                     </div>
                 </div>
-<!--<div class="col-12 d-flex shopping-box"> <a href="checkout2.jsp" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>-->
+
+            </div>
+        </div>
+        <div>
+            <div class="notifi">
+                <h2>mua thanh cong</h2>
+
             </div>
         </div>
         <!-- End Cart -->
@@ -463,6 +511,30 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
+
+        <script>
+                                                function payment() {
+                                                    const pay = document.getElementById('debit').checked
+                                                    if (pay) {
+                                                        document.getElementById('payment-swp').style.display = 'block'
+                                                    } else
+                                                    {
+                                                        document.getElementById('payment-swp').style.display = 'none'
+                                                    }
+                                                }
+                                                function shippingFee() {
+                                                    if (document.getElementById('shippingOption2').checked) {
+                                                        const shipFee = document.getElementById('shipfee').textContent;
+                                                        const fee = parseInt(shipFee) * 1.01
+                                                        document.getElementById('shipfee').innerHTML = fee;
+                                                    } else {
+                                                        const res=document.getElementById('shipfee').textContent;
+                                                        const x=parseInt(res)/1.01;
+                                                        document.getElementById('shipfee').textContent=x;
+                                                    }
+
+                                                }
+        </script>
     </body>
 
 </html>

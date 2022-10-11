@@ -42,6 +42,8 @@ public class MainController extends HttpServlet {
     private static final String VIEW_PRODUCT_BY_CATEGORY_CONTROLLER = "ViewProductByCategoryController";
     private static final String VIEW_CATEGORY = "ViewCategory";
     private static final String VIEW_CATEGORY_CONTROLLER = "ViewCategoryController";
+    private static final String SAVE_INFO = "SaveInfo";
+    private static final String SAVE_INFO_CONTROLLER = "SaveInfoController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -73,6 +75,8 @@ public class MainController extends HttpServlet {
                 url = LOGOUT_CONTROLLER;
             } else if (action.equals(VIEW_CATEGORY)) {
                 url = VIEW_CATEGORY_CONTROLLER;
+            }else if(action.equals(SAVE_INFO)){
+                url=SAVE_INFO_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();

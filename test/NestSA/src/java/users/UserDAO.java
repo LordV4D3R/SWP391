@@ -26,7 +26,8 @@ public class UserDAO implements Serializable {
     private static final String CHECK_DUPLICATE = "SELECT username FROM users WHERE username = ?";
 
     private static final String CREATE_ACCOUNT = "Insert Into users(password, address, phone, email, fullName, roleId, userName) Values(?, ?, ?, ?, ?, ?, ?)";
-
+    
+    private static final String UPDATE_INFO= "UPDATE users SET fullName=?, address=?, email=?, phone=? WHERE userId=?";
     public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
         Connection connection = null;
         PreparedStatement stm = null;
@@ -159,5 +160,32 @@ public class UserDAO implements Serializable {
         }
         return result;
     }
+public boolean updateInfo(UserDTO user) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE_INFO);
+                ptm.setString(1, user.getFullName());
+                ptm.setString(2, user.getAddress());
+                ptm.setString(3, user.getEmail());
+                ptm.setString(4,user.getPhone());
+                ptm.setInt(5, user.getUserId());
+                check = ptm.executeUpdate() > 0 ? true : false;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
 
+    }
 }
