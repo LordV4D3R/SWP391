@@ -26,13 +26,12 @@ public class UserDAO implements Serializable {
     private static final String CHECK_DUPLICATE = "SELECT username FROM users WHERE username = ?";
 
     private static final String CREATE_ACCOUNT = "Insert Into users(password, address, phone, email, fullName, roleId, userName) Values(?, ?, ?, ?, ?, ?, ?)";
-<<<<<<< HEAD
+
     
     private static final String UPDATE_INFO= "UPDATE users SET fullName=?, address=?, email=?, phone=? WHERE userId=?";
-=======
+
 
     private static final String CHECK_EMAIL_DUPLICATE = "SELECT email FROM users WHERE email = ?";
->>>>>>> e2c5d9767617955e8cff70666893752ab6e7aa56
     public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
         Connection connection = null;
         PreparedStatement stm = null;
@@ -192,9 +191,9 @@ public boolean updateInfo(UserDTO user) throws SQLException {
         }
         return check;
 
-<<<<<<< HEAD
+
     }
-=======
+
     public boolean checkEmailDuplicate(String email)
             throws SQLException, NamingException {
         
@@ -228,5 +227,5 @@ public boolean updateInfo(UserDTO user) throws SQLException {
         return check;
     }
 
->>>>>>> e2c5d9767617955e8cff70666893752ab6e7aa56
+
 }
