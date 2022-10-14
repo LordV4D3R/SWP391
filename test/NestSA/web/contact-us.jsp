@@ -116,17 +116,9 @@
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                             <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.jsp">GIới thiệu</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
                             <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Cửa hàng</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="shop.jsp">Sản Phẩm</a></li>
-                                    <li><a href="shop-detail.jsp">Chi tiết các sản phẩm</a></li>
-                                    <li><a href="cart.jsp">Giỏ hàng</a></li>
-                                    <li><a href="checkout.jsp">Thanh toán</a></li>
-                                    <li><a href="my-account.jsp">Tài khoản</a></li>
-                                    <li><a href="wishlist.jsp">Wishlist</a></li>
-                                </ul>
+                                <a href="ViewProductController" class="nav-link">Cửa hàng</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
