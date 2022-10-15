@@ -36,6 +36,7 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
 
+        <link rel="stylesheet" href="css/sweetalertAccWarning.css">
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -52,8 +53,6 @@
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
                                 <option>$ VND</option>
-                                <option>$ USD</option>
-                                <option>€ EUR</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
@@ -61,37 +60,60 @@
                         </div>
                         <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                         <c:if test="${checkLogin != null}">
-                        <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                            <div class="our-link">
+                                <ul>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box">
-                            
-                            <a href="MainController?btAction=Logout" style="color: white">Logout</a>
-                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box">
+
+                                <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
+                            </div>
                         </c:if>
                         <c:if test="${checkLogin == null}" >
                             <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                                <ul>
+                                    <li>
+                                        <button id="swa" style="color: white; background-color: black; text-transform: uppercase; font-weight: bold">
+                                            <i class="fa fa-user s_color"></i> 
+                                            Tài khoản
+                                        </button>
+                                    </li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box" style="margin-right: 20px">
-                            <a href="login.jsp" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
-                            <a href="login.jsp" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>
-<!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option>Đăng ký</option>
-                                <option>Đăng nhập</option>
-                            </select>-->
-                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box" style="margin-right: 20px">
+                                <a href="login.jsp" style="color: white;font-weight: bold">Đăng nhập/</a>
+                                <a href="register.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
+                                <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                                                                <option>Đăng ký</option>
+                                                                <option>Đăng nhập</option>
+                                                            </select>-->
+                            </div>
                         </c:if>
+                        <div class="text-slid-box">
+                            <div id="offer-box" class="carouselTicker">
+                                <ul class="offer-box">
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Chào mừng NestSongAn
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Ở đây chúng tôi có các loại yến sào
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Giảm giá 10%! đối với yến thô
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Giảm giá 5%! đối với yến dạng lọ
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -116,17 +138,9 @@
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                             <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.jsp">GIới thiệu</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
                             <li class="dropdown">
-                                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Cửa hàng</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="shop.jsp">Sản Phẩm</a></li>
-                                    <li><a href="shop-detail.jsp">Chi tiết các sản phẩm</a></li>
-                                    <li><a href="cart.jsp">Giỏ hàng</a></li>
-                                    <li><a href="checkout.jsp">Thanh toán</a></li>
-                                    <li><a href="my-account.jsp">Tài khoản</a></li>
-                                    <li><a href="wishlist.jsp">Wishlist</a></li>
-                                </ul>
+                                <a href="ViewProductController" class="nav-link">Cửa hàng</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
@@ -136,10 +150,9 @@
 
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
-                        <ul>
-                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        <ul>        
                             <li class="side-menu">
-                                <a href="#">
+                                <a href="cart.jsp">
                                     <i class="fa fa-shopping-bag"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>Giỏ hàng</p>
@@ -558,6 +571,8 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/sweetalertAccWarning.js"></script>
     </body>
 
 </html>

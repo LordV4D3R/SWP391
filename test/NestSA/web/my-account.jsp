@@ -36,6 +36,7 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
 
+        <link rel="stylesheet" href="css/sweetalertAccWarning.css">
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -52,27 +53,50 @@
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
                                 <option>$ VND</option>
-                                <option>$ USD</option>
-                                <option>€ EUR</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
                             <p>Hotline :- <a href="#"> +87378873548</a></p>
                         </div>
-                        <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                        <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
+                        <c:if test="${checkLogin != null}">
+                            <div class="our-link">
+                                <ul>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box">
-                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option>Đăng ký</option>
-                                <option>Đăng nhập</option>
-                            </select>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box">
+
+                                <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
+                            </div>
+                        </c:if>
+                        <c:if test="${checkLogin == null}" >
+                            <div class="our-link">
+                                <ul>
+                                    <li>
+                                        <button id="swa" style="color: white; background-color: black; text-transform: uppercase; font-weight: bold">
+                                            <i class="fa fa-user s_color"></i> 
+                                            Tài khoản
+                                        </button>
+                                    </li>
+
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box" style="margin-right: 20px">
+                                <a href="login.jsp" style="color: white;font-weight: bold">Đăng nhập/</a>
+                                <a href="register.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
+                                <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                                                                <option>Đăng ký</option>
+                                                                <option>Đăng nhập</option>
+                                                            </select>-->
+                            </div>
+                        </c:if>
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">
                                 <ul class="offer-box">
@@ -293,35 +317,35 @@
                     </div>
                     <div class="bottom-box">
                         <div class="row">
-<!--                            <div class="col-lg-4 col-md-12">
-                                <div class="account-box">
-                                    <div class="service-box">
-                                        <div class="service-desc">
-                                            <h4>Gold &amp; Diamond Jewellery</h4>
-                                            <ul>
-                                                <li> <a href="#">Apps and more</a> </li>
-                                                <li> <a href="#">Content and devices</a> </li>
-                                                <li> <a href="#">Music settings</a> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>-->
-<!--                            <div class="col-lg-4 col-md-12">
-                                <div class="account-box">
-                                    <div class="service-box">
-                                        <div class="service-desc">
-                                            <h4>Handloom &amp; Handicraft Store</h4>
-                                            <ul>
-                                                <li> <a href="#">Advertising preferences </a> </li>
-                                                <li> <a href="#">Communication preferences</a> </li>
-                                                <li> <a href="#">SMS alert preferences</a> </li>
-                                                <li> <a href="#">Message center</a> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>-->
+                            <!--                            <div class="col-lg-4 col-md-12">
+                                                            <div class="account-box">
+                                                                <div class="service-box">
+                                                                    <div class="service-desc">
+                                                                        <h4>Gold &amp; Diamond Jewellery</h4>
+                                                                        <ul>
+                                                                            <li> <a href="#">Apps and more</a> </li>
+                                                                            <li> <a href="#">Content and devices</a> </li>
+                                                                            <li> <a href="#">Music settings</a> </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
+                            <!--                            <div class="col-lg-4 col-md-12">
+                                                            <div class="account-box">
+                                                                <div class="service-box">
+                                                                    <div class="service-desc">
+                                                                        <h4>Handloom &amp; Handicraft Store</h4>
+                                                                        <ul>
+                                                                            <li> <a href="#">Advertising preferences </a> </li>
+                                                                            <li> <a href="#">Communication preferences</a> </li>
+                                                                            <li> <a href="#">SMS alert preferences</a> </li>
+                                                                            <li> <a href="#">Message center</a> </li>
+                                                                        </ul>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>-->
                             <div class="col-lg-4 col-md-12">
                                 <div class="account-box">
                                     <div class="service-box">
@@ -473,93 +497,93 @@
 
         <!-- Start Footer  -->
         <footer>
-        <div class="footer-main">
-            <div class="container">
-				<div class="row">
-					<div class="col-lg-4 col-md-12 col-sm-12">
-						<div class="footer-top-box">
-							<h3>Giờ làm việc</h3>
-							<ul class="list-time">
-								<li>Thứ hai - Thứ Sáu: 08.00am to 05.00pm</li> <li>Thứ bảy - Chủ nhật: 10.00am to 08.00pm</li>
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-12 col-sm-12">
-						<div class="footer-top-box">
-							<h3>Liên hệ</h3>
-							<form class="newsletter-box">
-								<div class="form-group">
-									<input class="" type="email" name="Email" placeholder="Email Address*" />
-									<i class="fa fa-envelope"></i>
-								</div>
-								<button class="btn hvr-hover" type="submit">Nhập</button>
-							</form>
-						</div>
-					</div>
-					<div class="col-lg-4 col-md-12 col-sm-12">
-						<div class="footer-top-box">
-							<h3>Mạng xã hội</h3>
-							<p>Các mạng xã hội chúng tôi đang sử dụng</p>
-							<ul>
-                                <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
-                            </ul>
-						</div>
-					</div>
-				</div>
-				<hr>
-                <div class="row">
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-widget">
-                            <h4>THông tin về NestSongAn</h4>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
+            <div class="footer-main">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-top-box">
+                                <h3>Giờ làm việc</h3>
+                                <ul class="list-time">
+                                    <li>Thứ hai - Thứ Sáu: 08.00am to 05.00pm</li> <li>Thứ bảy - Chủ nhật: 10.00am to 08.00pm</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-top-box">
+                                <h3>Liên hệ</h3>
+                                <form class="newsletter-box">
+                                    <div class="form-group">
+                                        <input class="" type="email" name="Email" placeholder="Email Address*" />
+                                        <i class="fa fa-envelope"></i>
+                                    </div>
+                                    <button class="btn hvr-hover" type="submit">Nhập</button>
+                                </form>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-top-box">
+                                <h3>Mạng xã hội</h3>
+                                <p>Các mạng xã hội chúng tôi đang sử dụng</p>
+                                <ul>
+                                    <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-link">
-                            <h4>Information</h4>
-                            <ul>
-                                <li><a href="#">Giới thiệu</a></li>
-                                <li><a href="#">Hướng dẫn mua hàng</a></li>
-      
-                                <li><a href="#">Chính sách bảo mật</a></li>
-                                <li><a href="#">Thông tin vận chuyển</a></li>
-                            </ul>
+                    <hr>
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-widget">
+                                <h4>THông tin về NestSongAn</h4>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 col-sm-12">
-                        <div class="footer-link-contact">
-                            <h4>Liên hệ với chúng tôi</h4>
-                            <ul>
-                                <li>
-                                    <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
-                                </li>
-                                <li>
-                                    <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
-                                </li>
-                                <li>
-                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
-                                </li>
-                            </ul>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link">
+                                <h4>Information</h4>
+                                <ul>
+                                    <li><a href="#">Giới thiệu</a></li>
+                                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+
+                                    <li><a href="#">Chính sách bảo mật</a></li>
+                                    <li><a href="#">Thông tin vận chuyển</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link-contact">
+                                <h4>Liên hệ với chúng tôi</h4>
+                                <ul>
+                                    <li>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </footer>
-    <!-- End Footer  -->
+        </footer>
+        <!-- End Footer  -->
 
-    <!-- Start copyright  -->
-    <div class="footer-copyright">
-        <p class="footer-company">All Rights Reserved. &copy; 2022 <a href="#">NestSongAn</a> Design By :
-            <a href="https://html.design/">Team1SWP</a></p>
-    </div>
+        <!-- Start copyright  -->
+        <div class="footer-copyright">
+            <p class="footer-company">All Rights Reserved. &copy; 2022 <a href="#">NestSongAn</a> Design By :
+                <a href="https://html.design/">Team1SWP</a></p>
+        </div>
         <!-- End copyright  -->
 
         <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
@@ -580,6 +604,8 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/sweetalertAccWarning.js"></script>
     </body>
 
 </html>
