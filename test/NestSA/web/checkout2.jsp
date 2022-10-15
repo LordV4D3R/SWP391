@@ -139,13 +139,13 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="index.jsp">TRANG CHỦ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.jsp">GIỚI THIỆU</a></li>
-                            <li class="dropdown active">
-                                <a href="ViewProductController" class="nav-link">CỬA HÀNG</a>                               
+                            <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
+                            <li class="dropdown">
+                                <a href="ViewProductController" class="nav-link">Cửa hàng</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">BLOG</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">LIÊN HỆ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->

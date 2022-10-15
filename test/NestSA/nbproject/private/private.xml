@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/An/Github/SWP391/test/NestSA/web/gallery.jsp</file>
             <file>file:/C:/An/Github/SWP391/test/NestSA/web/my-account.jsp</file>
             <file>file:/C:/An/Github/SWP391/test/NestSA/web/cart.jsp</file>
@@ -12,6 +13,14 @@
             <file>file:/C:/An/Github/SWP391/test/NestSA/web/contact-us.jsp</file>
             <file>file:/C:/An/Github/SWP391/test/NestSA/web/js/sweetalertAccWarning.js</file>
             <file>file:/C:/An/Github/SWP391/test/NestSA/web/shop-detail.jsp</file>
+=======
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/gallery.jsp</file>
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/wishlist.jsp</file>
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/index.jsp</file>
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/shop-detail.jsp</file>
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/my-account.jsp</file>
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/contact-us.jsp</file>
+>>>>>>> 206d585e66b7e0cb091e853da4e42af722a173ca
         </group>
     </open-files>
 </project-private>

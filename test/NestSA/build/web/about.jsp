@@ -150,7 +150,7 @@
 
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
-                        <ul>        
+                        <ul>
                             <li class="side-menu">
                                 <a href="cart.jsp">
                                     <i class="fa fa-shopping-bag"></i>

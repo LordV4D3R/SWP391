@@ -194,12 +194,13 @@
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
                         <ul>
-                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                            <li class="side-menu"><a href="cart.jsp">
-                                    <i class="fa fa-shopping-cart"></i>
+                            <li class="side-menu">
+                                <a href="cart.jsp">
+                                    <i class="fa fa-shopping-bag"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
-                                    <p>My Cart</p>
-                                </a></li>
+                                    <p>Giỏ hàng</p>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
@@ -612,28 +613,28 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
-                                <h3>Business Time</h3>
+                                <h3>Giờ làm việc</h3>
                                 <ul class="list-time">
-                                    <li>Monday - Friday: 08.00am to 05.00pm</li> <li>Saturday: 10.00am to 08.00pm</li> <li>Sunday: <span>Closed</span></li>
+                                    <li>Thứ hai - Thứ Sáu: 08.00am to 05.00pm</li> <li>Thứ bảy - Chủ nhật: 10.00am to 08.00pm</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
-                                <h3>Newsletter</h3>
+                                <h3>Liên hệ</h3>
                                 <form class="newsletter-box">
                                     <div class="form-group">
                                         <input class="" type="email" name="Email" placeholder="Email Address*" />
                                         <i class="fa fa-envelope"></i>
                                     </div>
-                                    <button class="btn hvr-hover" type="submit">Submit</button>
+                                    <button class="btn hvr-hover" type="submit">Nhập</button>
                                 </form>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
-                                <h3>Social Media</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h3>Mạng xã hội</h3>
+                                <p>Các mạng xã hội chúng tôi đang sử dụng</p>
                                 <ul>
                                     <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
@@ -650,7 +651,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-widget">
-                                <h4>About Freshshop</h4>
+                                <h4>THông tin về NestSongAn</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
                             </div>
@@ -659,24 +660,23 @@
                             <div class="footer-link">
                                 <h4>Information</h4>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Customer Service</a></li>
-                                    <li><a href="#">Our Sitemap</a></li>
-                                    <li><a href="#">Terms &amp; Conditions</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="#">Giới thiệu</a></li>
+                                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+
+                                    <li><a href="#">Chính sách bảo mật</a></li>
+                                    <li><a href="#">Thông tin vận chuyển</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-link-contact">
-                                <h4>Contact Us</h4>
+                                <h4>Liên hệ với chúng tôi</h4>
                                 <ul>
                                     <li>
-                                        <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
                                     </li>
                                     <li>
-                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                                        <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
                                     </li>
                                     <li>
                                         <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
