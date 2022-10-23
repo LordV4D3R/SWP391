@@ -233,12 +233,12 @@
                                     </div>
                                     <div class="mb-4">
                                         <div class="custom-control custom-radio">
-                                            <input id="shippingOption1" name="shipping-option" class="custom-control-input" checked="checked" type="radio" onclick="shippingFee()" value="free">
+                                            <input id="shippingOption1" name="shipping-option" class="custom-control-input" checked="checked" type="radio" onchange="shippingFee()" value="free">
                                             <label class="custom-control-label" for="shippingOption1">Giao hàng truyền thống</label> <span class="float-right font-weight-bold" >FREE</span> 
                                         </div>
                                         <div class="ml-4 mb-2 small">(1-2 ngày)</div>
                                         <div class="custom-control custom-radio">
-                                            <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio" value="fee" onclick="shippingFee()" >
+                                            <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio" value="fee" onchange="shippingFee()" >
                                             <span style="float: right">VND</span>
                                             <label class="custom-control-label" for="shippingOption2">Giao hàng nhanh</label> <span class="float-right font-weight-bold" >${requestScope.SHIPPING_FEE}</span>
 
@@ -526,6 +526,7 @@
                                                     if (document.getElementById('shippingOption2').checked) {
                                                         const shipFee = document.getElementById('shipfee').textContent;
                                                         const fee = parseInt(shipFee) * 1.01
+                                                        console.log(fee);
                                                         document.getElementById('shipfee').innerHTML = fee;
                                                     } else {
                                                         const res=document.getElementById('shipfee').textContent;
