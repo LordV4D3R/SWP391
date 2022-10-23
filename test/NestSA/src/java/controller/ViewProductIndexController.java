@@ -5,60 +5,48 @@
  */
 package controller;
 
+import category.CategoryDAO;
+import category.CategoryDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import order.Cart;
+import product.ProductDAO;
 import product.ProductDTO;
 
 /**
  *
- * @author thangbv
+ * @author dell
  */
-@WebServlet(name = "BuyNowController", urlPatterns = {"/BuyNowController"})
-public class BuyNowController extends HttpServlet {
+@WebServlet(name = "ViewProductIndexController", urlPatterns = {"/ViewProductIndexController"})
+public class ViewProductIndexController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String OVER_QUANTITY = "shop-detail.jsp";
-    private static final String SUCCESS = "cart.jsp";
+    private static final String SUCCESS = "index.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            String img = request.getParameter("img");
-            String name = request.getParameter("name");
-            int price = Integer.parseInt(request.getParameter("price"));
-            int buyQuantity = Integer.parseInt(request.getParameter("buyQuantity"));
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-
-            if (buyQuantity > quantity) {
-                request.setAttribute("OVER_QUANTITY", "Over quantity, please try again!!!");
-                url = OVER_QUANTITY;
-            } else {
-                HttpSession session = request.getSession();                
-                if (session != null) {
-                    Cart cart = (Cart) session.getAttribute("CART");
-                    ProductDTO product = new ProductDTO(id, name, buyQuantity, price, img);
-                    if (cart == null) {
-                        cart = new Cart();
-                    }
-                    cart.add(product);
-                    int quantityInCart=cart.getCart().size();
-                    session.setAttribute("CART", cart);
-                    session.setAttribute("QUANTITY_IN_CART", quantityInCart);
-                    request.setAttribute("CART_SUCCESS", "sản phẩm đã thêm vào giỏ hàng thành công, mời bạn tiếp tục mua sắm");
+            boolean checkValidation = true;
+            ProductDAO dao = new ProductDAO();
+            while (checkValidation) {
+                checkValidation = true;
+                List<ProductDTO> listProduct = dao.viewProduct();
+                if (listProduct.size() > 0) {
+                    HttpSession session = request.getSession();
+                    session.setAttribute("VIEW_PRODUCT_INDEX", listProduct);
+                    checkValidation = false;
                     url = SUCCESS;
                 }
             }
+
         } catch (Exception e) {
-            log("Error at BuyNowController at: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

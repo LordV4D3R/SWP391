@@ -38,6 +38,7 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
 
+        <link rel="stylesheet" href="css/sweetalertAccWarning.css">
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -57,41 +58,64 @@
                             </select>
                         </div>
                         <div class="right-phone-box">
-                            <p>Call US :- <a href="#"> +11 900 800 100</a></p>
+                            <p>Hotline :- <a href="#"> +87378873548</a></p>
                         </div>
                         <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
-                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="login-box">
 
-                                <a href="MainController?btAction=Logout" style="color: white">Logout</a>
+                                <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
                             </div>
                         </c:if>
                         <c:if test="${checkLogin == null}" >
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li>
+                                        <button id="swa" style="color: white; background-color: black; text-transform: uppercase; font-weight: bold">
+                                            <i class="fa fa-user s_color"></i> 
+                                            Tài khoản
+                                        </button>  
+                                    </li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="login-box" style="margin-right: 20px">
                                 <a href="login.jsp" style="color: white;font-weight: bold">Đăng nhập/</a>
-                                <a href="login.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
+                                <a href="register.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
                                 <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
                                                                 <option>Đăng ký</option>
                                                                 <option>Đăng nhập</option>
                                                             </select>-->
                             </div>
                         </c:if>
+                        <div class="text-slid-box">
+                            <div id="offer-box" class="carouselTicker">
+                                <ul class="offer-box">
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Chào mừng NestSongAn
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Ở đây chúng tôi có các loại yến sào
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Giảm giá 10%! đối với yến thô
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Giảm giá 5%! đối với yến dạng lọ
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -115,13 +139,13 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="index.jsp">TRANG CHỦ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.jsp">GIỚI THIỆU</a></li>
-                            <li class="dropdown active">
-                                <a href="ViewProductController" class="nav-link">CỬA HÀNG</a>                               
+                            <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
+                            <li class="dropdown">
+                                <a href="ViewProductController" class="nav-link">Cửa hàng</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">BLOG</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">LIÊN HỆ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -296,22 +320,34 @@
                                     </div>
                                     <hr> </div>
                             </div>
+                            <form action="MainController">
+                                <input type="hidden" name="phone" value="${sessionScope.LOGIN_USER.phone}">
+                                <input type="hidden" name="name" value="${sessionScope.LOGIN_USER.fullName}">
+                                <input type="hidden" name="total_money" id="total-money" value="<%= total%>">
+                                <input type="hidden" name="shipping_fee" value="${requestScope.SHIPPING_FEE}">
+                                <input type="hidden" name="total" value="<%= total%>">
+                                <input type="hidden" name="userId" value="${sessionScope.LOGIN_USER.userId}">
+                                <input type="hidden" name="address" value="${sessionScope.LOGIN_USER.address}">
+                                <input type="hidden" name="status" value="Đang chuẩn bị hàng">
+                                <div class="col-12 d-flex shopping-box">
+                                    <button type="submit" name="btAction" value="Purchase" class="ml-auto btn hvr-hover" style="overflow: hidden; padding: 10px 20px; border: none; color: #ffffff; font-size: 18px">Thanh toán</button>
+                                </div>
+                            </form>
+                            <!--<div class="col-12 d-flex shopping-box"> <a href="PurchaseController" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>-->
                             <%
                                 }
                             %>
-                            <div class="col-12 d-flex shopping-box"> <a href="#" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-        <div>
-            <div class="notifi">
-                <h2>mua thanh cong</h2>
-
-            </div>
-        </div>
+        <!--        <div>
+                    <div class="notifi">
+                        <h2>mua thanh cong</h2>
+        
+                    </div>
+                </div>-->
         <!-- End Cart -->
 
         <!-- Start Instagram Feed  -->
@@ -320,78 +356,6 @@
                 <div class="item">
                     <div class="ins-inner-box">
                         <img src="images/instagram-img-01.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-02.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-03.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-04.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-05.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-06.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-07.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-08.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-09.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-05.jpg" alt="" />
                         <div class="hov-in">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                         </div>
@@ -523,19 +487,29 @@
                                                     }
                                                 }
                                                 function shippingFee() {
+                                                    const shipFee = document.getElementById('shipfee').textContent;
+
                                                     if (document.getElementById('shippingOption2').checked) {
-                                                        const shipFee = document.getElementById('shipfee').textContent;
                                                         const fee = parseInt(shipFee) * 1.01
                                                         console.log(fee);
                                                         document.getElementById('shipfee').innerHTML = fee;
+                                                        document.getElementById("total-money").value = fee;
                                                     } else {
-                                                        const res=document.getElementById('shipfee').textContent;
-                                                        const x=parseInt(res)/1.01;
-                                                        document.getElementById('shipfee').textContent=x;
+                                                        const res = document.getElementById('shipfee').textContent;
+                                                        const x = parseInt(res) / 1.01;
+                                                        document.getElementById('shipfee').textContent = x;
+                                                    }
+                                                    if (document.getElementById('shippingOption1').checked) {
+                                                        const a = parseInt(shipFee)/1.01;
+                                                        console.log(a);
+                                                        document.getElementById("total-money").value = a;
+
                                                     }
 
                                                 }
         </script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/sweetalertAccWarning.js"></script>
     </body>
 
 </html>

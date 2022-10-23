@@ -36,6 +36,7 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
 
+        <link rel="stylesheet" href="css/sweetalertAccWarning.css">
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -98,20 +99,46 @@
                         <div class="right-phone-box">
                             <p>Hotline :- <a href="#"> +87378873548</a></p>
                         </div>
-                        <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+
+                        <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
+                        <c:if test="${checkLogin != null}">
+                            <div class="our-link">
+                                <ul>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box">
-                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option>Đăng ký</option>
-                                <option>Đăng nhập</option>
-                            </select>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box">
+
+                                <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
+                            </div>
+                        </c:if>
+                        <c:if test="${checkLogin == null}" >
+                            <div class="our-link">
+                                <ul>
+                                    <li>
+                                        <button id="swa" style="color: white; background-color: black; text-transform: uppercase; font-weight: bold">
+                                            <i class="fa fa-user s_color"></i> 
+                                            Tài khoản
+                                        </button>
+                                    </li>
+
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box" style="margin-right: 20px">
+                                <a href="login.jsp" style="color: white;font-weight: bold">Đăng nhập/</a>
+                                <a href="register.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
+                                <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                                                                <option>Đăng ký</option>
+                                                                <option>Đăng nhập</option>
+                                                            </select>-->
+                            </div>
+                        </c:if>
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">
                                 <ul class="offer-box">
@@ -167,12 +194,13 @@
                     <!-- Start Atribute Navigation -->
                     <div class="attr-nav">
                         <ul>
-                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                            <li class="side-menu"><a href="cart.jsp">
-                                    <i class="fa fa-shopping-cart"></i>
+                            <li class="side-menu">
+                                <a href="cart.jsp">
+                                    <i class="fa fa-shopping-bag"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
-                                    <p>My Cart</p>
-                                </a></li>
+                                    <p>Giỏ hàng</p>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
@@ -245,11 +273,11 @@
                                             <li style="width: auto;float: none;padding:0;margin-top: 20px;margin-left: 4px">
                                                 <button type="button" class="buy-btn" onclick="add()"><i class="fa fa-plus" ></i></button>
                                             </li>
-<!--                                            <li>
-                                                <button type="submit" class="swp-btn" value="BuyNow" name="btAction">Mua Ngay</button> 
-                                            </li>-->
+                                            <!--                                            <li>
+                                                                                            <button type="submit" class="swp-btn" value="BuyNow" name="btAction">Mua Ngay</button> 
+                                                                                        </li>-->
                                         </ul>
-                                            
+
                                         <!--class="price-box-bar"-->
                                         <div>
                                             <div class="cart-and-bay-btn">
@@ -585,28 +613,28 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
-                                <h3>Business Time</h3>
+                                <h3>Giờ làm việc</h3>
                                 <ul class="list-time">
-                                    <li>Monday - Friday: 08.00am to 05.00pm</li> <li>Saturday: 10.00am to 08.00pm</li> <li>Sunday: <span>Closed</span></li>
+                                    <li>Thứ hai - Thứ Sáu: 08.00am to 05.00pm</li> <li>Thứ bảy - Chủ nhật: 10.00am to 08.00pm</li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
-                                <h3>Newsletter</h3>
+                                <h3>Liên hệ</h3>
                                 <form class="newsletter-box">
                                     <div class="form-group">
                                         <input class="" type="email" name="Email" placeholder="Email Address*" />
                                         <i class="fa fa-envelope"></i>
                                     </div>
-                                    <button class="btn hvr-hover" type="submit">Submit</button>
+                                    <button class="btn hvr-hover" type="submit">Nhập</button>
                                 </form>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
-                                <h3>Social Media</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                <h3>Mạng xã hội</h3>
+                                <p>Các mạng xã hội chúng tôi đang sử dụng</p>
                                 <ul>
                                     <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
@@ -623,7 +651,7 @@
                     <div class="row">
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-widget">
-                                <h4>About Freshshop</h4>
+                                <h4>THông tin về NestSongAn</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p> 							
                             </div>
@@ -632,24 +660,23 @@
                             <div class="footer-link">
                                 <h4>Information</h4>
                                 <ul>
-                                    <li><a href="#">About Us</a></li>
-                                    <li><a href="#">Customer Service</a></li>
-                                    <li><a href="#">Our Sitemap</a></li>
-                                    <li><a href="#">Terms &amp; Conditions</a></li>
-                                    <li><a href="#">Privacy Policy</a></li>
-                                    <li><a href="#">Delivery Information</a></li>
+                                    <li><a href="#">Giới thiệu</a></li>
+                                    <li><a href="#">Hướng dẫn mua hàng</a></li>
+
+                                    <li><a href="#">Chính sách bảo mật</a></li>
+                                    <li><a href="#">Thông tin vận chuyển</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-link-contact">
-                                <h4>Contact Us</h4>
+                                <h4>Liên hệ với chúng tôi</h4>
                                 <ul>
                                     <li>
-                                        <p><i class="fas fa-map-marker-alt"></i>Address: Michael I. Days 3756 <br>Preston Street Wichita,<br> KS 67213 </p>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
                                     </li>
                                     <li>
-                                        <p><i class="fas fa-phone-square"></i>Phone: <a href="tel:+1-888705770">+1-888 705 770</a></p>
+                                        <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
                                     </li>
                                     <li>
                                         <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
@@ -689,21 +716,23 @@
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
         <script>
-            function add(){                
-              const x=document.getElementById('increase').value;   
-              document.getElementById('increase').value=Number(x)+1;
-            }
-            
-            function subtract(){                
-              const x=document.getElementById('increase').value;   
-              if(x==1){
-                  
-              }else{
-                  document.getElementById('increase').value=Number(x)-1;
-              }
-              
-            }
+                                                    function add() {
+                                                        const x = document.getElementById('increase').value;
+                                                        document.getElementById('increase').value = Number(x) + 1;
+                                                    }
+
+                                                    function subtract() {
+                                                        const x = document.getElementById('increase').value;
+                                                        if (x == 1) {
+
+                                                        } else {
+                                                            document.getElementById('increase').value = Number(x) - 1;
+                                                        }
+
+                                                    }
         </script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/sweetalertAccWarning.js"></script>
     </body>
 
 </html>

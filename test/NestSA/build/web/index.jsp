@@ -37,6 +37,7 @@
         <!-- Custom CSS -->
         <link rel="stylesheet" href="css/custom.css">
 
+        <link rel="stylesheet" href="css/sweetalertAccWarning.css">
         <!--[if lt IE 9]>
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
@@ -60,36 +61,42 @@
                         </div>
                         <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                         <c:if test="${checkLogin != null}">
-                        <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
-                                <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                            <div class="our-link">
+                                <ul>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box">
-                            
-                            <a href="MainController?btAction=Logout" style="color: white">Logout</a>
-                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box">
+
+                                <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
+                            </div>
                         </c:if>
                         <c:if test="${checkLogin == null}" >
                             <div class="our-link">
-                            <ul>
-                                <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
-                            </ul>
+                                <ul>
+                                    <li>
+                                        <button id="swa" style="color: white; background-color: black; text-transform: uppercase; font-weight: bold">
+                                            <i class="fa fa-user s_color"></i> 
+                                            Tài khoản
+                                        </button>
+                                    </li>
+
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                        <div class="login-box" style="margin-right: 20px">
-                            <a href="login.jsp" style="color: white;font-weight: bold">Đăng nhập/</a>
-                            <a href="login.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
-<!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
-                                <option>Đăng ký</option>
-                                <option>Đăng nhập</option>
-                            </select>-->
-                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                            <div class="login-box" style="margin-right: 20px">
+                                <a href="login.jsp" style="color: white;font-weight: bold">Đăng nhập/</a>
+                                <a href="register.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
+                                <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                                                                <option>Đăng ký</option>
+                                                                <option>Đăng nhập</option>
+                                                            </select>-->
+                            </div>
                         </c:if>
                         <div class="text-slid-box">
                             <div id="offer-box" class="carouselTicker">
@@ -435,86 +442,16 @@
         <!-- Start Instagram Feed  -->
         <div class="instagram-box">
             <div class="main-instagram owl-carousel owl-theme">
+                <c:forEach items="${sessionScope.VIEW_PRODUCT_INDEX}" var="o">
                 <div class="item">
                     <div class="ins-inner-box">
-                        <img src="images/instagram-img-01.jpg" alt="" />
+                        <img style="width: 320px; height: 225px" src="${o.image}" alt="Image" />
                         <div class="hov-in">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-02.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-03.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-04.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-05.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-06.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-07.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-08.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-09.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-05.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
+                </div>  
+                </c:forEach>
             </div>
         </div>
         <!-- End Instagram Feed  -->
@@ -629,6 +566,8 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/sweetalertAccWarning.js"></script>
     </body>
 
 </html>

@@ -22,7 +22,7 @@
                 <div class="title logo">
                     <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
                     <div class="login">
-                        Đăng Nhập
+                        Đăng Ký
                     </div>
                 </div>
             </div>
