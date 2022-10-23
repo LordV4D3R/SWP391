@@ -15,9 +15,37 @@ public class OrderDTO {
     private String address;
     private int userId;
     private String phone;
+    private int shippingfee;
+    private int total;
+    private String receiver;
+    private String status;
 
     public OrderDTO() {
     }
+
+    public OrderDTO(String date, String address, int userId, String phone, int shippingfee, int total, String receiver, String status) {
+        this.date = date;
+        this.address = address;
+        this.userId = userId;
+        this.phone = phone;
+        this.shippingfee = shippingfee;
+        this.total = total;
+        this.receiver = receiver;
+        this.status = status;
+    }
+
+    
+
+
+    public String getReceiver() {
+        return receiver;
+    }
+
+    public void setReceiver(String receiver) {
+        this.receiver = receiver;
+    }
+
+    
 
     public OrderDTO(int orderId, String date, String address, int userId, String phone) {
         this.orderId = orderId;
@@ -66,6 +94,30 @@ public class OrderDTO {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-    
+
+    public int getShippingfee() {
+        return shippingfee;
+    }
+
+    public void setShippingfee(int shippingfee) {
+        this.shippingfee = shippingfee;
+    }
+
+    public int getTotal() {
+        return total;
+    }
+
+    public void setTotal(int total) {
+        this.total = total;
+    }
+
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
     
 }

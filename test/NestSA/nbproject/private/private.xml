@@ -3,24 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/An/Github/SWP391/test/NestSA/web/gallery.jsp</file>
-            <file>file:/C:/An/Github/SWP391/test/NestSA/web/my-account.jsp</file>
-            <file>file:/C:/An/Github/SWP391/test/NestSA/web/cart.jsp</file>
-            <file>file:/C:/An/Github/SWP391/test/NestSA/web/index.jsp</file>
-            <file>file:/C:/An/Github/SWP391/test/NestSA/web/checkout2.jsp</file>
-            <file>file:/C:/An/Github/SWP391/test/NestSA/web/checkout.jsp</file>
-            <file>file:/C:/An/Github/SWP391/test/NestSA/web/contact-us.jsp</file>
-            <file>file:/C:/An/Github/SWP391/test/NestSA/web/js/sweetalertAccWarning.js</file>
-            <file>file:/C:/An/Github/SWP391/test/NestSA/web/shop-detail.jsp</file>
-=======
-            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/gallery.jsp</file>
-            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/wishlist.jsp</file>
-            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/index.jsp</file>
-            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/shop-detail.jsp</file>
-            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/my-account.jsp</file>
-            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/contact-us.jsp</file>
->>>>>>> 206d585e66b7e0cb091e853da4e42af722a173ca
+            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/web/checkout.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/controller/PurchaseController.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/users/UserDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/order/OrderDAO.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/users/UserDTO.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/controller/SaveInfoController.java</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/web/checkout2.jsp</file>
         </group>
     </open-files>
 </project-private>

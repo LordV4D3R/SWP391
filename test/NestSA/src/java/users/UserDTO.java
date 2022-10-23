@@ -27,7 +27,15 @@ public class UserDTO implements Serializable {
 
     //contructoer for update info
     
-    public UserDTO(String address, String phone, String email, String fullName,int userId) {
+    
+    public UserDTO(String address, String phone, String email, String fullName) {
+        this.address = address;
+        this.phone = phone;
+        this.email = email;
+        this.fullName = fullName;
+    }
+
+    public UserDTO(String address, String phone, String email, String fullName, int userId) {
         this.address = address;
         this.phone = phone;
         this.email = email;
