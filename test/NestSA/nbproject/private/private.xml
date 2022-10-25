@@ -3,13 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/web/checkout.jsp</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/controller/PurchaseController.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/users/UserDAO.java</file>
             <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/order/OrderDAO.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/users/UserDTO.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/controller/SaveInfoController.java</file>
-            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/web/checkout2.jsp</file>
+            <file>file:/C:/Users/Admin/Documents/GitHub/SWP391/test/NestSA/src/java/utils/DBUtils.java</file>
         </group>
     </open-files>
 </project-private>

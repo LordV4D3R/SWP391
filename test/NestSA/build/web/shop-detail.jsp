@@ -196,7 +196,7 @@
                         <ul>
                             <li class="side-menu">
                                 <a href="cart.jsp">
-                                    <i class="fa fa-shopping-bag"></i>
+                                    <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>Giỏ hàng</p>
                                 </a>

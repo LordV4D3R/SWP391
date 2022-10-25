@@ -68,6 +68,6 @@ public class Cart {
     }
     
     public void clear(){
-        this.cart.clear();
+        this.cart = null;
     }
 }

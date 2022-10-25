@@ -225,8 +225,34 @@ public class UserDAO implements Serializable {
     /**
      * GUEST
      */
-    
-    private static final String SAVE_GUEST_INFORMATION = "INSERT INTO users(fullname, address, email, phone) VALUES(?, ?, ?, ?)" ;
+    private static final String SAVE_GUEST_INFORMATION = "INSERT INTO users(fullname, address, email, phone) VALUES(?, ?, ?, ?)";
+    private static final String UPDATE_GUEST_INFORMATION = "UPDATE users SET fullName = ?, address = ?, phone = ? WHERE email = ?";
+
+    public boolean updateGuestInformation(UserDTO user) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE_GUEST_INFORMATION);
+                ptm.setString(1, user.getFullName());
+                ptm.setString(2, user.getAddress());
+                ptm.setString(4, user.getPhone());
+                ptm.setString(5, user.getEmail());
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
     
     public boolean saveGuestInformation(UserDTO user) throws SQLException {
         boolean check = false;
@@ -245,8 +271,12 @@ public class UserDAO implements Serializable {
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            if (conn != null) conn.close();
-            if (ptm != null) ptm.close();
+            if (conn != null) {
+                conn.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
         }
         return check;
     }
