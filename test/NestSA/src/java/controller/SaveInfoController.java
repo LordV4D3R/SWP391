@@ -52,10 +52,9 @@ public class SaveInfoController extends HttpServlet {
             } else {
                 UserDTO user = new UserDTO(address, phone, email, name);
 //                session.setAttribute("GUEST_USER", user);
-                boolean check = dao.saveGuestInformation(user);//update
-                if (check) {
+               
                     session.setAttribute("GUEST_USER", user);
-                }
+                
             }
 //            }
 

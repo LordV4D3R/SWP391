@@ -20,6 +20,7 @@ import order.OrderDAO;
 import order.OrderDTO;
 import order.OrderDetail;
 import product.ProductDTO;
+import users.UserDAO;
 import users.UserDTO;
 
 /**
@@ -45,7 +46,7 @@ public class PurchaseController extends HttpServlet {
             int final_total = 0;
             String name = "";
             int shipping_fee = 0;
-            
+
             HttpSession session = request.getSession();
             UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
             UserDTO guest = (UserDTO) session.getAttribute("GUEST_USER");
@@ -60,6 +61,9 @@ public class PurchaseController extends HttpServlet {
                 shipping_fee = final_total - total;
             } else if (guest != null) {
                 OrderDAO oDao = new OrderDAO();
+                UserDAO dao = new UserDAO();
+                UserDTO user = (UserDTO) session.getAttribute("GUEST_USER");
+                boolean check = dao.saveGuestInformation(user);//update
                 phone = guest.getPhone();//1
                 id = oDao.checkUserId(phone);
                 address = guest.getAddress();//2
@@ -81,9 +85,11 @@ public class PurchaseController extends HttpServlet {
             for (ProductDTO o : cart.getCart().values()) {
                 check = orderDAO.insertOrderDetail(new OrderDetail(o.getProductId(), orderId, o.getQuantity(), o.getPrice()));
             }
-            
+
             if (check) {
-                cart.clear();
+                cart=null;
+                session.setAttribute("CART", cart);
+                session.setAttribute("QUANTITY_IN_CART", null);
                 url = SUCCESS;
             } else {
                 url = ERROR;

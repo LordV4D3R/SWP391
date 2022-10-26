@@ -67,7 +67,5 @@ public class Cart {
         return check;
     }
     
-    public void clear(){
-        this.cart = null;
-    }
+   
 }
