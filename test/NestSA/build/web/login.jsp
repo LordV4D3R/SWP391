@@ -15,7 +15,7 @@
     </head>
     <body>      
 
-        <div class="container">           
+        <div class="container" style="width: 460px;height: 640px;">           
             <div class="title-text">
                 <div class="title logo">
                     <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
@@ -85,8 +85,7 @@
 
             </div>
 
-            <%--    </div>
-</div> --%>
+                </div>
             <script language="javascript">
                 const loginText = document.querySelector(".title-text .login");
                 const loginForm = document.querySelector("form.login");

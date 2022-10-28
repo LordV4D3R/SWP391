@@ -157,6 +157,7 @@
                                                         id="grid-password"
                                                         type="password"
                                                         placeholder="Nhập tên của sản phẩm"
+                                                        value="${sessionScope.VIEW_PRODUCT_VER_FULL.}"
                                                         />
                                                 </div>
                                                 <!-- double input -->

@@ -44,6 +44,8 @@ public class MainController extends HttpServlet {
     private static final String VIEW_CATEGORY_CONTROLLER = "ViewCategoryController";
     private static final String SAVE_INFO = "SaveInfo";
     private static final String SAVE_INFO_CONTROLLER = "SaveInfoController";
+    private static final String CONTACT = "Send";
+    private static final String CONTACT_CONTROLLER = "ContactController";
     private static final String PURCHASE = "Purchase";
     private static final String PURCHASE_CONTROLLER = "PurchaseController";
     private static final String UPDATE_PRODUCT_MANAGER = "UpdateProductManager";
@@ -81,6 +83,10 @@ public class MainController extends HttpServlet {
                 url = VIEW_CATEGORY_CONTROLLER;
             } else if (action.equals(SAVE_INFO)) {
                 url = SAVE_INFO_CONTROLLER;
+            } else if (action.equals(CONTACT)) {
+                url = CONTACT_CONTROLLER;
+            }else if(action.equals(SAVE_INFO)){
+                url=SAVE_INFO_CONTROLLER;
             } else if (action.equals(PURCHASE)) {
                 url = PURCHASE_CONTROLLER;
             } else if (UPDATE_PRODUCT_MANAGER.equals(action)) {
