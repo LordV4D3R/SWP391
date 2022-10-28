@@ -34,7 +34,6 @@
                 display: none;
             }
 
-<<<<<<< HEAD
             .handModal .overlay {
                 position: fixed;
                 top: 0;
@@ -57,38 +56,12 @@
             .content-animation {
                 animation: modal ease-out 0.2s;
             }
-        </style>
-    </head>
-=======
-      .handModal .overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: -1;
-      }
-      @keyframes modal {
-        from {
-          transform: translateY(-30%);
-          opacity: 0;
-        }
-        to {
-          transform: translateY(0);
-          opacity: 1;
-        }
-      }
-      .content-animation {
-        animation: modal ease-out 0.2s;
-      }
       #add_product_swp:hover{
           background-color: rgb(161 161 170) !important;
           color: #FFFFFF;
       }
     </style>
   </head>
->>>>>>> fc023cd83a1f9b7a48bfed4f81df35769b39bf8c
 
     <body>
         <!--Container -->
@@ -116,7 +89,6 @@
                 </header>
                 <!--/Header-->
 
-<<<<<<< HEAD
                 <div class="flex flex-1">
                     <!--Sidebar-->
                     <aside
@@ -252,7 +224,7 @@
                         </div>
                     </main>
                     <!--/Main-->
-=======
+
         <div class="flex flex-1">
           <!--Sidebar-->
           <aside
@@ -381,8 +353,13 @@
                       </tbody>
                     </table>
                   </div>
->>>>>>> fc023cd83a1f9b7a48bfed4f81df35769b39bf8c
                 </div>
+              </div>
+              <!--/Grid Form-->
+            </div>
+          </main>
+          <!--/Main-->
+        </div>
                 <!-- modal -->
                 <div id="centeredModal" class="handModal">
                     <div class="overlay close-modal"></div>
