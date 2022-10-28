@@ -82,7 +82,7 @@
                                             Tài khoản
                                         </button>
                                     </li>
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -163,32 +163,32 @@
                     <!-- End Atribute Navigation -->
                 </div>
                 <!-- Start Side Menu -->
-                <div class="side">
-                    <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                    <li class="cart-box">
-                        <ul class="cart-list">
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Delica omtantur </a></h6>
-                                <p>1x - <span class="price">$80.00</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Omnes ocurreret</a></h6>
-                                <p>1x - <span class="price">$60.00</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Agam facilisis</a></h6>
-                                <p>1x - <span class="price">$40.00</span></p>
-                            </li>
-                            <li class="total">
-                                <a href="#" class="btn btn-default hvr-hover btn-cart">Giỏ hàng</a>
-                                <span class="float-right"><strong>Total</strong>: $180.00</span>
-                            </li>
-                        </ul>
-                    </li>
-                </div>
+                <!--      <div class="side">
+                          <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                          <li class="cart-box">
+                              <ul class="cart-list">
+                                  <li>
+                                      <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                                      <h6><a href="#">Delica omtantur </a></h6>
+                                      <p>1x - <span class="price">$80.00</span></p>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                                      <h6><a href="#">Omnes ocurreret</a></h6>
+                                      <p>1x - <span class="price">$60.00</span></p>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                                      <h6><a href="#">Agam facilisis</a></h6>
+                                      <p>1x - <span class="price">$40.00</span></p>
+                                  </li>
+                                  <li class="total">
+                                      <a href="#" class="btn btn-default hvr-hover btn-cart">Giỏ hàng</a>
+                                      <span class="float-right"><strong>Total</strong>: $180.00</span>
+                                  </li>
+                              </ul>
+                          </li>
+                      </div> -->
                 <!-- End Side Menu -->
             </nav>
             <!-- End Navigation -->
@@ -196,15 +196,15 @@
         <!-- End Main Top -->
 
         <!-- Start Top Search -->
-        <div class="top-search">
-            <div class="container">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                </div>
-            </div>
-        </div>
+        <!-- <div class="top-search">
+             <div class="container">
+                 <div class="input-group">
+                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                     <input type="text" class="form-control" placeholder="Search">
+                     <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                 </div>
+             </div>
+         </div> -->
         <!-- End Top Search -->
 
         <!-- Start All Title Box -->
@@ -214,7 +214,7 @@
                     <div class="col-lg-12">
                         <h2>Liên hệ với chúng tôi</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
                             <li class="breadcrumb-item active"> Liên hệ </li>
                         </ul>
                     </div>
@@ -227,45 +227,110 @@
         <div class="contact-box-main">
             <div class="container">
                 <div class="row">
+
                     <div class="col-lg-8 col-sm-12">
                         <div class="contact-form-right">
                             <h2>Gửi tin nhắn cho chúng tôi</h2>
                             <p>Chúng tôi sẽ giải đáp tất cả thắc mắc của bạn về sản phẩm NestSongAn</p>
-                            <form id="contactForm">
+                            <form action="MainController" method="POST">
+                                <c:set var="errors" value="${requestScope.INSERT_CONTACT_ERRORS}"/>
                                 <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="name" name="name" placeholder="Your Name" required data-error="Tên của bạn">
-                                            <div class="help-block with-errors"></div>
+                                    <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
+                                    <c:if test="${checkLogin == null}">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="name" name="nameContact" placeholder="Họ Tên" required data-error="Vui lòng điền tên của bạn">
+                                                <div class="help-block with-errors"></div>
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" placeholder="Your Email" id="email" class="form-control" name="name" required data-error="Email của bạn">
-                                            <div class="help-block with-errors"></div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">                                              
+                                                <input type="text" placeholder="Email" id="email" class="form-control" name="emailContact">
+                                                <div class="help-block with-errors"></div>
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" id="subject" name="name" placeholder="Subject" required data-error="Số điện thoại của bạn">
-                                            <div class="help-block with-errors"></div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="subject" name="phoneContact" placeholder="Số Điện Thoại">
+                                                <div class="help-block with-errors"></div>
+
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group">
-                                            <textarea class="form-control" id="message" placeholder="Your Message" rows="4" data-error="Hãy nhập nội dung" required></textarea>
-                                            <div class="help-block with-errors"></div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" id="message" placeholder="Your Message" rows="4" name="contactMessage" data-error="Hãy nhập nội dung" required></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                            <c:if test="${not empty errors.emailAndPhoneErr}">
+                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.emailAndPhoneErr}</div>
+                                            </c:if>
+                                            <c:if test="${not empty errors.emailErr}">
+                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.emailErr}</div>
+                                            </c:if>
+                                            <c:if test="${not empty errors.phoneErr}">
+                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.phoneErr}</div>
+                                            </c:if>
+                                            <c:if test="${not empty errors.nameErr}">
+                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.nameErr}</div>
+                                            </c:if>
+                                            <div class="submit-button text-center">
+                                                <button class="btn hvr-hover" id="submit" value="Send" name="btAction" type="submit">Gửi</button>
+                                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                                <div class="clearfix"></div>
+                                            </div>
                                         </div>
-                                        <div class="submit-button text-center">
-                                            <button class="btn hvr-hover" id="submit" type="submit">Gửi</button>
-                                            <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                            <div class="clearfix"></div>
+                                    </c:if>
+
+                                    <c:if test="${checkLogin != null}">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="name" name="nameContact" placeholder="Họ Tên" value="${sessionScope.LOGIN_USER.fullName}">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
                                         </div>
-                                    </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" placeholder="Email" id="email" value="${sessionScope.LOGIN_USER.email}" class="form-control" name="emailContact">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" id="subject" value="${sessionScope.LOGIN_USER.phone}" name="phoneContact" placeholder="Số Điện Thoại">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <textarea class="form-control" id="message" placeholder="Your Message" rows="4" data-error="Hãy nhập nội dung" name="contactMessage" required></textarea>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                            <c:if test="${not empty errors.emailAndPhoneErr}">
+                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.emailAndPhoneErr}</div>
+                                            </c:if>
+                                            <c:if test="${not empty errors.emailErr}">
+                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.emailErr}</div>
+                                            </c:if>
+                                            <c:if test="${not empty errors.phoneErr}">
+                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.phoneErr}</div>
+                                            </c:if>
+                                            <c:if test="${not empty errors.nameErr}">
+                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.nameErr}</div>
+                                            </c:if>
+                                            <div class="submit-button text-center">                                               
+                                                <button class="btn hvr-hover" id="submit" value="Send" name="btAction" type="submit">Gửi</button>
+                                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </c:if>
                                 </div>
                             </form>
                         </div>
                     </div>
+
                     <div class="col-lg-4 col-sm-12">
                         <div class="contact-info-left">
                             <h2>Thông tin liên lạc</h2>
@@ -277,7 +342,7 @@
                                     <p><i class="fas fa-phone-square"></i>Số điện thoại: <a href="tel:+1-888705770">+1-888 705 770</a></p>
                                 </li>
                                 <li>
-                                    <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                    <p><i class="fab fa-facebook"></i>Facebook: <a href="https://facebook.com/NestSongAnSWP" target="_blank">Nestsongan</a></p>
                                 </li>
                             </ul>
                         </div>
