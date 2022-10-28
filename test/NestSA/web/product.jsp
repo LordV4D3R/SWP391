@@ -55,6 +55,10 @@
       .content-animation {
         animation: modal ease-out 0.2s;
       }
+      #add_product_swp:hover{
+          background-color: rgb(161 161 170) !important;
+          color: #FFFFFF;
+      }
     </style>
   </head>
 
@@ -165,11 +169,12 @@
                   class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full"
                 >
                   <div
-                    class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
+                    class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
                   >
                     Product
+                    <a href="add_edit_product.jsp" class="px-4 py-2 rounded block leading-7" id="add_product_swp" style="background-color: rgb(212 212 216);">Thêm sản phẩm mới</a>
                   </div>
-                  <div class="p-3">
+                  <div class="p-3 ">
                     <table
                       class="table-responsive w-full rounded"
                       style="text-align: center"
