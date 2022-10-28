@@ -153,7 +153,7 @@
                         <ul>
                             <li class="side-menu">
                                 <a href="cart.jsp">
-                                    <i class="fa fa-shopping-bag"></i>
+                                    <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>Giỏ hàng</p>
                                 </a>
@@ -241,21 +241,18 @@
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="name" name="nameContact" placeholder="Họ Tên" required data-error="Vui lòng điền tên của bạn">
                                                 <div class="help-block with-errors"></div>
-
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">                                              
                                                 <input type="text" placeholder="Email" id="email" class="form-control" name="emailContact">
                                                 <div class="help-block with-errors"></div>
-
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <input type="text" class="form-control" id="subject" name="phoneContact" placeholder="Số Điện Thoại">
                                                 <div class="help-block with-errors"></div>
-
                                             </div>
                                         </div>
                                         <div class="col-md-12">

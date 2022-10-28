@@ -17,7 +17,7 @@
 
     <body>
 
-        <div class="container">
+        <div class="container" style="width: 460px;">
             <div class="title-text">
                 <div class="title logo">
                     <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
@@ -85,7 +85,6 @@
                         <input type="text" placeholder="Email" name="txtEmail" value="${param.txtEmail}" required>
                     </div>
 
-
                     <%--
                                         <div class="field">
                                             <input type="text" placeholder="Điện Thoại (Không bắt buộc)" name="txtPhone" value="${param.txtPhone}">
@@ -95,15 +94,16 @@
                         <input type="text" placeholder="Địa Chỉ (Không bắt buộc)" name="txtAddress" value="${param.txtAddress}">
                     </div>
                     --%>
+
                     <div class="field btn">
                         <div class="btn-layer"></div>
-                        <input type="submit" value="SignUp" name="btAction">
+                        <button style = "color: #fff; height: 100%; width: 100%; z-index: 1; position: relative; background: none; border: none; padding-left: 0; border-radius: 5px; font-size: 20px; font-weight: 500; cursor: pointer" type="submit" value="SignUp" name="btAction">Đăng ký</button>
                     </div>
                     <div class="signup-link">
                         Đã Có Tài Khoản?<a href="login.jsp"> Đăng Nhập</a>
                     </div>
                 </form>
-                <div/>
-
-                </body>
-                </html>
+            </div>
+        </div>
+    </body>
+</html>

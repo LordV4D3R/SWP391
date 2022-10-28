@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/controller/ContactController.java</file>
             <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/web/contact-us.jsp</file>
@@ -11,5 +12,8 @@
             <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/contact/ContactDTO.java</file>
             <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/contact/ContactErr.java</file>
         </group>
+=======
+        <group/>
+>>>>>>> 5b78de12caae6b8bea96fa69497be5fe1cce9ec9
     </open-files>
 </project-private>

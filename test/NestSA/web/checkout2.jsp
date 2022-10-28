@@ -154,7 +154,7 @@
                     <div class="attr-nav">
                         <ul>
                             <li class="side-menu"><a href="checkout.jsp">
-                                    <i class="fa fa-shopping-bag"></i>
+                                    <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>Giỏ hàng</p>
                                 </a></li>
@@ -257,12 +257,12 @@
                                     </div>
                                     <div class="mb-4">
                                         <div class="custom-control custom-radio">
-                                            <input id="shippingOption1" name="shipping-option" class="custom-control-input" checked="checked" type="radio" onclick="shippingFee()" value="free">
+                                            <input id="shippingOption1" name="shipping-option" class="custom-control-input" checked="checked" type="radio" onchange="shippingFee()" value="free">
                                             <label class="custom-control-label" for="shippingOption1">Giao hàng truyền thống</label> <span class="float-right font-weight-bold" >FREE</span> 
                                         </div>
                                         <div class="ml-4 mb-2 small">(1-2 ngày)</div>
                                         <div class="custom-control custom-radio">
-                                            <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio" value="fee" onclick="shippingFee()" >
+                                            <input id="shippingOption2" name="shipping-option" class="custom-control-input" type="radio" value="fee" onchange="shippingFee()" >
                                             <span style="float: right">VND</span>
                                             <label class="custom-control-label" for="shippingOption2">Giao hàng nhanh</label> <span class="float-right font-weight-bold" >${requestScope.SHIPPING_FEE}</span>
 
@@ -320,22 +320,34 @@
                                     </div>
                                     <hr> </div>
                             </div>
+                            <form action="MainController">
+                                <input type="hidden" name="phone" value="${sessionScope.LOGIN_USER.phone}">
+                                <input type="hidden" name="name" value="${sessionScope.LOGIN_USER.fullName}">
+                                <input type="hidden" name="total_money" id="total-money" value="<%= total%>">
+                                <input type="hidden" name="shipping_fee" value="${requestScope.SHIPPING_FEE}">
+                                <input type="hidden" name="total" value="<%= total%>">
+                                <input type="hidden" name="userId" value="${sessionScope.LOGIN_USER.userId}">
+                                <input type="hidden" name="address" value="${sessionScope.LOGIN_USER.address}">
+                                <input type="hidden" name="status" value="Đang chuẩn bị hàng">
+                                <div class="col-12 d-flex shopping-box">
+                                    <button type="submit" name="btAction" value="Purchase" class="ml-auto btn hvr-hover" style="overflow: hidden; padding: 10px 20px; border: none; color: #ffffff; font-size: 18px">Thanh toán</button>
+                                </div>
+                            </form>
+                            <!--<div class="col-12 d-flex shopping-box"> <a href="PurchaseController" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>-->
                             <%
                                 }
                             %>
-                            <div class="col-12 d-flex shopping-box"> <a href="#" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
-        <div>
-            <div class="notifi">
-                <h2>mua thanh cong</h2>
-
-            </div>
-        </div>
+        <!--        <div>
+                    <div class="notifi">
+                        <h2>mua thanh cong</h2>
+        
+                    </div>
+                </div>-->
         <!-- End Cart -->
 
         <!-- Start Instagram Feed  -->
@@ -344,78 +356,6 @@
                 <div class="item">
                     <div class="ins-inner-box">
                         <img src="images/instagram-img-01.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-02.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-03.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-04.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-05.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-06.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-07.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-08.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-09.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-05.jpg" alt="" />
                         <div class="hov-in">
                             <a href="#"><i class="fab fa-instagram"></i></a>
                         </div>
@@ -547,14 +487,23 @@
                                                     }
                                                 }
                                                 function shippingFee() {
+                                                    const shipFee = document.getElementById('shipfee').textContent;
+
                                                     if (document.getElementById('shippingOption2').checked) {
-                                                        const shipFee = document.getElementById('shipfee').textContent;
                                                         const fee = parseInt(shipFee) * 1.01
+                                                        console.log(fee);
                                                         document.getElementById('shipfee').innerHTML = fee;
+                                                        document.getElementById("total-money").value = fee;
                                                     } else {
                                                         const res = document.getElementById('shipfee').textContent;
                                                         const x = parseInt(res) / 1.01;
                                                         document.getElementById('shipfee').textContent = x;
+                                                    }
+                                                    if (document.getElementById('shippingOption1').checked) {
+                                                        const a = parseInt(shipFee)/1.01;
+                                                        console.log(a);
+                                                        document.getElementById("total-money").value = a;
+
                                                     }
 
                                                 }

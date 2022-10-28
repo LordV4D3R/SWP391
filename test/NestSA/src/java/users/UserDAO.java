@@ -22,16 +22,11 @@ import utils.DBUtils;
 public class UserDAO implements Serializable {
 
     private static final String LOGIN = "SELECT userId, username, password, address, phone, email, fullname, roleId FROM users WHERE username = ? AND password = ?";
-
     private static final String CHECK_DUPLICATE = "SELECT username FROM users WHERE username = ?";
-
     private static final String CREATE_ACCOUNT = "Insert Into users(password, address, phone, email, fullName, roleId, userName) Values(?, ?, ?, ?, ?, ?, ?)";
-
-    
-    private static final String UPDATE_INFO= "UPDATE users SET fullName=?, address=?, email=?, phone=? WHERE userId=?";
-
-
+    private static final String UPDATE_INFO = "UPDATE users SET fullName=?, address=?, email=?, phone=? WHERE userId=?";
     private static final String CHECK_EMAIL_DUPLICATE = "SELECT email FROM users WHERE email = ?";
+
     public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
         Connection connection = null;
         PreparedStatement stm = null;
@@ -164,7 +159,8 @@ public class UserDAO implements Serializable {
         }
         return result;
     }
-public boolean updateInfo(UserDTO user) throws SQLException {
+
+    public boolean updateInfo(UserDTO user) throws SQLException {
         boolean check = false;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -175,7 +171,7 @@ public boolean updateInfo(UserDTO user) throws SQLException {
                 ptm.setString(1, user.getFullName());
                 ptm.setString(2, user.getAddress());
                 ptm.setString(3, user.getEmail());
-                ptm.setString(4,user.getPhone());
+                ptm.setString(4, user.getPhone());
                 ptm.setInt(5, user.getUserId());
                 check = ptm.executeUpdate() > 0 ? true : false;
             }
@@ -191,12 +187,11 @@ public boolean updateInfo(UserDTO user) throws SQLException {
         }
         return check;
 
-
     }
 
     public boolean checkEmailDuplicate(String email)
             throws SQLException, NamingException {
-        
+
         boolean check = false;
         Connection conn = null;
         PreparedStatement stm = null;
@@ -227,5 +222,62 @@ public boolean updateInfo(UserDTO user) throws SQLException {
         return check;
     }
 
+    /**
+     * GUEST
+     */
+    private static final String SAVE_GUEST_INFORMATION = "INSERT INTO users(fullname, address, email, phone) VALUES(?, ?, ?, ?)";
+    private static final String UPDATE_GUEST_INFORMATION = "UPDATE users SET fullName = ?, address = ?, phone = ? WHERE email = ?";
 
+    public boolean updateGuestInformation(UserDTO user) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE_GUEST_INFORMATION);
+                ptm.setString(1, user.getFullName());
+                ptm.setString(2, user.getAddress());
+                ptm.setString(4, user.getPhone());
+                ptm.setString(5, user.getEmail());
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (ClassNotFoundException | SQLException e) {
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+    
+    public boolean saveGuestInformation(UserDTO user) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(SAVE_GUEST_INFORMATION);
+                ptm.setString(1, user.getFullName());
+                ptm.setString(2, user.getAddress());
+                ptm.setString(3, user.getEmail());
+                ptm.setString(4, user.getPhone());
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (conn != null) {
+                conn.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+        }
+        return check;
+    }
 }

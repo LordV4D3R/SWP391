@@ -36,20 +36,31 @@ public class SaveInfoController extends HttpServlet {
             String address = request.getParameter("address");
             String email = request.getParameter("email");
             String phone = request.getParameter("phone");
-            int total=Integer.parseInt(request.getParameter("total"));
-            if (save != null) {
-                HttpSession session = request.getSession();
-                UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-                UserDAO dao = new UserDAO();
+            int total = Integer.parseInt(request.getParameter("total"));
+            HttpSession session = request.getSession();
+            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
+            UserDAO dao = new UserDAO();
+            if (loginUser != null) {
                 UserDTO user = new UserDTO(address, phone, email, name, loginUser.getUserId());
-                boolean check = dao.updateInfo(user);
-                if (check) {
-                    UserDTO result = dao.checkLogin(loginUser.getUserName(), loginUser.getPassword());
-                    session.setAttribute("LOGIN_USER", result);                   
+                if (save != null) {
+                    boolean check = dao.updateInfo(user);
+                    if (check) {
+                        UserDTO result = dao.checkLogin(loginUser.getUserName(), loginUser.getPassword());
+                        session.setAttribute("LOGIN_USER", result);
+                    }
                 }
+            } else {
+                UserDTO user = new UserDTO(address, phone, email, name);
+//                session.setAttribute("GUEST_USER", user);
+               
+                    session.setAttribute("GUEST_USER", user);
+                
             }
-            double shipFee=total*0.01;
-            request.setAttribute("SHIPPING_FEE",(int) shipFee);
+//            }
+
+            int shipFee = total / 100;
+            request.setAttribute("SHIPPING_FEE", (int) shipFee);
+
             url = SUCCESS;
         } catch (Exception e) {
         } finally {

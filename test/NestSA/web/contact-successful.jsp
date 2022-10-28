@@ -228,7 +228,7 @@
                 <div id="msgSubmit" class="h3 text-center hidden">
                     <h2 style="color: red">Cám ơn bạn đã liên hệ với chúng tôi</h2>
                     <h1 style="color: red">Chúng tôi sẽ sớm liên lạc lại cho bạn thông qua số điện thoại và mail bạn đã để lại.</h1>
-                    <h3> Nhấn <a href="index.jsp" style="color:black;text-decoration: none">trang chủ</a>  để quay về <a href="index.jsp" style="color:black;text-decoration: none">trang chủ </a></h3>
+                    <h3> Nhấn <a href="index.jsp" style="color:blue;text-decoration: none">trang chủ</a>  để quay về <a href="index.jsp" style="color:blue;text-decoration: none">trang chủ </a></h3>
                 </div>
             </div>
         </div>

@@ -12,6 +12,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import order.Cart;
+import product.ProductDTO;
 
 /**
  *
@@ -20,29 +23,44 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet(name = "BuyNowController", urlPatterns = {"/BuyNowController"})
 public class BuyNowController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
+    private static final String ERROR = "error.jsp";
+    private static final String OVER_QUANTITY = "shop-detail.jsp";
+    private static final String SUCCESS = "cart.jsp";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet BuyNowController</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet BuyNowController at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        String url = ERROR;
+        try {
+            int id = Integer.parseInt(request.getParameter("id"));
+            String img = request.getParameter("img");
+            String name = request.getParameter("name");
+            int price = Integer.parseInt(request.getParameter("price"));
+            int buyQuantity = Integer.parseInt(request.getParameter("buyQuantity"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+
+            if (buyQuantity > quantity) {
+                request.setAttribute("OVER_QUANTITY", "Over quantity, please try again!!!");
+                url = OVER_QUANTITY;
+            } else {
+                HttpSession session = request.getSession();                
+                if (session != null) {
+                    Cart cart = (Cart) session.getAttribute("CART");
+                    ProductDTO product = new ProductDTO(id, name, buyQuantity, price, img);
+                    if (cart == null) {
+                        cart = new Cart();
+                    }
+                    cart.add(product);
+                    int quantityInCart=cart.getCart().size();
+                    session.setAttribute("CART", cart);
+                    session.setAttribute("QUANTITY_IN_CART", quantityInCart);
+                    request.setAttribute("CART_SUCCESS", "sản phẩm đã thêm vào giỏ hàng thành công, mời bạn tiếp tục mua sắm");
+                    url = SUCCESS;
+                }
+            }
+        } catch (Exception e) {
+            log("Error at BuyNowController at: " + e.toString());
+        } finally {
+            request.getRequestDispatcher(url).forward(request, response);
         }
     }
 
