@@ -33,7 +33,6 @@
                 outline: 0;
                 display: none;
             }
-
             .handModal .overlay {
                 position: fixed;
                 top: 0;
@@ -56,12 +55,12 @@
             .content-animation {
                 animation: modal ease-out 0.2s;
             }
-      #add_product_swp:hover{
-          background-color: rgb(161 161 170) !important;
-          color: #FFFFFF;
-      }
-    </style>
-  </head>
+            #add_product_swp:hover{
+                background-color: rgb(161 161 170) !important;
+                color: #FFFFFF;
+            }
+        </style>
+    </head>
 
     <body>
         <!--Container -->
@@ -170,11 +169,12 @@
                                     class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full"
                                     >
                                     <div
-                                        class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
+                                        class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
                                         >
                                         Product
+                                        <a href="add_edit_product.jsp" class="px-4 py-2 rounded block leading-7" id="add_product_swp" style="background-color: rgb(212 212 216);">Thêm sản phẩm mới</a>
                                     </div>
-                                    <div class="p-3">
+                                    <div class="p-3 ">
                                         <table
                                             class="table-responsive w-full rounded"
                                             style="text-align: center"
@@ -189,32 +189,33 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${VIEW_PRODUCT_VER_FULL}" var="o">
-                                                    <tr>
-                                                        <td class="border w-1/2 py-2">${o.name}</td>
-                                                        <td class="border w-96 py-2">${o.quantity}</td>
-                                                        <td class="border w-1/4 py-2">${o.price}</td>
-                                                        <td class="border w-96 py-2">
-                                                            <i class="fas fa-check text-green-500 mx-2"></i>
-                                                            <i class="fas fa-times text-red-500 mx-2"></i>
-                                                        </td>
-                                                        <td class="border w-full py-2">
-                                                            <a
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-white"
-                                                                href="MainController?btAction=UpdateProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description},categoryName=${o.categoryName}&status=${o.status}"
-                                                                >
-                                                                <i class="fas fa-edit"></i
-                                                                ></a>
-                                                            <a
-                                                                onclick="handalModal('centeredModal', 'block')"
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-red-500"
-                                                                href="#"
-                                                                >
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
+                                            
+                                            <c:forEach items="${VIEW_PRODUCT_VER_FULL}" var="o">
+                                                <tr>
+                                                    <td class="border w-1/2 py-2">${o.name}</td>
+                                                    <td class="border w-96 py-2">${o.quantity}</td>
+                                                    <td class="border w-1/4 py-2">${o.price}</td>
+                                                    <td class="border w-96 py-2">
+                                                        <i class="fas fa-check text-green-500 mx-2"></i>
+                                                        <i class="fas fa-times text-red-500 mx-2"></i>
+                                                    </td>
+                                                    <td class="border w-full py-2">
+                                                        <a
+                                                            class="bg-teal-300 rounded p-1 mx-1 text-white"
+                                                            href="MainController?btAction=UpdateProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description},categoryName=${o.categoryName}&status=${o.status}"
+                                                            >
+                                                            <i class="fas fa-edit"></i
+                                                            ></a>
+                                                        <a
+                                                            onclick="handalModal('centeredModal', 'block')"
+                                                            class="bg-teal-300 rounded p-1 mx-1 text-red-500"
+                                                            href="#"
+                                                            >
+                                                            <i class="fas fa-trash"></i>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -224,142 +225,7 @@
                         </div>
                     </main>
                     <!--/Main-->
-
-        <div class="flex flex-1">
-          <!--Sidebar-->
-          <aside
-            id="sidebar"
-            class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block"
-          >
-            <div class="flex"></div>
-            <ul class="list-reset flex flex-col">
-              <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                <a
-                  href="admin.jsp"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                >
-                  <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                  Dashboard
-                  <span><i class="fas fa-angle-right float-right"></i></span>
-                </a>
-              </li>
-              <li
-                class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
-              >
-                <a
-                  href="product.jsp"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                >
-                  <i class="fab fa-wpforms float-left mx-2"></i>
-                  Sản phẩm
-                  <span><i class="fa fa-angle-right float-right"></i></span>
-                </a>
-              </li>
-              <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                <a
-                  href="order.jsp"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                >
-                  <i class="fas fa-grip-horizontal float-left mx-2"></i>
-                  Đơn hàng
-                  <span><i class="fa fa-angle-right float-right"></i></span>
-                </a>
-              </li>
-              <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                <a
-                  href="#"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                >
-                  <i class="fas fa-table float-left mx-2"></i>
-                  Bình luận
-                  <span><i class="fa fa-angle-right float-right"></i></span>
-                </a>
-              </li>
-              <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                <a
-                  href="#"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                >
-                  <i class="fab fa-uikit float-left mx-2"></i>
-                  Liên hệ
-                  <span><i class="fa fa-angle-right float-right"></i></span>
-                </a>
-              </li>
-              <li class="w-full h-full py-3 px-2 border-b border-300-border">
-                <a
-                  href="#"
-                  class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                >
-                  <i class="fas fa-square-full float-left mx-2"></i>
-                  Đăng xuất
-                  <span><i class="fa fa-angle-right float-right"></i></span>
-                </a>
-              </li>
-            </ul>
-          </aside>
-          <!--/Sidebar-->
-          <!--Main-->
-          <main class="bg-white-500 flex-1 p-3 overflow-hidden">
-            <div class="flex flex-col">
-              <div class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2">
-                <div
-                  class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full"
-                >
-                  <div
-                    class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
-                  >
-                    Product
-                    <a href="add_edit_product.jsp" class="px-4 py-2 rounded block leading-7" id="add_product_swp" style="background-color: rgb(212 212 216);">Thêm sản phẩm mới</a>
-                  </div>
-                  <div class="p-3 ">
-                    <table
-                      class="table-responsive w-full rounded"
-                      style="text-align: center"
-                    >
-                      <thead>
-                        <tr>
-                          <th class="border w-1/2 px-4 py-2">Tên sản phẩm</th>
-                          <th class="border w-96 px-4 py-2">Số lượng</th>
-                          <th class="border w-1/4 px-4 py-2">Giá</th>
-                          <th class="border w-96 px-4 py-2">Status</th>
-                          <th class="border w-full px-4 py-2"></th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        <tr>
-                          <td class="border w-1/2 py-2">Micheal Clarke</td>
-                          <td class="border w-96 py-2">10</td>
-                          <td class="border w-1/4 py-2">500</td>
-                          <td class="border w-96 py-2">
-                            <i class="fas fa-check text-green-500 mx-2"></i>
-                            <i class="fas fa-times text-red-500 mx-2"></i>
-                          </td>
-                          <td class="border w-full py-2">
-                            <a
-                              class="bg-teal-300 rounded p-1 mx-1 text-white"
-                              href="add_edit_product.jsp"
-                            >
-                              <i class="fas fa-edit"></i
-                            ></a>
-                            <a
-                              onclick="handalModal('centeredModal','block')"
-                              class="bg-teal-300 rounded p-1 mx-1 text-red-500"
-                              href="#"
-                            >
-                              <i class="fas fa-trash"></i>
-                            </a>
-                          </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
                 </div>
-              </div>
-              <!--/Grid Form-->
-            </div>
-          </main>
-          <!--/Main-->
-        </div>
                 <!-- modal -->
                 <div id="centeredModal" class="handModal">
                     <div class="overlay close-modal"></div>
@@ -403,9 +269,9 @@
 
         <script src="./main.js"></script>
         <script>
-                                    function handalModal(id, display) {
-                                        document.getElementById(id).style.display = display;
-                                    }
+                        function handalModal(id, display) {
+                            document.getElementById(id).style.display = display;
+                        }
         </script>
     </body>
 </html>
