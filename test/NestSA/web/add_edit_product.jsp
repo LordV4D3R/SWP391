@@ -155,9 +155,9 @@
                                                     <input
                                                         class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                         id="grid-password"
-                                                        type="password"
-                                                        placeholder="Nhập tên của sản phẩm"
-                                                        value="${sessionScope.VIEW_PRODUCT_VER_FULL.}"
+                                                        type="text"
+                                                        value="${requestScope.VIEW_PRODUCT_VER_FULL.name}"
+                                                        placeholder="Nhập tên của sản phẩm"                         
                                                         />
                                                 </div>
                                                 <!-- double input -->
@@ -204,7 +204,7 @@
                                                             <select
                                                                 class="block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                                 id="grid-state"
-                                                                >
+                                                                > 
                                                                 <option>New Mexico</option>
                                                                 <option>Missouri</option>
                                                                 <option>Texas</option>

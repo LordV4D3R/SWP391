@@ -2,31 +2,13 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/web/add_edit_product.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/src/java/product/ProductDAO.java</file>
-            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/src/java/controller/UpdateProductManagerController.java</file>
             <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/web/checkout.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/web/admin.jsp</file>
-            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/web/product.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/src/java/controller/UpdateProductManagerController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/web/add_edit_product.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/src/java/controller/ViewProductManagerController.java</file>
-            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/src/java/controller/MainController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/src/java/controller/LoginController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky%205/SWP391/test/NestSA/web/product.jsp</file>
         </group>
-=======
-<<<<<<< HEAD
-        <group>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/controller/ContactController.java</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/web/contact-us.jsp</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/web/shop-detail.jsp</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/contact/ContactDAO.java</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/controller/MainController.java</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/contact/ContactDTO.java</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/contact/ContactErr.java</file>
-        </group>
-=======
-        <group/>
->>>>>>> 5b78de12caae6b8bea96fa69497be5fe1cce9ec9
->>>>>>> 1fb4679569864e403a8007f619932968047e8c5f
     </open-files>
 </project-private>

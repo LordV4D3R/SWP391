@@ -67,8 +67,6 @@ public class ProductDTO {
         this.image = image;
     }
     
-
-    
     public ProductDTO(int productId, String name, int quantity, int price, String image, String description, String categoryId, int status) {
         this.productId = productId;
         this.name = name;

@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import product.ProductDAO;
+import product.ProductDTO;
 
 /**
  *
@@ -27,7 +29,20 @@ public class UpdateProductManagerController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            url = SUCCESS;
+            int id = Integer.parseInt(request.getParameter("id"));
+            String name = request.getParameter("name");
+            int price = Integer.parseInt(request.getParameter("price"));
+            int quantity = Integer.parseInt(request.getParameter("quantity"));
+            String categoryName = request.getParameter("categoryName");
+            String img = request.getParameter("image");
+            String desc = request.getParameter("description");
+            int status = Integer.parseInt(request.getParameter("status"));
+            ProductDTO product = new ProductDTO(id, name, quantity, price, img, desc, categoryName, status);
+            if (product != null) {
+                request.setAttribute("VIEW_PRODUCT_VER_FULL", product);
+                url = SUCCESS;
+            }
+            
         } catch (Exception e) {
             log("Error at UpdateProductManagerController at: " + e.toString());
         } finally {

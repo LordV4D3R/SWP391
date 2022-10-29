@@ -35,7 +35,8 @@ public class ViewProductManagerController extends HttpServlet {
             List<ProductDTO> listProduct = dao.viewUpdateProduct();
             if (listProduct.size() > 0) {
                 HttpSession session = request.getSession();
-                session.setAttribute("VIEW_PRODUCT_VER_FULL", listProduct);
+//                session.setAttribute("VIEW_PRODUCT_VER_FULL", listProduct);
+                request.setAttribute("VIEW_PRODUCT_VER_FULL", listProduct);
                 url = SUCCESS;
             }
         } catch (Exception e) {
