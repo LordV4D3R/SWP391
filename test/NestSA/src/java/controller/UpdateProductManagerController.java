@@ -7,11 +7,14 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import price.PriceDTO;
 import product.ProductDAO;
 import product.ProductDTO;
 
@@ -24,25 +27,34 @@ public class UpdateProductManagerController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
     private static final String SUCCESS = "add_edit_product.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
+//            int id = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
             int price = Integer.parseInt(request.getParameter("price"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
+            String categoryId = request.getParameter("categoryId");
             String categoryName = request.getParameter("categoryName");
             String img = request.getParameter("image");
             String desc = request.getParameter("description");
             int status = Integer.parseInt(request.getParameter("status"));
-            ProductDTO product = new ProductDTO(id, name, quantity, price, img, desc, categoryName, status);
-            if (product != null) {
-                request.setAttribute("VIEW_PRODUCT_VER_FULL", product);
-                url = SUCCESS;
-            }
-            
+
+            Date today = new Date();
+            SimpleDateFormat dateForm = new SimpleDateFormat("dd/MM/YYYY hh:mm aa");
+            String date = dateForm.format(today);
+
+            ProductDTO product = new ProductDTO(name, quantity, price, img, desc, categoryId, categoryName, status);
+            request.setAttribute("VIEW_PRODUCT_VER_FULL", product);
+
+            ProductDAO dao = new ProductDAO();
+            int productId = dao.insertProduct(new ProductDTO(name, quantity, price, img, desc, categoryId, categoryName, status));
+            dao.insertPrice(new PriceDTO(price, status, productId, date));
+            url = SUCCESS;
+
         } catch (Exception e) {
             log("Error at UpdateProductManagerController at: " + e.toString());
         } finally {

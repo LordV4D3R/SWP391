@@ -23,6 +23,17 @@ public class ProductDTO {
     public ProductDTO() {
     }
 
+    public ProductDTO(String name, int quantity, int price, String image, String description, String categoryId, String categoryName, int status) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.categoryName = categoryName;
+        this.status = status;
+    }
+
     public ProductDTO(int productId, String name, int quantity, int price, String image, String description, String categoryId, String categoryName, int status) {
         this.productId = productId;
         this.name = name;

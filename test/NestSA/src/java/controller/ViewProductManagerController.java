@@ -5,6 +5,8 @@
  */
 package controller;
 
+import category.CategoryDAO;
+import category.CategoryDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -33,10 +35,13 @@ public class ViewProductManagerController extends HttpServlet {
         try {
             ProductDAO dao = new ProductDAO();
             List<ProductDTO> listProduct = dao.viewUpdateProduct();
-            if (listProduct.size() > 0) {
+            CategoryDAO cDao = new CategoryDAO();
+            List<CategoryDTO> category = cDao.ViewCategory();
+            if (listProduct.size() > 0 && category.size() > 0) {
                 HttpSession session = request.getSession();
 //                session.setAttribute("VIEW_PRODUCT_VER_FULL", listProduct);
                 request.setAttribute("VIEW_PRODUCT_VER_FULL", listProduct);
+                session.setAttribute("VIEW_CATEGORY", category);
                 url = SUCCESS;
             }
         } catch (Exception e) {

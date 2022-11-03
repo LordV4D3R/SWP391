@@ -4,6 +4,7 @@
     Author     : thangbv
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -155,6 +156,7 @@
                                                     <input
                                                         class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                         id="grid-password"
+                                                        name="name"
                                                         type="text"
                                                         value="${requestScope.VIEW_PRODUCT_VER_FULL.name}"
                                                         placeholder="Nhập tên của sản phẩm"                         
@@ -175,6 +177,8 @@
                                                             class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
                                                             id="grid-first-name"
                                                             type="text"
+                                                            name="price"
+                                                            value="${requestScope.VIEW_PRODUCT_VER_FULL.price}"
                                                             placeholder="Nhập giá sản phẩm"
                                                             />
                                                     </div>
@@ -189,6 +193,8 @@
                                                             class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
                                                             id="grid-last-name"
                                                             type="text"
+                                                            name="quantity"
+                                                            value="${requestScope.VIEW_PRODUCT_VER_FULL.quantity}"
                                                             placeholder="Nhập số lượng sản phẩm"
                                                             />
                                                     </div>
@@ -204,10 +210,11 @@
                                                             <select
                                                                 class="block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                                 id="grid-state"
+                                                                name="categoryName"
                                                                 > 
-                                                                <option>New Mexico</option>
-                                                                <option>Missouri</option>
-                                                                <option>Texas</option>
+                                                                <c:forEach var="c" items="${sessionScope.VIEW_CATEGORY}">
+                                                                    <option>${c.categoryName}</option>
+                                                                </c:forEach>
                                                             </select>
                                                             <div
                                                                 class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker"
@@ -237,6 +244,8 @@
                                                             class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
                                                             id="grid-last-name"
                                                             type="text"
+                                                            name="image"
+                                                            value="${requestScope.VIEW_PRODUCT_VER_FULL.image}"
                                                             placeholder="Nhập liên kết đến ảnh của sản phẩm"
                                                             />
                                                     </div>
@@ -264,15 +273,16 @@
                                                     >Mô tả sản phẩm</label
                                                 >
                                                 <textarea
+                                                    name="desc"
                                                     id="message"
                                                     rows="4"
                                                     class="block p-4 w-full text-sm text-grey-darker bg-gray-200 rounded border border-gray-200 focus:ring-blue-500 focus:border-gray-600 focus:outline-none"
                                                     placeholder="Your message..."
-                                                    ></textarea>
+                                                    >${requestScope.VIEW_PRODUCT_VER_FULL.description}</textarea>
                                             </div>
 
                                             <button
-                                                type="submit"
+                                                type="submit" name="btAction" value="UpdateProductManager"
                                                 class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
                                                 >
                                                 Xác nhận

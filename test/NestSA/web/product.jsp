@@ -202,7 +202,7 @@
                                                     <td class="border w-full py-2">
                                                         <a
                                                             class="bg-teal-300 rounded p-1 mx-1 text-white"
-                                                            href="MainController?btAction=UpdateProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description},categoryName=${o.categoryName}&status=${o.status}"
+                                                            href="MainController?btAction=UpdateProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description}&categoryId=${o.categoryId}&categoryName=${o.categoryName}&status=${o.status}"
                                                             >
                                                             <i class="fas fa-edit"></i
                                                             ></a>

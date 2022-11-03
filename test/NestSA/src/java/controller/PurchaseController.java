@@ -63,7 +63,7 @@ public class PurchaseController extends HttpServlet {
                 OrderDAO oDao = new OrderDAO();
                 UserDAO dao = new UserDAO();
                 UserDTO user = (UserDTO) session.getAttribute("GUEST_USER");
-                boolean check = dao.saveGuestInformation(user);//update
+                dao.saveGuestInformation(user);//update
                 phone = guest.getPhone();//1
                 id = oDao.checkUserId(phone);
                 address = guest.getAddress();//2
