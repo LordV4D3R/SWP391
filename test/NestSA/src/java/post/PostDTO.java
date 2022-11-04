@@ -5,6 +5,8 @@
  */
 package post;
 
+import java.util.Date;
+
 /**
  *
  * @author dell
@@ -15,24 +17,37 @@ public class PostDTO {
     private String postContent;
     private String postTitle;
     private String category;
+    private Date dateUpload;
+    private boolean status;
 
     public PostDTO() {
     }
 
-    public PostDTO(int postId, String image, String postContent, String postTitle, String category) {
+    public PostDTO(String image, String postContent, String postTitle, String category, Date dateUpload, boolean status) {
+        this.image = image;
+        this.postContent = postContent;
+        this.postTitle = postTitle;
+        this.category = category;
+        this.dateUpload = dateUpload;
+        this.status = status;
+    }
+
+    public PostDTO(String image, String postContent, String postTitle, String category, Date dateUpload) {
+        this.image = image;
+        this.postContent = postContent;
+        this.postTitle = postTitle;
+        this.category = category;
+        this.dateUpload = dateUpload;
+    }
+
+    public PostDTO(int postId, String image, String postContent, String postTitle, String category, Date dateUpload, boolean status) {
         this.postId = postId;
         this.image = image;
         this.postContent = postContent;
         this.postTitle = postTitle;
         this.category = category;
-    }
-
-    public int getPostId() {
-        return postId;
-    }
-
-    public void setPostId(int postId) {
-        this.postId = postId;
+        this.dateUpload = dateUpload;
+        this.status = status;
     }
 
     public String getImage() {
@@ -65,6 +80,22 @@ public class PostDTO {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public int getPostId() {
+        return postId;
+    }
+
+    public void setPostId(int postId) {
+        this.postId = postId;
+    }
+
+    public Date getDateUpload() {
+        return dateUpload;
+    }
+
+    public void setDateUpload(Date dateUpload) {
+        this.dateUpload = dateUpload;
     }
     
     
