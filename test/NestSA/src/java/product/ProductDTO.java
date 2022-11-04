@@ -68,6 +68,16 @@ public class ProductDTO {
         this.image = image;
         this.description = description;
     }
+
+    public ProductDTO(String name, int quantity, int price, String image, String description, String categoryId, int status) {
+        this.name = name;
+        this.quantity = quantity;
+        this.price = price;
+        this.image = image;
+        this.description = description;
+        this.categoryId = categoryId;
+        this.status = status;
+    }
     
     //contructor for AddToCartController and BuyNowController
     public ProductDTO(int productId, String name, int quantity, int price, String image) {
