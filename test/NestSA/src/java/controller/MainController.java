@@ -50,6 +50,13 @@ public class MainController extends HttpServlet {
     private static final String PURCHASE_CONTROLLER = "PurchaseController";
     private static final String UPDATE_PRODUCT_MANAGER = "UpdateProductManager";
     private static final String UPDATE_PRODUCT_MANAGER_CONTROLLER = "UpdateProductManagerController";
+    private static final String VIEW_LIST_BLOG = "ViewListBlog";
+    private static final String VIEW_LIST_BLOG_CONTROLLER = "ViewListBlogController";
+    private static final String VIEW_BLOG = "ViewBlog";
+    private static final String VIEW_BLOG_CONTROLLER = "ViewBlogController";
+    private static final String CREATE_BLOG = "CreateBlog";
+    private static final String CREATE_BLOG_CONTROLLER = "CreateBlogController";
+    
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -91,7 +98,15 @@ public class MainController extends HttpServlet {
                 url = PURCHASE_CONTROLLER;
             } else if (UPDATE_PRODUCT_MANAGER.equals(action)) {
                 url = UPDATE_PRODUCT_MANAGER_CONTROLLER;
-            }
+            } else if (VIEW_LIST_BLOG.equals(action)) {
+                url = VIEW_LIST_BLOG_CONTROLLER;
+            } 
+            else if (VIEW_BLOG.equals(action)) {
+                url = VIEW_BLOG_CONTROLLER;
+            } 
+            else if (CREATE_BLOG.equals(action)) {
+                url = CREATE_BLOG_CONTROLLER;
+            } 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
