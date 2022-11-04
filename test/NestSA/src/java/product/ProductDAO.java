@@ -35,15 +35,15 @@ public class ProductDAO {
             + "from product pro, category cate, price pri "
             + "where pro.productId = pri.productId and cate.categoryId = pro.categoryId";
     private static final String INSERT_INTO_PRODUCT_TABLE = "INSERT INTO product(name, quantity, image, description, categoryId, status) VALUES(?,?,?,?,?,?)";
-    private static final String GET_PRODUCT_ID = "SELECT productId, name, quantity, description, categoryId, image, status FROM product WHERE productId = ?";
-    private static final String GET_CATEGORY_ID = "select * from category where categoryName like ?";
+    private static final String GET_PRODUCT_ID = "SELECT * FROM product WHERE name LIKE ?";
+    private static final String GET_CATEGORY_ID = "SELECT * FROM category WHERE categoryName LIKE ?";
     private static final String INSERT_INTO_PRICE_TABLE = "INSERT INTO price(productId, price, datechange, status) VALUES(?,?,?,?)";
 
-    public int insertProduct(ProductDTO product) throws SQLException {
+    public boolean insertProduct(ProductDTO product) throws SQLException {
         Connection conn = null;
         PreparedStatement ptm = null;
         ResultSet rs = null;
-        int productId = 0;
+        boolean check = false;
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
@@ -54,14 +54,7 @@ public class ProductDAO {
                 ptm.setString(4, product.getDescription());
                 ptm.setString(5, product.getCategoryId());
                 ptm.setInt(6, product.getStatus());
-                ptm.executeUpdate();
-
-                ptm = conn.prepareStatement(GET_PRODUCT_ID);
-                ptm.setInt(1, product.getProductId());
-                rs = ptm.executeQuery();
-                while (rs.next()) {
-                    productId = rs.getInt("productId");
-                }
+                check = ptm.executeUpdate() > 0;
             }
         } catch (ClassNotFoundException | SQLException e) {
             e.printStackTrace();
@@ -76,10 +69,41 @@ public class ProductDAO {
                 rs.close();
             }
         }
-        return productId;
+        return check;
     }
     
-    public String getCategoryId(CategoryDTO category) throws SQLException {
+    public int getProductId(String productName) throws SQLException {
+        int productId = 0;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_PRODUCT_ID);
+                ptm.setString(1, "%" + productName + "%");
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    productId = rs.getInt("productId");
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return productId;
+    }
+
+    public String getCategoryId(String categoryName) throws SQLException {
         String categoryId = "";
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -88,10 +112,10 @@ public class ProductDAO {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(GET_CATEGORY_ID);
-                ptm.setString(1, category.getCategoryId());
+                ptm.setString(1, "%" + categoryName + "%");
                 rs = ptm.executeQuery();
                 while (rs.next()) {
-                    categoryId = rs.getString(categoryId);
+                    categoryId = rs.getString("categoryId");
                 }
             }
         } catch (Exception e) {

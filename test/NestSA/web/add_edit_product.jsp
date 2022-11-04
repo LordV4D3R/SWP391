@@ -280,7 +280,7 @@
                                                     placeholder="Your message..."
                                                     >${requestScope.VIEW_PRODUCT_VER_FULL.description}</textarea>
                                             </div>
-
+                                            <input type ="hidden" name="status" value="1"/>
                                             <button
                                                 type="submit" name="btAction" value="UpdateProductManager"
                                                 class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
