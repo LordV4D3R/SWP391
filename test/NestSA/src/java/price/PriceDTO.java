@@ -11,20 +11,27 @@ package price;
  */
 public class PriceDTO {
     private int priceid;
-    private double price;
+    private int price;
     private int status;
     private int productId;
     private String dateChange;
 
-    public PriceDTO() {
-    }
-
-    public PriceDTO(int priceid, double price, int status, int productId, String dateChange) {
+    public PriceDTO(int priceid, int price, int status, int productId, String dateChange) {
         this.priceid = priceid;
         this.price = price;
         this.status = status;
         this.productId = productId;
         this.dateChange = dateChange;
+    }
+
+    public PriceDTO(int price, int status, int productId, String dateChange) {
+        this.price = price;
+        this.status = status;
+        this.productId = productId;
+        this.dateChange = dateChange;
+    }
+
+    public PriceDTO() {
     }
 
     public int getPriceid() {
@@ -35,11 +42,11 @@ public class PriceDTO {
         this.priceid = priceid;
     }
 
-    public double getPrice() {
+    public int getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(int price) {
         this.price = price;
     }
 
@@ -66,6 +73,6 @@ public class PriceDTO {
     public void setDateChange(String dateChange) {
         this.dateChange = dateChange;
     }
-    
+
     
 }

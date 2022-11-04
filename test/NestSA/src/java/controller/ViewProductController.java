@@ -57,7 +57,6 @@ public class ViewProductController extends HttpServlet {
                 List<CategoryDTO> listCategory = cDao.ViewCategory();
                 if (listCategory.size() > 0) {
                     HttpSession session = request.getSession();
-                    
                     session.setAttribute("VIEW_CATEGORY", listCategory);
                     checkValidation = false;
                     url = SUCCESS;
