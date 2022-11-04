@@ -152,7 +152,7 @@
                             <li class="nav-item"><a class="nav-link" href="index.jsp">TRANG CHỦ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">GIỚI THIỆU</a></li>
                             <li class="dropdown active">
-                                <a href="ViewProductController" class="nav-link">CỬA HÀNG</a>                               
+                                <a href="ViewProductController" class="nav-link">Sản phẩm</a>                               
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">BLOG</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">LIÊN HỆ</a></li>

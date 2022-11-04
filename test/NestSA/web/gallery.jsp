@@ -140,7 +140,7 @@
                             <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
                             <li class="dropdown">
-                                <a href="ViewProductController" class="nav-link">Cửa hàng</a>
+                                <a href="ViewProductController" class="nav-link">Sản phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>

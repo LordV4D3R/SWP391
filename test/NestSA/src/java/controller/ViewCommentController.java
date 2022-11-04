@@ -6,27 +6,27 @@
 package controller;
 
 import comment.CommentDAO;
-import comment.CommentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.SQLException;
+import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import product.ProductDTO;
 
 /**
  *
- * @author thangbv
+ * @author tranq
  */
-@WebServlet(name = "DetailController", urlPatterns = {"/DetailController"})
-public class DetailController extends HttpServlet {
-    private static final String ERROR="error.jsp";
-    private static final String SUCCESS="shop-detail.jsp";
-    
+@WebServlet(name = "ViewCommentController", urlPatterns = {"/ViewCommentController"})
+public class ViewCommentController extends HttpServlet {
+
+    private static final String ERROR = "error.jsp";
+    private static final String SUCCESS = "shop-detail.jsp";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,27 +39,19 @@ public class DetailController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url=ERROR;
+        String url = ERROR;
+        int productId = 1;
         try {
-            int id=Integer.parseInt(request.getParameter("id"));
-            String name=request.getParameter("name");
-            String img=request.getParameter("img");
-            String des=request.getParameter("des");
-            int quantity=Integer.parseInt(request.getParameter("quantity"));
-            int price=Integer.parseInt(request.getParameter("price"));
-            ProductDTO product= new ProductDTO(id, name, quantity, price, img, des);
-            HttpSession session=request.getSession();
-            session.setAttribute("PRODUCT", product);
+            CommentDAO dao = new CommentDAO();
+            dao.viewComment(0, true);
             
-            CommentDAO cmtDao = new CommentDAO();
-            cmtDao.viewComment(id, true);
-            List<CommentDTO> cmtResult = cmtDao.getItem();
-            session.setAttribute("COMMENT_RESULT", cmtResult);
-            url=SUCCESS;
-        } catch (Exception e) {
-        }finally{
-//            request.getRequestDispatcher(url).forward(request, response);
-            response.sendRedirect(url);
+        } catch (NamingException ex) {
+            log("ViewCommentController _ Naming _ " + ex.getMessage());
+        } catch (SQLException ex) {
+            log("ViewCommentController _ SQL _ " + ex.getMessage());
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

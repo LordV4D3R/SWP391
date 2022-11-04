@@ -140,7 +140,7 @@
                             <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
                             <li class="dropdown">
-                                <a href="ViewProductController" class="nav-link">Cửa hàng</a>
+                                <a href="ViewProductController" class="nav-link">Sản phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
@@ -257,7 +257,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" id="message" placeholder="Your Message" rows="4" name="contactMessage" data-error="Hãy nhập nội dung" required></textarea>
+                                                <textarea class="form-control" id="message" placeholder="Lời bạn muốn nói..." rows="4" name="contactMessage" data-error="Hãy nhập nội dung" required></textarea>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                             <c:if test="${not empty errors.emailAndPhoneErr}">
@@ -301,7 +301,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" id="message" placeholder="Your Message" rows="4" data-error="Hãy nhập nội dung" name="contactMessage" required></textarea>
+                                                <textarea class="form-control" id="message" placeholder="Lời bạn muốn nói" rows="4" data-error="Hãy nhập nội dung" name="contactMessage" required></textarea>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                             <c:if test="${not empty errors.emailAndPhoneErr}">

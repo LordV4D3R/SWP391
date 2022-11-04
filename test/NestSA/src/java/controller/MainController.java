@@ -47,7 +47,11 @@ public class MainController extends HttpServlet {
     private static final String CONTACT = "Send";
     private static final String CONTACT_CONTROLLER = "ContactController";
     private static final String PURCHASE = "Purchase";
-    private static final String PURCHASE_CONTROLLER = "PurchaseController";
+    private static final String PURCHASE_CONTROLLER = "PurchaseController";  
+    private static final String VIEW_COMMENT = "ViewComment";
+    private static final String VIEW_COMMENT_CONTROLLER = "ViewCommentController";    
+    private static final String CREATE_COMMENT = "CreateComment";
+    private static final String CREATE_COMMENT_CONTROLLER = "CreateCommentController";    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -86,6 +90,10 @@ public class MainController extends HttpServlet {
                 url=SAVE_INFO_CONTROLLER;
             } else if (action.equals(PURCHASE)) {
                 url = PURCHASE_CONTROLLER;
+            } else if (action.equals(VIEW_COMMENT)){
+                url = VIEW_COMMENT_CONTROLLER;
+            } else if (action.equals(CREATE_COMMENT)){
+                url = CREATE_COMMENT_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();

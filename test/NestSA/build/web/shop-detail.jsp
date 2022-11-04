@@ -257,7 +257,7 @@
                             <p class="available-stock"><span> More than ${sessionScope.PRODUCT.quantity} available<p>
                                     <h4>Mô tả:</h4>
                                     <p>${sessionScope.PRODUCT.description}</p>
-                                    <form action="MainController">
+                                    <form action="MainController" >
 
                                         <ul style="border: none; display: flex;align-items: center">
                                             <li style="width: auto;float: none;padding:0;margin-top: 20px;margin-right: 4px">
@@ -315,43 +315,77 @@
                         <div class="card-header">
                             <h2>Bình luận về sản phẩm</h2>
                         </div>
-                        <div class="card-body">
-                            <div class="media mb-3">
-                                <div class="mr-2"> 
-                                    <img style="width:74px;height: 74px" class="rounded-circle border p-1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRWyuu0DuWwHd1o25ckVO098q3TDZtGC7EP4MCRpIu7cZ83PeS5pey8jp2jD5x1jTs6EI&usqp=CAU" alt="Generic placeholder image">
-                                </div>
-                                <div class="media-body">
-                                    <p>Đ.Anh đẹp trai quá z ta =)))))</p>
-                                    <small class="text-muted">Posted by Anonymous on 3/1/18</small>
-                                </div>
+                        <div class="card-body">    
+                            <c:set var="cmt" scope="session" value="${sessionScope.COMMENT_RESULT}"/>
+                            <c:if test="${cmt != null}">
+                                <c:forEach items="${cmt}" var="cmtdto">                                
+                                    <div class="media mb-3">
+                                        <div class="mr-2"> 
+                                            <img style="width:74px;height: 74px;object-fit: cover;" class="rounded-circle border p-1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRWyuu0DuWwHd1o25ckVO098q3TDZtGC7EP4MCRpIu7cZ83PeS5pey8jp2jD5x1jTs6EI&usqp=CAU" alt="Generic placeholder image">
+                                        </div>
+                                        <div class="media-body">
+                                            <p>${cmtdto.comment}</p>
+                                            <small class="text-muted">Posted by Anonymous on 3/1/18</small>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                </c:forEach>
+                            </c:if>
+                            <c:if test="${cmt == null}">
+                                <p>   Hiện chưa có ai bình luận về sản phẩm này. Hãy là người đầu tiên bình luận</p>
+                                <hr>
+                            </c:if>                           
+                            <c:if test="${checkLogin != null}">                                
+                                <form action="MainController" method="POST">                                 
+                                    <input type="hidden" name="userIdComment" value="${checkLogin.userId}"/>
+                                    <input type="hidden" name="id" value="${sessionScope.PRODUCT.productId}">
+                                    <textarea
+                                        id="message"
+                                        maxlength="500"
+                                        name="txtComment"
+                                        rows="4"
+                                        style="width: -webkit-fill-available;"
+                                        class="block p-4 w-full text-sm text-grey-darker bg-gray-200 rounded border border-gray-200 focus:ring-blue-500 focus:border-gray-600 focus:outline-none"
+                                        placeholder="Bình luận của bạn..."
+                                        required
+                                        user            ></textarea>
                             </div>
-                            <hr>
-                            <div class="media mb-3">
-                                <div class="mr-2"> 
-                                    <img style="width:74px;height: 74px;object-fit: cover;" class="rounded-circle border p-1" src="https://photo-cms-sggp.zadn.vn/w580/Uploaded/2022/dqmbbcvo/2022_06_01/harrymaguire_htgg.jpg" alt="Generic placeholder image">
-                                </div>
-                                <div class="media-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                                    <small class="text-muted">Posted by Anonymous on 3/1/18</small>
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="media mb-3">
-                                <div class="mr-2"> 
-                                    <img class="rounded-circle border p-1" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2264%22%20height%3D%2264%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2064%2064%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_160c142c97c%20text%20%7B%20fill%3Argba(255%2C255%2C255%2C.75)%3Bfont-weight%3Anormal%3Bfont-family%3AHelvetica%2C%20monospace%3Bfont-size%3A10pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_160c142c97c%22%3E%3Crect%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%23777%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2213.5546875%22%20y%3D%2236.5%22%3E64x64%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" alt="Generic placeholder image">
-                                </div>
-                                <div class="media-body">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis et enim aperiam inventore, similique necessitatibus neque non! Doloribus, modi sapiente laboriosam aperiam fugiat laborum. Sequi mollitia, necessitatibus quae sint natus.</p>
-                                    <small class="text-muted">Posted by Anonymous on 3/1/18</small>
-                                </div>
-                            </div>
-                            <hr>
-                            <a href="#" class="btn hvr-hover">Để lại lời bình luận</a>
-                        </div>
+                            <button class="swp-btn" type="submit" value="CreateComment" name="btAction" style="
+                                    width: 140px;
+                                    height: 47px;
+                                    padding-bottom: -10;
+                                    padding-bottom: -10;
+                                    padding-bottom: 0px;
+                                    border-bottom-width: 200px;
+                                    margin-bottom: 20px;
+                                    padding-top: 0px;
+                                    margin-top: 0px;
+                                    padding-left: 0px;
+                                    padding-right: 0px;
+                                    margin-left: 20px;
+                                    margin-right: 0px;
+                                    ">
+                                Để lại lời bình luận
+                            </button>
+                            <div>
+                                <c:if test="${not empty requestScope.COMMENT_SUCCESS}">
+                                    <div id="msgSubmit" class="h3 text-center hidden" style="
+                                         margin-bottom: 20px;
+                                         ">${requestScope.COMMENT_SUCCESS}</div>
+                                </c:if>
+                            </div> 
+                            </form>
+                        </c:if>
+                        <c:if test="${checkLogin == null}">                                                            
+                            <button  id="swa1" class="swp-btn">
+                                Để lại lời bình luận
+                            </button>
+                        </c:if>
+
                     </div>
                 </div>
 
-                
+
 
             </div>
         </div>
@@ -539,6 +573,39 @@
         <a href="#" id="back-to-top" title="Back to top" style="display: none;">&uarr;</a>
 
         <!-- ALL JS FILES -->
+        <script>
+            document.getElementById('swa1').onclick =
+                    function () {
+                        swal({
+                            title: "Lưu ý!!!",
+                            text: "Bạn cần có tài khoản để sử dụng chức năng này!",
+                            icon: "warning",
+                            buttons: {
+                                cancel: "Hủy",
+                                login: {
+                                    text: "Đăng Nhập",
+                                    value: "login",
+                                },
+                                signup: {
+                                    text: "Đăng Ký",
+                                    value: "signup",
+                                },
+                            },
+                        })
+                                .then((login) => {
+                                    switch (login) {
+
+                                        case "login":
+                                            window.location = "login.jsp";
+                                            break;
+
+                                        case "signup":
+                                            window.location = "register.jsp";
+                                            break;
+                                    }
+                                });
+                    };
+        </script>
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/popper.min.js"></script>
         <script src="js/bootstrap.min.js"></script>
@@ -555,20 +622,17 @@
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
         <script>
-                                                    function add() {
-                                                        const x = document.getElementById('increase').value;
-                                                        document.getElementById('increase').value = Number(x) + 1;
-                                                    }
-
-                                                    function subtract() {
-                                                        const x = document.getElementById('increase').value;
-                                                        if (x == 1) {
-
-                                                        } else {
-                                                            document.getElementById('increase').value = Number(x) - 1;
-                                                        }
-
-                                                    }
+            function add() {
+                const x = document.getElementById('increase').value;
+                document.getElementById('increase').value = Number(x) + 1;
+            }
+            function subtract() {
+                const x = document.getElementById('increase').value;
+                if (x == 1) {
+                } else {
+                    document.getElementById('increase').value = Number(x) - 1;
+                }
+            }
         </script>
         <script src="js/sweetalert.min.js"></script>
         <script src="js/sweetalertAccWarning.js"></script>

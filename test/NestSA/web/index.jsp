@@ -143,7 +143,7 @@
                             <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
                             <li class="dropdown">
-                                <a href="ViewProductController" class="nav-link">Cửa hàng</a>
+                                <a href="ViewProductController" class="nav-link">Sản phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
@@ -443,14 +443,14 @@
         <div class="instagram-box">
             <div class="main-instagram owl-carousel owl-theme">
                 <c:forEach items="${sessionScope.VIEW_PRODUCT_INDEX}" var="o">
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img style="width: 320px; height: 225px" src="${o.image}" alt="Image" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="item">
+                        <div class="ins-inner-box">
+                            <img style="width: 320px; height: 225px" src="${o.image}" alt="Image" />
+                            <div class="hov-in">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
-                    </div>
-                </div>  
+                    </div>  
                 </c:forEach>
             </div>
         </div>
