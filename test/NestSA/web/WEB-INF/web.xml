@@ -8,6 +8,10 @@
         <servlet-name>SearchController</servlet-name>
         <servlet-class>controller.SearchController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewEditProductManagerController</servlet-name>
+        <servlet-class>controller.ViewEditProductManagerController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>SearchController</servlet-name>
         <url-pattern>/SearchController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewEditProductManagerController</servlet-name>
+        <url-pattern>/ViewEditProductManagerController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

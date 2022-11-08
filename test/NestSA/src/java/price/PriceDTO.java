@@ -24,6 +24,12 @@ public class PriceDTO {
         this.dateChange = dateChange;
     }
 
+    public PriceDTO(int price, int status, String dateChange) {
+        this.price = price;
+        this.status = status;
+        this.dateChange = dateChange;
+    }
+
     public PriceDTO(int price, int status, int productId, String dateChange) {
         this.price = price;
         this.status = status;

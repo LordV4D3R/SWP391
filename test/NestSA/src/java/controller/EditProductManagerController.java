@@ -5,7 +5,6 @@
  */
 package controller;
 
-import category.CategoryDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
@@ -23,8 +22,8 @@ import product.ProductDTO;
  *
  * @author Admin
  */
-@WebServlet(name = "UpdateProductManagerController", urlPatterns = {"/UpdateProductManagerController"})
-public class UpdateProductManagerController extends HttpServlet {
+@WebServlet(name = "EditProductManagerController", urlPatterns = {"/EditProductManagerController"})
+public class EditProductManagerController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
     private static final String SUCCESS = "ViewProductManagerController";
@@ -34,7 +33,7 @@ public class UpdateProductManagerController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-//            int id = Integer.parseInt(request.getParameter("id"));
+            int id = Integer.parseInt(request.getParameter("id"));
             String name = request.getParameter("name");
             int price = Integer.parseInt(request.getParameter("price"));
             int quantity = Integer.parseInt(request.getParameter("quantity"));
@@ -42,27 +41,25 @@ public class UpdateProductManagerController extends HttpServlet {
             String img = request.getParameter("image");
             String desc = request.getParameter("desc");
             int status = Integer.parseInt(request.getParameter("status"));
+            ProductDAO dao = new ProductDAO();
 
             Date today = new Date();
             SimpleDateFormat dateForm = new SimpleDateFormat("dd/MM/YYYY hh:mm aa");
             String date = dateForm.format(today);
 
-            ProductDAO dao = new ProductDAO();
             String categoryId = dao.getCategoryId(categoryName);
-            
-            dao.insertProduct(new ProductDTO(name, quantity, price, img, desc, categoryId ,categoryName, status));
-            int productId = dao.getProductId(name);
-            boolean check = dao.insertPrice(new PriceDTO(price, status, productId, date));
-            
-            ProductDTO product = new ProductDTO(name, quantity, price, img, desc, categoryName, status);
-            request.setAttribute("VIEW_PRODUCT_VER_FULL", product);
-            if(check) {
-                url = SUCCESS;
-            } else {
-                url = ERROR;
+            boolean checkUpdateProduct = dao.updateProduct(new ProductDTO(id, name, quantity, price, img, desc, categoryId, status));
+            boolean checkUpdatePrice = dao.updatePrice(new PriceDTO(price, status, id, date));
+
+            if (checkUpdateProduct) {
+                if (checkUpdatePrice) {
+                    ProductDTO product = new ProductDTO(name, quantity, price, img, desc, categoryName, status);
+                    request.setAttribute("VIEW_PRODUCT_VER_FULL", product);
+                    url = SUCCESS;
+                }
             }
         } catch (Exception e) {
-            log("Error at UpdateProductManagerController at: " + e.toString());
+            log("Error at EditProductManagerController at: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
