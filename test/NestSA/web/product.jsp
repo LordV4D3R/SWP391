@@ -189,33 +189,34 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                            
-                                            <c:forEach items="${VIEW_PRODUCT_VER_FULL}" var="o">
-                                                <tr>
-                                                    <td class="border w-1/2 py-2">${o.name}</td>
-                                                    <td class="border w-96 py-2">${o.quantity}</td>
-                                                    <td class="border w-1/4 py-2">${o.price}</td>
-                                                    <td class="border w-96 py-2">
-                                                        <i class="fas fa-check text-green-500 mx-2"></i>
-                                                        <i class="fas fa-times text-red-500 mx-2"></i>
-                                                    </td>
-                                                    <td class="border w-full py-2">
-                                                        <a
-                                                            class="bg-teal-300 rounded p-1 mx-1 text-white"
-                                                            href="MainController?btAction=UpdateProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description}&categoryId=${o.categoryId}&categoryName=${o.categoryName}&status=${o.status}"
-                                                            >
-                                                            <i class="fas fa-edit"></i
-                                                            ></a>
-                                                        <a
-                                                            onclick="handalModal('centeredModal', 'block')"
-                                                            class="bg-teal-300 rounded p-1 mx-1 text-red-500"
-                                                            href="#"
-                                                            >
-                                                            <i class="fas fa-trash"></i>
-                                                        </a>
-                                                    </td>
-                                                </tr>
-                                            </c:forEach>
+
+                                                <c:forEach items="${VIEW_PRODUCT_VER_FULL}" var="o">
+                                                    <tr>
+                                                        <td class="border w-1/2 py-2">${o.name}</td>
+                                                        <td class="border w-96 py-2">${o.quantity}</td>
+                                                        <td class="border w-1/4 py-2">${o.price}</td>
+                                                        <td class="border w-96 py-2">
+                                                            <!--c:if-->
+                                                            <i class="fas fa-check text-green-500 mx-2"></i>
+                                                            <i class="fas fa-times text-red-500 mx-2"></i>
+                                                        </td>
+                                                        <td class="border w-full py-2">
+                                                            <a
+                                                                class="bg-teal-300 rounded p-1 mx-1 text-white"
+                                                                href="MainController?btAction=ViewEditProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description}&categoryId=${o.categoryId}&categoryName=${o.categoryName}&status=${o.status}"
+                                                                >
+                                                                <i class="fas fa-edit"></i
+                                                                ></a>
+                                                            <a
+                                                                onclick="handalModal('centeredModal', 'block')"
+                                                                class="bg-teal-300 rounded p-1 mx-1 text-red-500"
+                                                                href="#"
+                                                                >
+                                                                <i class="fas fa-trash"></i>
+                                                            </a>
+                                                        </td>
+                                                    </tr>
+                                                </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -227,6 +228,7 @@
                     <!--/Main-->
                 </div>
                 <!-- modal -->
+
                 <div id="centeredModal" class="handModal">
                     <div class="overlay close-modal"></div>
                     <div class="modal modal-centered">
@@ -245,7 +247,7 @@
                             <!-- Modal content -->
                             <div class="flex justify-between">
                                 <span>Bạn có muốn xóa sản phẩm này không?</span>
-                                <a href="#" onclick="handalModal('centeredModal', 'none')"
+                                <a href="MainController?btAction=RemoveProductManager&id=${productId}&status=${status}" onclick="handalModal('centeredModal', 'none')"
                                    >Có<i class="fas fa-check text-green-500 mx-2"></i>
                                 </a>
                                 <a href="#" onclick="handalModal('centeredModal', 'none')"
@@ -269,9 +271,9 @@
 
         <script src="./main.js"></script>
         <script>
-                        function handalModal(id, display) {
-                            document.getElementById(id).style.display = display;
-                        }
+                                    function handalModal(id, display) {
+                                        document.getElementById(id).style.display = display;
+                                    }
         </script>
     </body>
 </html>

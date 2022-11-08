@@ -47,9 +47,9 @@ public class MainController extends HttpServlet {
     private static final String CONTACT = "Send";
     private static final String CONTACT_CONTROLLER = "ContactController";
     private static final String PURCHASE = "Purchase";
-    private static final String PURCHASE_CONTROLLER = "PurchaseController";  
+    private static final String PURCHASE_CONTROLLER = "PurchaseController";
     private static final String CREATE_COMMENT = "CreateComment";
-    private static final String CREATE_COMMENT_CONTROLLER = "CreateCommentController";    
+    private static final String CREATE_COMMENT_CONTROLLER = "CreateCommentController";
     private static final String UPDATE_PRODUCT_MANAGER = "UpdateProductManager";
     private static final String UPDATE_PRODUCT_MANAGER_CONTROLLER = "UpdateProductManagerController";
     private static final String VIEW_LIST_BLOG = "ViewListBlog";
@@ -58,7 +58,13 @@ public class MainController extends HttpServlet {
     private static final String VIEW_BLOG_CONTROLLER = "ViewBlogController";
     private static final String CREATE_BLOG = "CreateBlog";
     private static final String CREATE_BLOG_CONTROLLER = "CreateBlogController";
-    
+    private static final String EDIT_PRODUCT_MANAGER = "EditProductManager";
+    private static final String EDIT_PRODUCT_MANAGER_CONTROLLER = "EditProductManagerController";
+    private static final String VIEW_EDIT_PRODUCT_MANAGER = "ViewEditProductManager";
+    private static final String VIEW_EDIT_PRODUCT_MANAGER_CONTROLLER = "ViewEditProductManagerController";
+    private static final String REMOVE_PRODUCT_MANAGER = "RemoveProductManager";
+    private static final String REMOVE_PRODUCT_MANAGER_CONTROLLER = "RemoveProductManagerController";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -93,23 +99,27 @@ public class MainController extends HttpServlet {
                 url = SAVE_INFO_CONTROLLER;
             } else if (action.equals(CONTACT)) {
                 url = CONTACT_CONTROLLER;
-            }else if(action.equals(SAVE_INFO)){
-                url=SAVE_INFO_CONTROLLER;
+            } else if (action.equals(SAVE_INFO)) {
+                url = SAVE_INFO_CONTROLLER;
             } else if (action.equals(PURCHASE)) {
                 url = PURCHASE_CONTROLLER;
-            } else if (action.equals(CREATE_COMMENT)){
+            } else if (action.equals(CREATE_COMMENT)) {
                 url = CREATE_COMMENT_CONTROLLER;
             } else if (UPDATE_PRODUCT_MANAGER.equals(action)) {
                 url = UPDATE_PRODUCT_MANAGER_CONTROLLER;
             } else if (VIEW_LIST_BLOG.equals(action)) {
                 url = VIEW_LIST_BLOG_CONTROLLER;
-            } 
-            else if (VIEW_BLOG.equals(action)) {
+            } else if (VIEW_BLOG.equals(action)) {
                 url = VIEW_BLOG_CONTROLLER;
-            } 
-            else if (CREATE_BLOG.equals(action)) {
+            } else if (CREATE_BLOG.equals(action)) {
                 url = CREATE_BLOG_CONTROLLER;
-            } 
+            } else if (EDIT_PRODUCT_MANAGER.equals(action)) {
+                url = EDIT_PRODUCT_MANAGER_CONTROLLER;
+            } else if (VIEW_EDIT_PRODUCT_MANAGER.equals(action)) {
+                url = VIEW_EDIT_PRODUCT_MANAGER_CONTROLLER;
+            } else if (REMOVE_PRODUCT_MANAGER.equals(action)) {
+                url = REMOVE_PRODUCT_MANAGER_CONTROLLER;
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
