@@ -172,6 +172,12 @@
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
                                         >
                                         Product
+                                        <form class="flex">
+                                            <div class="p-2 rounded flex items-center bg-slate-200" style="width: 500px">
+                                                <input type="text" class="p-1 rounded outline-none flex-1" placeholder="Search product"/>
+                                            </div>
+                                            <button type="submit" class="pr-3" style="outline: none"><i class="fas fa-search mr-1"></i></button>
+                                        </form>
                                         <a href="add_edit_product.jsp" class="px-4 py-2 rounded block leading-7" id="add_product_swp" style="background-color: rgb(212 212 216);">Thêm sản phẩm mới</a>
                                     </div>
                                     <div class="p-3 ">
