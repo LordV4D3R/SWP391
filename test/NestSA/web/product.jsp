@@ -196,9 +196,12 @@
                                                         <td class="border w-96 py-2">${o.quantity}</td>
                                                         <td class="border w-1/4 py-2">${o.price}</td>
                                                         <td class="border w-96 py-2">
-                                                            <!--c:if-->
-                                                            <i class="fas fa-check text-green-500 mx-2"></i>
-                                                            <i class="fas fa-times text-red-500 mx-2"></i>
+                                                            <c:if test="${o.status == 1}">
+                                                                <i class="fas fa-check text-green-500 mx-2"></i>
+                                                            </c:if>
+                                                            <c:if test="${o.status == 0}">
+                                                                <i class="fas fa-times text-red-500 mx-2"></i>
+                                                            </c:if>
                                                         </td>
                                                         <td class="border w-full py-2">
                                                             <a
@@ -250,7 +253,7 @@
                                 <!--href="MainController?btAction=RemoveProductManager&id=${productId}"-->
                                 <!--onclick="handalModal('centeredModal', 'none')"-->
                                 <a   id="yes"
-                                   >Có<i class="fas fa-check text-green-500 mx-2"></i>
+                                     >Có<i class="fas fa-check text-green-500 mx-2"></i>
                                 </a>
                                 <a href="#" onclick="handalModal('centeredModal', 'none')"
                                    >Không<i class="fas fa-ban text-red-500 mx-2"></i
@@ -273,9 +276,9 @@
 
         <script src="./main.js"></script>
         <script>
-                                    function handalModal(id, display,pid) {
+                                    function handalModal(id, display, pid) {
                                         console.log(pid)
-                                        document.getElementById('yes').href='MainController?btAction=RemoveProductManager&id='+pid
+                                        document.getElementById('yes').href = 'MainController?btAction=RemoveProductManager&id=' + pid
                                         console.log(document.getElementById('yes'))
                                         document.getElementById(id).style.display = display;
                                     }

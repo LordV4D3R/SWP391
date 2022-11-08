@@ -25,6 +25,9 @@ public class OrderDAO {
     private static final String INSERT_ORDER_DETAIL = "INSERT INTO OrderDetails(productID, orderID, quantity, price) VALUES(?, ?, ?, ?)";
     private static final String GET_PRODUCT_QUANTITY = "SELECT quantity FROM product WHERE productID = ?";
     private static final String UPDATE_PRODUCT_QUANTITY = "UPDATE product SET quantity = ? WHERE productId = ?";
+    private static final String VIEW_ORDER_MANAGER = "SELECT ord.Reciever, ord.address, ord.phone, ord.date, ord.status, ord.shippingfee, ord.total, pro.name, detail.quantity, detail.price\n"
+            + "FROM orders ord, orderDetails detail, product pro\n"
+            + "WHERE ord.orderId = detail.orderId AND detail.productId = pro.productId";
 
     public int insertOrder(OrderDTO order) throws SQLException {
         int orderID = 0;
@@ -117,8 +120,9 @@ public class OrderDAO {
         }
         return check;
     }
-    
-    private static final String GUEST_ID = "SELECT userId FROM users WHERE phone = ?" ;
+
+    private static final String GUEST_ID = "SELECT userId FROM users WHERE phone = ?";
+
     public int checkUserId(String phone) throws SQLException, NamingException {
         Connection connection = null;
         PreparedStatement stm = null;
@@ -152,5 +156,5 @@ public class OrderDAO {
         }
         return userId;
     }
-        
+
 }
