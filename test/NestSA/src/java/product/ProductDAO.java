@@ -58,6 +58,7 @@ public class ProductDAO {
     private static final String REMOVE_PRODUCT_MANAGER = "UPDATE product "
             + "SET status = 0 "
             + "WHERE productId = ?";
+    private static final String VIEW_ORDER_MANAGER = "";
     
     public boolean removeProduct(ProductDTO product) throws SQLException {
         boolean check = false;
@@ -473,11 +474,11 @@ public class ProductDAO {
 
     }
 
-    public static void main(String[] args) throws SQLException {
-        ProductDAO dao = new ProductDAO();
-        List<ProductDTO> list = dao.ViewByCategory("C01");
-        for (ProductDTO dto : list) {
-            System.out.println(dto.toString());
-        }
-    }
+//    public static void main(String[] args) throws SQLException {
+//        ProductDAO dao = new ProductDAO();
+//        List<ProductDTO> list = dao.ViewByCategory("C01");
+//        for (ProductDTO dto : list) {
+//            System.out.println(dto.toString());
+//        }
+//    }
 }
