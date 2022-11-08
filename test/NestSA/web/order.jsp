@@ -209,13 +209,13 @@
                           id="order"
                           onclick="showOrder()"
                         >
-                          <td class="border w-1/5 py-2">Micheal Clarke</td>
-                          <td class="border w-1/4 py-2">HCM</td>
-                          <td class="border w-1/12 py-2">0378301007</td>
-                          <td class="border w-1/5 py-2">22/10</td>
-                          <td class="border w-1/12 py-2">Đang giao</td>
-                          <td class="border w-1/12 py-2">5000000</td>
-                          <td class="border w-1/5 py-2">50000000</td>
+                          <td class="border w-1/5 py-2">Micheal Clarke</td>receicer
+                          <td class="border w-1/4 py-2">HCM</td>address
+                          <td class="border w-1/12 py-2">0378301007</td>phone
+                          <td class="border w-1/5 py-2">22/10</td>date
+                          <td class="border w-1/12 py-2">Đang giao</td>status
+                          <td class="border w-1/12 py-2">5000000</td>shippingfee
+                          <td class="border w-1/5 py-2">50000000</td>total
                         </tr>
                         <!--  -->
                         <tr id="orderdetail" class="hide">
@@ -230,9 +230,9 @@
                               </thead>
                               <tbody>
                                 <tr>
-                                  <td class="border px-4 py-2">helloword</td>
-                                  <td class="border px-4 py-2">10</td>
-                                  <td class="border px-4 py-2">500</td>
+                                  <td class="border px-4 py-2">helloword</td>name
+                                  <td class="border px-4 py-2">10</td>quantity
+                                  <td class="border px-4 py-2">500</td>price
                                 </tr>
                               </tbody>
                             </table>
