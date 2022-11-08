@@ -68,7 +68,7 @@ public class ProductDAO {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(REMOVE_PRODUCT_MANAGER);
-                ptm.setInt(1, product.getStatus());
+           
                 ptm.setInt(2, product.getProductId());
                 check = ptm.executeUpdate() > 0;
             }
