@@ -1379,6 +1379,12 @@ pre code {
         flex: 0 0 16.666667%;
         max-width: 16.666667%
     }
+    
+     .col-lg-2-swp {
+        -ms-flex: 0 0 16.666667%;
+        flex: 0 0 41.66667%;
+        max-width: 41.66667%
+    }
 
     .col-lg-3 {
         -ms-flex: 0 0 25%;

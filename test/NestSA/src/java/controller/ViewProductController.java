@@ -43,14 +43,20 @@ public class ViewProductController extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
+            String page=request.getParameter("page");
+            if(page==null){
+                page="1";
+            }
+            int pageActive=Integer.parseInt(page);
             boolean checkValidation = true;
             ProductDAO dao = new ProductDAO();
             CategoryDAO cDao = new CategoryDAO();
             while (checkValidation) {
                 checkValidation = true;
-                List<ProductDTO> listProduct = dao.viewProduct();
+                List<ProductDTO> listProduct = dao.pagination(pageActive);
                 if (listProduct.size() > 0) {
                     request.setAttribute("VIEW_PRODUCT", listProduct);
+                    request.setAttribute("ACTIVE_PAGE", pageActive);
                     checkValidation = false;
                     url = SUCCESS;
                 }

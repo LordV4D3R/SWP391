@@ -219,20 +219,36 @@
         <!-- Start Categories  -->
         <div class="categories-shop">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                <div class="title-all text-center">
+                    <h1>Phân loại</h1>
+
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-lg-2-swp col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
                             <img class="img-fluid" src="images/category-01.jpg" alt="" />
                             <a class="btn hvr-hover" href="#">Yến chưng sẵn</a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-lg-2-swp col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
                             <img class="img-fluid" src="images/category-02.jpg" alt="" />
                             <a class="btn hvr-hover" href="#">Yến thô</a>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-lg-2-swp col-md-4 col-sm-12 col-xs-12">
+                        <div class="shop-cat-box">
+                            <img class="img-fluid" src="images/category-03.jpg" alt="" />
+                            <a class="btn hvr-hover" href="#">Yến tinh chế</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2-swp col-md-4 col-sm-12 col-xs-12">
+                        <div class="shop-cat-box">
+                            <img class="img-fluid" src="images/category-03.jpg" alt="" />
+                            <a class="btn hvr-hover" href="#">Yến tinh chế</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-2-swp col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
                             <img class="img-fluid" src="images/category-03.jpg" alt="" />
                             <a class="btn hvr-hover" href="#">Yến tinh chế</a>
@@ -250,111 +266,68 @@
                     <div class="col-lg-12">
                         <div class="title-all text-center">
                             <h1>Sản phẩm</h1>
-                            <p>Các sản phẩm được mọi người tin dùng</p>
+                            <p>Các sản phẩm bán chạy</p>
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="special-menu text-center">
-                            <div class="button-group filter-button-group">
-                                <button class="active" data-filter="*">Tất cả</button>
-                                <button data-filter=".top-featured">Mới nhất</button>
-                                <button data-filter=".best-seller">Bán chạy nhất</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
 
                 <div class="row special-list">
                     <div class="col-lg-3 col-md-6 special-grid best-seller">
-                        <div class="products-single fix">
-                            <div class="box-img-hover">
-                                <div class="type-lb">
-                                    <p class="sale">Sale</p>
+                        <a href="#">
+                            <div class="products-single fix">
+                                <div class="box-img-hover">
+                                    <img src="images/img-pro-01.jpg" class="img-fluid" alt="Image">
                                 </div>
-                                <img src="images/img-pro-01.jpg" class="img-fluid" alt="Image">
-                                <div class="mask-icon">
-                                    <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Xem"><i
-                                                    class="fas fa-eye"></i></a></li>
-                                    </ul>
-                                    <a class="cart" href="#">Thêm</a>
+                                <div class="why-text">
+                                    <h4>Lorem ipsum dolor sit amet</h4>
+                                    <h5> $7.79</h5>
                                 </div>
                             </div>
-                            <div class="why-text">
-                                <h4>Lorem ipsum dolor sit amet</h4>
-                                <h5> $7.79</h5>
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-lg-3 col-md-6 special-grid top-featured">
-                        <div class="products-single fix">
-                            <div class="box-img-hover">
-                                <div class="type-lb">
-                                    <p class="new">New</p>
+                        <a href="#">
+                            <div class="products-single fix">
+                                <div class="box-img-hover">                               
+                                    <img src="images/img-pro-02.jpg" class="img-fluid" alt="Image">                           
                                 </div>
-                                <img src="images/img-pro-02.jpg" class="img-fluid" alt="Image">
-                                <div class="mask-icon">
-                                    <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Xem"><i
-                                                    class="fas fa-eye"></i></a></li>
-
-                                    </ul>
-                                    <a class="cart" href="#">Thêm</a>
+                                <div class="why-text">
+                                    <h4>Lorem ipsum dolor sit amet</h4>
+                                    <h5> $9.79</h5>
                                 </div>
                             </div>
-                            <div class="why-text">
-                                <h4>Lorem ipsum dolor sit amet</h4>
-                                <h5> $9.79</h5>
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-lg-3 col-md-6 special-grid top-featured">
-                        <div class="products-single fix">
-                            <div class="box-img-hover">
-                                <div class="type-lb">
-                                    <p class="sale">Sale</p>
+                        <a href="#">
+                            <div class="products-single fix">
+                                <div class="box-img-hover">                               
+                                    <img src="images/img-pro-03.jpg" class="img-fluid" alt="Image">                              
                                 </div>
-                                <img src="images/img-pro-03.jpg" class="img-fluid" alt="Image">
-                                <div class="mask-icon">
-                                    <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Xem"><i
-                                                    class="fas fa-eye"></i></a></li>
-                                    </ul>
-                                    <a class="cart" href="#">Thêm</a>
+                                <div class="why-text">
+                                    <h4>Lorem ipsum dolor sit amet</h4>
+                                    <h5> $10.79</h5>
                                 </div>
                             </div>
-                            <div class="why-text">
-                                <h4>Lorem ipsum dolor sit amet</h4>
-                                <h5> $10.79</h5>
-                            </div>
-                        </div>
+                        </a>
                     </div>
 
                     <div class="col-lg-3 col-md-6 special-grid best-seller">
-                        <div class="products-single fix">
-                            <div class="box-img-hover">
-                                <div class="type-lb">
-                                    <p class="sale">Sale</p>
-                                </div>
-                                <img src="images/img-pro-04.jpg" class="img-fluid" alt="Image">
-                                <div class="mask-icon">
-                                    <ul>
-                                        <li><a href="#" data-toggle="tooltip" data-placement="right" title="Xem"><i
-                                                    class="fas fa-eye"></i></a></li>
+                        <a href="#">
+                            <div class="products-single fix">
+                                <div class="box-img-hover">
 
-                                    </ul>
-                                    <a class="cart" href="#">Thêm</a>
+                                    <img src="images/img-pro-04.jpg" class="img-fluid" alt="Image">                                
+                                </div>
+                                <div class="why-text">
+                                    <h4>Lorem ipsum dolor sit amet</h4>
+                                    <h5> $15.79</h5>
                                 </div>
                             </div>
-                            <div class="why-text">
-                                <h4>Lorem ipsum dolor sit amet</h4>
-                                <h5> $15.79</h5>
-                            </div>
-                        </div>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -446,9 +419,7 @@
                     <div class="item">
                         <div class="ins-inner-box">
                             <img style="width: 320px; height: 225px" src="${o.image}" alt="Image" />
-                            <div class="hov-in">
-                                <a href="#"><i class="fab fa-instagram"></i></a>
-                            </div>
+                           
                         </div>
                     </div>  
                 </c:forEach>
