@@ -208,7 +208,7 @@
                                                                 <i class="fas fa-edit"></i
                                                                 ></a>
                                                             <a
-                                                                onclick="handalModal('centeredModal', 'block')"
+                                                                onclick="handalModal('centeredModal', 'block',${o.productId})"
                                                                 class="bg-teal-300 rounded p-1 mx-1 text-red-500"
                                                                 href="#"
                                                                 >
@@ -247,13 +247,15 @@
                             <!-- Modal content -->
                             <div class="flex justify-between">
                                 <span>Bạn có muốn xóa sản phẩm này không?</span>
-                                <a href="MainController?btAction=RemoveProductManager&id=${productId}&status=${status}" onclick="handalModal('centeredModal', 'none')"
+                                <!--href="MainController?btAction=RemoveProductManager&id=${productId}"-->
+                                <!--onclick="handalModal('centeredModal', 'none')"-->
+                                <a   id="yes"
                                    >Có<i class="fas fa-check text-green-500 mx-2"></i>
                                 </a>
                                 <a href="#" onclick="handalModal('centeredModal', 'none')"
                                    >Không<i class="fas fa-ban text-red-500 mx-2"></i
                                     ></a>
-                            </div>
+                            </div>        
                         </div>
                     </div>
                 </div>
@@ -271,7 +273,10 @@
 
         <script src="./main.js"></script>
         <script>
-                                    function handalModal(id, display) {
+                                    function handalModal(id, display,pid) {
+                                        console.log(pid)
+                                        document.getElementById('yes').href='MainController?btAction=RemoveProductManager&id='+pid
+                                        console.log(document.getElementById('yes'))
                                         document.getElementById(id).style.display = display;
                                     }
         </script>

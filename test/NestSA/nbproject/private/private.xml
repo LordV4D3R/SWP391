@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
+            <file>file:/C:/Users/thangbv/OneDrive/Desktop/swp/SWP391/test/NestSA/web/index.jsp</file>
+=======
             <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/controller/UpdateProductManagerController.java</file>
             <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/web/edit_product.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/web/product.jsp</file>
             <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/price/PriceDTO.java</file>
             <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/product/ProductDAO.java</file>
             <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/controller/EditProductManagerController.java</file>
+>>>>>>> 5a5bcbecb1d4d99c7c1996a0509311d2f109964b
         </group>
     </open-files>
 </project-private>
