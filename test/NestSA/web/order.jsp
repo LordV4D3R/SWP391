@@ -206,11 +206,7 @@
                                             </thead>
                                             <tbody>
                                                 <c:forEach items="${VIEW_ORDER_VER_FULL}" var="o">
-                                                    <tr
-                                                        class="cursor-pointer row-info"
-                                                        id="order"
-                                                        onclick="showOrder()"
-                                                        >
+                                                    <tr class="cursor-pointer row-info" id="order" data-href="MainController?name=ViewProductDetailManagerController&id=${o.orderId}">
                                                         <td class="border w-1/5 py-2">${o.receiver}</td>
                                                         <td class="border w-1/4 py-2">${o.address}</td>
                                                         <td class="border w-1/12 py-2">${o.phone}</td>
@@ -244,16 +240,15 @@
 
         <script src="./main.js"></script>
         <script>
-                                  function showOrder() {
-                                      const check = document.getElementById("orderdetail");
-                                      if (check.classList.contains("hide")) {
-                                          check.classList.remove("hide");
-                                          check.classList.add("show");
-                                      } else {
-                                          check.classList.remove("show");
-                                          check.classList.add("hide");
-                                      }
-                                  }
+            function linkRow(){
+                const rows=document.querySelectorAll("tr[data-href]");
+                rows.forEach(row=>{
+                    row.addEventListener("click",()=>{
+                        window.location.href=row.dataset.href;
+                    });
+                });
+            }
+                                    document.addEventListener("DOMContentLoaded",linkRow());
         </script>
     </body>
 </html>
