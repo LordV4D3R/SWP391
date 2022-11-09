@@ -31,10 +31,9 @@ public class RemoveProductManagerController extends HttpServlet {
         String url = ERROR;
         try {
             int id = Integer.parseInt(request.getParameter("id"));
-            int status = Integer.parseInt(request.getParameter("status"));
 
             ProductDAO dao = new ProductDAO();
-            boolean checkRemove = dao.removeProduct(new ProductDTO(id, status));
+            boolean checkRemove = dao.removeProduct(new ProductDTO(id));
             
             if (checkRemove) {
                 url = SUCCESS;

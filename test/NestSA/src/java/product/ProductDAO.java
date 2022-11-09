@@ -58,7 +58,6 @@ public class ProductDAO {
     private static final String REMOVE_PRODUCT_MANAGER = "UPDATE product "
             + "SET status = 0 "
             + "WHERE productId = ?";
-    private static final String VIEW_ORDER_MANAGER = "";
     
     public boolean removeProduct(ProductDTO product) throws SQLException {
         boolean check = false;
@@ -69,8 +68,7 @@ public class ProductDAO {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(REMOVE_PRODUCT_MANAGER);
-           
-                ptm.setInt(2, product.getProductId());
+                ptm.setInt(1, product.getProductId());
                 check = ptm.executeUpdate() > 0;
             }
         } catch (Exception e) {

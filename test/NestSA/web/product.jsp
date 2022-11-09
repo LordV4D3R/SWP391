@@ -172,11 +172,11 @@
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
                                         >
                                         Product
-                                        <form class="flex">
+                                        <form class="flex" action="MainController">
                                             <div class="p-2 rounded flex items-center bg-slate-200" style="width: 500px">
-                                                <input type="text" class="p-1 rounded outline-none flex-1" placeholder="Search product"/>
+                                                <input type="text" class="p-1 rounded outline-none flex-1" placeholder="Search product" name="search"/>
                                             </div>
-                                            <button type="submit" class="pr-3" style="outline: none"><i class="fas fa-search mr-1"></i></button>
+                                            <button type="submit" name="btAction" value="SearchProductManager" class="pr-3" style="outline: none"><i class="fas fa-search mr-1"></i></button>
                                         </form>
                                         <a href="add_edit_product.jsp" class="px-4 py-2 rounded block leading-7" id="add_product_swp" style="background-color: rgb(212 212 216);">Thêm sản phẩm mới</a>
                                     </div>
@@ -202,9 +202,12 @@
                                                         <td class="border w-96 py-2">${o.quantity}</td>
                                                         <td class="border w-1/4 py-2">${o.price}</td>
                                                         <td class="border w-96 py-2">
-                                                            <!--c:if-->
-                                                            <i class="fas fa-check text-green-500 mx-2"></i>
-                                                            <i class="fas fa-times text-red-500 mx-2"></i>
+                                                            <c:if test="${o.status == 1}">
+                                                                <i class="fas fa-check text-green-500 mx-2"></i>
+                                                            </c:if>
+                                                            <c:if test="${o.status == 0}">
+                                                                <i class="fas fa-times text-red-500 mx-2"></i>
+                                                            </c:if>
                                                         </td>
                                                         <td class="border w-full py-2">
                                                             <a

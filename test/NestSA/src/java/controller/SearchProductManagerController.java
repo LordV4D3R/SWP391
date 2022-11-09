@@ -13,33 +13,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import order.OrderDAO;
-import order.OrderDTO;
+import product.ProductDAO;
+import product.ProductDTO;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ViewOrderManagerController", urlPatterns = {"/ViewOrderManagerController"})
-public class ViewOrderManagerController extends HttpServlet {
+@WebServlet(name = "SearchProductManagerController", urlPatterns = {"/SearchProductManagerController"})
+public class SearchProductManagerController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "order.jsp";
+    private static final String SUCCESS = "product.jsp";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            OrderDAO dao = new OrderDAO();
-            List<OrderDTO> order = dao.viewOrder();
-            if (order.size() > 0) {
-                request.setAttribute("VIEW_ORDER_VER_FULL", order);
+            String search = request.getParameter("search");
+            ProductDAO dao = new ProductDAO();
+            List<ProductDTO> listProduct = dao.getListProduct(search);
+            if (listProduct.size() > 0) {
+                request.setAttribute("VIEW_PRODUCT_VER_FULL", listProduct);
                 url = SUCCESS;
             }
         } catch (Exception e) {
-            log("Error at ViewOrderManagerController at: " + e.toString());
+            log("Error at SearchProductManagerController at: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
