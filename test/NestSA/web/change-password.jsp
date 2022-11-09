@@ -62,7 +62,7 @@
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${checkLogin.fullName}</a></li>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
                                     <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>
@@ -207,27 +207,15 @@
          </div> -->
         <!-- End Top Search -->
 
-        <!-- Start Top Search -->
-        <div class="top-search">
-            <div class="container">
-                <div class="input-group">
-                    <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                    <input type="text" class="form-control" placeholder="Search">
-                    <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                </div>
-            </div>
-        </div>
-        <!-- End Top Search -->
-
         <!-- Start All Title Box -->
         <div class="all-title-box">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>Tài khoản</h2>
+                        <h2>Thay đổi mật khẩu</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Của hàng</a></li>
-                            <li class="breadcrumb-item active">Tài khoản</li>
+                            <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
+                            <li class="breadcrumb-item active"> Liên hệ </li>
                         </ul>
                     </div>
                 </div>
@@ -235,185 +223,67 @@
         </div>
         <!-- End All Title Box -->
 
-        <!-- Start My Account  -->
-        <div class="my-account-box-main">
+        <!-- Start Contact Us  -->
+        <div class="contact-box-main">
             <div class="container">
-                <form action="MainController" method="POST">   
-                    <div class="my-account-page">
-                        <div id="msgSubmit" class="h3 text-center hidden">Xin chào ${checkLogin.fullName}</div>
-                        <div class="row">
-                            <div class="col-lg-4 col-md-12">
-                                <div class="account-box">
-                                    <div class="service-box">                                    
-                                        <div class="service-icon">                                           
-                                            <a href="user-profile.jsp"> <i class="fa fa-gift"></i> </a>
+                <div class="row">
+
+                    <div class="col-lg-8 col-sm-12">
+                        <div class="contact-form-right">
+                            <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
+
+                            <form action="MainController" method="POST">
+                                <c:set var="errors" value="${requestScope.INSERT_CONTACT_ERRORS}"/>
+                                <div class="row">
+                                    <c:if test="${checkLogin == null}">
+                                        <div id="msgSubmit" class="h3 text-center hidden">Bạn cần phải đăng nhập hoặc đăng ký để sử dụng tính năng này</div>
+                                    </c:if>
+
+                                    <c:if test="${checkLogin != null}">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h2>Username: </h2>
+                                                <input  class="form-control" id="username" type="text" name="userName" value="${sessionScope.LOGIN_USER.userName}" readonly/>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
                                         </div>
-                                        <div class="service-desc">
-                                            <a href="user-profile.jsp"> <h4>Thông tin tài khoản</h4></a>
-                                            <p>Tên, địa chỉ, email, số điện thoại.</p>
-                                        </div>                                    
-                                    </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h2>Nhập mật khẩu cũ:</h2>
+                                                <input type="text" placeholder="Mật khẩu cũ" id="email"  class="form-control" name="emailContact">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h2>Nhập mật khẩu mới</h2>
+                                                <input type="text" class="form-control" id="subject"  name="phoneContact" placeholder="Nhập mật khẩu mới">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h2>Nhập lại mật khẩu mới</h2>
+                                                <input type="text" class="form-control" id="subject"  name="phoneContact" placeholder="Nhập lại mật khẩu mới">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="submit-button text-center">                                               
+                                                <button class="btn hvr-hover" id="submit" value="Send" name="btAction" type="submit">Thay đổi mật khẩu</button>
+                                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </c:if>
                                 </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12">
-                                <div class="account-box">
-                                    <div class="service-box">
-                                        <div class="service-icon">
-                                            <a href="change-password.jsp"><i class="fa fa-lock"></i> </a>
-                                        </div>
-                                        <div class="service-desc">
-                                            <a href="user-profile.jsp"> <h4>Đăng nhập &amp; bảo mật </h4></a>
-                                            <p>Thay đổi mật khẩu</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12">
-                                <div class="account-box">
-                                    <div class="service-box">
-                                        <div class="service-icon">
-                                            <a href="#"> <i class="fa fa-location-arrow"></i> </a>
-                                        </div>
-                                        <div class="service-desc">
-                                            <h4>Địa chỉ</h4>
-                                            <p>Cài đặt địa chỉ nhận hàng</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>                        
-                            <div class="col-lg-4 col-md-12">
-                                <div class="account-box">
-                                    <div class="service-box">
-                                        <div class="service-icon">
-                                            <a href="#"> <i class="fa fa-credit-card"></i> </a>
-                                        </div>
-                                        <div class="service-desc">
-                                            <h4>Phương thức thanh toán</h4>
-                                            <p>Cài đặt và tuỳ chỉnh phương thức thanh toán</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <!--
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="account-box">
-                                                            <div class="service-box">
-                                                                <div class="service-icon">
-                                                                    <a href="#"> <i class="fab fa-paypal"></i> </a>
-                                                                </div>
-                                                                <div class="service-desc">
-                                                                    <h4>PayPal</h4>
-                                                                    <p>Xem các lợi ích và cài đặt thanh toán</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="account-box">
-                                                            <div class="service-box">
-                                                                <div class="service-icon">
-                                                                    <a href="#"> <i class="fab fa-amazon"></i> </a>
-                                                                </div>
-                                                                <div class="service-desc">
-                                                                    <h4>Amazon Pay balance</h4>
-                                                                    <p>Nạp tiền vào số dứ</p>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>-->
+                            </form>
                         </div>
-                        <!--                    <div class="bottom-box">
-                                                <div class="row">-->
-                        <!--                            <div class="col-lg-4 col-md-12">
-                                                        <div class="account-box">
-                                                            <div class="service-box">
-                                                                <div class="service-desc">
-                                                                    <h4>Gold &amp; Diamond Jewellery</h4>
-                                                                    <ul>
-                                                                        <li> <a href="#">Apps and more</a> </li>
-                                                                        <li> <a href="#">Content and devices</a> </li>
-                                                                        <li> <a href="#">Music settings</a> </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>-->
-                        <!--                            <div class="col-lg-4 col-md-12">
-                                                        <div class="account-box">
-                                                            <div class="service-box">
-                                                                <div class="service-desc">
-                                                                    <h4>Handloom &amp; Handicraft Store</h4>
-                                                                    <ul>
-                                                                        <li> <a href="#">Advertising preferences </a> </li>
-                                                                        <li> <a href="#">Communication preferences</a> </li>
-                                                                        <li> <a href="#">SMS alert preferences</a> </li>
-                                                                        <li> <a href="#">Message center</a> </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>-->
-                        <!--                            <div class="col-lg-4 col-md-12">
-                                                        <div class="account-box">
-                                                            <div class="service-box">
-                                                                <div class="service-desc">
-                                                                    <h4>The Designer Boutique</h4>
-                                                                    <ul>
-                                                                        <li> <a href="#">Amazon Pay</a> </li>
-                                                                        <li> <a href="#">Bank accounts for refunds</a> </li>
-                                                                        <li> <a href="#">Coupons</a> </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="account-box">
-                                                            <div class="service-box">
-                                                                <div class="service-desc">
-                                                                    <h4>Hộp quà tặng, Thẻ quà tặng, Thiệp chúc mừng</h4>
-                                                                    <ul>
-                                                                        <li> <a href="#">Phản hồi</a> </li>
-                                                                        <li> <a href="#">Danh sách</a> </li>
-                                                                        <li> <a href="#">Ảnh giấy tờ tuỳ thân</a> </li>
-                                                                        <li> <a href="#">Hồ sơ</a> </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="account-box">
-                                                            <div class="service-box">
-                                                                <div class="service-desc">
-                                                                    <h4>Các tài khoản khác</h4>
-                                                                    <ul>
-                                                                        <li> <a href="#">Dịch vụ web của Amazon</a> </li>
-                                                                        <li> <a href="#">Đăng nhập bằng Amazon</a> </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-lg-4 col-md-12">
-                                                        <div class="account-box">
-                                                            <div class="service-box">
-                                                                <div class="service-desc">
-                                                                    <h4>Các chương trình mua sắm và cho thuê</h4>
-                                                                    <ul>
-                                                                        <li> <a href="#">Đăng ký theo dõi &amp; lưu</a> </li>
-                                                                    </ul>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>-->
-                        <!--                        </div>
-                                            </div>-->
                     </div>
-                </form>
+                </div>
             </div>
         </div>
-        <!-- End My Account -->
+        <!-- End Cart -->
 
         <!-- Start Instagram Feed  -->
         <div class="instagram-box">

@@ -4,7 +4,7 @@
     Author     : thangbv
 --%>
 
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +12,7 @@
 
     <head>
         <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
         <!-- Mobile Metas -->
@@ -315,28 +316,28 @@
                         <div class="card-header">
                             <h2>Bình luận về sản phẩm</h2>
                         </div>
-                        <div class="card-body">    
-                            <c:set var="cmt" scope="session" value="${sessionScope.COMMENT_RESULT}"/>
-                            <c:if test="${cmt != null}">
-                                <c:forEach items="${cmt}" var="cmtdto">                                
-                                    <div class="media mb-3">
-                                        <div class="mr-2"> 
-                                            <img style="width:74px;height: 74px;object-fit: cover;" class="rounded-circle border p-1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRWyuu0DuWwHd1o25ckVO098q3TDZtGC7EP4MCRpIu7cZ83PeS5pey8jp2jD5x1jTs6EI&usqp=CAU" alt="Generic placeholder image">
+                        <form action="MainController" method="POST">                                 
+                            <div class="card-body">    
+                                <c:set var="cmt" scope="session" value="${sessionScope.COMMENT_RESULT}"/>
+                                <c:if test="${cmt != null}">
+                                    <c:forEach items="${cmt}" var="cmtdto">                                
+                                        <div class="media mb-3">
+                                            <div class="mr-2"> 
+                                                <img style="width:74px;height: 74px;object-fit: cover;" class="rounded-circle border p-1" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQRWyuu0DuWwHd1o25ckVO098q3TDZtGC7EP4MCRpIu7cZ83PeS5pey8jp2jD5x1jTs6EI&usqp=CAU" alt="Generic placeholder image">
+                                            </div>
+                                            <div class="media-body">
+                                                <p>${cmtdto.comment}</p>
+                                                <small class="text-muted">Posted by Anonymous on 3/1/18</small>
+                                            </div>
                                         </div>
-                                        <div class="media-body">
-                                            <p>${cmtdto.comment}</p>
-                                            <small class="text-muted">Posted by Anonymous on 3/1/18</small>
-                                        </div>
-                                    </div>
+                                        <hr>
+                                    </c:forEach>
+                                </c:if>
+                                <c:if test="${cmt == null}">
+                                    <p>   Hiện chưa có ai bình luận về sản phẩm này. Hãy là người đầu tiên bình luận</p>
                                     <hr>
-                                </c:forEach>
-                            </c:if>
-                            <c:if test="${cmt == null}">
-                                <p>   Hiện chưa có ai bình luận về sản phẩm này. Hãy là người đầu tiên bình luận</p>
-                                <hr>
-                            </c:if>                           
-                            <c:if test="${checkLogin != null}">                                
-                                <form action="MainController" method="POST">                                 
+                                </c:if>                           
+                                <c:if test="${checkLogin != null}">                                
                                     <input type="hidden" name="userIdComment" value="${checkLogin.userId}"/>
                                     <input type="hidden" name="id" value="${sessionScope.PRODUCT.productId}">
                                     <textarea
@@ -349,39 +350,38 @@
                                         placeholder="Bình luận của bạn..."
                                         required
                                         user            ></textarea>
-                            </div>
-                            <button class="swp-btn" type="submit" value="CreateComment" name="btAction" style="
-                                    width: 140px;
-                                    height: 47px;
-                                    padding-bottom: -10;
-                                    padding-bottom: -10;
-                                    padding-bottom: 0px;
-                                    border-bottom-width: 200px;
-                                    margin-bottom: 20px;
-                                    padding-top: 0px;
-                                    margin-top: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    margin-left: 20px;
-                                    margin-right: 0px;
-                                    ">
-                                Để lại lời bình luận
-                            </button>
-                            <div>
-                                <c:if test="${not empty requestScope.COMMENT_SUCCESS}">
-                                    <div id="msgSubmit" class="h3 text-center hidden" style="
-                                         margin-bottom: 20px;
-                                         ">${requestScope.COMMENT_SUCCESS}</div>
-                                </c:if>
-                            </div> 
-                            </form>
-                        </c:if>
-                        <c:if test="${checkLogin == null}">                                                            
-                            <button  id="swa1" class="swp-btn">
-                                Để lại lời bình luận
-                            </button>
-                        </c:if>
-
+                                </div>
+                                <button class="swp-btn" type="submit" value="CreateComment" name="btAction" style="
+                                        width: 140px;
+                                        height: 47px;
+                                        padding-bottom: -10;
+                                        padding-bottom: -10;
+                                        padding-bottom: 0px;
+                                        border-bottom-width: 200px;
+                                        margin-bottom: 20px;
+                                        padding-top: 0px;
+                                        margin-top: 0px;
+                                        padding-left: 0px;
+                                        padding-right: 0px;
+                                        margin-left: 20px;
+                                        margin-right: 0px;
+                                        ">
+                                    Để lại lời bình luận
+                                </button>
+                                <div>
+                                    <c:if test="${not empty requestScope.COMMENT_SUCCESS}">
+                                        <div id="msgSubmit" class="h3 text-center hidden" style="
+                                             margin-bottom: 20px;
+                                             ">${requestScope.COMMENT_SUCCESS}</div>
+                                    </c:if>
+                                </div> 
+                            </c:if>
+                            <c:if test="${checkLogin == null}">                                                            
+                                <button  id="swa1" class="swp-btn">
+                                    Để lại lời bình luận
+                                </button>
+                            </c:if>
+                        </form>
                     </div>
                 </div>
 

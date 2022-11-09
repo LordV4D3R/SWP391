@@ -1,6 +1,6 @@
 <%-- 
-    Document   : my-account
-    Created on : Sep 27, 2022, 12:45:52 PM
+    Document   : contact-us
+    Created on : Sep 27, 2022, 12:42:20 PM
     Author     : thangbv
 --%>
 
@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>NestSongAn Landing Page</title>
+        <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -62,7 +62,7 @@
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${checkLogin.fullName}</a></li>
                                     <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>
@@ -82,8 +82,7 @@
                                             Tài khoản
                                         </button>
                                     </li>
-
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -138,20 +137,12 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
-                            <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle arrow" data-toggle="dropdown">Cửa hàng</a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="shop.jsp">Sản phẩm</a></li>
-                                    <li><a href="shop-detail.jsp">Chi tiết sản phẩm</a></li>
-                                    <li><a href="cart.jsp">Giỏ hàng</a></li>
-                                    <li><a href="checkout.jsp">Thanh toán</a></li>
-                                    <li><a href="my-account.jsp">Tài khoản</a></li>
-                                    <li><a href="wishlist.jsp">Wishlist</a></li>
-                                </ul>
+                            <li class="dropdown">
+                                <a href="ViewProductController" class="nav-link">Sản phẩm</a>
                             </li>
-                            <li class="nav-item active"><a class="nav-link" href="gallery.jsp">Danh sách sản phẩm</a></li>
+                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>
@@ -162,7 +153,7 @@
                         <ul>
                             <li class="side-menu">
                                 <a href="cart.jsp">
-                                    <i class="fa fa-shopping-bag"></i>
+                                    <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>Giỏ hàng</p>
                                 </a>
@@ -172,37 +163,49 @@
                     <!-- End Atribute Navigation -->
                 </div>
                 <!-- Start Side Menu -->
-                <div class="side">
-                    <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                    <li class="cart-box">
-                        <ul class="cart-list">
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Delica omtantur </a></h6>
-                                <p>1x - <span class="price">$80.00</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Omnes ocurreret</a></h6>
-                                <p>1x - <span class="price">$60.00</span></p>
-                            </li>
-                            <li>
-                                <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                                <h6><a href="#">Agam facilisis</a></h6>
-                                <p>1x - <span class="price">$40.00</span></p>
-                            </li>
-                            <li class="total">
-                                <a href="#" class="btn btn-default hvr-hover btn-cart">Xem giỏ hàng</a>
-                                <span class="float-right"><strong>Tổng tiền:</strong>: $180.00</span>
-                            </li>
-                        </ul>
-                    </li>
-                </div>
+                <!--      <div class="side">
+                          <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                          <li class="cart-box">
+                              <ul class="cart-list">
+                                  <li>
+                                      <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                                      <h6><a href="#">Delica omtantur </a></h6>
+                                      <p>1x - <span class="price">$80.00</span></p>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                                      <h6><a href="#">Omnes ocurreret</a></h6>
+                                      <p>1x - <span class="price">$60.00</span></p>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                                      <h6><a href="#">Agam facilisis</a></h6>
+                                      <p>1x - <span class="price">$40.00</span></p>
+                                  </li>
+                                  <li class="total">
+                                      <a href="#" class="btn btn-default hvr-hover btn-cart">Giỏ hàng</a>
+                                      <span class="float-right"><strong>Total</strong>: $180.00</span>
+                                  </li>
+                              </ul>
+                          </li>
+                      </div> -->
                 <!-- End Side Menu -->
             </nav>
             <!-- End Navigation -->
         </header>
         <!-- End Main Top -->
+
+        <!-- Start Top Search -->
+        <!-- <div class="top-search">
+             <div class="container">
+                 <div class="input-group">
+                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                     <input type="text" class="form-control" placeholder="Search">
+                     <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                 </div>
+             </div>
+         </div> -->
+        <!-- End Top Search -->
 
         <!-- Start Top Search -->
         <div class="top-search">
@@ -235,175 +238,179 @@
         <!-- Start My Account  -->
         <div class="my-account-box-main">
             <div class="container">
-                <div class="my-account-page">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-12">
-                            <div class="account-box">
-                                <div class="service-box">
-                                    <div class="service-icon">
-                                        <a href="#"> <i class="fa fa-gift"></i> </a>
-                                    </div>
-                                    <div class="service-desc">
-                                        <h4>Đơn hàng</h4>
-                                        <p>Track, return, or buy things again</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="account-box">
-                                <div class="service-box">
-                                    <div class="service-icon">
-                                        <a href="#"><i class="fa fa-lock"></i> </a>
-                                    </div>
-                                    <div class="service-desc">
-                                        <h4>Đăng nhập &amp; bảo mật </h4>
-                                        <p>Cài đặt đăng nhập, tên, và số điện thoại</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="account-box">
-                                <div class="service-box">
-                                    <div class="service-icon">
-                                        <a href="#"> <i class="fa fa-location-arrow"></i> </a>
-                                    </div>
-                                    <div class="service-desc">
-                                        <h4>Địa chỉ</h4>
-                                        <p>Cài đặt địa chỉ nhận hàng</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="account-box">
-                                <div class="service-box">
-                                    <div class="service-icon">
-                                        <a href="#"> <i class="fa fa-credit-card"></i> </a>
-                                    </div>
-                                    <div class="service-desc">
-                                        <h4>Phương thức thanh toán</h4>
-                                        <p>Cài đặt và tuỳ chỉnh phương thức thanh toán</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="account-box">
-                                <div class="service-box">
-                                    <div class="service-icon">
-                                        <a href="#"> <i class="fab fa-paypal"></i> </a>
-                                    </div>
-                                    <div class="service-desc">
-                                        <h4>PayPal</h4>
-                                        <p>Xem các lợi ích và cài đặt thanh toán</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="account-box">
-                                <div class="service-box">
-                                    <div class="service-icon">
-                                        <a href="#"> <i class="fab fa-amazon"></i> </a>
-                                    </div>
-                                    <div class="service-desc">
-                                        <h4>Amazon Pay balance</h4>
-                                        <p>Nạp tiền vào số dứ</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="bottom-box">
+                <form action="MainController" method="POST">   
+                    <div class="my-account-page">
+                        <div id="msgSubmit" class="h3 text-center hidden">Xin chào ${checkLogin.fullName}</div>
                         <div class="row">
-                            <!--                            <div class="col-lg-4 col-md-12">
-                                                            <div class="account-box">
-                                                                <div class="service-box">
-                                                                    <div class="service-desc">
-                                                                        <h4>Gold &amp; Diamond Jewellery</h4>
-                                                                        <ul>
-                                                                            <li> <a href="#">Apps and more</a> </li>
-                                                                            <li> <a href="#">Content and devices</a> </li>
-                                                                            <li> <a href="#">Music settings</a> </li>
-                                                                        </ul>
-                                                                    </div>
+                            <div class="col-lg-4 col-md-12">
+                                <div class="account-box">
+                                    <div class="service-box">                                    
+                                        <div class="service-icon">                                           
+                                            <a href="user-profile.jsp"> <i class="fa fa-gift"></i> </a>
+                                        </div>
+                                        <div class="service-desc">
+                                            <a href="user-profile.jsp"> <h4>Thông tin tài khoản</h4></a>
+                                            <p>Tên, địa chỉ, email, số điện thoại.</p>
+                                        </div>                                    
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <div class="account-box">
+                                    <div class="service-box">
+                                        <div class="service-icon">
+                                            <a href="change-password.jsp"><i class="fa fa-lock"></i> </a>
+                                        </div>
+                                        <div class="service-desc">
+                                            <a href="user-profile.jsp"> <h4>Đăng nhập &amp; bảo mật </h4></a>
+                                            <p>Thay đổi mật khẩu</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-4 col-md-12">
+                                <div class="account-box">
+                                    <div class="service-box">
+                                        <div class="service-icon">
+                                            <a href="#"> <i class="fa fa-location-arrow"></i> </a>
+                                        </div>
+                                        <div class="service-desc">
+                                            <h4>Địa chỉ</h4>
+                                            <p>Cài đặt địa chỉ nhận hàng</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>                        
+                            <div class="col-lg-4 col-md-12">
+                                <div class="account-box">
+                                    <div class="service-box">
+                                        <div class="service-icon">
+                                            <a href="#"> <i class="fa fa-credit-card"></i> </a>
+                                        </div>
+                                        <div class="service-desc">
+                                            <h4>Phương thức thanh toán</h4>
+                                            <p>Cài đặt và tuỳ chỉnh phương thức thanh toán</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <div class="account-box">
+                                                            <div class="service-box">
+                                                                <div class="service-icon">
+                                                                    <a href="#"> <i class="fab fa-paypal"></i> </a>
+                                                                </div>
+                                                                <div class="service-desc">
+                                                                    <h4>PayPal</h4>
+                                                                    <p>Xem các lợi ích và cài đặt thanh toán</p>
                                                                 </div>
                                                             </div>
-                                                        </div>-->
-                            <!--                            <div class="col-lg-4 col-md-12">
-                                                            <div class="account-box">
-                                                                <div class="service-box">
-                                                                    <div class="service-desc">
-                                                                        <h4>Handloom &amp; Handicraft Store</h4>
-                                                                        <ul>
-                                                                            <li> <a href="#">Advertising preferences </a> </li>
-                                                                            <li> <a href="#">Communication preferences</a> </li>
-                                                                            <li> <a href="#">SMS alert preferences</a> </li>
-                                                                            <li> <a href="#">Message center</a> </li>
-                                                                        </ul>
-                                                                    </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <div class="account-box">
+                                                            <div class="service-box">
+                                                                <div class="service-icon">
+                                                                    <a href="#"> <i class="fab fa-amazon"></i> </a>
+                                                                </div>
+                                                                <div class="service-desc">
+                                                                    <h4>Amazon Pay balance</h4>
+                                                                    <p>Nạp tiền vào số dứ</p>
                                                                 </div>
                                                             </div>
-                                                        </div>-->
-                            <div class="col-lg-4 col-md-12">
-                                <div class="account-box">
-                                    <div class="service-box">
-                                        <div class="service-desc">
-                                            <h4>The Designer Boutique</h4>
-                                            <ul>
-                                                <li> <a href="#">Amazon Pay</a> </li>
-                                                <li> <a href="#">Bank accounts for refunds</a> </li>
-                                                <li> <a href="#">Coupons</a> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12">
-                                <div class="account-box">
-                                    <div class="service-box">
-                                        <div class="service-desc">
-                                            <h4>Hộp quà tặng, Thẻ quà tặng, Thiệp chúc mừng</h4>
-                                            <ul>
-                                                <li> <a href="#">Phản hồi</a> </li>
-                                                <li> <a href="#">Danh sách</a> </li>
-                                                <li> <a href="#">Ảnh giấy tờ tuỳ thân</a> </li>
-                                                <li> <a href="#">Hồ sơ</a> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12">
-                                <div class="account-box">
-                                    <div class="service-box">
-                                        <div class="service-desc">
-                                            <h4>Các tài khoản khác</h4>
-                                            <ul>
-                                                <li> <a href="#">Dịch vụ web của Amazon</a> </li>
-                                                <li> <a href="#">Đăng nhập bằng Amazon</a> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-12">
-                                <div class="account-box">
-                                    <div class="service-box">
-                                        <div class="service-desc">
-                                            <h4>Các chương trình mua sắm và cho thuê</h4>
-                                            <ul>
-                                                <li> <a href="#">Đăng ký theo dõi &amp; lưu</a> </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                                        </div>
+                                                    </div>-->
                         </div>
+                        <!--                    <div class="bottom-box">
+                                                <div class="row">-->
+                        <!--                            <div class="col-lg-4 col-md-12">
+                                                        <div class="account-box">
+                                                            <div class="service-box">
+                                                                <div class="service-desc">
+                                                                    <h4>Gold &amp; Diamond Jewellery</h4>
+                                                                    <ul>
+                                                                        <li> <a href="#">Apps and more</a> </li>
+                                                                        <li> <a href="#">Content and devices</a> </li>
+                                                                        <li> <a href="#">Music settings</a> </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+                        <!--                            <div class="col-lg-4 col-md-12">
+                                                        <div class="account-box">
+                                                            <div class="service-box">
+                                                                <div class="service-desc">
+                                                                    <h4>Handloom &amp; Handicraft Store</h4>
+                                                                    <ul>
+                                                                        <li> <a href="#">Advertising preferences </a> </li>
+                                                                        <li> <a href="#">Communication preferences</a> </li>
+                                                                        <li> <a href="#">SMS alert preferences</a> </li>
+                                                                        <li> <a href="#">Message center</a> </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+                        <!--                            <div class="col-lg-4 col-md-12">
+                                                        <div class="account-box">
+                                                            <div class="service-box">
+                                                                <div class="service-desc">
+                                                                    <h4>The Designer Boutique</h4>
+                                                                    <ul>
+                                                                        <li> <a href="#">Amazon Pay</a> </li>
+                                                                        <li> <a href="#">Bank accounts for refunds</a> </li>
+                                                                        <li> <a href="#">Coupons</a> </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <div class="account-box">
+                                                            <div class="service-box">
+                                                                <div class="service-desc">
+                                                                    <h4>Hộp quà tặng, Thẻ quà tặng, Thiệp chúc mừng</h4>
+                                                                    <ul>
+                                                                        <li> <a href="#">Phản hồi</a> </li>
+                                                                        <li> <a href="#">Danh sách</a> </li>
+                                                                        <li> <a href="#">Ảnh giấy tờ tuỳ thân</a> </li>
+                                                                        <li> <a href="#">Hồ sơ</a> </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <div class="account-box">
+                                                            <div class="service-box">
+                                                                <div class="service-desc">
+                                                                    <h4>Các tài khoản khác</h4>
+                                                                    <ul>
+                                                                        <li> <a href="#">Dịch vụ web của Amazon</a> </li>
+                                                                        <li> <a href="#">Đăng nhập bằng Amazon</a> </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-lg-4 col-md-12">
+                                                        <div class="account-box">
+                                                            <div class="service-box">
+                                                                <div class="service-desc">
+                                                                    <h4>Các chương trình mua sắm và cho thuê</h4>
+                                                                    <ul>
+                                                                        <li> <a href="#">Đăng ký theo dõi &amp; lưu</a> </li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>-->
+                        <!--                        </div>
+                                            </div>-->
                     </div>
-                </div>
+                </form>
             </div>
         </div>
         <!-- End My Account -->
