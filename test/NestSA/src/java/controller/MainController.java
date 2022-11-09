@@ -64,6 +64,8 @@ public class MainController extends HttpServlet {
     private static final String VIEW_EDIT_PRODUCT_MANAGER_CONTROLLER = "ViewEditProductManagerController";
     private static final String REMOVE_PRODUCT_MANAGER = "RemoveProductManager";
     private static final String REMOVE_PRODUCT_MANAGER_CONTROLLER = "RemoveProductManagerController";
+    private static final String SEARCH_PRODUCT_MANAGER = "SearchProductManager";
+    private static final String SEARCH_PRODUCT_MANAGER_CONTROLLER = "SearchProductManagerController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -119,6 +121,8 @@ public class MainController extends HttpServlet {
                 url = VIEW_EDIT_PRODUCT_MANAGER_CONTROLLER;
             } else if (REMOVE_PRODUCT_MANAGER.equals(action)) {
                 url = REMOVE_PRODUCT_MANAGER_CONTROLLER;
+            } else if (SEARCH_PRODUCT_MANAGER.equals(action)) {
+                url = SEARCH_PRODUCT_MANAGER_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();

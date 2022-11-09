@@ -9,6 +9,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import javax.naming.NamingException;
 import product.ProductDTO;
 import users.UserDTO;
@@ -25,9 +27,81 @@ public class OrderDAO {
     private static final String INSERT_ORDER_DETAIL = "INSERT INTO OrderDetails(productID, orderID, quantity, price) VALUES(?, ?, ?, ?)";
     private static final String GET_PRODUCT_QUANTITY = "SELECT quantity FROM product WHERE productID = ?";
     private static final String UPDATE_PRODUCT_QUANTITY = "UPDATE product SET quantity = ? WHERE productId = ?";
-    private static final String VIEW_ORDER_MANAGER = "SELECT ord.Reciever, ord.address, ord.phone, ord.date, ord.status, ord.shippingfee, ord.total, pro.name, detail.quantity, detail.price\n"
-            + "FROM orders ord, orderDetails detail, product pro\n"
-            + "WHERE ord.orderId = detail.orderId AND detail.productId = pro.productId";
+    private static final String VIEW_ORDER_MANAGER = "SELECT orderid, Reciever, address, phone, date, status, shippingfee, total FROM orders";
+    private static final String VIEW_ORDER_DETAIL_MANAGER = "SELECT pro.name, detail.quantity, detail.price\n"
+            + "FROM orderDetails detail, product pro\n"
+            + "WHERE detail.productId = pro.productId and detail.orderId = ?";
+    
+    public List<OrderDetail> viewOrderDetailById(int orderId) throws SQLException {
+        List<OrderDetail> detail = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(VIEW_ORDER_DETAIL_MANAGER);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String name = rs.getString("name");
+                    int quantity = Integer.parseInt(rs.getString("quantity"));
+                    int price = Integer.parseInt(rs.getString("price"));
+                    detail.add(new OrderDetail(name, quantity, price));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return detail;
+    }
+
+    public List<OrderDTO> viewOrder() throws SQLException {
+        List<OrderDTO> order = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(VIEW_ORDER_MANAGER);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    int orderId = Integer.parseInt(rs.getString("orderid"));
+                    String name = rs.getString("Reciever");
+                    String address = rs.getString("address");
+                    String phone = rs.getString("phone");
+                    String date = rs.getString("date");
+                    String status = rs.getString("status");
+                    int shippingfee = Integer.parseInt(rs.getString("shippingfee"));
+                    int total = Integer.parseInt(rs.getString("total"));
+                    order.add(new OrderDTO(orderId, date, address, phone, shippingfee, total, name, status));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return order;
+    }
 
     public int insertOrder(OrderDTO order) throws SQLException {
         int orderID = 0;

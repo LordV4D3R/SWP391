@@ -12,12 +12,28 @@ package order;
 public class OrderDetail {
     private int orderDetailID;
     private int productID;
+    private String productName;
     private int orderID;
     private int quantity;
     private int price;
 
     public OrderDetail() {
     }
+
+    public OrderDetail(String productName, int quantity, int price) {
+        this.productName = productName;
+        this.quantity = quantity;
+        this.price = price;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+    
 
     public OrderDetail(int productID, int orderID, int quantity, int price) {
         this.productID = productID;

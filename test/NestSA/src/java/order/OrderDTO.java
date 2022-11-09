@@ -23,6 +23,17 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
+    public OrderDTO(int orderId, String date, String address, String phone, int shippingfee, int total, String receiver, String status) {
+        this.orderId = orderId;
+        this.date = date;
+        this.address = address;
+        this.phone = phone;
+        this.shippingfee = shippingfee;
+        this.total = total;
+        this.receiver = receiver;
+        this.status = status;
+    }
+
     public OrderDTO(String date, String address, int userId, String phone, int shippingfee, int total, String receiver, String status) {
         this.date = date;
         this.address = address;
