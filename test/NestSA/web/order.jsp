@@ -204,21 +204,19 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr
-                          class="cursor-pointer row-info"
-                          id="order"
-                          onclick="showOrder()"
-                        >
-                          <td class="border w-1/5 py-2">Micheal Clarke</td>receicer
-                          <td class="border w-1/4 py-2">HCM</td>address
-                          <td class="border w-1/12 py-2">0378301007</td>phone
-                          <td class="border w-1/5 py-2">22/10</td>date
-                          <td class="border w-1/12 py-2">Đang giao</td>status
-                          <td class="border w-1/12 py-2">5000000</td>shippingfee
-                          <td class="border w-1/5 py-2">50000000</td>total
+                    
+                          <tr class="cursor-pointer row-info">                           
+                          <td class="border w-1/5 py-2">Micheal Clarke</td>
+                          <td class="border w-1/4 py-2">HCM</td>
+                          <td class="border w-1/12 py-2">0378301007</td>
+                          <td class="border w-1/5 py-2">22/10</td>
+                          <td class="border w-1/12 py-2">Đang giao</td>
+                          <td class="border w-1/12 py-2">5000000</td>
+                          <td class="border w-1/5 py-2">50000000</td>                  
                         </tr>
+                       
                         <!--  -->
-                        <tr id="orderdetail" class="hide">
+<!--                        <tr id="orderdetail" class="hide">
                           <td colspan="7">
                             <table class="w-full">
                               <thead>
@@ -237,7 +235,7 @@
                               </tbody>
                             </table>
                           </td>
-                        </tr>
+                        </tr>-->
                         <!--  -->
                       </tbody>
                     </table>
@@ -262,16 +260,16 @@
 
     <script src="./main.js"></script>
     <script>
-      function showOrder() {
-        const check = document.getElementById("orderdetail");
-        if (check.classList.contains("hide")) {
-          check.classList.remove("hide");
-          check.classList.add("show");
-        } else {
-          check.classList.remove("show");
-          check.classList.add("hide");
-        }
-      }
+//      function showOrder() {
+//        const check = document.getElementById("orderdetail");
+//        if (check.classList.contains("hide")) {
+//          check.classList.remove("hide");
+//          check.classList.add("show");
+//        } else {
+//          check.classList.remove("show");
+//          check.classList.add("hide");
+//        }
+//      }
     </script>
   </body>
 </html>
