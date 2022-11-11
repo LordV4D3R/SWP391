@@ -7,43 +7,33 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import product.ProductDAO;
-import product.ProductDTO;
 
 /**
  *
  * @author Admin
  */
-public class SearchController extends HttpServlet {
+@WebServlet(name = "ViewOrderTransportController", urlPatterns = {"/ViewOrderTransportController"})
+public class ViewOrderTransportController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "shop.jsp";
-    
+    private static final String SUCCESS = "order-transport.jsp";
+
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            String search = request.getParameter("search");
-            ProductDAO dao = new ProductDAO();
-            List<ProductDTO> listProduct = dao.getListProduct(search);
-            if (listProduct.size() > 0) {
-                request.setAttribute("VIEW_PRODUCT", listProduct);
-                url = SUCCESS;
-            } else if(listProduct.size()==0){
-                request.setAttribute("NOT_FOUND", "Not found product");
-                url=SUCCESS;
-            }
+            url = SUCCESS;
         } catch (Exception e) {
-            log("Error at SearchController at: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
+
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

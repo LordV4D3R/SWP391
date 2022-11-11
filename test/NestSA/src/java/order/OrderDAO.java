@@ -31,7 +31,7 @@ public class OrderDAO {
     private static final String VIEW_ORDER_DETAIL_MANAGER = "SELECT pro.name, detail.quantity, detail.price "
             + "FROM orderDetails detail, product pro "
             + "WHERE detail.productId = pro.productId and detail.orderId like ?";
-    private static final String CHANGE_ORDER_STATUS_ADMIN_MANAGER = "";
+    private static final String CHANGE_ORDER_STATUS_ADMIN_MANAGER = "UPDATE ";
 
     public List<OrderDetail> viewOrderDetailById(int orderId) throws SQLException {
         List<OrderDetail> detail = new ArrayList<>();

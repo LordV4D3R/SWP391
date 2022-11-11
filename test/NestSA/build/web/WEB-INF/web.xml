@@ -32,4 +32,20 @@
     <welcome-file-list>
         <welcome-file>ViewProductIndexController</welcome-file>
     </welcome-file-list>
+<!--    <context-param>
+        <param-name>authtoken</param-name>
+        <param-value></param-value>
+    </context-param>
+    <context-param>
+        <param-name>posturl</param-name>
+        <param-value></param-value>
+    </context-param>
+    <context-param>
+        <param-name>business</param-name>
+        <param-value></param-value>
+    </context-param>
+    <context-param>
+        <param-name>returnurl</param-name>
+        <param-value>nativexo://paypalpay</param-value>
+    </context-param>-->
 </web-app>
