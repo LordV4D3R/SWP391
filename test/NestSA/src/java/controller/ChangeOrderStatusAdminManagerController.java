@@ -12,6 +12,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import order.OrderDAO;
+import order.OrderDTO;
 
 /**
  *
@@ -21,15 +23,20 @@ import javax.servlet.http.HttpServletResponse;
 public class ChangeOrderStatusAdminManagerController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "";
+    private static final String SUCCESS = "ViewOrderTransportController";
     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            String orderId = request.getParameter("orderId");
+            int orderId = Integer.parseInt(request.getParameter("orderId"));
             
+            OrderDAO order = new OrderDAO();
+            boolean checkChange = order.changeOrderTransportStatus(new OrderDTO(orderId));
+            if (checkChange) {
+                url = SUCCESS;
+            }
         } catch (Exception e) {
             log("Error at ChangeOrderStatusAdminManagerController at: " + e.toString());
         } finally {

@@ -23,6 +23,10 @@ public class OrderDTO {
     public OrderDTO() {
     }
 
+    public OrderDTO(int orderId) {
+        this.orderId = orderId;
+    }
+
     public OrderDTO(int orderId, String date, String address, String phone, int shippingfee, int total, String receiver, String status) {
         this.orderId = orderId;
         this.date = date;

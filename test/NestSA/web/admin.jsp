@@ -128,7 +128,7 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-300-border">
                                 <a
-                                    href="#"
+                                    href="MainController?btAction=Logout"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fas fa-square-full float-left mx-2"></i>
