@@ -240,7 +240,7 @@
                                     </ul>
                                 </div>
                             </div>
-
+                            <div style="text-align: center; margin-top: 68px"><h2>${NOT_FOUND}</h2></div>
                             <div class="product-categorie-box">
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
@@ -277,6 +277,7 @@
                                                     </form>
                                                 </div>
                                             </c:forEach>
+                                            
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="list-view">

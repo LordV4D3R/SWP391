@@ -59,6 +59,13 @@
                 background-color: rgb(161 161 170) !important;
                 color: #FFFFFF;
             }
+            
+            .show-swp{
+                display: block;
+            }
+            .show-swp-icon{
+                transform: rotate(90deg)
+            }
         </style>
     </head>
 
@@ -119,14 +126,22 @@
                                 </a>
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                                <a
-                                    href="order.jsp"
-                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                                    >
-                                    <i class="fas fa-grip-horizontal float-left mx-2"></i>
-                                    Đơn hàng
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
+                                <!--href="ViewOrderManagerController"-->
+                                <div id="menu">
+                                    <a
+                                        href="#"
+                                        class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                                        >
+                                        <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                                        Đơn hàng
+                                        <span><i class="fa fa-angle-right float-right" id="icon-xoay"></i></span>
+                                    </a>
+                                </div>
+                                <ul class="text-sm border-t-2 mt-2 hidden" id="list-menu">
+                                    <li id="item"><a href="#" class="block py-2 font-sans font-hairline hover:font-normal text-nav-item text-sm">Đang chuẩn bị hàng</a></li> 
+                                    <li id="item"><a href="#" class="block py-2 font-sans font-hairline hover:font-normal text-nav-item text-sm">Đang vận chuyển</a></li> 
+                                    <li id="item"><a href="#" class="block py-2 font-sans font-hairline hover:font-normal text-nav-item text-sm">Đã hoàn tất</a></li> 
+                                </ul>
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
@@ -288,6 +303,22 @@
                                         console.log(document.getElementById('yes'))
                                         document.getElementById(id).style.display = display;
                                     }
+                                    
+                                     const items = document.querySelectorAll('#item');
+                                    const menu = document.getElementById('menu')
+                                    const icon=document.getElementById('icon-xoay')
+                                            const listMenu = document.getElementById('list-menu')
+                                            console.log(listMenu)
+
+                                            menu.addEventListener('click', () => {
+                                                listMenu.classList.toggle('show-swp')
+                                                icon.classList.toggle('show-swp-icon')
+                                            })
+
+                                            items.forEach(item => {
+                                            console.log(item)
+                                            })
         </script>
+        
     </body>
 </html>

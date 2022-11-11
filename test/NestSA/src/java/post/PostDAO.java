@@ -23,24 +23,24 @@ public class PostDAO {
     Connection conn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
-    
+    //, dateUpload, status
     public List<PostDTO> getAllListPosts() throws SQLException{
         List<PostDTO> list = new ArrayList<>();
         try {
-            String sql = "select postId, image, postContent, postTitle, category, dateUpload, status from post where status = 1";
+            String sql = "select postId, image, postContent, postTitle, category,status from post where status = 1";
             conn = DBUtils.getConnection();
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
             while (rs.next()) {  
-                PostDTO post = new PostDTO();
+            
                 int postId = rs.getInt("postId");
                 String igame = rs.getString("image");
                 String postContent = rs.getString("postContent");
                 String postTitle = rs.getString("postTitle");
                 String category = rs.getString("category");
-                Date dateUpload = rs.getDate("dateUpload");
+//                Date dateUpload = rs.getDate("dateUpload");
                 boolean status = rs.getBoolean("status");
-                list.add(new PostDTO(postId, igame, postContent, postTitle, category, dateUpload, status));
+                list.add(new PostDTO(postId, igame, postContent, postTitle, category, status));
             }
         } catch (Exception e) {
             e.printStackTrace();
