@@ -27,11 +27,12 @@ public class OrderDAO {
     private static final String INSERT_ORDER_DETAIL = "INSERT INTO OrderDetails(productID, orderID, quantity, price) VALUES(?, ?, ?, ?)";
     private static final String GET_PRODUCT_QUANTITY = "SELECT quantity FROM product WHERE productID = ?";
     private static final String UPDATE_PRODUCT_QUANTITY = "UPDATE product SET quantity = ? WHERE productId = ?";
-    private static final String VIEW_ORDER_MANAGER = "SELECT orderid, Reciever, address, phone, date, status, shippingfee, total FROM orders";
-    private static final String VIEW_ORDER_DETAIL_MANAGER = "SELECT pro.name, detail.quantity, detail.price\n"
-            + "FROM orderDetails detail, product pro\n"
-            + "WHERE detail.productId = pro.productId and detail.orderId = ?";
-    
+    private static final String VIEW_ORDER_MANAGER = "SELECT orderid, Reciever, address, phone, date, status, shippingfee, total FROM orders ORDER BY orderid desc";
+    private static final String VIEW_ORDER_DETAIL_MANAGER = "SELECT pro.name, detail.quantity, detail.price "
+            + "FROM orderDetails detail, product pro "
+            + "WHERE detail.productId = pro.productId and detail.orderId like ?";
+    private static final String CHANGE_ORDER_STATUS_ADMIN_MANAGER = "";
+
     public List<OrderDetail> viewOrderDetailById(int orderId) throws SQLException {
         List<OrderDetail> detail = new ArrayList<>();
         Connection conn = null;
@@ -41,12 +42,14 @@ public class OrderDAO {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(VIEW_ORDER_DETAIL_MANAGER);
+                ptm.setInt(1, orderId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
+//                    int id = rs.getInt("orderId");
                     String name = rs.getString("name");
                     int quantity = Integer.parseInt(rs.getString("quantity"));
                     int price = Integer.parseInt(rs.getString("price"));
-                    detail.add(new OrderDetail(name, quantity, price));
+                    detail.add(new OrderDetail(name, orderId, quantity, price));
                 }
             }
         } catch (Exception e) {

@@ -7,45 +7,31 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import order.OrderDAO;
-import order.OrderDTO;
-import order.OrderDetail;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ViewProductDetailManagerController", urlPatterns = {"/ViewProductDetailManagerController"})
-public class ViewProductDetailManagerController extends HttpServlet {
+@WebServlet(name = "ChangeOrderStatusAdminManagerController", urlPatterns = {"/ChangeOrderStatusAdminManagerController"})
+public class ChangeOrderStatusAdminManagerController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "order_detail.jsp";
-
+    private static final String SUCCESS = "";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            int id = Integer.parseInt(request.getParameter("id"));
-            OrderDAO dao = new OrderDAO();
-            List<OrderDetail> detail = dao.viewOrderDetailById(id); 
-            if (detail.size() > 0) {
-                request.setAttribute("VIEW_ORDER_DETAIL", detail);
-                HttpSession session = request.getSession();
-                session.setAttribute("VIEW_ORDER_DETAIL", detail);
-                session.setAttribute("ID", id);
-                
-                url = SUCCESS;
-            }
+            String orderId = request.getParameter("orderId");
+            
         } catch (Exception e) {
-            log("Error at ViewProductDetailManagerController at: " + e.toString());
+            log("Error at ChangeOrderStatusAdminManagerController at: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

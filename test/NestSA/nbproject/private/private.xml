@@ -2,6 +2,19 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/web/product.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/order/OrderDTO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/controller/RegisterController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/controller/ViewProductManagerController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/web/order_detail.jsp</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/controller/ViewOrderManagerController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/order/OrderDetail.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/order/OrderDAO.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/controller/ViewProductController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/utils/DBUtils.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/src/java/controller/ViewProductDetailManagerController.java</file>
+            <file>file:/C:/Users/Admin/Desktop/Super_Project/Ky-5/SWP391/test/NestSA/web/order.jsp</file>
+        </group>
     </open-files>
 </project-private>

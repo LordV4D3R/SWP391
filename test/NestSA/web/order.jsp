@@ -186,7 +186,7 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
                                         >
-                                        Product
+                                        Đơn hàng
                                     </div>
                                     <div class="p-3">
                                         <table
@@ -206,7 +206,7 @@
                                             </thead>
                                             <tbody>
                                                 <c:forEach items="${VIEW_ORDER_VER_FULL}" var="o">
-                                                    <tr class="cursor-pointer row-info" id="order" data-href="MainController?name=ViewProductDetailManagerController&id=${o.orderId}">
+                                                    <tr class="cursor-pointer row-info" id="order" data-href="MainController?btAction=ViewProductDetailManager&id=${o.orderId}">
                                                         <td class="border w-1/5 py-2">${o.receiver}</td>
                                                         <td class="border w-1/4 py-2">${o.address}</td>
                                                         <td class="border w-1/12 py-2">${o.phone}</td>
@@ -229,7 +229,7 @@
                 </div>
                 <!--Footer-->
                 <footer class="bg-grey-darkest text-white p-2">
-                    <div class="flex flex-1 mx-auto">&copy; My Design</div>
+                    <div class="flex flex-1 mx-auto">Nest SongAn</div>
                 </footer>
                 <!--/footer-->
             </div>

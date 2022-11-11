@@ -66,6 +66,10 @@ public class MainController extends HttpServlet {
     private static final String REMOVE_PRODUCT_MANAGER_CONTROLLER = "RemoveProductManagerController";
     private static final String SEARCH_PRODUCT_MANAGER = "SearchProductManager";
     private static final String SEARCH_PRODUCT_MANAGER_CONTROLLER = "SearchProductManagerController";
+    private static final String VIEW_ORDER_DETAIL_MANAGER = "ViewProductDetailManager";
+    private static final String VIEW_ORDER_DETAIL_MANAGER_CONTROLLER = "ViewProductDetailManagerController";
+    private static final String CHANGE_ORDER_STATUS_ADMIN_MANAGER = "ChangeOrderStatusAdminManager";
+    private static final String CHANGE_ORDER_STATUS_ADMIN_MANAGER_CONTROLLER = "ChangeOrderStatusAdminManagerController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -74,7 +78,7 @@ public class MainController extends HttpServlet {
         String action = request.getParameter("btAction");
         try {
             if (action == null) {
-                log("Sai roi kia dcm");
+                log("Action is null");
             } else if (action.equals(LOGIN)) {
                 url = LOGINCONTROLLER;
             } else if (SEARCH.equals(action)) {
@@ -123,6 +127,10 @@ public class MainController extends HttpServlet {
                 url = REMOVE_PRODUCT_MANAGER_CONTROLLER;
             } else if (SEARCH_PRODUCT_MANAGER.equals(action)) {
                 url = SEARCH_PRODUCT_MANAGER_CONTROLLER;
+            } else if (VIEW_ORDER_DETAIL_MANAGER.equals(action)) {
+                url = VIEW_ORDER_DETAIL_MANAGER_CONTROLLER;
+            } else if (CHANGE_ORDER_STATUS_ADMIN_MANAGER.equals(action)) {
+                url = CHANGE_ORDER_STATUS_ADMIN_MANAGER_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();
