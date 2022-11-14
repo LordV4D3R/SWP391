@@ -1,10 +1,12 @@
 <%-- 
-    Document   : shop-detail
-    Created on : Sep 27, 2022, 12:46:37 PM
-    Author     : thangbv
+Document   : shop-detail
+Created on : Sep 27, 2022, 12:46:37 PM
+Author     : thangbv
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -252,7 +254,11 @@
                     <div class="col-xl-7 col-lg-7 col-md-6">
                         <div class="single-product-details">
                             <h2>${sessionScope.PRODUCT.name}</h2>
-                            <h5>${sessionScope.PRODUCT.price}VNĐ</h5>
+                            <h5>
+                                <c:set var="pri" value="${sessionScope.PRODUCT.price}"/>
+                                <fmt:setLocale value="vi_VN"/>
+                                <fmt:formatNumber value="${pri}" type="currency"/>
+                            </h5>
                             <!--<del>$ 60.00</del>-->
                             <p class="available-stock"><span> More than ${sessionScope.PRODUCT.quantity} available<p>
                                     <h4>Mô tả:</h4>

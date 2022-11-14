@@ -13,39 +13,41 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import order.OrderDAO;
-import order.OrderDTO;
+import order.OrderDetail;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "ViewOrderTransportController", urlPatterns = {"/ViewOrderTransportController"})
-public class ViewOrderTransportController extends HttpServlet {
+@WebServlet(name = "ViewOrderDetailShipperManagerController", urlPatterns = {"/ViewOrderDetailShipperManagerController"})
+public class ViewOrderDetailShipperManagerController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "order-transport.jsp";
+    private static final String SUCCESS = "order_detail_shipper.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
+            int id = Integer.parseInt(request.getParameter("id"));
             OrderDAO dao = new OrderDAO();
-            List<OrderDTO> order = dao.viewOrderTransport();
-            if (order.size() > 0) {
-                request.setAttribute("VIEW_ORDER_TRANSPORT_VER_FULL", order);
-                url = SUCCESS;
-            } else if (order.isEmpty()) {
-                request.setAttribute("VIEW_ORDER_TRANSPORT_VER_FULL", "Hiện tại không có đơn hàng nào đang giao cả");
+            List<OrderDetail> detail = dao.viewOrderDetailById(id); 
+            if (detail.size() > 0) {
+                request.setAttribute("VIEW_ORDER_DETAIL", detail);
+                HttpSession session = request.getSession();
+                session.setAttribute("VIEW_ORDER_DETAIL", detail);
+                session.setAttribute("ID", id);
+                
                 url = SUCCESS;
             }
         } catch (Exception e) {
-            e.printStackTrace();
+            log("Error at ViewProductDetailManagerController at: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

@@ -5,6 +5,8 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -230,8 +232,14 @@
                                                         <td class="border w-1/12 py-2">${o.phone}</td>
                                                         <td class="border w-1/5 py-2">${o.date}</td>
                                                         <td class="border w-1/12 py-2">${o.status}</td>
-                                                        <td class="border w-1/12 py-2">${o.shippingfee}</td>
-                                                        <td class="border w-1/5 py-2">${o.total}</td>
+                                                        <td class="border w-1/12 py-2">
+                                                            <c:set var="shippingfee" value="${o.shippingfee}"/>
+                                                            <fmt:setLocale value="vi_VN"/>
+                                                            <fmt:formatNumber value="${shippingfee}" type="currency"/></td>
+                                                        <td class="border w-1/5 py-2">
+                                                            <c:set var="total" value="${o.total}"/>
+                                                            <fmt:setLocale value="vi_VN"/>
+                                                            <fmt:formatNumber value="${total}" type="currency"/></td>
                                                     </tr>
                                                 </c:forEach>
                                                 <!--  -->

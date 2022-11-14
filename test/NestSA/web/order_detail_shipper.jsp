@@ -1,9 +1,8 @@
 <%-- 
-    Document   : order.jsp
-    Created on : Oct 25, 2022, 2:11:18 PM
-    Author     : thangbv
+    Document   : order_detail_shipper
+    Created on : Nov 14, 2022, 6:59:37 PM
+    Author     : Admin
 --%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 
@@ -104,78 +103,6 @@
                 <!--/Header-->
 
                 <div class="flex flex-1">
-                    <!--Sidebar-->
-                    <aside
-                        id="sidebar"
-                        class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block"
-                        >
-                        <div class="flex"></div>
-                        <ul class="list-reset flex flex-col">
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                                <a
-                                    href="admin.jsp"
-                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                                    >
-                                    <i class="fas fa-tachometer-alt float-left mx-2"></i>
-                                    Dashboard
-                                    <span><i class="fas fa-angle-right float-right"></i></span>
-                                </a>
-                            </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                                <a
-                                    href="product.jsp"
-                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                                    >
-                                    <i class="fab fa-wpforms float-left mx-2"></i>
-                                    Sản phẩm
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
-                            </li>
-                            <li
-                                class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
-                                >
-                                <a
-                                    href="order.jsp"
-                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                                    >
-                                    <i class="fas fa-grip-horizontal float-left mx-2"></i>
-                                    Đơn hàng
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
-                            </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                                <a
-                                    href="#"
-                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                                    >
-                                    <i class="fas fa-table float-left mx-2"></i>
-                                    Bình luận
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
-                            </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                                <a
-                                    href="#"
-                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                                    >
-                                    <i class="fab fa-uikit float-left mx-2"></i>
-                                    Liện hệ
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
-                            </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-300-border">
-                                <a
-                                    href="MainController?btAction=Logout"
-                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                                    >
-                                    <i class="fas fa-square-full float-left mx-2"></i>
-                                    Đăng xuất
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </aside>
-                    <!--/Sidebar-->
                     <!--Main-->
                     <main class="bg-white-500 flex-1 p-3 overflow-hidden">
                         <div class="flex flex-col">
@@ -189,7 +116,7 @@
                                         Chi Tiết Đơn Hàng
                                         <form action="MainController">
                                             <input type="hidden" name="orderId" value="${ID}"/>
-                                            <button type="submit" name="btAction" value="ChangeOrderStatusAdminManager" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">Xác nhận đơn hàng</button>
+                                            <button type="submit" name="btAction" value="ChangeOrderStatusShipperManager" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">Xác nhận đơn hàng</button>
                                         </form>
                                     </div>
                                     <div class="p-3">

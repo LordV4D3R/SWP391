@@ -8,6 +8,8 @@
 <%@page import="order.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <!-- Basic -->
@@ -250,7 +252,15 @@
                                     <div class="rounded p-2 bg-light" style="margin-top: -16px;">
                                         <div class="media mb-2 border-bottom">
                                             <div class="media-body"> <a href="shop-detail.jsp"><%= tea.getName()%></a>
-                                                <div class="small text-muted">Price: <%= tea.getPrice()%> VND<span class="mx-2">|</span> Qty: <%= tea.getQuantity()%><span class="mx-2">|</span> <%= tea.getQuantity() * tea.getPrice()%> VND</div>
+                                                <div class="small text-muted">Price: 
+                                                    <c:set var="pri" value="<%= tea.getPrice()%>"/>
+                                                    <fmt:setLocale value="vi_VN"/>
+                                                    <fmt:formatNumber value="${pri}" type="currency"/>
+                                                    <span class="mx-2">|</span> Qty: <%= tea.getQuantity()%>
+                                                    <span class="mx-2">|</span>
+                                                    <c:set var="totalPri" value="<%= tea.getQuantity() * tea.getPrice()%>"/>
+                                                    <fmt:setLocale value="vi_VN"/>
+                                                    <fmt:formatNumber value="${totalPri}" type="currency"/></div>
                                             </div>
                                         </div>
                                     </div>
@@ -272,7 +282,10 @@
 
                                     <div class="d-flex gr-total">
                                         <h5>Tổng Cộng</h5>
-                                        <div class="ml-auto h5"> <%= total%> VND</div>
+                                        <div class="ml-auto h5">
+                                            <c:set var="totalPri" value="<%= total%>"/>
+                                            <fmt:setLocale value="vi_VN"/>
+                                            <fmt:formatNumber value="${totalPri}" type="currency"/></div>
                                         <input type="hidden" name="total" value="<%= total%>">
                                     </div>
                                     <hr> </div>

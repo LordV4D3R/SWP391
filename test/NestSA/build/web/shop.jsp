@@ -5,6 +5,8 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -265,8 +267,13 @@
                                                             <div class="why-text">
                                                                 <a href="MainController?btAction=Detail&id=${o.productId}&name=${o.name}&img=${o.image}&des=${o.description}&quantity=${o.quantity}&price=${o.price}">
                                                                     <h4>${o.name}</h4>
-                                                                </a> 
-                                                                <h5>${o.price}đ</h5>
+                                                                </a>
+
+                                                                <h5>
+                                                                    <c:set var="pri" value="${o.price}"/>
+                                                                    <fmt:setLocale value="vi_VN"/>
+                                                                    <fmt:formatNumber value="${pri}" type="currency"/>
+                                                                </h5>
                                                             </div>
                                                             <input type="hidden" name="images" value="${o.image}">
                                                             <input type="hidden" name="name" value="${o.name}">
@@ -277,7 +284,7 @@
                                                     </form>
                                                 </div>
                                             </c:forEach>
-                                            
+
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="list-view">
@@ -297,7 +304,10 @@
                                                                 <h4 style="font-size: 24px;
                                                                     font-weight: 700;
                                                                     padding-bottom: 15px">${o.name}</h4>
-                                                                <h5 style="font-weight: 700;font-size: 18px">${o.price} VND</h5>
+                                                                <c:set var="pri" value="${o.price}"/>
+                                                                <fmt:setLocale value="vi_VN"/>
+                                                                <fmt:formatNumber value="${pri}" type="currency"/>
+                                                                <h5 style="font-weight: 700;font-size: 18px">${pri} VND</h5>
                                                                 <p>${o.description}</p>
                                                             </div>
                                                             <a class="btn hvr-hover" href="#" style="margin-top: 12px;color: #FFFFFF;font-weight: 700">Add to Cart</a>

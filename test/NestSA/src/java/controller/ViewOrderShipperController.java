@@ -20,11 +20,11 @@ import order.OrderDTO;
  *
  * @author Admin
  */
-@WebServlet(name = "ViewOrderTransportController", urlPatterns = {"/ViewOrderTransportController"})
-public class ViewOrderTransportController extends HttpServlet {
+@WebServlet(name = "ViewOrderShipperController", urlPatterns = {"/ViewOrderShipperController"})
+public class ViewOrderShipperController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "order-transport.jsp";
+    private static final String SUCCESS = "ghtk.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -34,10 +34,10 @@ public class ViewOrderTransportController extends HttpServlet {
             OrderDAO dao = new OrderDAO();
             List<OrderDTO> order = dao.viewOrderTransport();
             if (order.size() > 0) {
-                request.setAttribute("VIEW_ORDER_TRANSPORT_VER_FULL", order);
+                request.setAttribute("VIEW_ORDER_SHIPPER_VER_FULL", order);
                 url = SUCCESS;
             } else if (order.isEmpty()) {
-                request.setAttribute("VIEW_ORDER_TRANSPORT_VER_FULL", "Hiện tại không có đơn hàng nào đang giao cả");
+                request.setAttribute("VIEW_ORDER_SHIPPER_VER_FULL", "Hiện tại không có đơn hàng nào đang giao cả");
                 url = SUCCESS;
             }
         } catch (Exception e) {
@@ -45,7 +45,6 @@ public class ViewOrderTransportController extends HttpServlet {
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

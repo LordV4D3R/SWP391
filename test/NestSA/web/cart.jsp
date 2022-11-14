@@ -8,6 +8,8 @@
 <%@page import="order.Cart"%>
 <%@page import="users.UserDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -237,11 +239,17 @@
                                             </a>
                                         </td>
                                         <td class="price-pr">
-                                            <p><%= tea.getPrice()%></p>
+                                            <p>
+                                                <c:set var="pri" value="<%= tea.getPrice()%>"/>
+                                                <fmt:setLocale value="vi_VN"/>
+                                                <fmt:formatNumber value="${pri}" type="currency"/></p>
                                         </td>
                                         <td class="quantity-box"><input type="number" size="4" value="<%= tea.getQuantity()%>" min="1" step="1" class="c-input-text qty text" oninput="update(this,<%=tea.getProductId()%>)"></td>
                                         <td class="total-pr">
-                                            <p><%= tea.getQuantity() * tea.getPrice()%></p>
+                                            <p>
+                                                <c:set var="priTotal" value="<%= tea.getQuantity() * tea.getPrice()%>"/>
+                                                <fmt:setLocale value="vi_VN"/>
+                                                <fmt:formatNumber value="${priTotal}" type="currency"/></p>
                                         </td>
                                         <td class="remove-pr">
                                             <a href="MainController?btAction=RemoveCart&id=<%=tea.getProductId()%>">
@@ -310,7 +318,10 @@
                             <!--<hr>-->
                             <div class="d-flex gr-total">
                                 <h5>Grand Total</h5>
-                                <div class="ml-auto h5"> <%= total%> </div>
+                                <div class="ml-auto h5">
+                                    <c:set var="finalTotal" value="<%= total%>"/>
+                                    <fmt:setLocale value="vi_VN"/>
+                                    <fmt:formatNumber value="${finalTotal}" type="currency"/></div>
                             </div>
                             <hr> </div>
                     </div>

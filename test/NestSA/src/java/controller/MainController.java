@@ -76,6 +76,10 @@ public class MainController extends HttpServlet {
     private static final String VIEW_ORDER_DETAIL_MANAGER_CONTROLLER = "ViewProductDetailManagerController";
     private static final String CHANGE_ORDER_STATUS_ADMIN_MANAGER = "ChangeOrderStatusAdminManager";
     private static final String CHANGE_ORDER_STATUS_ADMIN_MANAGER_CONTROLLER = "ChangeOrderStatusAdminManagerController";
+    private static final String VIEW_ORDER_DETAIL_SHIPPER_MANAGER = "ViewOrderDetailShipperManager";
+    private static final String VIEW_ORDER_DETAIL_SHIPPER_MANAGER_CONTROLLER = "ViewOrderDetailShipperManagerController";
+    private static final String CHANGE_ORDER_STATUS_SHIPPER_MANAGER = "ChangeOrderStatusShipperManager";
+    private static final String CHANGE_ORDER_STATUS_SHIPPER_MANAGER_CONTROLLER = "ChangeOrderStatusShipperManagerController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -143,6 +147,10 @@ public class MainController extends HttpServlet {
                 url = VIEW_ORDER_DETAIL_MANAGER_CONTROLLER;
             } else if (CHANGE_ORDER_STATUS_ADMIN_MANAGER.equals(action)) {
                 url = CHANGE_ORDER_STATUS_ADMIN_MANAGER_CONTROLLER;
+            } else if (VIEW_ORDER_DETAIL_SHIPPER_MANAGER.equals(action)) {
+                url = VIEW_ORDER_DETAIL_SHIPPER_MANAGER_CONTROLLER;
+            } else if (CHANGE_ORDER_STATUS_SHIPPER_MANAGER.equals(action)) {
+                url = CHANGE_ORDER_STATUS_SHIPPER_MANAGER_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();
