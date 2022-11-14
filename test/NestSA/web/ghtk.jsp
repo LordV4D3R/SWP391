@@ -157,6 +157,7 @@
                                                 <!--  -->
                                             </tbody>
                                         </table>
+                                        <h1 style="text-align: center">${VIEW_ORDER_SHIPPER_ERROR}</h1>
                                     </div>
                                 </div>
                             </div>

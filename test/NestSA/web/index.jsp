@@ -225,32 +225,32 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/category-01.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Yến chưng sẵn</a>
+                            <img class="img-fluid" style="height: 325px" src="https://yensaohaiphong.net/wp-content/uploads/2021/08/yen-dao-tho-cao-cap-1.png" alt="" />
+                            <a class="btn hvr-hover" href="MainController?btAction=ViewProductByCategory&categoryId=C01">Yến đảo thô nguyên tổ</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/category-02.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Yến thô</a>
+                            <img class="img-fluid" style="height: 325px" src="https://vuayen.vn/wp-content/uploads/2019/05/t%E1%BB%95-y%E1%BA%BFn-%C4%91%E1%BA%A3o-th%C6%B0%E1%BB%A3ng-h%E1%BA%A1ng-2.jpg" alt="" />
+                            <a class="btn hvr-hover" href="MainController?btAction=ViewProductByCategory&categoryId=C02">Yến đảo tinh chế</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/category-03.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Yến tinh chế</a>
+                            <img class="img-fluid" style="height: 325px" src="https://cdn.tgdd.vn/Products/Images/4585/112153/bhx/loc-6-lon-nuoc-yen-sao-khanh-hoa-gold-co-duong-190ml-202001161028030919.jpg" alt="" />
+                            <a class="btn hvr-hover" href="MainController?btAction=ViewProductByCategory&categoryId=C03">Nước yến</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/category-03.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Yến tinh chế</a>
+                            <img class="img-fluid" style="height: 325px" src="https://yensaokhanhhoa.com.vn/img/Products/H12-1.jpg" alt="" />
+                            <a class="btn hvr-hover" href="MainController?btAction=ViewProductByCategory&categoryId=C04">Bánh yến sào</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/category-03.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Yến tinh chế</a>
+                            <img class="img-fluid" style="height: 325px" src="https://yanyen.vn/wp-content/uploads/2022/02/cach-chung-yen-tao-do-ky-tu-hat-sen-4-scaled.jpg" alt="" />
+                            <a class="btn hvr-hover" href="MainController?btAction=ViewProductByCategory&categoryId=C05">Yến chưng</a>
                         </div>
                     </div>
                 </div>

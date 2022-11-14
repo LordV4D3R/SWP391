@@ -37,6 +37,9 @@ public class ViewOrderManagerController extends HttpServlet {
             if (order.size() > 0) {
                 request.setAttribute("VIEW_ORDER_VER_FULL", order);
                 url = SUCCESS;
+            } else if (order.isEmpty()) {
+                request.setAttribute("VIEW_ORDER_EMPTY", "Hiện tại không có đơn hàng nào đang chuẩn bị cả");
+                url = SUCCESS;
             }
         } catch (Exception e) {
             log("Error at ViewOrderManagerController at: " + e.toString());

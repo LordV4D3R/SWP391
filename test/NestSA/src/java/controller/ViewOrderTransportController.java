@@ -37,7 +37,7 @@ public class ViewOrderTransportController extends HttpServlet {
                 request.setAttribute("VIEW_ORDER_TRANSPORT_VER_FULL", order);
                 url = SUCCESS;
             } else if (order.isEmpty()) {
-                request.setAttribute("VIEW_ORDER_TRANSPORT_VER_FULL", "Hiện tại không có đơn hàng nào đang giao cả");
+                request.setAttribute("VIEW_ORDER_TRANSPORT_EMPTY", "Hiện tại không có đơn hàng nào đang giao cả");
                 url = SUCCESS;
             }
         } catch (Exception e) {
