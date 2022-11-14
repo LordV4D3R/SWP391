@@ -142,7 +142,7 @@
                             <li class="dropdown">
                                 <a href="ViewProductController" class="nav-link">Sản phẩm</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="ViewListBlogController">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>
