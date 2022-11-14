@@ -43,7 +43,6 @@ public class EditBlogController extends HttpServlet {
             String image = request.getParameter("image");
             String postContent = request.getParameter("postContent");
             String category = request.getParameter("category");
-            
             PostDAO pDao = new PostDAO();
             boolean check = pDao.updatePost(postId, image, postTitle, postContent, category);
             if(check) {
