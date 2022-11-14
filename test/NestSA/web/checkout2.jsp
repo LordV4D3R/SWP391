@@ -43,6 +43,11 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
+        <style>
+            .paypal-btn-action{
+                display: none;
+            }
+        </style>
 
     </head>
 
@@ -194,16 +199,17 @@
                             </div>
                             <div class="d-block my-3">
                                 <div class="custom-control custom-radio">
-                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked onchange="payment()" required>
+                                    <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked onchange="hidePayPal()" required>
                                     <label class="custom-control-label" for="credit">Thanh toán khi nhận hàng</label>
                                 </div>
                                 <div class="custom-control custom-radio">
-                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" onchange="payment()" required>
+                                    <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" onchange="showPayPal()" required>
                                     <label class="custom-control-label" for="paypal">PayPal</label>
                                 </div>
                             </div>
+                            <div id="paypal-button-container" class="paypal-btn-action"></div>
 
-                           
+
 
                         </div>
                     </div>
@@ -435,22 +441,63 @@
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
 
+
+        <script src="js/sweetalert.min.js"></script>
+        <script src="js/sweetalertAccWarning.js"></script>
+        <!--<script src="https://www.paypal.com/sdk/js?client-id=AZ0BFLApbe72nrP6TuqCz63AR0Vg5CJqpJGz_v4qRtEhaIlfzyiXhXxFnxdgPHKN57QWs18IYiazKBnT" data-namespace="paypal_sdk"></script>-->
         <script>
-                                                function payment() {
-                                                    const pay = document.getElementById('debit').checked
-                                                    if (pay) {
-                                                        document.getElementById('payment-swp').style.display = 'block'
-                                                    } else
-                                                    {
-                                                        document.getElementById('payment-swp').style.display = 'none'
-                                                    }
-                                                }
+//                                                const money = parseInt(document.getElementById('shipfee').textContent)*0.00004
+//            console.log(money)
+//                                               
+//                                               const tien=1100
+//                                                
+//                                                paypal_sdk.Buttons({
+//                                                    createOrder: function (data, actions) {
+//                                                        return actions.order.create({
+//                                                            purchase_units: [{"amount": {"currency_code": "USD", "value": money}}]
+//                                                        }
+//                                                        );
+//                                                    },
+//
+//                                                    onApprove: function (data, actions) {
+//                                                        return actions.order.capture().then(function (orderData) {
+//
+//                                                            // Full available details
+////                                                            console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+//
+//                                                            // Show a success message within this page, e.g.
+////                                                            const element = document.getElementById('paypal-button-container');
+////                                                            element.innerHTML = '';
+////                                                            element.innerHTML = '<h3>Thank you for your payment!</h3>';
+//
+////                                                              actions.redirect('MainController?btAction=Purchase');
+//                                                            window.location.replace("MainController");
+//
+//                                                        });
+//                                                    },
+//
+////                                                    onError: function (err) {
+////                                                        console.log(err);
+////                                                    }
+//                                                }).render('#paypal-button-container');
+//
+//                                                function showPayPal() {
+//                                                    const paypal = document.getElementById('paypal')
+//                                                    if (paypal.checked) {
+//                                                        document.getElementById('paypal-button-container').style.display = 'block'
+//                                                    }
+//                                                }
+//                                                function hidePayPal() {
+//                                                    const credit = document.getElementById('credit')
+//                                                    if (credit.checked) {
+//                                                        document.getElementById('paypal-button-container').style.display = 'none'
+//                                                    }
+//                                                }
+
                                                 function shippingFee() {
                                                     const shipFee = document.getElementById('shipfee').textContent;
-
                                                     if (document.getElementById('shippingOption2').checked) {
                                                         const fee = parseInt(shipFee) * 1.01
-                                                        console.log(fee);
                                                         document.getElementById('shipfee').innerHTML = fee;
                                                         document.getElementById("total-money").value = fee;
                                                     } else {
@@ -459,16 +506,13 @@
                                                         document.getElementById('shipfee').textContent = x;
                                                     }
                                                     if (document.getElementById('shippingOption1').checked) {
-                                                        const a = parseInt(shipFee)/1.01;
-                                                        console.log(a);
+                                                        const a = parseInt(shipFee) / 1.01;
+
                                                         document.getElementById("total-money").value = a;
-
                                                     }
-
                                                 }
+
         </script>
-        <script src="js/sweetalert.min.js"></script>
-        <script src="js/sweetalertAccWarning.js"></script>
     </body>
 
 </html>
