@@ -1,16 +1,11 @@
 <%-- 
-    Document   : cart
-    Created on : Sep 27, 2022, 12:40:48 PM
+    Document   : contact-us
+    Created on : Sep 27, 2022, 12:42:20 PM
     Author     : thangbv
 --%>
 
-<%@page import="product.ProductDTO"%>
-<%@page import="order.Cart"%>
-<%@page import="users.UserDTO"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <!-- Basic -->
@@ -23,14 +18,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>Cart</title>
+        <title>Change password</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
 
         <!-- Site Icons -->
-        <link rel="shortcut icon" href="images/logo.png" type="image/x-icon">
-        <link rel="apple-touch-icon" href="images/logo.png">
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
+        <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -46,24 +41,7 @@
           <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
-        <style>
-            .update-cart{
-                border: none;
-                outline: none;
-                color:#FFFFFF;
-                background:#000000;
-                font-weight: 500;
-                cursor: pointer;
-                height: 50px;
-                padding:0 24px;
-                text-transform: uppercase;
-                margin-left: 358px;
-                transition: all 0.3s ease 0s;
-            }
-            .update-cart:hover{
-                background: #b0b435;
-            }
-        </style>
+
     </head>
 
     <body>
@@ -74,23 +52,24 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                <option>VN/EN</option>
+                                <option>$ VND</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
-                            <p>Hotline :- <a href="#"> +11 900 800 100</a></p>
+                            <p>Hotline :- <a href="#"> +87378873548</a></p>
                         </div>
                         <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
                                 <ul>
                                     <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
-                                    <li><a href="https://facebook.com/NestSongAnSWP"  target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="login-box">                           
+                            <div class="login-box">
+
                                 <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
                             </div>
                         </c:if>
@@ -103,7 +82,7 @@
                                             Tài khoản
                                         </button>
                                     </li>
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -134,7 +113,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>     
+                        </div>
                     </div>
                 </div>
             </div>
@@ -158,174 +137,165 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="index.jsp">TRANG CHỦ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.jsp">GIỚI THIỆU</a></li>
-                            <li class="dropdown ">
-                                <a href="ViewProductController" class="nav-link">Sản phẩm</a> 
+                            <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
+                            <li class="dropdown">
+                                <a href="ViewProductController" class="nav-link">Sản phẩm</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">BLOG</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">LIÊN HỆ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
 
                     <!-- Start Atribute Navigation -->
-                    <div class="attr-nav ">
+                    <div class="attr-nav">
                         <ul>
-                            <li class="side-menu active"><a href="#">
+                            <li class="side-menu">
+                                <a href="cart.jsp">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
-                                    <p>GIỎ HÀNG</p>
-                                </a></li>
+                                    <p>Giỏ hàng</p>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
                 </div>
+                <!-- Start Side Menu -->
+                <!--      <div class="side">
+                          <a href="#" class="close-side"><i class="fa fa-times"></i></a>
+                          <li class="cart-box">
+                              <ul class="cart-list">
+                                  <li>
+                                      <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
+                                      <h6><a href="#">Delica omtantur </a></h6>
+                                      <p>1x - <span class="price">$80.00</span></p>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
+                                      <h6><a href="#">Omnes ocurreret</a></h6>
+                                      <p>1x - <span class="price">$60.00</span></p>
+                                  </li>
+                                  <li>
+                                      <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
+                                      <h6><a href="#">Agam facilisis</a></h6>
+                                      <p>1x - <span class="price">$40.00</span></p>
+                                  </li>
+                                  <li class="total">
+                                      <a href="#" class="btn btn-default hvr-hover btn-cart">Giỏ hàng</a>
+                                      <span class="float-right"><strong>Total</strong>: $180.00</span>
+                                  </li>
+                              </ul>
+                          </li>
+                      </div> -->
+                <!-- End Side Menu -->
             </nav>
             <!-- End Navigation -->
         </header>
         <!-- End Main Top -->
+
+        <!-- Start Top Search -->
+        <!-- <div class="top-search">
+             <div class="container">
+                 <div class="input-group">
+                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                     <input type="text" class="form-control" placeholder="Search">
+                     <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                 </div>
+             </div>
+         </div> -->
+        <!-- End Top Search -->
+
         <!-- Start All Title Box -->
         <div class="all-title-box">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>Cart</h2>
+                        <h2>Thay đổi mật khẩu</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="ViewProductController">Shop</a></li>
-                            <li class="breadcrumb-item active">Cart</li>
+                            <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
+                            <li class="breadcrumb-item active"> Liên hệ </li>
                         </ul>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End All Title Box -->
-        <%
-            Cart cart = (Cart) session.getAttribute("CART");
-            if (cart != null) {
-        %>
-        <!-- Start Cart  -->
-        <div class="cart-box-main">
+
+        <!-- Start Contact Us  -->
+        <div class="contact-box-main">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div class="table-main table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>Hình ảnh</th>
-                                        <th>Tên sản phẩm</th>
-                                        <th>Giá</th>
-                                        <th>Số lượng</th>
-                                        <th>Tổng tiền</th>
-                                        <th>Xóa</th>
-                                    </tr>
-                                </thead>
-                                <tbody>                                   
-                                    <%
-                                        int total = 0;
-                                        for (ProductDTO tea : cart.getCart().values()) {
-                                            total += tea.getPrice() * tea.getQuantity();
-                                    %>
-                                    <tr>
-                                        <td class="thumbnail-img">
-                                            <a href="#">
-                                                <img class="img-fluid" src="<%= tea.getImage()%>" alt="" />
-                                            </a>
-                                        </td>
-                                        <td class="name-pr">
-                                            <a href="#">
-                                                <%= tea.getName()%>
-                                            </a>
-                                        </td>
-                                        <td class="price-pr">
-                                            <p>
-                                                <c:set var="pri" value="<%= tea.getPrice()%>"/>
-                                                <fmt:setLocale value="vi_VN"/>
-                                                <fmt:formatNumber value="${pri}" type="currency"/></p>
-                                        </td>
-                                        <td class="quantity-box"><input type="number" size="4" value="<%= tea.getQuantity()%>" min="1" step="1" class="c-input-text qty text" oninput="update(this,<%=tea.getProductId()%>)"></td>
-                                        <td class="total-pr">
-                                            <p>
-                                                <c:set var="priTotal" value="<%= tea.getQuantity() * tea.getPrice()%>"/>
-                                                <fmt:setLocale value="vi_VN"/>
-                                                <fmt:formatNumber value="${priTotal}" type="currency"/></p>
-                                        </td>
-                                        <td class="remove-pr">
-                                            <a href="MainController?btAction=RemoveCart&id=<%=tea.getProductId()%>">
-                                                <i class="fas fa-times"></i>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <%
-                                        }
-                                    %>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-                                    <h2 style="width: 100%; display: block; text-align: center">${OVERQUANTITY}</h2>
 
-                <div class="row my-5" style="    display: flex;
-                     justify-content: space-between;">
-                    <div></div>
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="update-box">
-                            <form action="MainController">
-                                <button type="submit" name="btAction" value="UpdateCart" class="update-cart">
-                                    Cập nhật giỏ hàng
-                                </button>
-                                <!--<input value="Cập nhật giỏ hàng" type="submit">-->
+                    <div class="col-lg-8 col-sm-12">
+                        <div class="contact-form-right">
+                            <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
+                            <form action="MainController" method="POST">
+                                <c:set var="errorsConfirm" value="${requestScope.CHANGE_PASSWORD_ERROR}"/>
+                                <c:set var="errorsPassword" value="${requestScope.ERROR_CHANGE_PASSWORD}"/>
+                                <c:set var="successMsg" value="${requestScope.CHANGE_PASSWORD_SUCCESS}"/>
+                                <c:if test="${not empty successMsg}">
+                                    <div id="msgSubmit" class="h3 text-center hidden">${successMsg}</div>
+                                </c:if>
+                                <c:if test="${not empty errorsPassword}">
+                                    <div id="msgSubmit" class="h3 text-center hidden">${errorsPassword}</div>
+                                </c:if>
+                                <c:if test="${not empty errorsConfirm}">
+                                    <div id="msgSubmit" class="h3 text-center hidden">${errorsConfirm.confirmNotMatch}</div>
+                                </c:if>
+                                <c:set var="errors" value="${requestScope.INSERT_CONTACT_ERRORS}"/>
+                                <div class="row">
+                                    <c:if test="${checkLogin == null}">
+                                        <div id="msgSubmit" class="h3 text-center hidden">Bạn cần phải đăng nhập hoặc đăng ký để sử dụng tính năng này</div>
+                                    </c:if>
+
+                                    <c:if test="${checkLogin != null}">
+                                        <input id="password" type="hidden" name="password" value="${sessionScope.LOGIN_USER.password}"/>
+                                        <input id="userId" type="hidden" name="userId" value="${sessionScope.LOGIN_USER.userId}" />
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h2>Username: </h2>
+                                                <input  class="form-control" id="username" type="text" name="userName" value="${sessionScope.LOGIN_USER.userName}" readonly/>
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h2>Nhập mật khẩu cũ:</h2>
+                                                <input type="password" placeholder="Mật khẩu cũ" id="email"  class="form-control" name="reOldPassword">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h2>Nhập mật khẩu mới:</h2>
+                                                <input type="password" class="form-control" id="subject"  name="newPassword" placeholder="Nhập mật khẩu mới">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <h2>Nhập lại mật khẩu mới:</h2>
+                                                <input type="password" class="form-control" id="subject"  name="confirm" placeholder="Nhập lại mật khẩu mới">
+                                                <div class="help-block with-errors"></div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="submit-button text-center">                                               
+                                                <button class="btn hvr-hover" id="submit" value="UpdatePassword" name="btAction" type="submit">Thay đổi mật khẩu</button>
+                                                <div id="msgSubmit" class="h3 text-center hidden"></div>
+                                                <div class="clearfix"></div>
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </div>
                             </form>
                         </div>
                     </div>
                 </div>
-
-                <div class="row my-5">
-                    <div class="col-lg-8 col-sm-12"></div>
-                    <div class="col-lg-4 col-sm-12">
-                        <div class="order-box">
-                            <h2>Order summary</h2>
-                            <!--                            <div class="d-flex">
-                                                            <h4>Sub Total</h4>
-                                                            <div class="ml-auto font-weight-bold"> $ 130 </div>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <h4>Discount</h4>
-                                                            <div class="ml-auto font-weight-bold"> $ 40 </div>
-                                                        </div>
-                                                        <hr class="my-1">
-                                                        <div class="d-flex">
-                                                            <h4>Coupon Discount</h4>
-                                                            <div class="ml-auto font-weight-bold"> $ 10 </div>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <h4>Tax</h4>
-                                                            <div class="ml-auto font-weight-bold"> $ 2 </div>
-                                                        </div>
-                                                        <div class="d-flex">
-                                                            <h4>Shipping Cost</h4>
-                                                            <div class="ml-auto font-weight-bold"> Free </div>
-                                                        </div>-->
-                            <!--<hr>-->
-                            <div class="d-flex gr-total">
-                                <h5>Grand Total</h5>
-                                <div class="ml-auto h5">
-                                    <c:set var="finalTotal" value="<%= total%>"/>
-                                    <fmt:setLocale value="vi_VN"/>
-                                    <fmt:formatNumber value="${finalTotal}" type="currency"/></div>
-                            </div>
-                            <hr> </div>
-                    </div>
-                    <div class="col-12 d-flex shopping-box"><a href="checkout.jsp" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>
-                </div>
-
             </div>
         </div>
-        <%
-            }
-        %>
         <!-- End Cart -->
 
         <!-- Start Instagram Feed  -->
@@ -502,8 +472,8 @@
 
         <!-- Start copyright  -->
         <div class="footer-copyright">
-            <p class="footer-company">All Rights Reserved. &copy; 202   2 <a href="#">NestSongAn</a> Design By :
-                <a href="#">Team1SWP</a></p>
+            <p class="footer-company">All Rights Reserved. &copy; 2022 <a href="#">NestSongAn</a> Design By :
+                <a href="https://html.design/">Team1SWP</a></p>
         </div>
         <!-- End copyright  -->
 
@@ -525,16 +495,8 @@
         <script src="js/form-validator.min.js"></script>
         <script src="js/contact-form-script.js"></script>
         <script src="js/custom.js"></script>
-        <script>
-            function update(input, x) {
-                let num = x;
-                console.log(num);
-                let name = num.toString();
-                document.cookie = name + "=" + input.value;
-            }
-        </script>
         <script src="js/sweetalert.min.js"></script>
-        <script src="js/sweetalertAccWarning.js"></script>       
+        <script src="js/sweetalertAccWarning.js"></script>
     </body>
 
 </html>

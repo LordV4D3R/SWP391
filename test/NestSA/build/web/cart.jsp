@@ -23,7 +23,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+        <title>Cart</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -160,7 +160,7 @@
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                             <li class="nav-item"><a class="nav-link" href="index.jsp">TRANG CHỦ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">GIỚI THIỆU</a></li>
-                            <li class="dropdown active">
+                            <li class="dropdown ">
                                 <a href="ViewProductController" class="nav-link">Sản phẩm</a> 
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">BLOG</a></li>
@@ -170,9 +170,9 @@
                     <!-- /.navbar-collapse -->
 
                     <!-- Start Atribute Navigation -->
-                    <div class="attr-nav">
+                    <div class="attr-nav ">
                         <ul>
-                            <li class="side-menu"><a href="#">
+                            <li class="side-menu active"><a href="#">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>GIỎ HÀNG</p>
@@ -265,18 +265,11 @@
                         </div>
                     </div>
                 </div>
+                                    <h2 style="width: 100%; display: block; text-align: center">${OVERQUANTITY}</h2>
 
-                <div class="row my-5">
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="coupon-box">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control" placeholder="Mã giảm giá" aria-label="Coupon code" type="text">
-                                <div class="input-group-append">
-                                    <button class="btn btn-theme" type="button">Áp dụng</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row my-5" style="    display: flex;
+                     justify-content: space-between;">
+                    <div></div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="update-box">
                             <form action="MainController">

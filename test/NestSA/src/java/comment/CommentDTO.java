@@ -17,12 +17,21 @@ public class CommentDTO implements Serializable {
     private int userId;
     private int productId;
     private String comment;
-    private boolean status;
+    private int status;
 
     public CommentDTO() {
     }
 
-    public CommentDTO(int commentId, int userId, int productId, String comment, boolean status) {
+    public CommentDTO(int commentId, String comment) {
+        this.commentId = commentId;
+        this.comment = comment;
+    }
+
+  
+    
+    
+
+    public CommentDTO(int commentId, int userId, int productId, String comment, int status) {
         this.commentId = commentId;
         this.userId = userId;
         this.productId = productId;
@@ -30,7 +39,7 @@ public class CommentDTO implements Serializable {
         this.status = status;
     }
 
-    public CommentDTO(int userId, int productId, String comment, boolean status) {
+    public CommentDTO(int userId, int productId, String comment, int status) {
         this.userId = userId;
         this.productId = productId;
         this.comment = comment;
@@ -96,14 +105,14 @@ public class CommentDTO implements Serializable {
     /**
      * @return the status
      */
-    public boolean isStatus() {
+    public int isStatus() {
         return status;
     }
 
     /**
      * @param status the status to set
      */
-    public void setStatus(boolean status) {
+    public void setStatus(int status) {
         this.status = status;
     }
 

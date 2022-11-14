@@ -21,7 +21,7 @@
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
             rel="stylesheet"
             />
-        <title>Tables | Tailwind Admin</title>
+        <title>Admin</title>
         <style>
             @keyframes show-hide {
                 from {
@@ -124,7 +124,7 @@
                         >
                         <ul class="list-reset flex flex-col">
                             <li
-                                class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
+                                class="w-full h-full py-3 px-2 border-b border-light-border"
                                 >
                                 <a
                                     href="admin.jsp"
@@ -145,12 +145,12 @@
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
                                 <!--href="ViewOrderManagerController"-->
                                 <div id="menu">
                                     <a
                                         href="#"
-                                        class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                                        class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline "
                                         >
                                         <i class="fas fa-grip-horizontal float-left mx-2"></i>
                                         Đơn hàng
@@ -206,7 +206,7 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
                                         >
-                                        Đơn hàng
+                                        Danh sách đơn hàng đang giao
                                     </div>
                                     <div class="p-3">
                                         <table

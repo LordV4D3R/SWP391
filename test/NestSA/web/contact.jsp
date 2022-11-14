@@ -1,13 +1,11 @@
 <%-- 
-    Document   : order.jsp
-    Created on : Oct 25, 2022, 2:11:18 PM
+    Document   : product.jsp
+    Created on : Oct 25, 2022, 2:10:44 PM
     Author     : thangbv
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -23,24 +21,6 @@
             />
         <title>Admin</title>
         <style>
-            @keyframes show-hide {
-                from {
-                    opacity: 0;
-                }
-                to {
-                    opacity: 1;
-                }
-            }
-            .show {
-                display: table-row;
-            }
-            .hide {
-                display: none;
-            }
-
-            .row-info:hover {
-                background-color: rgb(226 232 240);
-            }
             .handModal {
                 position: fixed;
                 top: 0;
@@ -53,7 +33,6 @@
                 outline: 0;
                 display: none;
             }
-
             .handModal .overlay {
                 position: fixed;
                 top: 0;
@@ -124,7 +103,7 @@
                         >
                         <ul class="list-reset flex flex-col">
                             <li
-                                class="w-full h-full py-3 px-2 border-b border-light-border "
+                                class="w-full h-full py-3 px-2 border-b border-light-border"
                                 >
                                 <a
                                     href="admin.jsp"
@@ -135,7 +114,7 @@
                                     <span><i class="fas fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
                                 <a
                                     href="ViewProductManagerController"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
@@ -145,7 +124,7 @@
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <!--href="ViewOrderManagerController"-->
                                 <div id="menu">
                                     <a
@@ -165,7 +144,7 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="#"
+                                    href="GetComment"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fas fa-table float-left mx-2"></i>
@@ -204,45 +183,54 @@
                                     class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full"
                                     >
                                     <div
-                                        class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
+                                        class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
                                         >
-                                      Danh sách hóa đơn đang chuẩn bị
+                                        Danh sách liên hệ
+
+
                                     </div>
-                                    <div class="p-3">
+                                    <div class="p-3 ">
                                         <table
                                             class="table-responsive w-full rounded"
                                             style="text-align: center"
                                             >
                                             <thead>
                                                 <tr>
-                                                    <th class="border w-1/5 px-4 py-2">Tên người nhận</th>
-                                                    <th class="border w-1/4 px-4 py-2">Địa chỉ</th>
-                                                    <th class="border w-1/12 px-4 py-2">Số điện thoại</th>
-                                                    <th class="border w-1/5 px-4 py-2">Ngày mua</th>
-                                                    <th class="border w-1/12 px-4 py-2">Trạng thái</th>
-                                                    <th class="border w-1/12 px-4 py-2">Phí giao hàng</th>
-                                                    <th class="border w-1/5 px-4 py-2">Tổng hóa đơn</th>
+                                                    <th class="border w-1/5 px-4 py-2">Tên người gửi</th>
+                                                    <th class="border w-1/5 px-4 py-2">Email</th>
+                                                    <th class="border w-1/6 px-4 py-2">Số điện thoại</th>
+                                                    <th class="border w-1/2 px-4 py-2">Nội dung</th>
+                                                    <th class="border  px-4 py-2"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <c:forEach items="${VIEW_ORDER_VER_FULL}" var="o">
-                                                    <tr class="cursor-pointer row-info" id="order" data-href="MainController?btAction=ViewProductDetailManager&id=${o.orderId}">
-                                                        <td class="border w-1/5 py-2">${o.receiver}</td>
-                                                        <td class="border w-1/4 py-2">${o.address}</td>
-                                                        <td class="border w-1/12 py-2">${o.phone}</td>
-                                                        <td class="border w-1/5 py-2">${o.date}</td>
-                                                        <td class="border w-1/12 py-2">${o.status}</td>
-                                                        <td class="border w-1/12 py-2">
-                                                            <c:set var="shippingfee" value="${o.shippingfee}"/>
-                                                            <fmt:setLocale value="vi_VN"/>
-                                                            <fmt:formatNumber value="${shippingfee}" type="currency"/></td>
-                                                        <td class="border w-1/5 py-2">
-                                                            <c:set var="total" value="${o.total}"/>
-                                                            <fmt:setLocale value="vi_VN"/>
-                                                            <fmt:formatNumber value="${total}" type="currency"/></td>
-                                                    </tr>
-                                                </c:forEach>
-                                                <!--  -->
+                                                <tr>
+                                                    <td class="border w-1/5 py-2">toi can ho tro</td>
+                                                    <td class="border w-1/5 py-2">tahng@</td>
+                                                    <td class="border w-1/6 py-2">0123</td>
+                                                    <td class="border w-1/2 py-2">
+                                                        toi can ho tro
+                                                    </td>
+                                                    <td class="border  py-2">
+                                                        <a
+                                                            class="bg-teal-300 rounded p-1 mx-1 text-red-500 block"
+                                                            href="#"
+                                                            >
+                                                            Duyệt 
+                                                        </a>
+                                                      
+                                                    </td>
+                                                    <td class="border  py-2">
+                                                        <a
+                                                            class="bg-teal-300 rounded p-1 mx-1 text-red-500 block"
+                                                            href="#"
+                                                            >
+                                                            Xóa 
+                                                        </a>
+                                                      
+                                                    </td>
+                                                </tr>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -253,6 +241,39 @@
                     </main>
                     <!--/Main-->
                 </div>
+                <!-- modal -->
+
+                <div id="centeredModal" class="handModal">
+                    <div class="overlay close-modal"></div>
+                    <div class="modal modal-centered">
+                        <div class="modal-content shadow-lg p-5 content-animation">
+                            <div class="border-b p-2 pb-3 pt-0 mb-4">
+                                <div class="flex justify-between items-center">
+                                    Xác nhận
+                                    <span
+                                        onclick="handalModal('centeredModal', 'none')"
+                                        class="close-modal cursor-pointer px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200"
+                                        >
+                                        <i class="fas fa-times text-gray-700"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- Modal content -->
+                            <div class="flex justify-between">
+                                <span>Bạn có muốn xóa sản phẩm này không?</span>
+                                <!--href="MainController?btAction=RemoveProductManager&id=${productId}"-->
+                                <!--onclick="handalModal('centeredModal', 'none')"-->
+                                <a id="yes"
+                                   >Có<i class="fas fa-check text-green-500 mx-2"></i>
+                                </a>
+                                <a href="#" onclick="handalModal('centeredModal', 'none')"
+                                   >Không<i class="fas fa-ban text-red-500 mx-2"></i
+                                    ></a>
+                            </div>        
+                        </div>
+                    </div>
+                </div>
+                <!-- modal -->
                 <!--Footer-->
                 <footer class="bg-grey-darkest text-white p-2">
                     <div class="flex flex-1 mx-auto">Nest SongAn</div>
@@ -266,38 +287,28 @@
 
         <script src="./main.js"></script>
         <script>
-                                    function linkRow() {
-                                        const rows = document.querySelectorAll("tr[data-href]");
-                                        rows.forEach(row => {
-                                            row.addEventListener("click", () => {
-                                                window.location.href = row.dataset.href;
-                                            });
-                                        });
+                                    function handalModal(id, display, pid) {
+                                        console.log(pid)
+                                        document.getElementById('yes').href = 'MainController?btAction=RemoveProductManager&id=' + pid
+                                        console.log(document.getElementById('yes'))
+                                        document.getElementById(id).style.display = display;
                                     }
-                                    document.addEventListener("DOMContentLoaded", linkRow());
+
+                                    const items = document.querySelectorAll('#item');
+                                    const menu = document.getElementById('menu')
+                                    const icon = document.getElementById('icon-xoay')
+                                    const listMenu = document.getElementById('list-menu')
+                                    console.log(listMenu)
+
+                                    menu.addEventListener('click', () => {
+                                        listMenu.classList.toggle('show-swp')
+                                        icon.classList.toggle('show-swp-icon')
+                                    })
+
+                                    items.forEach(item => {
+                                        console.log(item)
+                                    })
         </script>
-        <script>
-            function handalModal(id, display, pid) {
-                console.log(pid)
-                document.getElementById('yes').href = 'MainController?btAction=RemoveProductManager&id=' + pid
-                console.log(document.getElementById('yes'))
-                document.getElementById(id).style.display = display;
-            }
 
-            const items = document.querySelectorAll('#item');
-            const menu = document.getElementById('menu')
-            const icon = document.getElementById('icon-xoay')
-            const listMenu = document.getElementById('list-menu')
-            console.log(listMenu)
-
-            menu.addEventListener('click', () => {
-                listMenu.classList.toggle('show-swp')
-                icon.classList.toggle('show-swp-icon')
-            })
-
-            items.forEach(item => {
-                console.log(item)
-            })
-        </script>
     </body>
 </html>

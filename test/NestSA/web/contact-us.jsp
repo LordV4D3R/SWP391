@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+        <title>Contact</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -137,13 +137,13 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
                             <li class="dropdown">
                                 <a href="ViewProductController" class="nav-link">Sản phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -162,50 +162,11 @@
                     </div>
                     <!-- End Atribute Navigation -->
                 </div>
-                <!-- Start Side Menu -->
-                <!--      <div class="side">
-                          <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                          <li class="cart-box">
-                              <ul class="cart-list">
-                                  <li>
-                                      <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                                      <h6><a href="#">Delica omtantur </a></h6>
-                                      <p>1x - <span class="price">$80.00</span></p>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                                      <h6><a href="#">Omnes ocurreret</a></h6>
-                                      <p>1x - <span class="price">$60.00</span></p>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                                      <h6><a href="#">Agam facilisis</a></h6>
-                                      <p>1x - <span class="price">$40.00</span></p>
-                                  </li>
-                                  <li class="total">
-                                      <a href="#" class="btn btn-default hvr-hover btn-cart">Giỏ hàng</a>
-                                      <span class="float-right"><strong>Total</strong>: $180.00</span>
-                                  </li>
-                              </ul>
-                          </li>
-                      </div> -->
-                <!-- End Side Menu -->
+                
             </nav>
             <!-- End Navigation -->
         </header>
-        <!-- End Main Top -->
-
-        <!-- Start Top Search -->
-        <!-- <div class="top-search">
-             <div class="container">
-                 <div class="input-group">
-                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                     <input type="text" class="form-control" placeholder="Search">
-                     <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                 </div>
-             </div>
-         </div> -->
-        <!-- End Top Search -->
+        
 
         <!-- Start All Title Box -->
         <div class="all-title-box">
@@ -245,29 +206,23 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">                                              
-                                                <input type="text" placeholder="Email" id="email" class="form-control" name="emailContact">
+                                                <input type="email" placeholder="Email" id="email" class="form-control" name="emailContact">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="subject" name="phoneContact" placeholder="Số Điện Thoại">
+                                                <input type="tel" class="form-control" id="subject" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Số Điện Thoại" name="phoneContact">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" id="message" placeholder="Lời bạn muốn nói..." rows="4" name="contactMessage" data-error="Hãy nhập nội dung" required></textarea>
+                                                <textarea class="form-control" id="message" placeholder="Nội dung" rows="4" name="contactMessage" data-error="Hãy nhập nội dung" required></textarea>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                             <c:if test="${not empty errors.emailAndPhoneErr}">
                                                 <div id="msgSubmit" class="h3 text-center hidden">${errors.emailAndPhoneErr}</div>
-                                            </c:if>
-                                            <c:if test="${not empty errors.emailErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.emailErr}</div>
-                                            </c:if>
-                                            <c:if test="${not empty errors.phoneErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.phoneErr}</div>
                                             </c:if>
                                             <c:if test="${not empty errors.nameErr}">
                                                 <div id="msgSubmit" class="h3 text-center hidden">${errors.nameErr}</div>
@@ -289,29 +244,23 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="text" placeholder="Email" id="email" value="${sessionScope.LOGIN_USER.email}" class="form-control" name="emailContact">
+                                                <input type="email" placeholder="Email" id="email" value="${sessionScope.LOGIN_USER.email}" class="form-control" name="emailContact">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="subject" value="${sessionScope.LOGIN_USER.phone}" name="phoneContact" placeholder="Số Điện Thoại">
+                                                <input type="tel" class="form-control" id="subject" value="${sessionScope.LOGIN_USER.phone}"  pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Số Điện Thoại" name="phoneContact">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" id="message" placeholder="Lời bạn muốn nói" rows="4" data-error="Hãy nhập nội dung" name="contactMessage" required></textarea>
+                                                <textarea class="form-control" id="message" placeholder="Nội dung" rows="4" data-error="Hãy nhập nội dung" name="contactMessage" required></textarea>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                             <c:if test="${not empty errors.emailAndPhoneErr}">
                                                 <div id="msgSubmit" class="h3 text-center hidden">${errors.emailAndPhoneErr}</div>
-                                            </c:if>
-                                            <c:if test="${not empty errors.emailErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.emailErr}</div>
-                                            </c:if>
-                                            <c:if test="${not empty errors.phoneErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.phoneErr}</div>
                                             </c:if>
                                             <c:if test="${not empty errors.nameErr}">
                                                 <div id="msgSubmit" class="h3 text-center hidden">${errors.nameErr}</div>

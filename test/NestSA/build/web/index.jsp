@@ -221,34 +221,33 @@
             <div class="container">
                 <div class="title-all text-center">
                     <h1>Phân loại</h1>
-
                 </div>
                 <div class="row justify-content-center">
-                    <div class="col-lg-2-swp col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
                             <img class="img-fluid" src="images/category-01.jpg" alt="" />
                             <a class="btn hvr-hover" href="#">Yến chưng sẵn</a>
                         </div>
                     </div>
-                    <div class="col-lg-2-swp col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
                             <img class="img-fluid" src="images/category-02.jpg" alt="" />
                             <a class="btn hvr-hover" href="#">Yến thô</a>
                         </div>
                     </div>
-                    <div class="col-lg-2-swp col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
                             <img class="img-fluid" src="images/category-03.jpg" alt="" />
                             <a class="btn hvr-hover" href="#">Yến tinh chế</a>
                         </div>
                     </div>
-                    <div class="col-lg-2-swp col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
                             <img class="img-fluid" src="images/category-03.jpg" alt="" />
                             <a class="btn hvr-hover" href="#">Yến tinh chế</a>
                         </div>
                     </div>
-                    <div class="col-lg-2-swp col-md-4 col-sm-12 col-xs-12">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
                             <img class="img-fluid" src="images/category-03.jpg" alt="" />
                             <a class="btn hvr-hover" href="#">Yến tinh chế</a>

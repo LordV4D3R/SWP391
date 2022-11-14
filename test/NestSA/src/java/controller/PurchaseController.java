@@ -90,6 +90,7 @@ public class PurchaseController extends HttpServlet {
                 cart=null;
                 session.setAttribute("CART", cart);
                 session.setAttribute("QUANTITY_IN_CART", null);
+                request.setAttribute("SHOW_MODAL", "show");
                 url = SUCCESS;
             } else {
                 url = ERROR;

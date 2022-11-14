@@ -59,6 +59,37 @@ public class ProductDAO {
             + "SET status = 0 "
             + "WHERE productId = ?";
     
+    private static final String GET_PRODUCT_QUANTITY="SELECT quantity FROM product WHERE productId= ?";
+     public int getProductQuantity(int id) throws SQLException {
+        int check = 0;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_PRODUCT_QUANTITY);
+                ptm.setInt(1, id);         
+                rs=ptm.executeQuery();
+                if(rs.next()){
+                    check=Integer.parseInt(rs.getString("quantity"));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return check;
+    }
     public boolean removeProduct(ProductDTO product) throws SQLException {
         boolean check = false;
         Connection conn = null;

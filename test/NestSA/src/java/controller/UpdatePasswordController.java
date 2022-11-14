@@ -5,28 +5,29 @@
  */
 package controller;
 
-import comment.CommentDAO;
-import comment.CommentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
+import java.sql.SQLException;
+import javax.naming.NamingException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import product.ProductDTO;
+import users.UserDAO;
+import users.UserError;
 
 /**
  *
- * @author thangbv
+ * @author tranq
  */
-@WebServlet(name = "DetailController", urlPatterns = {"/DetailController"})
-public class DetailController extends HttpServlet {
-    private static final String ERROR="error.jsp";
-    private static final String SUCCESS="shop-detail.jsp";
-    
+@WebServlet(name = "UpdatePasswordController", urlPatterns = {"/UpdatePasswordController"})
+public class UpdatePasswordController extends HttpServlet {
+
+    private final String ERROR = "change-password.jsp";
+    private final String SUCCESS = "change-password.jsp";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -39,27 +40,46 @@ public class DetailController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url=ERROR;
+        String url = ERROR;
+
         try {
-            int id=Integer.parseInt(request.getParameter("id"));
-            String name=request.getParameter("name");
-            String img=request.getParameter("img");
-            String des=request.getParameter("des");
-            int quantity=Integer.parseInt(request.getParameter("quantity"));
-            int price=Integer.parseInt(request.getParameter("price"));
-            ProductDTO product= new ProductDTO(id, name, quantity, price, img, des);
-            HttpSession session=request.getSession();
-            session.setAttribute("PRODUCT", product);
-            
-            CommentDAO cmtDao = new CommentDAO();
-            cmtDao.viewComment(id);
-            List<CommentDTO> cmtResult = cmtDao.getItem();
-            session.setAttribute("COMMENT_RESULT", cmtResult);
-            url=SUCCESS;
-        } catch (Exception e) {
-        }finally{
-//            request.getRequestDispatcher(url).forward(request, response);
-            response.sendRedirect(url);
+            String password = request.getParameter("password");
+            String reOldPassword = request.getParameter("reOldPassword");
+            String newPassword = request.getParameter("newPassword");
+            String confirm = request.getParameter("confirm");
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            UserError errors = new UserError();
+            boolean foundErr = false;
+            if (reOldPassword.equals(password)) {
+                if (!confirm.equals(newPassword)) {
+                    foundErr = true;
+                    errors.setConfirmNotMatch("Mật Khẩu Nhập Lại Không Khớp");
+                }
+                if (newPassword.trim().length() > 50) {
+                    foundErr = true;
+                    errors.setPasswordErr("Mật khẩu không quá 50 kí tự");
+                }
+                if (foundErr) {
+                    request.setAttribute("CHANGE_PASSWORD_ERROR", errors);
+                } else {
+                    UserDAO dao = new UserDAO();
+                    boolean result = dao.updatePassword(userId, newPassword);
+                    if (result) {
+                        request.setAttribute("CHANGE_PASSWORD_SUCCESS", "Thay đổi mật khẩu thành công");
+                        url = SUCCESS;
+                    }
+                }
+            } else {
+                request.setAttribute("ERROR_CHANGE_PASSWORD", "Mật khẩu cũ không đúng");
+            }
+
+        } catch (NamingException ex) {
+            log("UpdateProfileController _ Naming _ " + ex.getMessage());
+        } catch (SQLException ex) {
+            log("UpdateProfileController _ SQL _ " + ex.getMessage());
+        } finally {
+            RequestDispatcher rd = request.getRequestDispatcher(url);
+            rd.forward(request, response);
         }
     }
 

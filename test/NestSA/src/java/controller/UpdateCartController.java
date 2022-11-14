@@ -15,6 +15,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import order.Cart;
+import product.ProductDAO;
 import product.ProductDTO;
 
 /**
@@ -53,20 +54,38 @@ public class UpdateCartController extends HttpServlet {
                     cookies[i].setMaxAge(0);
                     response.addCookie(cookies[i]);
                     HttpSession session = request.getSession();
-                    if (session != null) {
-                        Cart cart = (Cart) session.getAttribute("CART");
-                        if (cart != null) {
-                            ProductDTO product = new ProductDTO();
-                            if (cart.getCart().containsKey(id)) {
-                                product = cart.getCart().get(id);
-                                product.setQuantity(quantity);
-                                cart.update(id, product);
-                                session.setAttribute("CART", cart);                                
+                    ProductDAO dao = new ProductDAO();
+                    int pquantity = dao.getProductQuantity(id);
+                    if (quantity < pquantity) {
+                        if (session != null) {
+                            Cart cart = (Cart) session.getAttribute("CART");
+                            if (cart != null) {
+                                ProductDTO product = new ProductDTO();
+                                if (cart.getCart().containsKey(id)) {
+                                    product = cart.getCart().get(id);
+                                    product.setQuantity(quantity);
+                                    cart.update(id, product);
+                                    session.setAttribute("CART", cart);
+                                }
                             }
                         }
+                    }else{
+                        request.setAttribute("OVERQUANTITY", "Quá số lượng cho phép");
                     }
+//                    if (session != null) {
+//                        Cart cart = (Cart) session.getAttribute("CART");
+//                        if (cart != null) {
+//                            ProductDTO product = new ProductDTO();
+//                            if (cart.getCart().containsKey(id)) {
+//                                product = cart.getCart().get(id);
+//                                product.setQuantity(quantity);
+//                                cart.update(id, product);
+//                                session.setAttribute("CART", cart);                                
+//                            }
+//                        }
+//                    }
                 }
-            }            
+            }
             url = SUCCESS;
         } catch (Exception e) {
         } finally {

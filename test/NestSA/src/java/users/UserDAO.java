@@ -22,9 +22,11 @@ import utils.DBUtils;
 public class UserDAO implements Serializable {
 
     private static final String LOGIN = "SELECT userId, username, password, address, phone, email, fullname, roleId FROM users WHERE username = ? AND password = ?";
+    private static final String VIEW_PROFILE = "SELECT userId, username, password, address, phone, email, fullname, roleId FROM users WHERE userId = ?";
     private static final String CHECK_DUPLICATE = "SELECT username FROM users WHERE username = ?";
     private static final String CREATE_ACCOUNT = "Insert Into users(password, address, phone, email, fullName, roleId, userName) Values(?, ?, ?, ?, ?, ?, ?)";
-    private static final String UPDATE_INFO = "UPDATE users SET fullName=?, address=?, email=?, phone=? WHERE userId=?";
+    private static final String UPDATE_INFO = "UPDATE users SET fullName = ?, address = ?, email = ?, phone = ? WHERE userId = ?";
+    private static final String UPDATE_PASSWORD = "UPDATE users SET password = ? WHERE userId = ?";
     private static final String CHECK_EMAIL_DUPLICATE = "SELECT email FROM users WHERE email = ?";
 
     public UserDTO checkLogin(String userName, String password) throws SQLException, NamingException {
@@ -160,7 +162,7 @@ public class UserDAO implements Serializable {
         return result;
     }
 
-    public boolean updateInfo(UserDTO user) throws SQLException {
+    public boolean updateInfo(UserDTO user) throws SQLException, NamingException {
         boolean check = false;
         Connection conn = null;
         PreparedStatement ptm = null;
@@ -173,7 +175,7 @@ public class UserDAO implements Serializable {
                 ptm.setString(3, user.getEmail());
                 ptm.setString(4, user.getPhone());
                 ptm.setInt(5, user.getUserId());
-                check = ptm.executeUpdate() > 0 ? true : false;
+                check = ptm.executeUpdate() > 0;
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -186,7 +188,6 @@ public class UserDAO implements Serializable {
             }
         }
         return check;
-
     }
 
     public boolean checkEmailDuplicate(String email)
@@ -222,6 +223,74 @@ public class UserDAO implements Serializable {
         return check;
     }
 
+    public boolean updatePassword(int userId, String password) throws SQLException, NamingException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE_PASSWORD);
+                ptm.setString(1, password);
+                ptm.setInt(2, userId);
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+
+    public UserDTO viewUserProfile(int userId) throws SQLException, NamingException {
+        Connection connection = null;
+        PreparedStatement stm = null;
+        ResultSet rs = null;
+        UserDTO dto = new UserDTO();
+
+        try {
+            //1. Make connection
+            connection = DBUtils.getConnection();
+
+            if (connection != null) {
+                stm = connection.prepareStatement(VIEW_PROFILE);
+                stm.setInt(1, userId);
+                rs = stm.executeQuery();
+                if (rs.next()) {
+                    String fullName = rs.getString("fullName");
+                    String roleId = rs.getString("roleId");
+                    String address = rs.getString("address");
+                    String phone = rs.getString("phone");
+                    String email = rs.getString("email");
+                    String password = rs.getString("password");
+                    String userName = rs.getString("userName");
+                    dto = new UserDTO(userId, password, address, phone, email,
+                            fullName, roleId, userName);
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            ex.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+
+            if (stm != null) {
+                stm.close();
+            }
+
+            if (connection != null) {
+                connection.close();
+            }
+        }
+        return dto;
+    }
     /**
      * GUEST
      */
@@ -253,7 +322,7 @@ public class UserDAO implements Serializable {
         }
         return check;
     }
-    
+
     public boolean saveGuestInformation(UserDTO user) throws SQLException {
         boolean check = false;
         Connection conn = null;
