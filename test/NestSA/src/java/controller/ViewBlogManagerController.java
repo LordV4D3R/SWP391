@@ -5,6 +5,8 @@
  */
 package controller;
 
+import category.CategoryDAO;
+import category.CategoryDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -14,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import post.PostDAO;
 import post.PostDTO;
 
@@ -40,12 +43,19 @@ public class ViewBlogManagerController extends HttpServlet {
         String url = ERROR;
         try {
             PostDAO pDao = new PostDAO();
+            CategoryDAO cDao = new CategoryDAO();
             List<PostDTO> listPost = new ArrayList<>();
             listPost = pDao.getAllListPostsForManager();
             if(listPost.size() > 0) {
                 request.setAttribute("VIEW_LIST_BLOG", listPost);
                 url = SUCCESS;
-            }  
+            }
+            List<CategoryDTO> listCategory = cDao.ViewCategory();
+            if (listCategory.size() > 0) {
+                HttpSession session = request.getSession();
+                session.setAttribute("VIEW_CATEGORY", listCategory);
+                url = SUCCESS;
+            } 
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
