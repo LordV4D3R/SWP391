@@ -130,6 +130,11 @@ public class MainController extends HttpServlet {
             } else if (CREATE_BLOG.equals(action)) {
                 url = CREATE_BLOG_CONTROLLER;
 
+
+            } else if (UPDATE_PROFILE.equals(action)) {
+                url = UPDATE_PROFILE_CONTROLLER;
+
+
             } else if (UPDATE_PROFILE.equals(action)) {
                 url = UPDATE_PROFILE_CONTROLLER;
 
@@ -140,6 +145,9 @@ public class MainController extends HttpServlet {
             }else if (REMOVE_BLOG.equals(action)) {
                 url = REMOVE_BLOG_CONTROLLER;
 
+
+
+
             } else if (EDIT_PRODUCT_MANAGER.equals(action)) {
                 url = EDIT_PRODUCT_MANAGER_CONTROLLER;
             } else if (VIEW_EDIT_PRODUCT_MANAGER.equals(action)) {
@@ -149,6 +157,11 @@ public class MainController extends HttpServlet {
             } else if (SEARCH_PRODUCT_MANAGER.equals(action)) {
                 url = SEARCH_PRODUCT_MANAGER_CONTROLLER;
 
+
+            } else if (UPDATE_PASSWORD.equals(action)) {
+                url = UPDATE_PASSWORD_CONTROLLER;
+
+
             } else if (UPDATE_PASSWORD.equals(action)) {
                 url = UPDATE_PASSWORD_CONTROLLER;
 
@@ -156,6 +169,8 @@ public class MainController extends HttpServlet {
                 url = VIEW_ORDER_DETAIL_MANAGER_CONTROLLER;
             } else if (CHANGE_ORDER_STATUS_ADMIN_MANAGER.equals(action)) {
                 url = CHANGE_ORDER_STATUS_ADMIN_MANAGER_CONTROLLER;
+
+
 
             }
         } catch (Exception e) {
