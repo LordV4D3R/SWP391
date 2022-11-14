@@ -122,7 +122,7 @@
                         >
                         <ul class="list-reset flex flex-col">
                             <li
-                                class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
+                                class="w-full h-full py-3 px-2 border-b border-light-border "
                                 >
                                 <a
                                     href="admin.jsp"
@@ -143,7 +143,7 @@
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
                                 <!--href="ViewOrderManagerController"-->
                                 <div id="menu">
                                     <a
@@ -204,7 +204,7 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
                                         >
-                                        Đơn hàng
+                                      Danh sách hóa đơn đang chuẩn bị
                                     </div>
                                     <div class="p-3">
                                         <table

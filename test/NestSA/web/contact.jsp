@@ -59,7 +59,7 @@
                 background-color: rgb(161 161 170) !important;
                 color: #FFFFFF;
             }
-            
+
             .show-swp{
                 display: block;
             }
@@ -185,14 +185,9 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
                                         >
-                                        Sản phẩm
-                                        <form class="flex" action="MainController">
-                                            <div class="p-2 rounded flex items-center bg-slate-200" style="width: 500px">
-                                                <input type="text" class="p-1 rounded outline-none flex-1" placeholder="Tìm kiếm sản phẩm" name="search"/>
-                                            </div>
-                                            <button type="submit" name="btAction" value="SearchProductManager" class="pr-3" style="outline: none"><i class="fas fa-search mr-1"></i></button>
-                                        </form>
-                                        <a href="add_edit_product.jsp" class="px-4 py-2 rounded block leading-7" id="add_product_swp" style="background-color: rgb(212 212 216);">Thêm sản phẩm mới</a>
+                                        Danh sách liên hệ
+
+
                                     </div>
                                     <div class="p-3 ">
                                         <table
@@ -201,45 +196,31 @@
                                             >
                                             <thead>
                                                 <tr>
-                                                    <th class="border w-1/2 px-4 py-2">Tên sản phẩm</th>
-                                                    <th class="border w-96 px-4 py-2">Số lượng</th>
-                                                    <th class="border w-1/4 px-4 py-2">Giá</th>
-                                                    <th class="border w-96 px-4 py-2">Status</th>
-                                                    <th class="border w-full px-4 py-2"></th>
+                                                    <th class="border w-1/5 px-4 py-2">Tên người gửi</th>
+                                                    <th class="border w-1/5 px-4 py-2">Email</th>
+                                                    <th class="border w-1/6 px-4 py-2">Số điện thoại</th>
+                                                    <th class="border w-1/2 px-4 py-2">Nội dung</th>
+                                                    <th class="border  px-4 py-2"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
-                                                <c:forEach items="${VIEW_PRODUCT_VER_FULL}" var="o">
-                                                    <tr>
-                                                        <td class="border w-1/2 py-2">${o.name}</td>
-                                                        <td class="border w-96 py-2">${o.quantity}</td>
-                                                        <td class="border w-1/4 py-2">${o.price}</td>
-                                                        <td class="border w-96 py-2">
-                                                            <c:if test="${o.status == 1}">
-                                                                <i class="fas fa-check text-green-500 mx-2"></i>
-                                                            </c:if>
-                                                            <c:if test="${o.status == 0}">
-                                                                <i class="fas fa-times text-red-500 mx-2"></i>
-                                                            </c:if>
-                                                        </td>
-                                                        <td class="border w-full py-2">
-                                                            <a
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-white"
-                                                                href="MainController?btAction=ViewEditProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description}&categoryId=${o.categoryId}&categoryName=${o.categoryName}&status=${o.status}"
-                                                                >
-                                                                <i class="fas fa-edit"></i
-                                                                ></a>
-                                                            <a
-                                                                onclick="handalModal('centeredModal', 'block',${o.productId})"
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-red-500"
-                                                                href="#"
-                                                                >
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
+                                                <tr>
+                                                    <td class="border w-1/5 py-2">toi can ho tro</td>
+                                                    <td class="border w-1/5 py-2">tahng@</td>
+                                                    <td class="border w-1/6 py-2">0123</td>
+                                                    <td class="border w-1/2 py-2">
+                                                        toi can ho tro
+                                                    </td>
+                                                    <td class="border  py-2">
+                                                        <a
+                                                            class="bg-teal-300 rounded p-1 mx-1 text-red-500"
+                                                            href="#"
+                                                            >
+                                                            Duyệt
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                                
                                             </tbody>
                                         </table>
                                     </div>
@@ -273,7 +254,7 @@
                                 <!--href="MainController?btAction=RemoveProductManager&id=${productId}"-->
                                 <!--onclick="handalModal('centeredModal', 'none')"-->
                                 <a id="yes"
-                                     >Có<i class="fas fa-check text-green-500 mx-2"></i>
+                                   >Có<i class="fas fa-check text-green-500 mx-2"></i>
                                 </a>
                                 <a href="#" onclick="handalModal('centeredModal', 'none')"
                                    >Không<i class="fas fa-ban text-red-500 mx-2"></i
@@ -302,22 +283,22 @@
                                         console.log(document.getElementById('yes'))
                                         document.getElementById(id).style.display = display;
                                     }
-                                    
-                                     const items = document.querySelectorAll('#item');
+
+                                    const items = document.querySelectorAll('#item');
                                     const menu = document.getElementById('menu')
-                                    const icon=document.getElementById('icon-xoay')
-                                            const listMenu = document.getElementById('list-menu')
-                                            console.log(listMenu)
+                                    const icon = document.getElementById('icon-xoay')
+                                    const listMenu = document.getElementById('list-menu')
+                                    console.log(listMenu)
 
-                                            menu.addEventListener('click', () => {
-                                                listMenu.classList.toggle('show-swp')
-                                                icon.classList.toggle('show-swp-icon')
-                                            })
+                                    menu.addEventListener('click', () => {
+                                        listMenu.classList.toggle('show-swp')
+                                        icon.classList.toggle('show-swp-icon')
+                                    })
 
-                                            items.forEach(item => {
-                                            console.log(item)
-                                            })
+                                    items.forEach(item => {
+                                        console.log(item)
+                                    })
         </script>
-        
+
     </body>
 </html>

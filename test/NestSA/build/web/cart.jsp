@@ -257,18 +257,11 @@
                         </div>
                     </div>
                 </div>
+                                    <h2 style="width: 100%; display: block; text-align: center">${OVERQUANTITY}</h2>
 
-                <div class="row my-5">
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="coupon-box">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control" placeholder="Mã giảm giá" aria-label="Coupon code" type="text">
-                                <div class="input-group-append">
-                                    <button class="btn btn-theme" type="button">Áp dụng</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row my-5" style="    display: flex;
+                     justify-content: space-between;">
+                    <div></div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="update-box">
                             <form action="MainController">

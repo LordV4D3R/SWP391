@@ -45,7 +45,7 @@ public class CreateCommentController extends HttpServlet {
         try {
 
             CommentDAO dao = new CommentDAO();
-                CommentDTO dto = new CommentDTO(userId, productId, comment, true);
+                CommentDTO dto = new CommentDTO(userId, productId, comment, 0);
                 boolean result = dao.createComment(dto);
                 if (result) {
                     url = SHOP_DETAIL_PAGE;

@@ -162,50 +162,11 @@
                     </div>
                     <!-- End Atribute Navigation -->
                 </div>
-                <!-- Start Side Menu -->
-                <!--      <div class="side">
-                          <a href="#" class="close-side"><i class="fa fa-times"></i></a>
-                          <li class="cart-box">
-                              <ul class="cart-list">
-                                  <li>
-                                      <a href="#" class="photo"><img src="images/img-pro-01.jpg" class="cart-thumb" alt="" /></a>
-                                      <h6><a href="#">Delica omtantur </a></h6>
-                                      <p>1x - <span class="price">$80.00</span></p>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="photo"><img src="images/img-pro-02.jpg" class="cart-thumb" alt="" /></a>
-                                      <h6><a href="#">Omnes ocurreret</a></h6>
-                                      <p>1x - <span class="price">$60.00</span></p>
-                                  </li>
-                                  <li>
-                                      <a href="#" class="photo"><img src="images/img-pro-03.jpg" class="cart-thumb" alt="" /></a>
-                                      <h6><a href="#">Agam facilisis</a></h6>
-                                      <p>1x - <span class="price">$40.00</span></p>
-                                  </li>
-                                  <li class="total">
-                                      <a href="#" class="btn btn-default hvr-hover btn-cart">Giỏ hàng</a>
-                                      <span class="float-right"><strong>Total</strong>: $180.00</span>
-                                  </li>
-                              </ul>
-                          </li>
-                      </div> -->
-                <!-- End Side Menu -->
+                
             </nav>
             <!-- End Navigation -->
         </header>
-        <!-- End Main Top -->
-
-        <!-- Start Top Search -->
-        <!-- <div class="top-search">
-             <div class="container">
-                 <div class="input-group">
-                     <span class="input-group-addon"><i class="fa fa-search"></i></span>
-                     <input type="text" class="form-control" placeholder="Search">
-                     <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
-                 </div>
-             </div>
-         </div> -->
-        <!-- End Top Search -->
+        
 
         <!-- Start All Title Box -->
         <div class="all-title-box">
@@ -257,7 +218,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" id="message" placeholder="Lời bạn muốn nói..." rows="4" name="contactMessage" data-error="Hãy nhập nội dung" required></textarea>
+                                                <textarea class="form-control" id="message" placeholder="Nội dung" rows="4" name="contactMessage" data-error="Hãy nhập nội dung" required></textarea>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                             <c:if test="${not empty errors.emailAndPhoneErr}">
@@ -295,7 +256,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" id="message" placeholder="Lời bạn muốn nói" rows="4" data-error="Hãy nhập nội dung" name="contactMessage" required></textarea>
+                                                <textarea class="form-control" id="message" placeholder="Nội dung" rows="4" data-error="Hãy nhập nội dung" name="contactMessage" required></textarea>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                             <c:if test="${not empty errors.emailAndPhoneErr}">
