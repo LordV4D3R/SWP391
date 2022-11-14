@@ -22,7 +22,7 @@
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
             rel="stylesheet"
             />
-        <title>Dashboard | Tailwind Admin</title>
+        <title>Admin</title>
         <style>
             .show-swp{
                 display: block;

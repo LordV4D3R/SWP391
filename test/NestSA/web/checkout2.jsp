@@ -20,7 +20,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+        <title>Check out</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -202,10 +202,10 @@
                                     <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked onchange="hidePayPal()" required>
                                     <label class="custom-control-label" for="credit">Thanh toán khi nhận hàng</label>
                                 </div>
-                                <div class="custom-control custom-radio">
+<!--                                <div class="custom-control custom-radio">
                                     <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" onchange="showPayPal()" required>
                                     <label class="custom-control-label" for="paypal">PayPal</label>
-                                </div>
+                                </div>-->
                             </div>
                             <div id="paypal-button-container" class="paypal-btn-action"></div>
 
@@ -295,7 +295,7 @@
                                 <input type="hidden" name="address" value="${sessionScope.LOGIN_USER.address}">
                                 <input type="hidden" name="status" value="Đang chuẩn bị hàng">
                                 <div class="col-12 d-flex shopping-box">
-                                    <button type="submit" name="btAction" value="Purchase" class="ml-auto btn hvr-hover" style="overflow: hidden; padding: 10px 20px; border: none; color: #ffffff; font-size: 18px">Thanh toán</button>
+                                    <button type="submit" name="btAction" value="Purchase" class="ml-auto btn hvr-hover" style="overflow: hidden; padding: 10px 20px; border: none; color: #ffffff; font-size: 18px;right: -423px;">Thanh toán</button>
                                 </div>
                             </form>
                             <!--<div class="col-12 d-flex shopping-box"> <a href="PurchaseController" class="ml-auto btn hvr-hover">Thanh Toán</a> </div>-->

@@ -19,7 +19,7 @@
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
             rel="stylesheet"
             />
-        <title>Tables | Tailwind Admin</title>
+        <title>Admin</title>
         <style>
             .handModal {
                 position: fixed;
@@ -213,11 +213,21 @@
                                                     </td>
                                                     <td class="border  py-2">
                                                         <a
-                                                            class="bg-teal-300 rounded p-1 mx-1 text-red-500"
+                                                            class="bg-teal-300 rounded p-1 mx-1 text-red-500 block"
                                                             href="#"
                                                             >
-                                                            Duyệt
+                                                            Duyệt 
                                                         </a>
+                                                      
+                                                    </td>
+                                                    <td class="border  py-2">
+                                                        <a
+                                                            class="bg-teal-300 rounded p-1 mx-1 text-red-500 block"
+                                                            href="#"
+                                                            >
+                                                            Xóa 
+                                                        </a>
+                                                      
                                                     </td>
                                                 </tr>
                                                 

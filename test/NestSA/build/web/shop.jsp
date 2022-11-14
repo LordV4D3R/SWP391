@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+        <title>Shop</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -62,6 +62,39 @@
                 background: #b0b435;
                 color: #fff;
 
+            }
+            .modal-swp{
+                position: fixed;
+                top:0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba(0,0,0,0.4);
+                z-index: 999999999;
+                display: flex;
+            }
+            .modal-swp-message{
+                background: white;
+                width: 400px;
+                margin: auto;
+                border-radius: 2px;
+                padding: 20px
+            }
+            .modal-swp-message h3{
+                font-size: 20px
+            }
+            .modal-swp-message button{
+                outline: none;
+                border: none;
+                border-radius: 4px;
+                float: right;
+                padding: 5px 20px;
+                cursor: pointer;
+                background: #B0B435;
+                color: #fff;
+            }
+            .modal-swp-message button:hover{
+                background: #000
             }
         </style>
 
@@ -479,6 +512,14 @@
                 </div>
             </div>
         </footer>
+        <c:if test="${SHOW_MODAL != null}">
+            <div class="modal-swp">
+            <div class="modal-swp-message">
+                <h3>Thanh toán thành công. Cảm ơn bạn đã ủng hộ cửa hàng</h3>
+                <button>Đóng</button>
+            </div>
+        </div>
+        </c:if>
         <!-- End Footer  -->
 
         <!-- Start copyright  -->
@@ -510,6 +551,12 @@
         <script src="js/custom.js"></script>
         <script src="js/sweetalert.min.js"></script>
         <script src="js/sweetalertAccWarning.js"></script>
+        
+        <script>
+            document.querySelector('.modal-swp-message button').addEventListener('click',()=>{
+                document.querySelector('.modal-swp').style.display='none'
+            })
+        </script>
     </body>
 
 </html>
