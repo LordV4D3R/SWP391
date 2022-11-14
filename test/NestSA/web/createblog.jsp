@@ -15,11 +15,12 @@
         <!-- Css -->
         <link rel="stylesheet" href="./dist/styles.css" />
         <link rel="stylesheet" href="./dist/all.css" />
+        <script src="ckeditor/ckeditor.js" type="text/javascript"></script>
         <link
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
             rel="stylesheet"
             />
-        <title>Admin</title>
+        <title>Forms | Tailwind Admin</title>
         <style>
             .price-curren {
                 top: 50%;
@@ -118,6 +119,16 @@
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
+                                <a
+                                    href="ViewBlogManagerController"
+                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                                    >
+                                    <i class="fab fa-uikit float-left mx-2"></i>
+                                    Bài viết
+                                    <span><i class="fa fa-angle-right float-right"></i></span>
+                                </a>
+                            </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
                                     href="#"
@@ -155,7 +166,7 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
                                         >
-                                        Form Grid
+                                        Tạo bài viết
                                     </div>
                                     <div class="p-3">
                                         <form class="w-full" action="MainController" method="POST">
@@ -177,26 +188,43 @@
                                                         placeholder="Nhập tên của bài viết"                         
                                                         />
                                                 </div>
-                                                <div class="w-full px-3 mb-2">
+                                                <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
                                                     <label
                                                         class="block uppercase tracking-wide text-gray-900 text-sm font-medium mb-1"
-                                                        for="grid-password"
+                                                        for="grid-state"
                                                         >
-                                                        Thể loại:
+                                                        Phân loại
                                                     </label>
-                                                    <input
-                                                        class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                                                        id="grid-password"
-                                                        name="category"
-                                                        type="text"
-                                                        value=""
-                                                        placeholder="Nhập thể loại của bài viết"                         
-                                                        />
+                                                    <div class="relative">
+                                                        <select
+                                                            class=" block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-3 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
+                                                            id="grid-state"
+                                                            style="width: 210px;"
+                                                            name="categoryName"
+                                                            > 
+                                                            <c:forEach var="c" items="${sessionScope.VIEW_CATEGORY}">
+                                                                <option>${c.categoryName}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                        <div
+                                                            class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker"
+                                                            >
+                                                            <svg
+                                                                class="fill-current h-4 w-4"
+                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                viewBox="0 0 20 20"
+                                                                >
+                                                            <path
+                                                                d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
+                                                                />
+                                                            </svg>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                                 <!-- double input -->
                                                 <div class="flex flex-wrap -mx-3 pl-3 w-full mt-4">
-                                                    
-                                                    
+
+
                                                     <!--  -->
                                                     <!-- img -->
                                                     <div class="w-full md:w-2/5 px-3">
@@ -247,10 +275,10 @@
                                                     placeholder="Your message..."
                                                     ></textarea>
                                             </div>
-                                            
+
                                             <button type="submit" name="btAction" value="CreateBlog"
-                                                class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
-                                                >
+                                                    class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
+                                                    >
                                                 Xác nhận
                                             </button>
                                         </form>
