@@ -245,13 +245,13 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">                                              
-                                                <input type="text" placeholder="Email" id="email" class="form-control" name="emailContact">
+                                                <input type="email" placeholder="Email" id="email" class="form-control" name="emailContact">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="subject" name="phoneContact" placeholder="Số Điện Thoại">
+                                                <input type="tel" class="form-control" id="subject" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Số Điện Thoại" name="phoneContact">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
@@ -262,12 +262,6 @@
                                             </div>
                                             <c:if test="${not empty errors.emailAndPhoneErr}">
                                                 <div id="msgSubmit" class="h3 text-center hidden">${errors.emailAndPhoneErr}</div>
-                                            </c:if>
-                                            <c:if test="${not empty errors.emailErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.emailErr}</div>
-                                            </c:if>
-                                            <c:if test="${not empty errors.phoneErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.phoneErr}</div>
                                             </c:if>
                                             <c:if test="${not empty errors.nameErr}">
                                                 <div id="msgSubmit" class="h3 text-center hidden">${errors.nameErr}</div>
@@ -289,13 +283,13 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="text" placeholder="Email" id="email" value="${sessionScope.LOGIN_USER.email}" class="form-control" name="emailContact">
+                                                <input type="email" placeholder="Email" id="email" value="${sessionScope.LOGIN_USER.email}" class="form-control" name="emailContact">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="subject" value="${sessionScope.LOGIN_USER.phone}" name="phoneContact" placeholder="Số Điện Thoại">
+                                                <input type="tel" class="form-control" id="subject" value="${sessionScope.LOGIN_USER.phone}"  pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Số Điện Thoại" name="phoneContact">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
@@ -306,12 +300,6 @@
                                             </div>
                                             <c:if test="${not empty errors.emailAndPhoneErr}">
                                                 <div id="msgSubmit" class="h3 text-center hidden">${errors.emailAndPhoneErr}</div>
-                                            </c:if>
-                                            <c:if test="${not empty errors.emailErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.emailErr}</div>
-                                            </c:if>
-                                            <c:if test="${not empty errors.phoneErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.phoneErr}</div>
                                             </c:if>
                                             <c:if test="${not empty errors.nameErr}">
                                                 <div id="msgSubmit" class="h3 text-center hidden">${errors.nameErr}</div>

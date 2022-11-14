@@ -20,7 +20,7 @@ public class UserError implements Serializable{
     private String emailErr;
     private String emailDuplicate;
     private String fullNameErr;
-    
+    private String emailAndPhoneErr;
     
     public UserError() {
     }
@@ -111,6 +111,20 @@ public class UserError implements Serializable{
      */
     public void setEmailDuplicate(String emailDuplicate) {
         this.emailDuplicate = emailDuplicate;
+    }
+
+    /**
+     * @return the emailAndPhoneErr
+     */
+    public String getEmailAndPhoneErr() {
+        return emailAndPhoneErr;
+    }
+
+    /**
+     * @param emailAndPhoneErr the emailAndPhoneErr to set
+     */
+    public void setEmailAndPhoneErr(String emailAndPhoneErr) {
+        this.emailAndPhoneErr = emailAndPhoneErr;
     }
     
     

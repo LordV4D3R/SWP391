@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -6,14 +5,9 @@
  */
 package controller;
 
-import contact.ContactDAO;
-import contact.ContactDTO;
-import contact.ContactErr;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javax.naming.NamingException;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -21,16 +15,20 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import users.UserDAO;
+import users.UserDTO;
+import users.UserError;
+import javax.servlet.http.HttpSession;
 
 /**
  *
  * @author tranq
  */
-@WebServlet(name = "ContactController", urlPatterns = {"/ContactController"})
-public class ContactController extends HttpServlet {
+@WebServlet(name = "UpdateProfileController", urlPatterns = {"/UpdateProfileController"})
+public class UpdateProfileController extends HttpServlet {
 
-    private final String CONTACT_PAGE = "contact-us.jsp";
-    private final String SUCCESS = "contact-successful.jsp";//fix here
+    private final String ERROR_PAGE = "user-profile.jsp";
+    private final String SUCCESS = "user-profile.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,67 +42,47 @@ public class ContactController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String senderName = request.getParameter("nameContact");
-        String email = request.getParameter("emailContact");
-        String phone = request.getParameter("phoneContact");
-        String contact = request.getParameter("contactMessage");
-
-//        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
-//        Pattern emailPattern = Pattern.compile(emailRegex);
-//        Matcher emailMatcher = emailPattern.matcher(email);
-//        String phoneRegex = "(0/84)?[0-9][0-9]{9}";
-//        Pattern phonePattern = Pattern.compile(phoneRegex);
-//        Matcher phoneMatcher = phonePattern.matcher(phone);
-
-        ContactErr errors = new ContactErr();
-        boolean foundErr = false;
-        ContactDAO dao = new ContactDAO();
-        String url = CONTACT_PAGE;
+        String url = ERROR_PAGE;
         try {
-            if (senderName.trim().length() > 50) {
-                foundErr = true;
-                errors.setNameErr("Tên không được dài quá 50 kí tự!!!");
-            }
-
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            String fullName = request.getParameter("userFullName");
+            String phone = request.getParameter("userPhone");
+            String email = request.getParameter("userEmail");
+            String address = request.getParameter("userAddress");
+            String password = request.getParameter("password");
+            String userName = request.getParameter("userName");
+            String roleId = request.getParameter("roleId");
+            boolean foundErr = false;
+            UserError errors = new UserError();
+            HttpSession session = request.getSession();
+            UserDTO dto = (UserDTO) session.getAttribute("LOGIN_USER");
+            //1. call dao
             if (email.trim().length() < 1 && phone.trim().length() < 1) {
                 foundErr = true;
-                errors.setEmailAndPhoneErr("Bạn cần điền email hoặc số điện"
-                        + " thoại để chúng tôi liên lạc!!!");
+                errors.setEmailAndPhoneErr("Bạn cần điền email hoặc số điện thoại!!!");
             }
-//            else {
-//                if (email.trim().length() > 0) {
-//                    if (!emailMatcher.matches()) {
-//                        foundErr = true;
-//                        errors.setEmailErr("Email không hợp lệ!!!");
-//                    }
-//                }
-//                if (phone.trim().length() > 0) {
-//                    if (!phoneMatcher.matches()) {
-//                        foundErr = true;
-//                        errors.setPhoneErr("Số điện thoại không hợp lệ!!!");
-//                    }
-//                }
-//            }
+
             if (foundErr) {
-                request.setAttribute("INSERT_CONTACT_ERRORS", errors);
+                request.setAttribute("INSERT_UPDATE_ACCOUNT_ERRORS", errors);
             } else {
-                ContactDTO dto
-                        = new ContactDTO(senderName, email,
-                                phone, contact);
-                boolean result = dao.insertContact(dto);
+                UserDAO dao = new UserDAO();
+//                UserDTO dto = new UserDTO(userId, password, address, phone, email, fullName, roleId, userName);
+                dto = new UserDTO(userId, password, address, phone, email, fullName, roleId, userName);
+                boolean result = dao.updateInfo(dto);
                 if (result) {
-                    
+                    request.setAttribute("INSERT_UPDATE_ACCOUNT_SUCCESS", "Cập nhật thông tin thành công");
+                    session.setAttribute("LOGIN_USER", dto);
                     url = SUCCESS;
                 }
             }
-
         } catch (NamingException ex) {
-            log("InsertContactController _ Naming _ " + ex.getMessage());
+            log("UpdateProfileController _ Naming _ " + ex.getMessage());
         } catch (SQLException ex) {
-            log("InsertContactController _ SQL _ " + ex.getMessage());
+            log("UpdateProfileController _ SQL _ " + ex.getMessage());
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);
+//                response.sendRedirect(url);
         }
     }
 

@@ -137,13 +137,13 @@
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
                             <li class="dropdown">
                                 <a href="ViewProductController" class="nav-link">Sản phẩm</a>
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
-                            <li class="nav-item active"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -212,7 +212,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12">
-                        <h2>Liên hệ với chúng tôi</h2>
+                        <h2>Thay đổi mật khẩu</h2>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
                             <li class="breadcrumb-item active"> Liên hệ </li>
@@ -230,82 +230,60 @@
 
                     <div class="col-lg-8 col-sm-12">
                         <div class="contact-form-right">
-                            <h2>Gửi tin nhắn cho chúng tôi</h2>
-                            <p>Chúng tôi sẽ giải đáp tất cả thắc mắc của bạn về sản phẩm NestSongAn</p>
+                            <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                             <form action="MainController" method="POST">
+                                <c:set var="errorsConfirm" value="${requestScope.CHANGE_PASSWORD_ERROR}"/>
+                                <c:set var="errorsPassword" value="${requestScope.ERROR_CHANGE_PASSWORD}"/>
+                                <c:set var="successMsg" value="${requestScope.CHANGE_PASSWORD_SUCCESS}"/>
+                                <c:if test="${not empty successMsg}">
+                                    <div id="msgSubmit" class="h3 text-center hidden">${successMsg}</div>
+                                </c:if>
+                                <c:if test="${not empty errorsPassword}">
+                                    <div id="msgSubmit" class="h3 text-center hidden">${errorsPassword}</div>
+                                </c:if>
+                                <c:if test="${not empty errorsConfirm}">
+                                    <div id="msgSubmit" class="h3 text-center hidden">${errorsConfirm.confirmNotMatch}</div>
+                                </c:if>
                                 <c:set var="errors" value="${requestScope.INSERT_CONTACT_ERRORS}"/>
                                 <div class="row">
-                                    <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                                     <c:if test="${checkLogin == null}">
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="text" class="form-control" id="name" name="nameContact" placeholder="Họ Tên" required data-error="Vui lòng điền tên của bạn">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">                                              
-                                                <input type="email" placeholder="Email" id="email" class="form-control" name="emailContact">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <input type="tel" class="form-control" id="subject" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Số Điện Thoại" name="phoneContact">
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <textarea class="form-control" id="message" placeholder="Lời bạn muốn nói..." rows="4" name="contactMessage" data-error="Hãy nhập nội dung" required></textarea>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                            <c:if test="${not empty errors.emailAndPhoneErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.emailAndPhoneErr}</div>
-                                            </c:if>
-                                            <c:if test="${not empty errors.nameErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.nameErr}</div>
-                                            </c:if>
-                                            <div class="submit-button text-center">
-                                                <button class="btn hvr-hover" id="submit" value="Send" name="btAction" type="submit">Gửi</button>
-                                                <div id="msgSubmit" class="h3 text-center hidden"></div>
-                                                <div class="clearfix"></div>
-                                            </div>
-                                        </div>
+                                        <div id="msgSubmit" class="h3 text-center hidden">Bạn cần phải đăng nhập hoặc đăng ký để sử dụng tính năng này</div>
                                     </c:if>
 
                                     <c:if test="${checkLogin != null}">
+                                        <input id="password" type="hidden" name="password" value="${sessionScope.LOGIN_USER.password}"/>
+                                        <input id="userId" type="hidden" name="userId" value="${sessionScope.LOGIN_USER.userId}" />
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="text" class="form-control" id="name" name="nameContact" placeholder="Họ Tên" value="${sessionScope.LOGIN_USER.fullName}">
+                                                <h2>Username: </h2>
+                                                <input  class="form-control" id="username" type="text" name="userName" value="${sessionScope.LOGIN_USER.userName}" readonly/>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="email" placeholder="Email" id="email" value="${sessionScope.LOGIN_USER.email}" class="form-control" name="emailContact">
+                                                <h2>Nhập mật khẩu cũ:</h2>
+                                                <input type="password" placeholder="Mật khẩu cũ" id="email"  class="form-control" name="reOldPassword">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <input type="tel" class="form-control" id="subject" value="${sessionScope.LOGIN_USER.phone}"  pattern="[0-9]{3}[0-9]{3}[0-9]{4}" placeholder="Số Điện Thoại" name="phoneContact">
+                                                <h2>Nhập mật khẩu mới:</h2>
+                                                <input type="password" class="form-control" id="subject"  name="newPassword" placeholder="Nhập mật khẩu mới">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <textarea class="form-control" id="message" placeholder="Lời bạn muốn nói" rows="4" data-error="Hãy nhập nội dung" name="contactMessage" required></textarea>
+                                                <h2>Nhập lại mật khẩu mới:</h2>
+                                                <input type="password" class="form-control" id="subject"  name="confirm" placeholder="Nhập lại mật khẩu mới">
                                                 <div class="help-block with-errors"></div>
                                             </div>
-                                            <c:if test="${not empty errors.emailAndPhoneErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.emailAndPhoneErr}</div>
-                                            </c:if>
-                                            <c:if test="${not empty errors.nameErr}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${errors.nameErr}</div>
-                                            </c:if>
+                                        </div>
+                                        <div class="col-md-12">
                                             <div class="submit-button text-center">                                               
-                                                <button class="btn hvr-hover" id="submit" value="Send" name="btAction" type="submit">Gửi</button>
+                                                <button class="btn hvr-hover" id="submit" value="UpdatePassword" name="btAction" type="submit">Thay đổi mật khẩu</button>
                                                 <div id="msgSubmit" class="h3 text-center hidden"></div>
                                                 <div class="clearfix"></div>
                                             </div>
@@ -313,23 +291,6 @@
                                     </c:if>
                                 </div>
                             </form>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-sm-12">
-                        <div class="contact-info-left">
-                            <h2>Thông tin liên lạc</h2>
-                            <ul>
-                                <li>
-                                    <p><i class="fas fa-map-marker-alt"></i>Địa chỉ: Michael I. Days 9000 <br>Preston Street Wichita,<br> KS 87213 </p>
-                                </li>
-                                <li>
-                                    <p><i class="fas fa-phone-square"></i>Số điện thoại: <a href="tel:+1-888705770">+1-888 705 770</a></p>
-                                </li>
-                                <li>
-                                    <p><i class="fab fa-facebook"></i>Facebook: <a href="https://facebook.com/NestSongAnSWP" target="_blank">Nestsongan</a></p>
-                                </li>
-                            </ul>
                         </div>
                     </div>
                 </div>

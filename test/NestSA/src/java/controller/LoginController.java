@@ -43,7 +43,6 @@ public class LoginController extends HttpServlet {
             UserDAO dao = new UserDAO();
             UserDTO result = dao.checkLogin(userName, password);
 
-            
             //2.Process result
             if (result != null) {
                 HttpSession session = request.getSession();
@@ -83,7 +82,8 @@ public class LoginController extends HttpServlet {
             log("LoginController _ Naming _ " + ex.getMessage());
 
         } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+//            request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect(url);
         }
     }
 
