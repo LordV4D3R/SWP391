@@ -163,7 +163,7 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-300-border">
                                 <a
-                                    href="LogoutController"
+                                    href="MainController?btAction=Logout"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fas fa-square-full float-left mx-2"></i>
@@ -184,10 +184,10 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
                                         >
-                                        Product
-                                        <form action="">
-                                            <input type="hidden" name="" value=""/>
-                                            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">Xác nhận đơn hàng</button>
+                                        Chi Tiết Đơn Hàng
+                                        <form action="MainController">
+                                            <input type="hidden" name="orderId" value="${ID}"/>
+                                            <button type="submit" name="btAction" value="ChangeOrderStatusAdminManager" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-2 rounded">Xác nhận đơn hàng</button>
                                         </form>
                                     </div>
                                     <div class="p-3">
@@ -203,13 +203,13 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-
-                                                <tr class="row-info" id="order" >
-                                                    <td class="border w-3/4 py-2">a</td>
-                                                    <td class="border w-fit py-2">a</td>
-                                                    <td class="border w-1/5 py-2">a</td>
+                                                <c:forEach items="${VIEW_ORDER_DETAIL}" var="o">
+                                                    <tr class="row-info" id="order" >
+                                                    <td class="border w-3/4 py-2">${o.productName}</td>
+                                                    <td class="border w-fit py-2">${o.quantity}</td>
+                                                    <td class="border w-1/5 py-2">${o.price}</td>
                                                 </tr>
-
+                                                </c:forEach>
                                                 <!--  -->
                                             </tbody>
                                         </table>

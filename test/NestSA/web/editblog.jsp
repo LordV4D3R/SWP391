@@ -26,7 +26,8 @@
                 transform: translateY(-32%);
                 right: 12px;
             }
-             .show-swp{
+
+            .show-swp{
                 display: block;
             }
             .show-swp-icon{
@@ -157,95 +158,29 @@
                                         Form Grid
                                     </div>
                                     <div class="p-3">
-                                        <form class="w-full" action="MainController">
+                                        <form class="w-full" action="MainController" method="GET">
                                             <div class="flex flex-wrap -mx-3 mb-6">
                                                 <!-- full input -->
                                                 <div class="w-full px-3 mb-2">
-                                                    <input type="hidden" name="id" value="${requestScope.EDIT_PRODUCT.productId}"
                                                     <label
                                                         class="block uppercase tracking-wide text-gray-900 text-sm font-medium mb-1"
                                                         for="grid-password"
                                                         >
-                                                        Tên sản phẩm
+                                                        Tên bài viết
                                                     </label>
                                                     <input
                                                         class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                         id="grid-password"
-                                                        name="name"
+                                                        name="postTitle"
                                                         type="text"
-                                                        value="${requestScope.EDIT_PRODUCT.name}"
-                                                        placeholder="Nhập tên của sản phẩm"                         
+                                                        value="${requestScope.EDIT_BLOG.postTitle}"
+                                                        placeholder="Nhập tên của bài viết"                         
                                                         />
                                                 </div>
                                                 <!-- double input -->
                                                 <div class="flex flex-wrap -mx-3 pl-3 w-full mt-4">
-                                                    <div
-                                                        class="w-full md:w-1/5 px-3 mb-6 md:mb-0 relative"
-                                                        >
-                                                        <label
-                                                            class="block uppercase tracking-wide text-gray-900 text-sm font-medium mb-1"
-                                                            for="grid-first-name"
-                                                            >
-                                                            Giá
-                                                        </label>
-                                                        <input
-                                                            class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                            id="grid-first-name"
-                                                            type="text"
-                                                            name="price"
-                                                            value="${requestScope.EDIT_PRODUCT.price}"
-                                                            placeholder="Nhập giá sản phẩm"
-                                                            />
-                                                    </div>
-                                                    <div class="w-full md:w-1/5 px-3">
-                                                        <label
-                                                            class="block uppercase tracking-wide text-gray-900 text-sm font-medium mb-1"
-                                                            for="grid-last-name"
-                                                            >
-                                                            Số lượng
-                                                        </label>
-                                                        <input
-                                                            class="appearance-none block w-full bg-gray-200 text-grey-darker border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white-500 focus:border-gray-600"
-                                                            id="grid-last-name"
-                                                            type="text"
-                                                            name="quantity"
-                                                            value="${requestScope.EDIT_PRODUCT.quantity}"
-                                                            placeholder="Nhập số lượng sản phẩm"
-                                                            />
-                                                    </div>
-                                                    <!--  -->
-                                                    <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
-                                                        <label
-                                                            class="block uppercase tracking-wide text-gray-900 text-sm font-medium mb-1"
-                                                            for="grid-state"
-                                                            >
-                                                            Phân loại
-                                                        </label>
-                                                        <div class="relative">
-                                                            <select
-                                                                class="block appearance-none w-full bg-grey-200 border border-grey-200 text-grey-darker py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                                                                id="grid-state"
-                                                                name="categoryName"
-                                                                > 
-                                                                <c:forEach var="c" items="${sessionScope.VIEW_CATEGORY}">
-                                                                    <option>${c.categoryName}</option>
-                                                                </c:forEach>
-                                                            </select>
-                                                            <div
-                                                                class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-grey-darker"
-                                                                >
-                                                                <svg
-                                                                    class="fill-current h-4 w-4"
-                                                                    xmlns="http://www.w3.org/2000/svg"
-                                                                    viewBox="0 0 20 20"
-                                                                    >
-                                                                <path
-                                                                    d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"
-                                                                    />
-                                                                </svg>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    
+                                                    
                                                     <!--  -->
                                                     <!-- img -->
                                                     <div class="w-full md:w-2/5 px-3">
@@ -260,7 +195,8 @@
                                                             id="grid-last-name"
                                                             type="text"
                                                             name="image"
-                                                            value="${requestScope.EDIT_PRODUCT.image}"
+                                                            style="width: 700px;"
+                                                            value="${requestScope.EDIT_BLOG.image}"
                                                             placeholder="Nhập liên kết đến ảnh của sản phẩm"
                                                             />
                                                     </div>
@@ -288,16 +224,16 @@
                                                     >Mô tả sản phẩm</label
                                                 >
                                                 <textarea
-                                                    name="desc"
+                                                    name="postContent"
                                                     id="message"
                                                     rows="4"
                                                     class="block p-4 w-full text-sm text-grey-darker bg-gray-200 rounded border border-gray-200 focus:ring-blue-500 focus:border-gray-600 focus:outline-none"
                                                     placeholder="Your message..."
-                                                    >${requestScope.EDIT_PRODUCT.description}</textarea>
+                                                    >${requestScope.EDIT_BLOG.postContent}</textarea>
                                             </div>
-                                            <input type ="hidden" name="status" value="1"/>
-                                            <button
-                                                type="submit" name="btAction" value="EditProductManager"
+                                            <input type ="hidden" name="postId" value="${requestScope.EDIT_BLOG.postId}"/>
+                                            <input type ="hidden" name="category" value="${requestScope.EDIT_BLOG.category}"/>
+                                            <button type="submit" name="btAction" value="EditBlog"
                                                 class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
                                                 >
                                                 Xác nhận
@@ -313,26 +249,26 @@
                 </div>
                 <!--Footer-->
                 <footer class="bg-grey-darkest text-white p-2">
-                    <div class="flex flex-1 mx-auto">Nest SongAn</div>
+                    <div class="flex flex-1 mx-auto">&copy; My Design</div>
                 </footer>
                 <!--/footer-->
             </div>
         </div>
 
         <script src="./main.js"></script>
-          <script>
+        <script>
                                     const items = document.querySelectorAll('#item');
                                     const menu = document.getElementById('menu')
-                                    const icon=document.getElementById('icon-xoay')
-                                            const listMenu = document.getElementById('list-menu')
-                                            console.log(listMenu)
+                                    const icon = document.getElementById('icon-xoay')
+                                    const listMenu = document.getElementById('list-menu')
+                                    console.log(listMenu)
 
-                                            menu.addEventListener('click', () => {
-                                                listMenu.classList.toggle('show-swp')
-                                                icon.classList.toggle('show-swp-icon')
-                                            })
+                                    menu.addEventListener('click', () => {
+                                        listMenu.classList.toggle('show-swp')
+                                        icon.classList.toggle('show-swp-icon')
+                                    })
 
-                                            
+
         </script>
     </body>
 </html>

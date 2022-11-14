@@ -185,14 +185,14 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
                                         >
-                                        Sản phẩm
+                                        Bài viết
                                         <form class="flex" action="MainController">
                                             <div class="p-2 rounded flex items-center bg-slate-200" style="width: 500px">
-                                                <input type="text" class="p-1 rounded outline-none flex-1" placeholder="Tìm kiếm sản phẩm" name="search"/>
+                                                <input type="text" class="p-1 rounded outline-none flex-1" placeholder="m" name="search"/>
                                             </div>
                                             <button type="submit" name="btAction" value="SearchProductManager" class="pr-3" style="outline: none"><i class="fas fa-search mr-1"></i></button>
                                         </form>
-                                        <a href="add_edit_product.jsp" class="px-4 py-2 rounded block leading-7" id="add_product_swp" style="background-color: rgb(212 212 216);">Thêm sản phẩm mới</a>
+                                        <a href="createblog.jsp" class="px-4 py-2 rounded block leading-7" id="add_product_swp" style="background-color: rgb(212 212 216);">Thêm bài viết mới</a>
                                     </div>
                                     <div class="p-3 ">
                                         <table
@@ -201,42 +201,48 @@
                                             >
                                             <thead>
                                                 <tr>
-                                                    <th class="border w-1/2 px-4 py-2">Tên sản phẩm</th>
-                                                    <th class="border w-96 px-4 py-2">Số lượng</th>
-                                                    <th class="border w-1/4 px-4 py-2">Giá</th>
+                                                    <th class="border w-1/2 px-4 py-2">Tên bài viết</th>
+                                                    <th class="border w-96 px-4 py-2">Ngày viết</th>
+                                                    <th class="border w-1/4 px-4 py-2">Loại bài</th>
                                                     <th class="border w-96 px-4 py-2">Status</th>
                                                     <th class="border w-full px-4 py-2"></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
 
-                                                <c:forEach items="${VIEW_PRODUCT_VER_FULL}" var="o">
+                                                <c:forEach items="${VIEW_LIST_BLOG}" var="b">
                                                     <tr>
-                                                        <td class="border w-1/2 py-2">${o.name}</td>
-                                                        <td class="border w-96 py-2">${o.quantity}</td>
-                                                        <td class="border w-1/4 py-2">${o.price}</td>
+                                                        <td class="border w-1/2 py-2">${b.postTitle}</td>
+                                                        <td class="border w-96 py-2">${b.dateUpload}</td>
+                                                        <td class="border w-1/4 py-2">${b.category}</td>
                                                         <td class="border w-96 py-2">
-                                                            <c:if test="${o.status == 1}">
+                                                            <c:if test="">
                                                                 <i class="fas fa-check text-green-500 mx-2"></i>
                                                             </c:if>
-                                                            <c:if test="${o.status == 0}">
-                                                                <i class="fas fa-times text-red-500 mx-2"></i>
-                                                            </c:if>
+                                                            <%--<c:if test="${b.status eq 0}">--%>
+                                                                <!--<i class="fas fa-times text-red-500 mx-2"></i>-->
+                                                            <%--</c:if>--%>
                                                         </td>
                                                         <td class="border w-full py-2">
                                                             <a
                                                                 class="bg-teal-300 rounded p-1 mx-1 text-white"
-                                                                href="MainController?btAction=ViewEditProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description}&categoryId=${o.categoryId}&categoryName=${o.categoryName}&status=${o.status}"
+                                                                href="MainController?btAction=ViewEditBlog&postId=${b.postId}"
                                                                 >
                                                                 <i class="fas fa-edit"></i
                                                                 ></a>
                                                             <a
-                                                                onclick="handalModal('centeredModal', 'block',${o.productId})"
+                                                                class="bg-teal-300 rounded p-1 mx-1 text-red-500"
+                                                                href="MainController?btAction=RemoveBlog&postId=${b.postId}"
+                                                                >
+                                                                <i class="fas fa-trash"></i
+                                                                ></a>
+<!--                                                            <a
+                                                                onclick="handalModal('centeredModal', 'block',${p.postId})"
                                                                 class="bg-teal-300 rounded p-1 mx-1 text-red-500"
                                                                 href="#"
                                                                 >
                                                                 <i class="fas fa-trash"></i>
-                                                            </a>
+                                                            </a>-->
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -269,7 +275,7 @@
                             </div>
                             <!-- Modal content -->
                             <div class="flex justify-between">
-                                <span>Bạn có muốn xóa sản phẩm này không?</span>
+                                <span>Bạn có muốn xóa blog này không?</span>
                                 <!--href="MainController?btAction=RemoveProductManager&id=${productId}"-->
                                 <!--onclick="handalModal('centeredModal', 'none')"-->
                                 <a id="yes"

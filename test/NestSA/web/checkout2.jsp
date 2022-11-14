@@ -195,11 +195,7 @@
                             <div class="d-block my-3">
                                 <div class="custom-control custom-radio">
                                     <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked onchange="payment()" required>
-                                    <label class="custom-control-label" for="credit">Thanh toán trực tiếp</label>
-                                </div>
-                                <div class="custom-control custom-radio">
-                                    <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" onchange="payment()" required>
-                                    <label class="custom-control-label" for="debit">Thẻ ngân hàng</label>
+                                    <label class="custom-control-label" for="credit">Thanh toán khi nhận hàng</label>
                                 </div>
                                 <div class="custom-control custom-radio">
                                     <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" onchange="payment()" required>
@@ -207,44 +203,7 @@
                                 </div>
                             </div>
 
-                            <div style="display:none" id="payment-swp">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="cc-name">Name on card</label>
-                                        <input type="text" class="form-control" id="cc-name" placeholder="" required> <small class="text-muted">Full name as displayed on card</small>
-                                        <div class="invalid-feedback"> Name on card is required </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="cc-number">Credit card number</label>
-                                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
-                                        <div class="invalid-feedback"> Credit card number is required </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-3 mb-3">
-                                        <label for="cc-expiration">Expiration</label>
-                                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
-                                        <div class="invalid-feedback"> Expiration date required </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <label for="cc-expiration">CVV</label>
-                                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
-                                        <div class="invalid-feedback"> Security code required </div>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <div class="payment-icon">
-                                            <ul>
-                                                <li><img class="img-fluid" src="images/payment-icon/1.png" alt=""></li>
-                                                <li><img class="img-fluid" src="images/payment-icon/2.png" alt=""></li>
-                                                <li><img class="img-fluid" src="images/payment-icon/3.png" alt=""></li>
-                                                <li><img class="img-fluid" src="images/payment-icon/5.png" alt=""></li>
-                                                <li><img class="img-fluid" src="images/payment-icon/7.png" alt=""></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>
-                                <hr class="mb-1"> 
-                            </div>
+                           
 
                         </div>
                     </div>

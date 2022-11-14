@@ -60,6 +60,12 @@ public class MainController extends HttpServlet {
     private static final String CREATE_BLOG_CONTROLLER = "CreateBlogController";
     private static final String UPDATE_PROFILE = "UpdateProfile";
     private static final String UPDATE_PROFILE_CONTROLLER = "UpdateProfileController";
+    private static final String VIEW_EDIT_BLOG = "ViewEditBlog";
+    private static final String VIEW_EDIT_BLOG_CONTROLLER = "ViewEditBlogController";
+    private static final String EDIT_BLOG = "EditBlog";
+    private static final String EDIT_BLOG_CONTROLLER = "EditBlogController";
+    private static final String REMOVE_BLOG = "RemoveBlog";
+    private static final String REMOVE_BLOG_CONTROLLER = "RemoveBlogController";
     private static final String EDIT_PRODUCT_MANAGER = "EditProductManager";
     private static final String EDIT_PRODUCT_MANAGER_CONTROLLER = "EditProductManagerController";
     private static final String VIEW_EDIT_PRODUCT_MANAGER = "ViewEditProductManager";
@@ -70,6 +76,10 @@ public class MainController extends HttpServlet {
     private static final String SEARCH_PRODUCT_MANAGER_CONTROLLER = "SearchProductManagerController";
     private static final String UPDATE_PASSWORD = "UpdatePassword";
     private static final String UPDATE_PASSWORD_CONTROLLER = "UpdatePasswordController";
+    private static final String VIEW_ORDER_DETAIL_MANAGER = "ViewProductDetailManager";
+    private static final String VIEW_ORDER_DETAIL_MANAGER_CONTROLLER = "ViewProductDetailManagerController";
+    private static final String CHANGE_ORDER_STATUS_ADMIN_MANAGER = "ChangeOrderStatusAdminManager";
+    private static final String CHANGE_ORDER_STATUS_ADMIN_MANAGER_CONTROLLER = "ChangeOrderStatusAdminManagerController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -78,7 +88,7 @@ public class MainController extends HttpServlet {
         String action = request.getParameter("btAction");
         try {
             if (action == null) {
-                log("Sai roi kia dcm");
+                log("Action is null");
             } else if (action.equals(LOGIN)) {
                 url = LOGINCONTROLLER;
             } else if (SEARCH.equals(action)) {
@@ -119,8 +129,17 @@ public class MainController extends HttpServlet {
                 url = VIEW_BLOG_CONTROLLER;
             } else if (CREATE_BLOG.equals(action)) {
                 url = CREATE_BLOG_CONTROLLER;
+<<<<<<< HEAD
             } else if (UPDATE_PROFILE.equals(action)) {
                 url = UPDATE_PROFILE_CONTROLLER;
+=======
+            } else if (VIEW_EDIT_BLOG.equals(action)) {
+                url = VIEW_EDIT_BLOG_CONTROLLER;
+            } else if (EDIT_BLOG.equals(action)) {
+                url = EDIT_BLOG_CONTROLLER;
+            }else if (REMOVE_BLOG.equals(action)) {
+                url = REMOVE_BLOG_CONTROLLER;
+>>>>>>> dd48f9c5a145d0ca182daee553534160d80850df
             } else if (EDIT_PRODUCT_MANAGER.equals(action)) {
                 url = EDIT_PRODUCT_MANAGER_CONTROLLER;
             } else if (VIEW_EDIT_PRODUCT_MANAGER.equals(action)) {
@@ -129,8 +148,15 @@ public class MainController extends HttpServlet {
                 url = REMOVE_PRODUCT_MANAGER_CONTROLLER;
             } else if (SEARCH_PRODUCT_MANAGER.equals(action)) {
                 url = SEARCH_PRODUCT_MANAGER_CONTROLLER;
+<<<<<<< HEAD
             } else if (UPDATE_PASSWORD.equals(action)) {
                 url = UPDATE_PASSWORD_CONTROLLER;
+=======
+            } else if (VIEW_ORDER_DETAIL_MANAGER.equals(action)) {
+                url = VIEW_ORDER_DETAIL_MANAGER_CONTROLLER;
+            } else if (CHANGE_ORDER_STATUS_ADMIN_MANAGER.equals(action)) {
+                url = CHANGE_ORDER_STATUS_ADMIN_MANAGER_CONTROLLER;
+>>>>>>> dd48f9c5a145d0ca182daee553534160d80850df
             }
         } catch (Exception e) {
             e.printStackTrace();
