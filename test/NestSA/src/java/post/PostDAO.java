@@ -55,7 +55,8 @@ public class PostDAO {
     public List<PostDTO> getAllListPostsForManager() throws SQLException{
         List<PostDTO> list = new ArrayList<>();
         try {
-            String sql = "select postId, image, postContent, postTitle, category, dateUpload, status from post";
+            String sql = "Select p.postId, p.image, p.postContent, p.postTitle, p.dateUpload, p.status, c.categoryName from post p, category c "+
+                    " WHERE p.category = c.categoryId ";
             conn = DBUtils.getConnection();
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
@@ -65,7 +66,7 @@ public class PostDAO {
                 String igame = rs.getString("image");
                 String postContent = rs.getString("postContent");
                 String postTitle = rs.getString("postTitle");
-                String category = rs.getString("category");
+                String category = rs.getString("categoryName");
                 Date dateUpload = rs.getDate("dateUpload");
                 boolean status = rs.getBoolean("status");
                 list.add(new PostDTO(postId, igame, postContent, postTitle, category, dateUpload, status));
@@ -83,7 +84,7 @@ public class PostDAO {
     public PostDTO detailsBlog(int postId) throws SQLException {
         PostDTO post = new PostDTO();
         try {
-            String sql = "select postId, image, postContent, postTitle, category, dateUpload, status from post where postId=? and status = 1";
+            String sql = "select postId, image, postContent, postTitle, category, dateUpload, status from post where postId=?";
             conn = DBUtils.getConnection();
             pst = conn.prepareStatement(sql);
             pst.setInt(1, postId);
@@ -133,13 +134,14 @@ public class PostDAO {
     public boolean updatePost(int postId, String image, String postTitle, String postContent, String category) throws SQLException {
         boolean check = false;
         try {
-            String sql ="UPDATE post SET image = ?, postTitle = ?, postContent = ?, dateUpload = CURRENT_TIMESTAMP Where postId = ?";
+            String sql ="UPDATE post SET image = ?, postTitle = ?, postContent = ?, category = ?, dateUpload = CURRENT_TIMESTAMP Where postId = ?";
             conn = DBUtils.getConnection();
             pst = conn.prepareStatement(sql);
             pst.setString(1, image);
             pst.setString(2, postTitle);
             pst.setString(3, postContent);
-            pst.setInt(4, postId);
+            pst.setString(4, category);
+            pst.setInt(5, postId);
             check = pst.executeUpdate() > 0;
         } catch (Exception e) {
             e.printStackTrace();

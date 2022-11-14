@@ -179,7 +179,7 @@
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>Chào mừng đến với <br> NestSongAn</strong></h1>
                                 <p class="m-b-40">Yến sào thượng hạng, Thượng đỉnh yến sào, Vì sức khỏe của gia đình</p>
-                                <p><a class="btn hvr-hover" href="gallery.jsp">Blog</a></p>
+                                <p><a class="btn hvr-hover" href="ViewListBlogController">Blog</a></p>
                             </div>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>Chào mừng đến với <br> NestSongAn</strong></h1>
                                 <p class="m-b-40">Yến sào thượng hạng, Thượng đỉnh yến sào, Vì sức khỏe của gia đình.</p>
-                                <p><a class="btn hvr-hover" href="gallery.jsp">Blog</a></p>
+                                <p><a class="btn hvr-hover" href="ViewListBlogController">Blog</a></p>
                             </div>
                         </div>
                     </div>
@@ -203,7 +203,7 @@
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>Chào mừng đến với <br> NestSongAn</strong></h1>
                                 <p class="m-b-40">Yến sào thượng hạng, Thượng đỉnh yến sào, Vì sức khỏe của gia đình.</p>
-                                <p><a class="btn hvr-hover" href="gallery.jsp">Blog</a></p>
+                                <p><a class="btn hvr-hover" href="ViewListBlogController">Blog</a></p>
                             </div>
                         </div>
                     </div>

@@ -219,11 +219,6 @@
                             <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>-->
                             <!--<p class="sale type-lb">Create</p>-->
                         </div>
-                        <a href="CreateBlogController">
-                            <div class="type-lb">
-                                <p class="sale">Create</p>
-                            </div>
-                        </a>
                     </div>
 
                 </div>
@@ -235,7 +230,7 @@
                             <div class="products-single fix">
                                 <div class="box-img-hover">
                                     <div class="type-lb">
-                                        <p class="sale">${b.category}</p>
+                                        <!--<p class="sale">${b.category}</p>-->
                                     </div>
                                         <img src="${b.image}" style="height: 160px; width: 330px;" class="img-fluid" alt="Image">
                                 </div>
@@ -248,17 +243,6 @@
                         </div>
                         
                     </a>
-<!--                    <a href="MainController?btAction=EditBlog&postId=${b.postId}">
-                        <div style="position: relative;
-                                    left: 1100px;
-                                    bottom: 200px;
-                                      right: 150px;  
-                                      width: 50px;
-                                      height: 35px;
-                                      border: 3px solid green; ">
-                            <p class="sale">Update</p>
-                        </div>
-                    </a>-->
                 </c:forEach>
 
                 <!--                    <div class="row special-list">
