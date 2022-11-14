@@ -311,7 +311,7 @@
                 </div>
 
                 <div class="row my-5">
-                    <div class="card card-outline-secondary my-4">
+                    <div class="card card-outline-secondary my-4" style="width:100%">
                         <div class="card-header">
                             <h2>Bình luận về sản phẩm</h2>
                         </div>

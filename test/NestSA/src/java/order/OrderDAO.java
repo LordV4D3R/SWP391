@@ -27,10 +27,152 @@ public class OrderDAO {
     private static final String INSERT_ORDER_DETAIL = "INSERT INTO OrderDetails(productID, orderID, quantity, price) VALUES(?, ?, ?, ?)";
     private static final String GET_PRODUCT_QUANTITY = "SELECT quantity FROM product WHERE productID = ?";
     private static final String UPDATE_PRODUCT_QUANTITY = "UPDATE product SET quantity = ? WHERE productId = ?";
-    private static final String VIEW_ORDER_MANAGER = "SELECT orderid, Reciever, address, phone, date, status, shippingfee, total FROM orders";
-    private static final String VIEW_ORDER_DETAIL_MANAGER = "SELECT pro.name, detail.quantity, detail.price\n"
-            + "FROM orderDetails detail, product pro\n"
-            + "WHERE detail.productId = pro.productId and detail.orderId = ?";
+    
+    private static final String VIEW_ORDER_MANAGER = "SELECT orderid, Reciever, address, phone, date, status, shippingfee, total FROM orders WHERE status = N'Đang chuẩn bị hàng' ORDER BY orderid desc";
+    private static final String VIEW_ORDER_DETAIL_MANAGER = "SELECT pro.name, detail.quantity, detail.price "
+            + "FROM orderDetails detail, product pro "
+            + "WHERE detail.productId = pro.productId and detail.orderId like ?";
+//    button
+    private static final String CHANGE_ORDER_STATUS_ADMIN_MANAGER = "UPDATE orders SET status = N'Đang vận chuyển' WHERE orderid = ?";
+//    view trans
+    private static final String VIEW_ORDER_TRANSPORT_MANAGER = "SELECT orderid, Reciever, address, phone, date, status, shippingfee, total FROM orders WHERE status = N'Đang vận chuyển' ORDER BY orderid desc";
+//    confirm success shipper
+    private static final String CHANGE_ORDER_STATUS_SHIPPER_MANAGER = "UPDATE orders SET status = N'Đã hoàn tất' WHERE orderid = ?";
+//    view success
+    private static final String VIEW_ORDER_SUCCESS_MANAGER = "SELECT orderid, Reciever, address, phone, date, status, shippingfee, total FROM orders WHERE status = N'Đã hoàn tất' ORDER BY orderid desc";
+    
+    public List<OrderDTO> viewOrderSuccess() throws SQLException {
+        List<OrderDTO> order = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(VIEW_ORDER_SUCCESS_MANAGER);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    int orderId = Integer.parseInt(rs.getString("orderid"));
+                    String name = rs.getString("Reciever");
+                    String address = rs.getString("address");
+                    String phone = rs.getString("phone");
+                    String date = rs.getString("date");
+                    String status = rs.getString("status");
+                    int shippingfee = Integer.parseInt(rs.getString("shippingfee"));
+                    int total = Integer.parseInt(rs.getString("total"));
+                    order.add(new OrderDTO(orderId, date, address, phone, shippingfee, total, name, status));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return order;
+    }
+    
+public boolean changeOrderToSuccessStatus(OrderDTO order) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(CHANGE_ORDER_STATUS_SHIPPER_MANAGER);
+                ptm.setInt(1, order.getOrderId());
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return check;
+    }
+
+
+    public boolean changeOrderTransportStatus(OrderDTO order) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(CHANGE_ORDER_STATUS_ADMIN_MANAGER);
+                ptm.setInt(1, order.getOrderId());
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return check;
+    }
+    
+    public List<OrderDTO> viewOrderTransport() throws SQLException {
+        List<OrderDTO> order = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(VIEW_ORDER_TRANSPORT_MANAGER);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    int orderId = Integer.parseInt(rs.getString("orderid"));
+                    String name = rs.getString("Reciever");
+                    String address = rs.getString("address");
+                    String phone = rs.getString("phone");
+                    String date = rs.getString("date");
+                    String status = rs.getString("status");
+                    int shippingfee = Integer.parseInt(rs.getString("shippingfee"));
+                    int total = Integer.parseInt(rs.getString("total"));
+                    order.add(new OrderDTO(orderId, date, address, phone, shippingfee, total, name, status));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return order;
+    }
     
     public List<OrderDetail> viewOrderDetailById(int orderId) throws SQLException {
         List<OrderDetail> detail = new ArrayList<>();
@@ -41,12 +183,14 @@ public class OrderDAO {
             conn = DBUtils.getConnection();
             if (conn != null) {
                 ptm = conn.prepareStatement(VIEW_ORDER_DETAIL_MANAGER);
+                ptm.setInt(1, orderId);
                 rs = ptm.executeQuery();
                 while (rs.next()) {
+//                    int id = rs.getInt("orderId");
                     String name = rs.getString("name");
                     int quantity = Integer.parseInt(rs.getString("quantity"));
                     int price = Integer.parseInt(rs.getString("price"));
-                    detail.add(new OrderDetail(name, quantity, price));
+                    detail.add(new OrderDetail(name, orderId, quantity, price));
                 }
             }
         } catch (Exception e) {

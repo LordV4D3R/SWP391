@@ -1,6 +1,6 @@
 <%-- 
-    Document   : product.jsp
-    Created on : Oct 25, 2022, 2:10:44 PM
+    Document   : order.jsp
+    Created on : Oct 25, 2022, 2:11:18 PM
     Author     : thangbv
 --%>
 
@@ -21,6 +21,24 @@
             />
         <title>Tables | Tailwind Admin</title>
         <style>
+            @keyframes show-hide {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+            .show {
+                display: table-row;
+            }
+            .hide {
+                display: none;
+            }
+
+            .row-info:hover {
+                background-color: rgb(226 232 240);
+            }
             .handModal {
                 position: fixed;
                 top: 0;
@@ -33,6 +51,7 @@
                 outline: 0;
                 display: none;
             }
+
             .handModal .overlay {
                 position: fixed;
                 top: 0;
@@ -59,7 +78,7 @@
                 background-color: rgb(161 161 170) !important;
                 color: #FFFFFF;
             }
-            
+
             .show-swp{
                 display: block;
             }
@@ -183,63 +202,39 @@
                                     class="mb-2 border-solid border-gray-300 rounded border shadow-sm w-full"
                                     >
                                     <div
-                                        class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
+                                        class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
                                         >
-                                        Sản phẩm
-                                        <form class="flex" action="MainController">
-                                            <div class="p-2 rounded flex items-center bg-slate-200" style="width: 500px">
-                                                <input type="text" class="p-1 rounded outline-none flex-1" placeholder="Tìm kiếm sản phẩm" name="search"/>
-                                            </div>
-                                            <button type="submit" name="btAction" value="SearchProductManager" class="pr-3" style="outline: none"><i class="fas fa-search mr-1"></i></button>
-                                        </form>
-                                        <a href="add_edit_product.jsp" class="px-4 py-2 rounded block leading-7" id="add_product_swp" style="background-color: rgb(212 212 216);">Thêm sản phẩm mới</a>
+                                        Đơn hàng
                                     </div>
-                                    <div class="p-3 ">
+                                    <div class="p-3">
                                         <table
                                             class="table-responsive w-full rounded"
                                             style="text-align: center"
                                             >
                                             <thead>
                                                 <tr>
-                                                    <th class="border w-1/2 px-4 py-2">Tên sản phẩm</th>
-                                                    <th class="border w-96 px-4 py-2">Số lượng</th>
-                                                    <th class="border w-1/4 px-4 py-2">Giá</th>
-                                                    <th class="border w-96 px-4 py-2">Status</th>
-                                                    <th class="border w-full px-4 py-2"></th>
+                                                    <th class="border w-1/5 px-4 py-2">Tên người nhận</th>
+                                                    <th class="border w-1/4 px-4 py-2">Địa chỉ</th>
+                                                    <th class="border w-1/12 px-4 py-2">Số điện thoại</th>
+                                                    <th class="border w-1/5 px-4 py-2">Ngày mua</th>
+                                                    <th class="border w-1/12 px-4 py-2">Trạng thái</th>
+                                                    <th class="border w-1/12 px-4 py-2">Phí giao hàng</th>
+                                                    <th class="border w-1/5 px-4 py-2">Tổng hóa đơn</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
-                                                <c:forEach items="${VIEW_PRODUCT_VER_FULL}" var="o">
-                                                    <tr>
-                                                        <td class="border w-1/2 py-2">${o.name}</td>
-                                                        <td class="border w-96 py-2">${o.quantity}</td>
-                                                        <td class="border w-1/4 py-2">${o.price}</td>
-                                                        <td class="border w-96 py-2">
-                                                            <c:if test="${o.status == 1}">
-                                                                <i class="fas fa-check text-green-500 mx-2"></i>
-                                                            </c:if>
-                                                            <c:if test="${o.status == 0}">
-                                                                <i class="fas fa-times text-red-500 mx-2"></i>
-                                                            </c:if>
-                                                        </td>
-                                                        <td class="border w-full py-2">
-                                                            <a
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-white"
-                                                                href="MainController?btAction=ViewEditProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description}&categoryId=${o.categoryId}&categoryName=${o.categoryName}&status=${o.status}"
-                                                                >
-                                                                <i class="fas fa-edit"></i
-                                                                ></a>
-                                                            <a
-                                                                onclick="handalModal('centeredModal', 'block',${o.productId})"
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-red-500"
-                                                                href="#"
-                                                                >
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
-                                                        </td>
+                                                <c:forEach items="${VIEW_ORDER_TRANSPORT_VER_FULL}" var="o">
+                                                    <tr class="cursor-pointer row-info" id="order">
+                                                        <td class="border w-1/5 py-2">${o.receiver}</td>
+                                                        <td class="border w-1/4 py-2">${o.address}</td>
+                                                        <td class="border w-1/12 py-2">${o.phone}</td>
+                                                        <td class="border w-1/5 py-2">${o.date}</td>
+                                                        <td class="border w-1/12 py-2">${o.status}</td>
+                                                        <td class="border w-1/12 py-2">${o.shippingfee}</td>
+                                                        <td class="border w-1/5 py-2">${o.total}</td>
                                                     </tr>
                                                 </c:forEach>
+                                                <!--  -->
                                             </tbody>
                                         </table>
                                     </div>
@@ -250,39 +245,6 @@
                     </main>
                     <!--/Main-->
                 </div>
-                <!-- modal -->
-
-                <div id="centeredModal" class="handModal">
-                    <div class="overlay close-modal"></div>
-                    <div class="modal modal-centered">
-                        <div class="modal-content shadow-lg p-5 content-animation">
-                            <div class="border-b p-2 pb-3 pt-0 mb-4">
-                                <div class="flex justify-between items-center">
-                                    Xác nhận
-                                    <span
-                                        onclick="handalModal('centeredModal', 'none')"
-                                        class="close-modal cursor-pointer px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200"
-                                        >
-                                        <i class="fas fa-times text-gray-700"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <!-- Modal content -->
-                            <div class="flex justify-between">
-                                <span>Bạn có muốn xóa sản phẩm này không?</span>
-                                <!--href="MainController?btAction=RemoveProductManager&id=${productId}"-->
-                                <!--onclick="handalModal('centeredModal', 'none')"-->
-                                <a id="yes"
-                                     >Có<i class="fas fa-check text-green-500 mx-2"></i>
-                                </a>
-                                <a href="#" onclick="handalModal('centeredModal', 'none')"
-                                   >Không<i class="fas fa-ban text-red-500 mx-2"></i
-                                    ></a>
-                            </div>        
-                        </div>
-                    </div>
-                </div>
-                <!-- modal -->
                 <!--Footer-->
                 <footer class="bg-grey-darkest text-white p-2">
                     <div class="flex flex-1 mx-auto">Nest SongAn</div>
@@ -296,28 +258,38 @@
 
         <script src="./main.js"></script>
         <script>
-                                    function handalModal(id, display, pid) {
-                                        console.log(pid)
-                                        document.getElementById('yes').href = 'MainController?btAction=RemoveProductManager&id=' + pid
-                                        console.log(document.getElementById('yes'))
-                                        document.getElementById(id).style.display = display;
+                                    function linkRow() {
+                                        const rows = document.querySelectorAll("tr[data-href]");
+                                        rows.forEach(row => {
+                                            row.addEventListener("click", () => {
+                                                window.location.href = row.dataset.href;
+                                            });
+                                        });
                                     }
-                                    
-                                     const items = document.querySelectorAll('#item');
-                                    const menu = document.getElementById('menu')
-                                    const icon=document.getElementById('icon-xoay')
-                                            const listMenu = document.getElementById('list-menu')
-                                            console.log(listMenu)
-
-                                            menu.addEventListener('click', () => {
-                                                listMenu.classList.toggle('show-swp')
-                                                icon.classList.toggle('show-swp-icon')
-                                            })
-
-                                            items.forEach(item => {
-                                            console.log(item)
-                                            })
+                                    document.addEventListener("DOMContentLoaded", linkRow());
         </script>
-        
+        <script>
+            function handalModal(id, display, pid) {
+                console.log(pid)
+                document.getElementById('yes').href = 'MainController?btAction=RemoveProductManager&id=' + pid
+                console.log(document.getElementById('yes'))
+                document.getElementById(id).style.display = display;
+            }
+
+            const items = document.querySelectorAll('#item');
+            const menu = document.getElementById('menu')
+            const icon = document.getElementById('icon-xoay')
+            const listMenu = document.getElementById('list-menu')
+            console.log(listMenu)
+
+            menu.addEventListener('click', () => {
+                listMenu.classList.toggle('show-swp')
+                icon.classList.toggle('show-swp-icon')
+            })
+
+            items.forEach(item => {
+                console.log(item)
+            })
+        </script>
     </body>
 </html>

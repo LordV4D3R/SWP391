@@ -158,7 +158,7 @@
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
                             <li class="nav-item"><a class="nav-link" href="index.jsp">TRANG CHỦ</a></li>
                             <li class="nav-item"><a class="nav-link" href="about.jsp">GIỚI THIỆU</a></li>
-                            <li class="dropdown active">
+                            <li class="dropdown ">
                                 <a href="ViewProductController" class="nav-link">Sản phẩm</a> 
                             </li>
                             <li class="nav-item"><a class="nav-link" href="gallery.jsp">BLOG</a></li>
@@ -168,9 +168,9 @@
                     <!-- /.navbar-collapse -->
 
                     <!-- Start Atribute Navigation -->
-                    <div class="attr-nav">
+                    <div class="attr-nav ">
                         <ul>
-                            <li class="side-menu"><a href="#">
+                            <li class="side-menu active"><a href="#">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>GIỎ HÀNG</p>

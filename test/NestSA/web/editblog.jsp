@@ -158,7 +158,7 @@
                                         Form Grid
                                     </div>
                                     <div class="p-3">
-                                        <form class="w-full" action="MainController" method="POST">
+                                        <form class="w-full" action="MainController" method="GET">
                                             <div class="flex flex-wrap -mx-3 mb-6">
                                                 <!-- full input -->
                                                 <div class="w-full px-3 mb-2">
@@ -173,24 +173,8 @@
                                                         id="grid-password"
                                                         name="postTitle"
                                                         type="text"
-                                                        value=""
+                                                        value="${requestScope.EDIT_BLOG.postTitle}"
                                                         placeholder="Nhập tên của bài viết"                         
-                                                        />
-                                                </div>
-                                                <div class="w-full px-3 mb-2">
-                                                    <label
-                                                        class="block uppercase tracking-wide text-gray-900 text-sm font-medium mb-1"
-                                                        for="grid-password"
-                                                        >
-                                                        Thể loại:
-                                                    </label>
-                                                    <input
-                                                        class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                                                        id="grid-password"
-                                                        name="category"
-                                                        type="text"
-                                                        value=""
-                                                        placeholder="Nhập thể loại của bài viết"                         
                                                         />
                                                 </div>
                                                 <!-- double input -->
@@ -212,7 +196,7 @@
                                                             type="text"
                                                             name="image"
                                                             style="width: 700px;"
-                                                            value=""
+                                                            value="${requestScope.EDIT_BLOG.image}"
                                                             placeholder="Nhập liên kết đến ảnh của sản phẩm"
                                                             />
                                                     </div>
@@ -245,10 +229,11 @@
                                                     rows="4"
                                                     class="block p-4 w-full text-sm text-grey-darker bg-gray-200 rounded border border-gray-200 focus:ring-blue-500 focus:border-gray-600 focus:outline-none"
                                                     placeholder="Your message..."
-                                                    ></textarea>
+                                                    >${requestScope.EDIT_BLOG.postContent}</textarea>
                                             </div>
-                                            
-                                            <button type="submit" name="btAction" value="CreateBlog"
+                                            <input type ="hidden" name="postId" value="${requestScope.EDIT_BLOG.postId}"/>
+                                            <input type ="hidden" name="category" value="${requestScope.EDIT_BLOG.category}"/>
+                                            <button type="submit" name="btAction" value="EditBlog"
                                                 class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
                                                 >
                                                 Xác nhận

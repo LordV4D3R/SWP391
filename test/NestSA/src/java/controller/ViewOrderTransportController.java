@@ -7,46 +7,40 @@ package controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import post.PostDAO;
+import order.OrderDAO;
+import order.OrderDTO;
 
 /**
  *
- * @author Loi Lam
+ * @author Admin
  */
-@WebServlet(name = "CreateBlogController", urlPatterns = {"/CreateBlogController"})
-public class CreateBlogController extends HttpServlet {
+@WebServlet(name = "ViewOrderTransportController", urlPatterns = {"/ViewOrderTransportController"})
+public class ViewOrderTransportController extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "ViewBlogManagerController";
+    private static final String SUCCESS = "order-transport.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            String postTitle = request.getParameter("postTitle");
-            String image = request.getParameter("image");
-            String postContent = request.getParameter("postContent");
-            String category = request.getParameter("category");
-            PostDAO pDao = new PostDAO();
-            boolean check = pDao.createPost(image, postTitle, postContent, category);
-            if(check)
+            OrderDAO dao = new OrderDAO();
+            List<OrderDTO> order = dao.viewOrderTransport();
+            if (order.size() > 0) {
+                request.setAttribute("VIEW_ORDER_TRANSPORT_VER_FULL", order);
                 url = SUCCESS;
+            } else if (order.isEmpty()) {
+                request.setAttribute("VIEW_ORDER_TRANSPORT_VER_FULL", "Hiện tại không có đơn hàng nào đang giao cả");
+                url = SUCCESS;
+            }
         } catch (Exception e) {
-            e.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

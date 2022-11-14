@@ -40,16 +40,8 @@ public class ViewBlogController extends HttpServlet {
         String url=ERROR;
         try {
             int postId = Integer.parseInt(request.getParameter("postId"));
-//            String image = request.getParameter("image");
-//            String postContent = request.getParameter("postContent");
-//            String postTitle = request.getParameter("postTitle");
-//            String category = request.getParameter("category");
-////            String dateP = request.getParameter("dateUpload");
-//            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-//            Date dateUpload = sdf.parse(request.getParameter("dateUpload"));
             
             PostDAO pDao = new PostDAO();
-            
             PostDTO post = pDao.detailsBlog(postId);
             HttpSession session = request.getSession();
             session.setAttribute("POST_DETAILS", post);

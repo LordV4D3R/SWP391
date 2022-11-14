@@ -18,8 +18,8 @@ import post.PostDAO;
  *
  * @author Loi Lam
  */
-@WebServlet(name = "CreateBlogController", urlPatterns = {"/CreateBlogController"})
-public class CreateBlogController extends HttpServlet {
+@WebServlet(name = "RemoveBlogController", urlPatterns = {"/RemoveBlogController"})
+public class RemoveBlogController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -32,17 +32,13 @@ public class CreateBlogController extends HttpServlet {
      */
     private static final String ERROR = "error.jsp";
     private static final String SUCCESS = "ViewBlogManagerController";
-
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String url = ERROR;
         try {
-            String postTitle = request.getParameter("postTitle");
-            String image = request.getParameter("image");
-            String postContent = request.getParameter("postContent");
-            String category = request.getParameter("category");
+            int postId = Integer.parseInt(request.getParameter("postId"));
             PostDAO pDao = new PostDAO();
-            boolean check = pDao.createPost(image, postTitle, postContent, category);
+            boolean check = pDao.removePost(postId);
             if(check)
                 url = SUCCESS;
         } catch (Exception e) {
@@ -50,7 +46,6 @@ public class CreateBlogController extends HttpServlet {
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }
-
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
