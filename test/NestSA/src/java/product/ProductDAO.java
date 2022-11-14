@@ -27,6 +27,9 @@ public class ProductDAO {
     private static final String VIEW = "SELECT pro.productId, pro.name, pro.quantity, pri.price, pro.categoryId, pro.image, pro.description, pro.categoryId, pro.status "
             + "FROM product pro, price pri "
             + "WHERE pro.productId = pri.productId";
+     private static final String PAGINATION = "SELECT pro.productId, pro.name, pro.quantity, pri.price, pro.categoryId, pro.image, pro.description, pro.categoryId, pro.status "
+            + "FROM product pro, price pri "
+            + "WHERE pro.productId = pri.productId ORDER BY pro.productId OFFSET ? ROWS FETCH NEXT 9 ROWS ONLY";
     private static final String VIEW_PRODUCT_BY_CATEGORY = "SELECT pro.productId, pro.name, pro.quantity, pro.description, pro.categoryId, pro.image, pro.status, pri.price "
             + "FROM product pro, price pri "
             + "WHERE pro.productId = pri.productId "
@@ -34,10 +37,120 @@ public class ProductDAO {
     private static final String VIEW_UPDATE_PRODUCT = "select pro.productId, pro.name, pri.price, pro.quantity, pro.categoryId, cate.categoryName, pro.image, pro.description, pro.status "
             + "from product pro, category cate, price pri "
             + "where pro.productId = pri.productId and cate.categoryId = pro.categoryId";
-    private static final String INSERT_INTO_PRODUCT_TABLE = "INSERT INTO product(name, quantity, image, description, categoryId, status) VALUES(?,?,?,?,?,?)";
-    private static final String GET_PRODUCT_ID = "SELECT * FROM product WHERE name LIKE ?";
-    private static final String GET_CATEGORY_ID = "SELECT * FROM category WHERE categoryName LIKE ?";
-    private static final String INSERT_INTO_PRICE_TABLE = "INSERT INTO price(productId, price, datechange, status) VALUES(?,?,?,?)";
+    private static final String INSERT_INTO_PRODUCT_TABLE = "INSERT INTO product(name, quantity, image, description, categoryId, status) "
+            + "VALUES(?,?,?,?,?,?)";
+    private static final String GET_PRODUCT_ID = "SELECT * "
+            + "FROM product "
+            + "WHERE name "
+            + "LIKE ?";
+    private static final String GET_CATEGORY_ID = "SELECT * "
+            + "FROM category "
+            + "WHERE categoryName "
+            + "LIKE ?";
+    private static final String INSERT_INTO_PRICE_TABLE = "INSERT INTO price(productId, price, datechange, status) "
+            + "VALUES(?,?,?,?)";
+    private static final String UPDATE_PRODUCT_MANAGER = "UPDATE product "
+            + "SET name = ?, quantity = ?, description = ?, categoryId = ?, image = ?, status = ? "
+            + "WHERE productId = ?";
+    private static final String UPDATE_PRICE_MANAGER = "UPDATE price "
+            + "SET price = ?, datechange = ?, status = ? "
+            + "WHERE productId = ?";
+    private static final String REMOVE_PRODUCT_MANAGER = "UPDATE product "
+            + "SET status = 0 "
+            + "WHERE productId = ?";
+    
+    public boolean removeProduct(ProductDTO product) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(REMOVE_PRODUCT_MANAGER);
+                ptm.setInt(1, product.getProductId());
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return check;
+    }
+
+    public boolean updatePrice(PriceDTO price) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE_PRICE_MANAGER);
+                ptm.setInt(1, price.getPrice());
+                ptm.setString(2, price.getDateChange());
+                ptm.setInt(3, price.getStatus());
+                ptm.setInt(4, price.getProductId());
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return check;
+    }
+
+    public boolean updateProduct(ProductDTO product) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(UPDATE_PRODUCT_MANAGER);
+                ptm.setString(1, product.getName());
+                ptm.setInt(2, product.getQuantity());
+                ptm.setString(3, product.getDescription());
+                ptm.setString(4, product.getCategoryId());
+                ptm.setString(5, product.getImage());
+                ptm.setInt(6, product.getStatus());
+                ptm.setInt(7, product.getProductId());
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return check;
+    }
 
     public boolean insertProduct(ProductDTO product) throws SQLException {
         Connection conn = null;
@@ -71,7 +184,7 @@ public class ProductDAO {
         }
         return check;
     }
-    
+
     public int getProductId(String productName) throws SQLException {
         int productId = 0;
         Connection conn = null;
@@ -239,6 +352,46 @@ public class ProductDAO {
         return list;
     }
 
+     public List<ProductDTO> pagination(int pageActive) throws SQLException {
+        List<ProductDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(PAGINATION);
+                ptm.setInt(1, (pageActive-1)*9);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    int productID = Integer.parseInt(rs.getString("productId"));
+                    String name = rs.getString("name");
+                    int quantity = Integer.parseInt(rs.getString("quantity"));
+                    int price = rs.getInt("price");
+                    String img = rs.getString("image");
+                    String description = rs.getString("description");
+                    String categoryID = rs.getString("categoryId");
+                    int status = Integer.parseInt(rs.getString("status"));
+                    list.add(new ProductDTO(productID, name, quantity, price, img, description, categoryID, status));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
+    
     public List<ProductDTO> ViewByCategory(String cateId) throws SQLException {
         List<ProductDTO> list = new ArrayList<>();
         Connection conn = null;
@@ -319,11 +472,11 @@ public class ProductDAO {
 
     }
 
-    public static void main(String[] args) throws SQLException {
-        ProductDAO dao = new ProductDAO();
-        List<ProductDTO> list = dao.ViewByCategory("C01");
-        for (ProductDTO dto : list) {
-            System.out.println(dto.toString());
-        }
-    }
+//    public static void main(String[] args) throws SQLException {
+//        ProductDAO dao = new ProductDAO();
+//        List<ProductDTO> list = dao.ViewByCategory("C01");
+//        for (ProductDTO dto : list) {
+//            System.out.println(dto.toString());
+//        }
+//    }
 }

@@ -62,7 +62,7 @@
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> </a></li>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i>${checkLogin.fullName}</a></li>
                                     <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>
@@ -230,19 +230,22 @@
 
                     <div class="col-lg-8 col-sm-12">
                         <div class="contact-form-right">
-                            <form action="MainController" method="POST">
+                            <form action="MainController">
                                 <c:set var="errors" value="${requestScope.INSERT_CONTACT_ERRORS}"/>
                                 <c:set var="successMsg" value="${requestScope.INSERT_UPDATE_ACCOUNT_SUCCESS}"/>
+                                <c:if test="${not empty successMsg}">
+                                    <div id="msgSubmit" class="h3 text-center hidden">${successMsg}</div>
+                                </c:if>
                                 <div class="row">
                                     <c:if test="${checkLogin == null}">
                                         <div id="msgSubmit" class="h3 text-center hidden">Bạn cần phải đăng nhập hoặc đăng ký để sử dụng tính năng này</div>
                                     </c:if>
 
                                     <c:if test="${checkLogin != null}">
-                                        <input class="form-control" id="userId" type="hidden" name="userId" value="${sessionScope.LOGIN_USER.userId}" />
-                                        <input class="form-control" id="password" type="hidden" name="password" value="${sessionScope.LOGIN_USER.password}"/>
-                                        <input class="form-control" id="userName" type="hidden" name="userName" value="${sessionScope.LOGIN_USER.userName}"/>
-                                        <input class="form-control" id="roleId" type="hidden" name="roleId" value="${sessionScope.LOGIN_USER.roleId}"/>
+                                        <input id="userId" type="hidden" name="userId" value="${sessionScope.LOGIN_USER.userId}" />
+                                        <input id="password" type="hidden" name="password" value="${sessionScope.LOGIN_USER.password}"/>
+                                        <input id="userName" type="hidden" name="userName" value="${sessionScope.LOGIN_USER.userName}"/>
+                                        <input id="roleId" type="hidden" name="roleId" value="${sessionScope.LOGIN_USER.roleId}"/>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <h2>Username: </h2>
@@ -266,7 +269,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <h2>Số điện thoại</h2>
+                                                <h2>Số điện thoại:</h2>
                                                 <input type="tel" class="form-control" id="phone" pattern="[0-9]{3}[0-9]{3}[0-9]{4}" value="${sessionScope.LOGIN_USER.phone}" name="userPhone" placeholder="Số Điện Thoại" />
                                                 <div class="help-block with-errors"></div>
                                             </div>
@@ -283,9 +286,7 @@
                                             <c:if test="${not empty errors.nameErr}">
                                                 <div id="msgSubmit" class="h3 text-center hidden">${errors.nameErr}</div>
                                             </c:if>
-                                            <c:if test="${not empty successMsg}">
-                                                <div id="msgSubmit" class="h3 text-center hidden">${successMsg}</div>
-                                            </c:if>
+
 
                                             <div class="submit-button text-center">                                               
                                                 <button class="btn hvr-hover" id="submit" value="UpdateProfile" name="btAction" type="submit">Cập nhật thông tin</button>

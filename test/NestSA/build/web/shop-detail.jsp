@@ -316,7 +316,7 @@
                         <div class="card-header">
                             <h2>Bình luận về sản phẩm</h2>
                         </div>
-                        <form action="MainController" method="POST">                                 
+                        <form action="MainController">                                 
                             <div class="card-body">    
                                 <c:set var="cmt" scope="session" value="${sessionScope.COMMENT_RESULT}"/>
                                 <c:if test="${cmt != null}">

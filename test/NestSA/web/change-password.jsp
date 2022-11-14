@@ -231,8 +231,19 @@
                     <div class="col-lg-8 col-sm-12">
                         <div class="contact-form-right">
                             <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
-
                             <form action="MainController" method="POST">
+                                <c:set var="errorsConfirm" value="${requestScope.CHANGE_PASSWORD_ERROR}"/>
+                                <c:set var="errorsPassword" value="${requestScope.ERROR_CHANGE_PASSWORD}"/>
+                                <c:set var="successMsg" value="${requestScope.CHANGE_PASSWORD_SUCCESS}"/>
+                                <c:if test="${not empty successMsg}">
+                                    <div id="msgSubmit" class="h3 text-center hidden">${successMsg}</div>
+                                </c:if>
+                                <c:if test="${not empty errorsPassword}">
+                                    <div id="msgSubmit" class="h3 text-center hidden">${errorsPassword}</div>
+                                </c:if>
+                                <c:if test="${not empty errorsConfirm}">
+                                    <div id="msgSubmit" class="h3 text-center hidden">${errorsConfirm.confirmNotMatch}</div>
+                                </c:if>
                                 <c:set var="errors" value="${requestScope.INSERT_CONTACT_ERRORS}"/>
                                 <div class="row">
                                     <c:if test="${checkLogin == null}">
@@ -240,6 +251,8 @@
                                     </c:if>
 
                                     <c:if test="${checkLogin != null}">
+                                        <input id="password" type="hidden" name="password" value="${sessionScope.LOGIN_USER.password}"/>
+                                        <input id="userId" type="hidden" name="userId" value="${sessionScope.LOGIN_USER.userId}" />
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <h2>Username: </h2>
@@ -250,27 +263,27 @@
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <h2>Nhập mật khẩu cũ:</h2>
-                                                <input type="text" placeholder="Mật khẩu cũ" id="email"  class="form-control" name="emailContact">
+                                                <input type="password" placeholder="Mật khẩu cũ" id="email"  class="form-control" name="reOldPassword">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <h2>Nhập mật khẩu mới</h2>
-                                                <input type="text" class="form-control" id="subject"  name="phoneContact" placeholder="Nhập mật khẩu mới">
+                                                <h2>Nhập mật khẩu mới:</h2>
+                                                <input type="password" class="form-control" id="subject"  name="newPassword" placeholder="Nhập mật khẩu mới">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <h2>Nhập lại mật khẩu mới</h2>
-                                                <input type="text" class="form-control" id="subject"  name="phoneContact" placeholder="Nhập lại mật khẩu mới">
+                                                <h2>Nhập lại mật khẩu mới:</h2>
+                                                <input type="password" class="form-control" id="subject"  name="confirm" placeholder="Nhập lại mật khẩu mới">
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="submit-button text-center">                                               
-                                                <button class="btn hvr-hover" id="submit" value="Send" name="btAction" type="submit">Thay đổi mật khẩu</button>
+                                                <button class="btn hvr-hover" id="submit" value="UpdatePassword" name="btAction" type="submit">Thay đổi mật khẩu</button>
                                                 <div id="msgSubmit" class="h3 text-center hidden"></div>
                                                 <div class="clearfix"></div>
                                             </div>

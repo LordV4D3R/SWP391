@@ -60,6 +60,16 @@ public class MainController extends HttpServlet {
     private static final String CREATE_BLOG_CONTROLLER = "CreateBlogController";
     private static final String UPDATE_PROFILE = "UpdateProfile";
     private static final String UPDATE_PROFILE_CONTROLLER = "UpdateProfileController";
+    private static final String EDIT_PRODUCT_MANAGER = "EditProductManager";
+    private static final String EDIT_PRODUCT_MANAGER_CONTROLLER = "EditProductManagerController";
+    private static final String VIEW_EDIT_PRODUCT_MANAGER = "ViewEditProductManager";
+    private static final String VIEW_EDIT_PRODUCT_MANAGER_CONTROLLER = "ViewEditProductManagerController";
+    private static final String REMOVE_PRODUCT_MANAGER = "RemoveProductManager";
+    private static final String REMOVE_PRODUCT_MANAGER_CONTROLLER = "RemoveProductManagerController";
+    private static final String SEARCH_PRODUCT_MANAGER = "SearchProductManager";
+    private static final String SEARCH_PRODUCT_MANAGER_CONTROLLER = "SearchProductManagerController";
+    private static final String UPDATE_PASSWORD = "UpdatePassword";
+    private static final String UPDATE_PASSWORD_CONTROLLER = "UpdatePasswordController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -111,6 +121,16 @@ public class MainController extends HttpServlet {
                 url = CREATE_BLOG_CONTROLLER;
             } else if (UPDATE_PROFILE.equals(action)) {
                 url = UPDATE_PROFILE_CONTROLLER;
+            } else if (EDIT_PRODUCT_MANAGER.equals(action)) {
+                url = EDIT_PRODUCT_MANAGER_CONTROLLER;
+            } else if (VIEW_EDIT_PRODUCT_MANAGER.equals(action)) {
+                url = VIEW_EDIT_PRODUCT_MANAGER_CONTROLLER;
+            } else if (REMOVE_PRODUCT_MANAGER.equals(action)) {
+                url = REMOVE_PRODUCT_MANAGER_CONTROLLER;
+            } else if (SEARCH_PRODUCT_MANAGER.equals(action)) {
+                url = SEARCH_PRODUCT_MANAGER_CONTROLLER;
+            } else if (UPDATE_PASSWORD.equals(action)) {
+                url = UPDATE_PASSWORD_CONTROLLER;
             }
         } catch (Exception e) {
             e.printStackTrace();

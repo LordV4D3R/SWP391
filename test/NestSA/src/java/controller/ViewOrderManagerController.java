@@ -5,64 +5,41 @@
  */
 package controller;
 
-import category.CategoryDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import price.PriceDTO;
-import product.ProductDAO;
-import product.ProductDTO;
+import javax.servlet.http.HttpSession;
+import order.OrderDAO;
+import order.OrderDTO;
 
 /**
  *
  * @author Admin
  */
-@WebServlet(name = "UpdateProductManagerController", urlPatterns = {"/UpdateProductManagerController"})
-public class UpdateProductManagerController extends HttpServlet {
+@WebServlet(name = "ViewOrderManagerController", urlPatterns = {"/ViewOrderManagerController"})
+public class ViewOrderManagerController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "ViewProductManagerController";
-
+    private static final String SUCCESS = "order.jsp";
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-//            int id = Integer.parseInt(request.getParameter("id"));
-            String name = request.getParameter("name");
-            int price = Integer.parseInt(request.getParameter("price"));
-            int quantity = Integer.parseInt(request.getParameter("quantity"));
-            String categoryName = request.getParameter("categoryName");
-            String img = request.getParameter("image");
-            String desc = request.getParameter("desc");
-            int status = Integer.parseInt(request.getParameter("status"));
-
-            Date today = new Date();
-            SimpleDateFormat dateForm = new SimpleDateFormat("dd/MM/YYYY hh:mm aa");
-            String date = dateForm.format(today);
-
-            ProductDAO dao = new ProductDAO();
-            String categoryId = dao.getCategoryId(categoryName);
-            
-            dao.insertProduct(new ProductDTO(name, quantity, price, img, desc, categoryId ,categoryName, status));
-            int productId = dao.getProductId(name);
-            boolean check = dao.insertPrice(new PriceDTO(price, status, productId, date));
-            
-            ProductDTO product = new ProductDTO(name, quantity, price, img, desc, categoryName, status);
-            request.setAttribute("VIEW_PRODUCT_VER_FULL", product);
-            if(check) {
+            OrderDAO dao = new OrderDAO();
+            List<OrderDTO> order = dao.viewOrder();
+            if (order.size() > 0) {
+                request.setAttribute("VIEW_ORDER_VER_FULL", order);
                 url = SUCCESS;
-            } else {
-                url = ERROR;
             }
         } catch (Exception e) {
-            log("Error at UpdateProductManagerController at: " + e.toString());
+            log("Error at ViewOrderManagerController at: " + e.toString());
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

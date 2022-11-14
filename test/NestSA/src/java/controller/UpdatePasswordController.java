@@ -5,8 +5,6 @@
  */
 package controller;
 
-import comment.CommentDAO;
-import comment.CommentDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
@@ -17,15 +15,19 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import users.UserDAO;
+import users.UserError;
 
 /**
  *
  * @author tranq
  */
-@WebServlet(name = "CreateCommentController", urlPatterns = {"/CreateCommentController"})
-public class CreateCommentController extends HttpServlet {
+@WebServlet(name = "UpdatePasswordController", urlPatterns = {"/UpdatePasswordController"})
+public class UpdatePasswordController extends HttpServlet {
 
-    private final String SHOP_DETAIL_PAGE = "shop-detail.jsp";
+    private final String ERROR = "change-password.jsp";
+    private final String SUCCESS = "change-password.jsp";
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -38,24 +40,43 @@ public class CreateCommentController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String comment = request.getParameter("txtComment");
-        int userId = Integer.parseInt(request.getParameter("userIdComment"));
-        int productId = Integer.parseInt(request.getParameter("id"));
-        String url = SHOP_DETAIL_PAGE;
-        try {
+        String url = ERROR;
 
-            CommentDAO dao = new CommentDAO();
-                CommentDTO dto = new CommentDTO(userId, productId, comment, true);
-                boolean result = dao.createComment(dto);
-                if (result) {
-                    url = SHOP_DETAIL_PAGE;
-                    request.setAttribute("COMMENT_SUCCESS", "Cảm ơn bạn đã đánh giá! Đánh giá của bạn sẽ sớm được chúng tôi duyệt");
+        try {
+            String password = request.getParameter("password");
+            String reOldPassword = request.getParameter("reOldPassword");
+            String newPassword = request.getParameter("newPassword");
+            String confirm = request.getParameter("confirm");
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            UserError errors = new UserError();
+            boolean foundErr = false;
+            if (reOldPassword.equals(password)) {
+                if (!confirm.equals(newPassword)) {
+                    foundErr = true;
+                    errors.setConfirmNotMatch("Mật Khẩu Nhập Lại Không Khớp");
                 }
-            
+                if (newPassword.trim().length() > 50) {
+                    foundErr = true;
+                    errors.setPasswordErr("Mật khẩu không quá 50 kí tự");
+                }
+                if (foundErr) {
+                    request.setAttribute("CHANGE_PASSWORD_ERROR", errors);
+                } else {
+                    UserDAO dao = new UserDAO();
+                    boolean result = dao.updatePassword(userId, newPassword);
+                    if (result) {
+                        request.setAttribute("CHANGE_PASSWORD_SUCCESS", "Thay đổi mật khẩu thành công");
+                        url = SUCCESS;
+                    }
+                }
+            } else {
+                request.setAttribute("ERROR_CHANGE_PASSWORD", "Mật khẩu cũ không đúng");
+            }
+
         } catch (NamingException ex) {
-            log("CreateCommentController _ Naming _ " + ex.getMessage());
+            log("UpdateProfileController _ Naming _ " + ex.getMessage());
         } catch (SQLException ex) {
-            log("CreateCommentController _ SQL _ " + ex.getMessage());
+            log("UpdateProfileController _ SQL _ " + ex.getMessage());
         } finally {
             RequestDispatcher rd = request.getRequestDispatcher(url);
             rd.forward(request, response);

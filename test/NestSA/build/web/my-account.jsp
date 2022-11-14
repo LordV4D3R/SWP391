@@ -238,18 +238,19 @@
         <!-- Start My Account  -->
         <div class="my-account-box-main">
             <div class="container">
-                <form action="MainController" method="POST">   
+                <form action="MainController">   
+                    <input id="userId" type="hidden" name="userId" value="${sessionScope.LOGIN_USER.userId}" />
                     <div class="my-account-page">
                         <div id="msgSubmit" class="h3 text-center hidden">Xin chào ${checkLogin.fullName}</div>
                         <div class="row">
                             <div class="col-lg-4 col-md-12">
                                 <div class="account-box">
                                     <div class="service-box">                                    
-                                        <div class="service-icon">                                           
-                                            <a href="user-profile.jsp"> <i class="fa fa-gift"></i> </a>
+                                        <div class="service-icon">    
+                                                <a href="user-profile.jsp"><i class="fa fa-gift"></i></a>
                                         </div>
                                         <div class="service-desc">
-                                            <a href="user-profile.jsp"> <h4>Thông tin tài khoản</h4></a>
+                                              <a href="user-profile.jsp"><h4>Thông tin tài khoản</h4></a>
                                             <p>Tên, địa chỉ, email, số điện thoại.</p>
                                         </div>                                    
                                     </div>
@@ -262,7 +263,7 @@
                                             <a href="change-password.jsp"><i class="fa fa-lock"></i> </a>
                                         </div>
                                         <div class="service-desc">
-                                            <a href="user-profile.jsp"> <h4>Đăng nhập &amp; bảo mật </h4></a>
+                                            <a href="change-password.jsp"> <h4>Đăng nhập &amp; bảo mật </h4></a>
                                             <p>Thay đổi mật khẩu</p>
                                         </div>
                                     </div>

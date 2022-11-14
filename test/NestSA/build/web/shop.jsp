@@ -42,6 +42,29 @@
           <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
         <![endif]-->
 
+        <style>
+            .swp-pagination{
+                display: flex;
+                justify-content: center;
+                width: 100%
+            }
+            .swp-pagination a{
+                font-size: 24px;
+                display: block;
+                width: 40px;
+                height: 40px;
+                border-radius: 5px;
+                text-align: center;
+                transform: translateY(-56px);
+                line-height: 40px
+            }
+            .swp-pagination-active{
+                background: #b0b435;
+                color: #fff;
+
+            }
+        </style>
+
     </head>
 
     <body>
@@ -343,39 +366,30 @@
 
                                     </c:forEach>
                                 </div>
-                            </div>
-                            <!--                            <div class="filter-price-left">
-                                                            <div class="title-left">
-                                                                <h3>Phân loại theo giá</h3>
-                                                            </div>
-                                                            <div class="price-box-slider">
-                                                                <div id="slider-range"></div>
-                                                                <p>
-                                                                    <input type="text" id="amount" readonly
-                                                                           style="border:0; color:#fbb714; font-weight:bold;">
-                                                                    <button class="btn hvr-hover" type="submit">Phân loại</button>
-                                                                </p>
-                                                            </div>
-                                                        </div>-->
+                            </div>                        
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <!-- End Shop Page -->
-
+        <div class="swp-pagination">
+            <c:forEach var="o" begin="1" end="5">
+                <a class="${requestScope.ACTIVE_PAGE==o?"swp-pagination-active":null}" href="ViewProductController?page=${o}">${o}</a>
+            </c:forEach>
+        </div>
         <!-- Start Instagram Feed  -->
         <div class="instagram-box">
             <div class="main-instagram owl-carousel owl-theme">
                 <c:forEach items="${requestScope.VIEW_PRODUCT}" var="o">
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img style="width: 320px; height: 225px" src="${o.image}" alt="Image" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                    <div class="item">
+                        <div class="ins-inner-box">
+                            <img style="width: 320px; height: 225px" src="${o.image}" alt="Image" />
+                            <div class="hov-in">
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                            </div>
                         </div>
-                    </div>
-                </div>  
+                    </div>  
                 </c:forEach>
             </div>
         </div>

@@ -28,7 +28,7 @@ import javax.servlet.http.HttpSession;
 public class UpdateProfileController extends HttpServlet {
 
     private final String ERROR_PAGE = "user-profile.jsp";
-    private final String SUCCESS_PAGE = "user-profile.jsp";
+    private final String SUCCESS = "user-profile.jsp";
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -42,18 +42,20 @@ public class UpdateProfileController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        int userId = Integer.parseInt(request.getParameter("userId"));
-        String fullName = request.getParameter("userFullName");
-        String phone = request.getParameter("userPhone");
-        String email = request.getParameter("userEmail");
-        String address = request.getParameter("userAddress");
-        String password = request.getParameter("password");
-        String userName = request.getParameter("userName");
-        String roleId = request.getParameter("roleId");
         String url = ERROR_PAGE;
-        boolean foundErr = false;
-        UserError errors = new UserError();
         try {
+            int userId = Integer.parseInt(request.getParameter("userId"));
+            String fullName = request.getParameter("userFullName");
+            String phone = request.getParameter("userPhone");
+            String email = request.getParameter("userEmail");
+            String address = request.getParameter("userAddress");
+            String password = request.getParameter("password");
+            String userName = request.getParameter("userName");
+            String roleId = request.getParameter("roleId");
+            boolean foundErr = false;
+            UserError errors = new UserError();
+            HttpSession session = request.getSession();
+            UserDTO dto = (UserDTO) session.getAttribute("LOGIN_USER");
             //1. call dao
             if (email.trim().length() < 1 && phone.trim().length() < 1) {
                 foundErr = true;
@@ -64,12 +66,13 @@ public class UpdateProfileController extends HttpServlet {
                 request.setAttribute("INSERT_UPDATE_ACCOUNT_ERRORS", errors);
             } else {
                 UserDAO dao = new UserDAO();
-                UserDTO dto = new UserDTO(userId, password, address, phone, email, fullName, roleId, userName);
+//                UserDTO dto = new UserDTO(userId, password, address, phone, email, fullName, roleId, userName);
+                dto = new UserDTO(userId, password, address, phone, email, fullName, roleId, userName);
                 boolean result = dao.updateInfo(dto);
                 if (result) {
-                    request.getSession().setAttribute("LOGIN_USER", result);
                     request.setAttribute("INSERT_UPDATE_ACCOUNT_SUCCESS", "Cập nhật thông tin thành công");
-                    url = SUCCESS_PAGE;
+                    session.setAttribute("LOGIN_USER", dto);
+                    url = SUCCESS;
                 }
             }
         } catch (NamingException ex) {

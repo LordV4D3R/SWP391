@@ -82,7 +82,7 @@
               </li>
               <li class="w-full h-full py-3 px-2 border-b border-light-border">
                 <a
-                  href="order.jsp"
+                  href="ViewOrderManagerController"
                   class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                 >
                   <i class="fas fa-grip-horizontal float-left mx-2"></i>
@@ -335,115 +335,7 @@
                 </div>
               </div>
               <!--Profile Tabs-->
-              <div
-                class="flex flex-1 flex-col md:flex-row lg:flex-row mx-2 p-1 mt-2 mx-auto lg:mx-2 md:mx-2 justify-between"
-              >
-                <!--Top user 1-->
-                <div
-                  class="rounded rounded-t-lg overflow-hidden shadow max-w-xs my-3"
-                >
-                  <img
-                    src="https://i.imgur.com/w1Bdydo.jpg"
-                    alt=""
-                    class="w-full"
-                  />
-                  <div class="flex justify-center -mt-8">
-                    <img
-                      src="https://i.imgur.com/8Km9tLL.jpg"
-                      alt=""
-                      class="rounded-full border-solid border-white border-2 -mt-3"
-                    />
-                  </div>
-                  <div class="text-center px-3 pb-6 pt-2">
-                    <h3 class="text-black text-sm bold font-sans">
-                      Olivia Dunham
-                    </h3>
-                    <p class="mt-2 font-sans font-light text-grey-700">
-                      Hello, i'm from another the other side!
-                    </p>
-                  </div>
-                  <div class="flex justify-center pb-3 text-grey-dark">
-                    <div class="text-center mr-3 border-r pr-3">
-                      <h2>34</h2>
-                      <span>Photos</span>
-                    </div>
-                    <div class="text-center">
-                      <h2>42</h2>
-                      <span>Friends</span>
-                    </div>
-                  </div>
-                </div>
-                <!--Top user 2-->
-                <div
-                  class="rounded rounded-t-lg overflow-hidden shadow max-w-xs my-3"
-                >
-                  <img
-                    src="https://i.imgur.com/w1Bdydo.jpg"
-                    alt=""
-                    class="w-full"
-                  />
-                  <div class="flex justify-center -mt-8">
-                    <img
-                      src="https://i.imgur.com/8Km9tLL.jpg"
-                      alt=""
-                      class="rounded-full border-solid border-white border-2 -mt-3"
-                    />
-                  </div>
-                  <div class="text-center px-3 pb-6 pt-2">
-                    <h3 class="text-black text-sm bold font-sans">
-                      Olivia Dunham
-                    </h3>
-                    <p class="mt-2 font-sans font-light text-grey-dark">
-                      Hello, i'm from another the other side!
-                    </p>
-                  </div>
-                  <div class="flex justify-center pb-3 text-grey-dark">
-                    <div class="text-center mr-3 border-r pr-3">
-                      <h2>34</h2>
-                      <span>Photos</span>
-                    </div>
-                    <div class="text-center">
-                      <h2>42</h2>
-                      <span>Friends</span>
-                    </div>
-                  </div>
-                </div>
-                <!--Top user 3-->
-                <div
-                  class="rounded rounded-t-lg overflow-hidden shadow max-w-xs my-3"
-                >
-                  <img
-                    src="https://i.imgur.com/w1Bdydo.jpg"
-                    alt=""
-                    class="w-full"
-                  />
-                  <div class="flex justify-center -mt-8">
-                    <img
-                      src="https://i.imgur.com/8Km9tLL.jpg"
-                      alt=""
-                      class="rounded-full border-solid border-white border-2 -mt-3"
-                    />
-                  </div>
-                  <div class="text-center px-3 pb-6 pt-2">
-                    <h3 class="text-black text-sm bold font-sans">
-                      Olivia Dunham
-                    </h3>
-                    <p class="mt-2 font-sans font-light text-grey-dark">
-                      Hello, i'm from another the other side!
-                    </p>
-                  </div>
-                  <div class="flex justify-center pb-3 text-grey-dark">
-                    <div class="text-center mr-3 border-r pr-3">
-                      <h2>34</h2>
-                      <span>Photos</span>
-                    </div>
-                    <div class="text-center">
-                      <h2>42</h2>
-                      <span>Friends</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              
               <!--/Profile Tabs-->
             </div>
           </main>
@@ -451,11 +343,8 @@
         </div>
         <!--Footer-->
         <footer class="bg-grey-darkest text-white p-2">
-          <div class="flex flex-1 mx-auto">&copy; My Design</div>
-          <div class="flex flex-1 mx-auto">
-            Distributed by:
-            <a href="https://themewagon.com/" target=" _blank">Themewagon</a>
-          </div>
+          <div class="flex flex-1 mx-auto">Nest SongAn</div>
+          
         </footer>
         <!--/footer-->
       </div>

@@ -3,15 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/controller/ContactController.java</file>
+            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/web/register.jsp</file>
             <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/web/change-password.jsp</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/users/UserDAO.java</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/users/UserDTO.java</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/web/contact-us.jsp</file>
+            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/controller/LoginController.java</file>
             <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/web/user-profile.jsp</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/controller/MainController.java</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/users/UserError.java</file>
-            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/controller/UpdateProfileController.java</file>
+            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/controller/UpdatePasswordController.java</file>
+            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/src/java/controller/RegisterController.java</file>
+            <file>file:/C:/An/Github/SWP391/SWP391/test/NestSA/web/login.jsp</file>
         </group>
     </open-files>
 </project-private>
