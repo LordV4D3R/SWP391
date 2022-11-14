@@ -351,6 +351,7 @@
                                         required
                                         user            ></textarea>
                                 </div>
+
                                 <button class="swp-btn" type="submit" value="CreateComment" name="btAction" style="
                                         width: 140px;
                                         height: 47px;
@@ -368,6 +369,7 @@
                                         ">
                                     Để lại lời bình luận
                                 </button>
+
                                 <div>
                                     <c:if test="${not empty requestScope.COMMENT_SUCCESS}">
                                         <div id="msgSubmit" class="h3 text-center hidden" style="
@@ -376,12 +378,16 @@
                                     </c:if>
                                 </div> 
                             </c:if>
-                            <c:if test="${checkLogin == null}">                                                            
-                                <button  id="swa1" class="swp-btn">
-                                    Để lại lời bình luận
-                                </button>
-                            </c:if>
+
                         </form>
+                        <div>
+                            <c:if test="${checkLogin == null}">                                                            
+                                <a  id="swa1" class="swp-btn">
+                                    Để lại lời bình luận
+                                </a>
+                            </c:if>
+                        </div>
+
                     </div>
                 </div>
 
