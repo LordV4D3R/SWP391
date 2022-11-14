@@ -209,6 +209,7 @@
                                       Danh sách hóa đơn đang chuẩn bị
                                     </div>
                                     <div class="p-3">
+                                        
                                         <table
                                             class="table-responsive w-full rounded"
                                             style="text-align: center"
@@ -245,6 +246,7 @@
                                                 <!--  -->
                                             </tbody>
                                         </table>
+                                        <h1 style="text-align: center">${VIEW_ORDER_EMPTY}</h1>
                                     </div>
                                 </div>
                             </div>

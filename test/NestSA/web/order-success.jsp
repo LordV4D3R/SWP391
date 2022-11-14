@@ -206,9 +206,10 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
                                         >
-                                        Đơn hàng
+                                        Đơn hàng đã xác nhận
                                     </div>
                                     <div class="p-3">
+                                        <h1>${VIEW_ORDER_SUCCESS_EMPTY}</h1>
                                         <table
                                             class="table-responsive w-full rounded"
                                             style="text-align: center"

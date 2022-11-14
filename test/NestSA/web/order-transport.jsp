@@ -208,6 +208,7 @@
                                         >
                                         Danh sách đơn hàng đang giao
                                     </div>
+                                    <h1>${VIEW_ORDER_SHIPPER_ERROR}</h1>
                                     <div class="p-3">
                                         <table
                                             class="table-responsive w-full rounded"
@@ -245,6 +246,7 @@
                                                 <!--  -->
                                             </tbody>
                                         </table>
+                                        <h1 style="text-align: center">${VIEW_ORDER_TRANSPORT_EMPTY}</h1>
                                     </div>
                                 </div>
                             </div>
