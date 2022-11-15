@@ -20,7 +20,7 @@
         <div class="container" style="width: 460px;">
             <div class="title-text">
                 <div class="title logo">
-                    <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="/NestSA/"><img src="images/logo.png" class="logo" alt=""></a>
                     <div class="login">
                         Đăng Ký
                     </div>

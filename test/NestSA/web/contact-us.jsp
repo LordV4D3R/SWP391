@@ -88,8 +88,8 @@
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="login-box" style="margin-right: 20px">
-                                <a href="login.jsp" style="color: white;font-weight: bold">Đăng nhập/</a>
-                                <a href="register.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
+                                <a href="/NestSA/login" style="color: white;font-weight: bold">Đăng nhập/</a>
+                                <a href="/NestSA/register" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
                                 <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
                                                                 <option>Đăng ký</option>
                                                                 <option>Đăng nhập</option>
@@ -130,20 +130,20 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
+                        <a class="navbar-brand" href="/NestSA/"><img src="images/logo.png" class="logo" alt=""></a>
                     </div>
                     <!-- End Header Navigation -->
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="/NestSA">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/NestSA/about">Giới thiệu</a></li>
                             <li class="dropdown">
-                                <a href="ViewProductController" class="nav-link">Sản phẩm</a>
+                                <a href="/NestSA/shop" class="nav-link">Sản phẩm</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/NestSA/blog">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/NestSA/contact-us">Liên hệ</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -152,7 +152,7 @@
                     <div class="attr-nav">
                         <ul>
                             <li class="side-menu">
-                                <a href="cart.jsp">
+                                <a href="/NestSA/cart">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>Giỏ hàng</p>
@@ -214,7 +214,7 @@
                     <div class="col-lg-12">
                         <h2>Liên hệ với chúng tôi</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="index.jsp">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="/NestSA/">Trang chủ</a></li>
                             <li class="breadcrumb-item active"> Liên hệ </li>
                         </ul>
                     </div>
@@ -349,94 +349,6 @@
         </div>
         <!-- End Cart -->
 
-        <!-- Start Instagram Feed  -->
-        <div class="instagram-box">
-            <div class="main-instagram owl-carousel owl-theme">
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-01.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-02.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-03.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-04.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-05.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-06.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-07.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-08.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-09.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-05.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Instagram Feed  -->
-
-
         <!-- Start Footer  -->
         <footer>
             <div class="footer-main">
@@ -450,7 +362,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12">
+<!--                        <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
                                 <h3>Liên hệ</h3>
                                 <form class="newsletter-box">
@@ -461,26 +373,42 @@
                                     <button class="btn hvr-hover" type="submit">Nhập</button>
                                 </form>
                             </div>
+                        </div>-->
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link-contact">
+                                <h4>Liên hệ với chúng tôi</h4>
+                                <ul>
+                                    <li>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
                                 <h3>Mạng xã hội</h3>
                                 <p>Các mạng xã hội chúng tôi đang sử dụng</p>
                                 <ul>
-                                    <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank" ><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+<!--                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>-->
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-lg-4 col-md-12 col-sm-12">
+<!--                        <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-widget">
                                 <h4>THông tin về NestSongAn</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
@@ -498,23 +426,7 @@
                                     <li><a href="#">Thông tin vận chuyển</a></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12">
-                            <div class="footer-link-contact">
-                                <h4>Liên hệ với chúng tôi</h4>
-                                <ul>
-                                    <li>
-                                        <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
-                                    </li>
-                                    <li>
-                                        <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
-                                    </li>
-                                    <li>
-                                        <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
