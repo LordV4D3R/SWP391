@@ -95,13 +95,12 @@ Author     : thangbv
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                <option>$ VND</option>                         
+                                <option>$ VND</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
                             <p>Hotline :- <a href="#"> +87378873548</a></p>
                         </div>
-
                         <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
@@ -126,8 +125,7 @@ Author     : thangbv
                                             Tài khoản
                                         </button>
                                     </li>
-
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>

@@ -139,8 +139,7 @@
                                             Tài khoản
                                         </button>
                                     </li>
-
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>

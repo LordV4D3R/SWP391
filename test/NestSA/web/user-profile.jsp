@@ -62,7 +62,7 @@
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i>${checkLogin.fullName}</a></li>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
                                     <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>

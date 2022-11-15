@@ -59,7 +59,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                <option>VN/EN</option>
+                                <option>$ VND</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
@@ -87,9 +87,9 @@
                                         <button id="swa" style="color: white; background-color: black; text-transform: uppercase; font-weight: bold">
                                             <i class="fa fa-user s_color"></i> 
                                             Tài khoản
-                                        </button>  
+                                        </button>
                                     </li>
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
