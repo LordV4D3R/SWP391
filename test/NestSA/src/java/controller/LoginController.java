@@ -31,6 +31,8 @@ public class LoginController extends HttpServlet {
     private static final String USER_PAGE = "ViewProductController";
     private static final String AD = "AD";
     private static final String ADMIN_PAGE = "admin.jsp";
+    private static final String SHIPPER = "SHIPPER";
+    private static final String SHIPPER_PAGE = "ViewOrderShipperController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -43,7 +45,6 @@ public class LoginController extends HttpServlet {
             UserDAO dao = new UserDAO();
             UserDTO result = dao.checkLogin(userName, password);
 
-            
             //2.Process result
             if (result != null) {
                 HttpSession session = request.getSession();
@@ -70,6 +71,8 @@ public class LoginController extends HttpServlet {
                     url = ADMIN_PAGE;
                 } else if (US.equals(roleID)) {
                     url = USER_PAGE;
+                } else if (SHIPPER.equals(roleID)) {
+                    url = SHIPPER_PAGE;
                 } else {
                     request.setAttribute("LOGIN_ERROR", "Your role is not supported!");
                 }
@@ -83,7 +86,8 @@ public class LoginController extends HttpServlet {
             log("LoginController _ Naming _ " + ex.getMessage());
 
         } finally {
-            request.getRequestDispatcher(url).forward(request, response);
+//            request.getRequestDispatcher(url).forward(request, response);
+            response.sendRedirect(url);
         }
     }
 

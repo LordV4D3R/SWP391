@@ -5,6 +5,8 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,7 +20,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>Freshshop - Ecommerce Bootstrap 4 HTML Template</title>
+        <title>Shop</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -63,6 +65,39 @@
                 color: #fff;
 
             }
+            .modal-swp{
+                position: fixed;
+                top:0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                background: rgba(0,0,0,0.4);
+                z-index: 999999999;
+                display: flex;
+            }
+            .modal-swp-message{
+                background: white;
+                width: 400px;
+                margin: auto;
+                border-radius: 2px;
+                padding: 20px
+            }
+            .modal-swp-message h3{
+                font-size: 20px
+            }
+            .modal-swp-message button{
+                outline: none;
+                border: none;
+                border-radius: 4px;
+                float: right;
+                padding: 5px 20px;
+                cursor: pointer;
+                background: #B0B435;
+                color: #fff;
+            }
+            .modal-swp-message button:hover{
+                background: #000
+            }
         </style>
 
     </head>
@@ -104,8 +139,7 @@
                                             Tài khoản
                                         </button>
                                     </li>
-
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -240,7 +274,7 @@
                                     </ul>
                                 </div>
                             </div>
-
+                            <div style="text-align: center; margin-top: 68px"><h2>${NOT_FOUND}</h2></div>
                             <div class="product-categorie-box">
                                 <div class="tab-content">
                                     <div role="tabpanel" class="tab-pane fade show active" id="grid-view">
@@ -265,8 +299,13 @@
                                                             <div class="why-text">
                                                                 <a href="MainController?btAction=Detail&id=${o.productId}&name=${o.name}&img=${o.image}&des=${o.description}&quantity=${o.quantity}&price=${o.price}">
                                                                     <h4>${o.name}</h4>
-                                                                </a> 
-                                                                <h5>${o.price}đ</h5>
+                                                                </a>
+
+                                                                <h5>
+                                                                    <c:set var="pri" value="${o.price}"/>
+                                                                    <fmt:setLocale value="vi_VN"/>
+                                                                    <fmt:formatNumber value="${pri}" type="currency"/>
+                                                                </h5>
                                                             </div>
                                                             <input type="hidden" name="images" value="${o.image}">
                                                             <input type="hidden" name="name" value="${o.name}">
@@ -277,6 +316,7 @@
                                                     </form>
                                                 </div>
                                             </c:forEach>
+
                                         </div>
                                     </div>
                                     <div role="tabpanel" class="tab-pane fade" id="list-view">
@@ -296,7 +336,10 @@
                                                                 <h4 style="font-size: 24px;
                                                                     font-weight: 700;
                                                                     padding-bottom: 15px">${o.name}</h4>
-                                                                <h5 style="font-weight: 700;font-size: 18px">${o.price} VND</h5>
+                                                                <c:set var="pri" value="${o.price}"/>
+                                                                <fmt:setLocale value="vi_VN"/>
+                                                                <fmt:formatNumber value="${pri}" type="currency"/>
+                                                                <h5 style="font-weight: 700;font-size: 18px">${pri} VND</h5>
                                                                 <p>${o.description}</p>
                                                             </div>
                                                             <a class="btn hvr-hover" href="#" style="margin-top: 12px;color: #FFFFFF;font-weight: 700">Add to Cart</a>
@@ -462,6 +505,14 @@
                 </div>
             </div>
         </footer>
+        <c:if test="${SHOW_MODAL != null}">
+            <div class="modal-swp">
+            <div class="modal-swp-message">
+                <h3>Thanh toán thành công. Cảm ơn bạn đã ủng hộ cửa hàng</h3>
+                <button>Đóng</button>
+            </div>
+        </div>
+        </c:if>
         <!-- End Footer  -->
 
         <!-- Start copyright  -->
@@ -493,6 +544,12 @@
         <script src="js/custom.js"></script>
         <script src="js/sweetalert.min.js"></script>
         <script src="js/sweetalertAccWarning.js"></script>
+        
+        <script>
+            document.querySelector('.modal-swp-message button').addEventListener('click',()=>{
+                document.querySelector('.modal-swp').style.display='none'
+            })
+        </script>
     </body>
 
 </html>

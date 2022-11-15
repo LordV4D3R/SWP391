@@ -8,6 +8,8 @@
 <%@page import="order.Cart"%>
 <%@page import="users.UserDTO"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -21,7 +23,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+        <title>Cart</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -72,23 +74,24 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                <option>VN/EN</option>
+                                <option>$ VND</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
-                            <p>Hotline :- <a href="#"> +11 900 800 100</a></p>
+                            <p>Hotline :- <a href="#"> +87378873548</a></p>
                         </div>
                         <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
                                 <ul>
                                     <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
-                                    <li><a href="https://facebook.com/NestSongAnSWP"  target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                            <div class="login-box">                           
+                            <div class="login-box">
+
                                 <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
                             </div>
                         </c:if>
@@ -101,7 +104,7 @@
                                             Tài khoản
                                         </button>
                                     </li>
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -132,7 +135,7 @@
                                     </li>
                                 </ul>
                             </div>
-                        </div>     
+                        </div>
                     </div>
                 </div>
             </div>
@@ -140,7 +143,7 @@
         <!-- End Main Top -->
 
         <!-- Start Main Top -->
-        <header class="main-header">
+         <header class="main-header">
             <!-- Start Navigation -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light navbar-default bootsnav">
                 <div class="container">
@@ -173,8 +176,9 @@
                             <li class="side-menu"><a href="/NestSA/cart">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
-                                    <p>GIỎ HÀNG</p>
-                                </a></li>
+                                    <p>Giỏ hàng</p>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
@@ -237,11 +241,17 @@
                                             </a>
                                         </td>
                                         <td class="price-pr">
-                                            <p><%= tea.getPrice()%></p>
+                                            <p>
+                                                <c:set var="pri" value="<%= tea.getPrice()%>"/>
+                                                <fmt:setLocale value="vi_VN"/>
+                                                <fmt:formatNumber value="${pri}" type="currency"/></p>
                                         </td>
                                         <td class="quantity-box"><input type="number" size="4" value="<%= tea.getQuantity()%>" min="1" step="1" class="c-input-text qty text" oninput="update(this,<%=tea.getProductId()%>)"></td>
                                         <td class="total-pr">
-                                            <p><%= tea.getQuantity() * tea.getPrice()%></p>
+                                            <p>
+                                                <c:set var="priTotal" value="<%= tea.getQuantity() * tea.getPrice()%>"/>
+                                                <fmt:setLocale value="vi_VN"/>
+                                                <fmt:formatNumber value="${priTotal}" type="currency"/></p>
                                         </td>
                                         <td class="remove-pr">
                                             <a href="MainController?btAction=RemoveCart&id=<%=tea.getProductId()%>">
@@ -257,18 +267,11 @@
                         </div>
                     </div>
                 </div>
+                                    <h2 style="width: 100%; display: block; text-align: center">${OVERQUANTITY}</h2>
 
-                <div class="row my-5">
-                    <div class="col-lg-6 col-sm-6">
-                        <div class="coupon-box">
-                            <div class="input-group input-group-sm">
-                                <input class="form-control" placeholder="Mã giảm giá" aria-label="Coupon code" type="text">
-                                <div class="input-group-append">
-                                    <button class="btn btn-theme" type="button">Áp dụng</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="row my-5" style="    display: flex;
+                     justify-content: space-between;">
+                    <div></div>
                     <div class="col-lg-6 col-sm-6">
                         <div class="update-box">
                             <form action="MainController">
@@ -310,7 +313,10 @@
                             <!--<hr>-->
                             <div class="d-flex gr-total">
                                 <h5>Grand Total</h5>
-                                <div class="ml-auto h5"> <%= total%> </div>
+                                <div class="ml-auto h5">
+                                    <c:set var="finalTotal" value="<%= total%>"/>
+                                    <fmt:setLocale value="vi_VN"/>
+                                    <fmt:formatNumber value="${finalTotal}" type="currency"/></div>
                             </div>
                             <hr> </div>
                     </div>

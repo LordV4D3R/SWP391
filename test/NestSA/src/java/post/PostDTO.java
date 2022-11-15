@@ -23,6 +23,15 @@ public class PostDTO {
     public PostDTO() {
     }
 
+    public PostDTO(int postId, String image, String postContent, String postTitle) {
+        this.postId = postId;
+        this.image = image;
+        this.postContent = postContent;
+        this.postTitle = postTitle;
+    }
+
+    
+    
     public PostDTO(String image, String postContent, String postTitle, String category, Date dateUpload, boolean status) {
         this.image = image;
         this.postContent = postContent;

@@ -55,7 +55,7 @@
                         <button style = "color: #fff; height: 100%; width: 100%; z-index: 1; position: relative; background: none; border: none; padding-left: 0; border-radius: 5px; font-size: 20px; font-weight: 500; cursor: pointer" type="submit" value="Login" name="btAction">Đăng Nhập</button>
                     </div>
                     <div class="signup-link">
-                        Chưa Có Tài Khoản? <a href="register.jsp"> Đăng Ký Ngay</a>
+                        Chưa Có Tài Khoản? <a href="/NestSA/register"> Đăng Ký Ngay</a>
                     </div>
                 </form>
 

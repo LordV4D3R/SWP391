@@ -18,7 +18,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <!-- Site Metas -->
-        <title>ThewayShop - Ecommerce Bootstrap 4 HTML Template</title>
+        <title>Thanks you</title>
         <meta name="keywords" content="">
         <meta name="description" content="">
         <meta name="author" content="">
@@ -142,7 +142,7 @@
                             <li class="dropdown">
                                 <a href="ViewProductController" class="nav-link">Sản phẩm</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="ViewListBlogController">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>

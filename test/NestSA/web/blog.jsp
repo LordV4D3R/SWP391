@@ -61,8 +61,6 @@
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
                                 <option>$ VND</option>
-                                <option>$ USD</option>
-                                <option>€ EUR</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
@@ -72,22 +70,27 @@
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
-                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="login-box">
 
-                                <a href="MainController?btAction=Logout" style="color: white">Logout</a>
+                                <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
                             </div>
                         </c:if>
                         <c:if test="${checkLogin == null}" >
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li>
+                                        <button id="swa" style="color: white; background-color: black; text-transform: uppercase; font-weight: bold">
+                                            <i class="fa fa-user s_color"></i> 
+                                            Tài khoản
+                                        </button>
+                                    </li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -101,6 +104,24 @@
                                                             </select>-->
                             </div>
                         </c:if>
+                        <div class="text-slid-box">
+                            <div id="offer-box" class="carouselTicker">
+                                <ul class="offer-box">
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Chào mừng NestSongAn
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Ở đây chúng tôi có các loại yến sào
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Giảm giá 10%! đối với yến thô
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Giảm giá 5%! đối với yến dạng lọ
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -136,14 +157,15 @@
                     <!-- /.navbar-collapse -->
 
                     <!-- Start Atribute Navigation -->
-                    <div class="attr-nav">
+                     <div class="attr-nav">
                         <ul>
                             <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
                             <li class="side-menu"><a href="/NestSA/cart">
                                     <i class="fa fa-shopping-bag"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>Giỏ hàng</p>
-                                </a></li>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
@@ -219,33 +241,30 @@
                             <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>-->
                             <!--<p class="sale type-lb">Create</p>-->
                         </div>
-                        <a href="CreateBlogController">
-                        <div class="type-lb">
-                            <p class="sale">Create</p>
-                        </div></a>
                     </div>
-                    
+
                 </div>
 
 
                 <c:forEach items="${requestScope.VIEW_LIST_BLOG}" var="b">
-                        <a href="MainController?btAction=ViewBlog&postId=${b.postId}" class="row special-list">
-                            <div class=" col-lg-3 col-md-6 special-grid bulbs">
-                                <div class="products-single fix">
-                                    <div class="box-img-hover">
-                                        <div class="type-lb">
-                                            <p class="sale">${b.category}</p>
-                                        </div>
-                                        <img src="${b.image}" class="img-fluid" alt="Image">
+                    <a href="MainController?btAction=ViewBlog&postId=${b.postId}" class="row special-list" style="width: 1000px">
+                        <div class=" col-lg-3 col-md-6 special-grid bulbs">
+                            <div class="products-single fix">
+                                <div class="box-img-hover">
+                                    <div class="type-lb">
+                                        <!--<p class="sale">${b.category}</p>-->
                                     </div>
-                                </div>                                          
-                            </div>
-                            <div class="col-limit  col-md-6 special-grid bulbs">
-                                <p>${b.postTitle}</p>
-                                <p>${b.dateUpload}</p>
-                                <p>${b.postContent}</p>
-                            </div>
-                        </a>
+                                        <img src="${b.image}" style="height: 160px; width: 330px;" class="img-fluid" alt="Image">
+                                </div>
+                            </div>                                          
+                        </div>
+                        <div class="col-limit  col-md-6 special-grid " style="width: 800px" >
+                            <p>${b.postTitle}</p>
+                            <p>${b.dateUpload}</p>
+                            <p>${b.postContent}</p>
+                        </div>
+                        
+                    </a>
                 </c:forEach>
 
                 <!--                    <div class="row special-list">
@@ -275,90 +294,90 @@
         <!-- End Gallery  -->
 
         <!-- Start Instagram Feed  -->
-<!--        <div class="instagram-box">
-            <div class="main-instagram owl-carousel owl-theme">
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-01.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+        <!--        <div class="instagram-box">
+                    <div class="main-instagram owl-carousel owl-theme">
+                        <div class="item">
+                            <div class="ins-inner-box">
+                                <img src="images/instagram-img-01.jpg" alt="" />
+                                <div class="hov-in">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ins-inner-box">
+                                <img src="images/instagram-img-02.jpg" alt="" />
+                                <div class="hov-in">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ins-inner-box">
+                                <img src="images/instagram-img-03.jpg" alt="" />
+                                <div class="hov-in">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ins-inner-box">
+                                <img src="images/instagram-img-04.jpg" alt="" />
+                                <div class="hov-in">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ins-inner-box">
+                                <img src="images/instagram-img-05.jpg" alt="" />
+                                <div class="hov-in">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ins-inner-box">
+                                <img src="images/instagram-img-06.jpg" alt="" />
+                                <div class="hov-in">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ins-inner-box">
+                                <img src="images/instagram-img-07.jpg" alt="" />
+                                <div class="hov-in">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ins-inner-box">
+                                <img src="images/instagram-img-08.jpg" alt="" />
+                                <div class="hov-in">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ins-inner-box">
+                                <img src="images/instagram-img-09.jpg" alt="" />
+                                <div class="hov-in">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="ins-inner-box">
+                                <img src="images/instagram-img-05.jpg" alt="" />
+                                <div class="hov-in">
+                                    <a href="#"><i class="fab fa-instagram"></i></a>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-02.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-03.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-04.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-05.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-06.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-07.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-08.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-09.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="ins-inner-box">
-                        <img src="images/instagram-img-05.jpg" alt="" />
-                        <div class="hov-in">
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>-->
+                </div>-->
         <!-- End Instagram Feed  -->
 
 

@@ -52,7 +52,7 @@ public class DetailController extends HttpServlet {
             session.setAttribute("PRODUCT", product);
             
             CommentDAO cmtDao = new CommentDAO();
-            cmtDao.viewComment(id, true);
+            cmtDao.viewComment(id);
             List<CommentDTO> cmtResult = cmtDao.getItem();
             session.setAttribute("COMMENT_RESULT", cmtResult);
             url=SUCCESS;

@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,7 +20,7 @@
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
             rel="stylesheet"
             />
-        <title>Tables | Tailwind Admin</title>
+        <title>Admin</title>
         <style>
             .handModal {
                 position: fixed;
@@ -59,6 +60,13 @@
                 background-color: rgb(161 161 170) !important;
                 color: #FFFFFF;
             }
+
+            .show-swp{
+                display: block;
+            }
+            .show-swp-icon{
+                transform: rotate(90deg)
+            }
         </style>
     </head>
 
@@ -94,9 +102,10 @@
                         id="sidebar"
                         class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block"
                         >
-                        <div class="flex"></div>
                         <ul class="list-reset flex flex-col">
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                            <li
+                                class="w-full h-full py-3 px-2 border-b border-light-border"
+                                >
                                 <a
                                     href="admin.jsp"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
@@ -106,11 +115,9 @@
                                     <span><i class="fas fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
-                            <li
-                                class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
-                                >
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
                                 <a
-                                    href="product.jsp"
+                                    href="ViewProductManagerController"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fab fa-wpforms float-left mx-2"></i>
@@ -119,18 +126,26 @@
                                 </a>
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                                <a
-                                    href="order.jsp"
-                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                                    >
-                                    <i class="fas fa-grip-horizontal float-left mx-2"></i>
-                                    Đơn hàng
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
+                                <!--href="ViewOrderManagerController"-->
+                                <div id="menu">
+                                    <a
+                                        href="#"
+                                        class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                                        >
+                                        <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                                        Đơn hàng
+                                        <span><i class="fa fa-angle-right float-right" id="icon-xoay"></i></span>
+                                    </a>
+                                </div>
+                                <ul class="text-sm border-t-2 mt-2 hidden" id="list-menu">
+                                    <li id="item"><a href="ViewOrderManagerController" class="block py-2 font-sans font-hairline hover:font-normal text-nav-item text-sm">Đang chuẩn bị hàng</a></li> 
+                                    <li id="item"><a href="ViewOrderTransportController" class="block py-2 font-sans font-hairline hover:font-normal text-nav-item text-sm">Đang vận chuyển</a></li> 
+                                    <li id="item"><a href="ViewOrderSuccessController" class="block py-2 font-sans font-hairline hover:font-normal text-nav-item text-sm">Đã hoàn tất</a></li> 
+                                </ul>
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="#"
+                                    href="GetComment"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fas fa-table float-left mx-2"></i>
@@ -140,7 +155,17 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="#"
+                                    href="ViewBlogManagerController"
+                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                                    >
+                                    <i class="fab fa-uikit float-left mx-2"></i>
+                                    Bài viết
+                                    <span><i class="fa fa-angle-right float-right"></i></span>
+                                </a>
+                            </li>
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                                <a
+                                    href="contact.jsp"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fab fa-uikit float-left mx-2"></i>
@@ -150,7 +175,7 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-300-border">
                                 <a
-                                    href="#"
+                                    href="MainController?btAction=Logout"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fas fa-square-full float-left mx-2"></i>
@@ -171,10 +196,10 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b flex justify-between items-center"
                                         >
-                                        Product
+                                        Sản phẩm
                                         <form class="flex" action="MainController">
                                             <div class="p-2 rounded flex items-center bg-slate-200" style="width: 500px">
-                                                <input type="text" class="p-1 rounded outline-none flex-1" placeholder="Search product" name="search"/>
+                                                <input type="text" class="p-1 rounded outline-none flex-1" placeholder="Tìm kiếm sản phẩm" name="search"/>
                                             </div>
                                             <button type="submit" name="btAction" value="SearchProductManager" class="pr-3" style="outline: none"><i class="fas fa-search mr-1"></i></button>
                                         </form>
@@ -200,32 +225,37 @@
                                                     <tr>
                                                         <td class="border w-1/2 py-2">${o.name}</td>
                                                         <td class="border w-96 py-2">${o.quantity}</td>
-                                                        <td class="border w-1/4 py-2">${o.price}</td>
-                                                        <td class="border w-96 py-2">
-                                                            <c:if test="${o.status == 1}">
-                                                                <i class="fas fa-check text-green-500 mx-2"></i>
-                                                            </c:if>
-                                                            <c:if test="${o.status == 0}">
-                                                                <i class="fas fa-times text-red-500 mx-2"></i>
-                                                            </c:if>
-                                                        </td>
-                                                        <td class="border w-full py-2">
-                                                            <a
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-white"
-                                                                href="MainController?btAction=ViewEditProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description}&categoryId=${o.categoryId}&categoryName=${o.categoryName}&status=${o.status}"
-                                                                >
-                                                                <i class="fas fa-edit"></i
-                                                                ></a>
-                                                            <a
-                                                                onclick="handalModal('centeredModal', 'block',${o.productId})"
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-red-500"
-                                                                href="#"
-                                                                >
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
+                                                        <td class="border w-1/4 py-2">
+                                                            <c:set var="pri" value="${o.price}"/>
+                                                <fmt:setLocale value="vi_VN"/>
+                                                <fmt:formatNumber value="${pri}" type="currency"/>
+                                                
+                                                </td>
+                                                <td class="border w-96 py-2">
+                                                    <c:if test="${o.status == 1}">
+                                                        <i class="fas fa-check text-green-500 mx-2"></i>
+                                                    </c:if>
+                                                    <c:if test="${o.status == 0}">
+                                                        <i class="fas fa-times text-red-500 mx-2"></i>
+                                                    </c:if>
+                                                </td>
+                                                <td class="border w-full py-2">
+                                                    <a
+                                                        class="bg-teal-300 rounded p-1 mx-1 text-white"
+                                                        href="MainController?btAction=ViewEditProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description}&categoryId=${o.categoryId}&categoryName=${o.categoryName}&status=${o.status}"
+                                                        >
+                                                        <i class="fas fa-edit"></i
+                                                        ></a>
+                                                    <a
+                                                        onclick="handalModal('centeredModal', 'block',${o.productId})"
+                                                        class="bg-teal-300 rounded p-1 mx-1 text-red-500"
+                                                        href="#"
+                                                        >
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -258,8 +288,8 @@
                                 <span>Bạn có muốn xóa sản phẩm này không?</span>
                                 <!--href="MainController?btAction=RemoveProductManager&id=${productId}"-->
                                 <!--onclick="handalModal('centeredModal', 'none')"-->
-                                <a   id="yes"
-                                     >Có<i class="fas fa-check text-green-500 mx-2"></i>
+                                <a id="yes"
+                                   >Có<i class="fas fa-check text-green-500 mx-2"></i>
                                 </a>
                                 <a href="#" onclick="handalModal('centeredModal', 'none')"
                                    >Không<i class="fas fa-ban text-red-500 mx-2"></i
@@ -288,6 +318,22 @@
                                         console.log(document.getElementById('yes'))
                                         document.getElementById(id).style.display = display;
                                     }
+
+                                    const items = document.querySelectorAll('#item');
+                                    const menu = document.getElementById('menu')
+                                    const icon = document.getElementById('icon-xoay')
+                                    const listMenu = document.getElementById('list-menu')
+                                    console.log(listMenu)
+
+                                    menu.addEventListener('click', () => {
+                                        listMenu.classList.toggle('show-swp')
+                                        icon.classList.toggle('show-swp-icon')
+                                    })
+
+                                    items.forEach(item => {
+                                        console.log(item)
+                                    })
         </script>
+
     </body>
 </html>

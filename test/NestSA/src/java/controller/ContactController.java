@@ -49,13 +49,12 @@ public class ContactController extends HttpServlet {
         String phone = request.getParameter("phoneContact");
         String contact = request.getParameter("contactMessage");
 
-        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
-        Pattern emailPattern = Pattern.compile(emailRegex);
-        Matcher emailMatcher = emailPattern.matcher(email);
-
-        String phoneRegex = "(0/84)?[0-9][0-9]{9}";
-        Pattern phonePattern = Pattern.compile(phoneRegex);
-        Matcher phoneMatcher = phonePattern.matcher(phone);
+//        String emailRegex = "^[A-Za-z0-9+_.-]+@(.+)$";
+//        Pattern emailPattern = Pattern.compile(emailRegex);
+//        Matcher emailMatcher = emailPattern.matcher(email);
+//        String phoneRegex = "(0/84)?[0-9][0-9]{9}";
+//        Pattern phonePattern = Pattern.compile(phoneRegex);
+//        Matcher phoneMatcher = phonePattern.matcher(phone);
 
         ContactErr errors = new ContactErr();
         boolean foundErr = false;
@@ -71,20 +70,21 @@ public class ContactController extends HttpServlet {
                 foundErr = true;
                 errors.setEmailAndPhoneErr("Bạn cần điền email hoặc số điện"
                         + " thoại để chúng tôi liên lạc!!!");
-            } else {
-                if (email.trim().length() > 0) {
-                    if (!emailMatcher.matches()) {
-                        foundErr = true;
-                        errors.setEmailErr("Email không hợp lệ!!!");
-                    }
-                }
-                if (phone.trim().length() > 0) {
-                    if (!phoneMatcher.matches()) {
-                        foundErr = true;
-                        errors.setPhoneErr("Số điện thoại không hợp lệ!!!");
-                    }
-                }
             }
+//            else {
+//                if (email.trim().length() > 0) {
+//                    if (!emailMatcher.matches()) {
+//                        foundErr = true;
+//                        errors.setEmailErr("Email không hợp lệ!!!");
+//                    }
+//                }
+//                if (phone.trim().length() > 0) {
+//                    if (!phoneMatcher.matches()) {
+//                        foundErr = true;
+//                        errors.setPhoneErr("Số điện thoại không hợp lệ!!!");
+//                    }
+//                }
+//            }
             if (foundErr) {
                 request.setAttribute("INSERT_CONTACT_ERRORS", errors);
             } else {

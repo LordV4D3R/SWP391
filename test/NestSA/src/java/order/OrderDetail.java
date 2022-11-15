@@ -20,8 +20,9 @@ public class OrderDetail {
     public OrderDetail() {
     }
 
-    public OrderDetail(String productName, int quantity, int price) {
+    public OrderDetail(String productName, int orderID, int quantity, int price) {
         this.productName = productName;
+        this.orderID = orderID;
         this.quantity = quantity;
         this.price = price;
     }

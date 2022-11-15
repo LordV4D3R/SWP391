@@ -6,6 +6,8 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -19,7 +21,7 @@
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
             rel="stylesheet"
             />
-        <title>Tables | Tailwind Admin</title>
+        <title>Admin</title>
         <style>
             @keyframes show-hide {
                 from {
@@ -74,6 +76,17 @@
             .content-animation {
                 animation: modal ease-out 0.2s;
             }
+            #add_product_swp:hover{
+                background-color: rgb(161 161 170) !important;
+                color: #FFFFFF;
+            }
+
+            .show-swp{
+                display: block;
+            }
+            .show-swp-icon{
+                transform: rotate(90deg)
+            }
         </style>
     </head>
 
@@ -109,9 +122,10 @@
                         id="sidebar"
                         class="bg-side-nav w-1/2 md:w-1/6 lg:w-1/6 border-r border-side-nav hidden md:block lg:block"
                         >
-                        <div class="flex"></div>
                         <ul class="list-reset flex flex-col">
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                            <li
+                                class="w-full h-full py-3 px-2 border-b border-light-border "
+                                >
                                 <a
                                     href="admin.jsp"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
@@ -123,7 +137,7 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="product.jsp"
+                                    href="ViewProductManagerController"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fab fa-wpforms float-left mx-2"></i>
@@ -131,17 +145,23 @@
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
-                            <li
-                                class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
-                                >
-                                <a
-                                    href="order.jsp"
-                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                                    >
-                                    <i class="fas fa-grip-horizontal float-left mx-2"></i>
-                                    Đơn hàng
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
+                                <!--href="ViewOrderManagerController"-->
+                                <div id="menu">
+                                    <a
+                                        href="#"
+                                        class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                                        >
+                                        <i class="fas fa-grip-horizontal float-left mx-2"></i>
+                                        Đơn hàng
+                                        <span><i class="fa fa-angle-right float-right" id="icon-xoay"></i></span>
+                                    </a>
+                                </div>
+                                <ul class="text-sm border-t-2 mt-2 hidden" id="list-menu">
+                                    <li id="item"><a href="ViewOrderManagerController" class="block py-2 font-sans font-hairline hover:font-normal text-nav-item text-sm">Đang chuẩn bị hàng</a></li> 
+                                    <li id="item"><a href="ViewOrderTransportController" class="block py-2 font-sans font-hairline hover:font-normal text-nav-item text-sm">Đang vận chuyển</a></li> 
+                                    <li id="item"><a href="ViewOrderSuccessController" class="block py-2 font-sans font-hairline hover:font-normal text-nav-item text-sm">Đã hoàn tất</a></li> 
+                                </ul>
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
@@ -155,17 +175,27 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
+                                    href="ViewBlogManagerController"
+                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                                    >
+                                    <i class="fab fa-uikit float-left mx-2"></i>
+                                    Bài viết
+                                    <span><i class="fa fa-angle-right float-right"></i></span>
+                                </a>
+                            </li>
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                                <a
                                     href="#"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fab fa-uikit float-left mx-2"></i>
-                                    Liện hệ
+                                    Liên hệ
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-300-border">
                                 <a
-                                    href="LogoutController"
+                                    href="MainController?btAction=Logout"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fas fa-square-full float-left mx-2"></i>
@@ -186,9 +216,10 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
                                         >
-                                        Product
+                                      Danh sách hóa đơn đang chuẩn bị
                                     </div>
                                     <div class="p-3">
+                                        
                                         <table
                                             class="table-responsive w-full rounded"
                                             style="text-align: center"
@@ -206,19 +237,26 @@
                                             </thead>
                                             <tbody>
                                                 <c:forEach items="${VIEW_ORDER_VER_FULL}" var="o">
-                                                    <tr class="cursor-pointer row-info" id="order" data-href="MainController?name=&id=${o.orderId}">
+                                                    <tr class="cursor-pointer row-info" id="order" data-href="MainController?btAction=ViewProductDetailManager&id=${o.orderId}">
                                                         <td class="border w-1/5 py-2">${o.receiver}</td>
                                                         <td class="border w-1/4 py-2">${o.address}</td>
                                                         <td class="border w-1/12 py-2">${o.phone}</td>
                                                         <td class="border w-1/5 py-2">${o.date}</td>
                                                         <td class="border w-1/12 py-2">${o.status}</td>
-                                                        <td class="border w-1/12 py-2">${o.shippingfee}</td>
-                                                        <td class="border w-1/5 py-2">${o.total}</td>
+                                                        <td class="border w-1/12 py-2">
+                                                            <c:set var="shippingfee" value="${o.shippingfee}"/>
+                                                            <fmt:setLocale value="vi_VN"/>
+                                                            <fmt:formatNumber value="${shippingfee}" type="currency"/></td>
+                                                        <td class="border w-1/5 py-2">
+                                                            <c:set var="total" value="${o.total}"/>
+                                                            <fmt:setLocale value="vi_VN"/>
+                                                            <fmt:formatNumber value="${total}" type="currency"/></td>
                                                     </tr>
                                                 </c:forEach>
                                                 <!--  -->
                                             </tbody>
                                         </table>
+                                        <h1 style="text-align: center">${VIEW_ORDER_EMPTY}</h1>
                                     </div>
                                 </div>
                             </div>
@@ -240,15 +278,38 @@
 
         <script src="./main.js"></script>
         <script>
-            function linkRow(){
-                const rows=document.querySelectorAll("tr[data-href]");
-                rows.forEach(row=>{
-                    row.addEventListener("click",()=>{
-                        window.location.href=row.dataset.href;
-                    });
-                });
+                                    function linkRow() {
+                                        const rows = document.querySelectorAll("tr[data-href]");
+                                        rows.forEach(row => {
+                                            row.addEventListener("click", () => {
+                                                window.location.href = row.dataset.href;
+                                            });
+                                        });
+                                    }
+                                    document.addEventListener("DOMContentLoaded", linkRow());
+        </script>
+        <script>
+            function handalModal(id, display, pid) {
+                console.log(pid)
+                document.getElementById('yes').href = 'MainController?btAction=RemoveProductManager&id=' + pid
+                console.log(document.getElementById('yes'))
+                document.getElementById(id).style.display = display;
             }
-                                    document.addEventListener("DOMContentLoaded",linkRow());
+
+            const items = document.querySelectorAll('#item');
+            const menu = document.getElementById('menu')
+            const icon = document.getElementById('icon-xoay')
+            const listMenu = document.getElementById('list-menu')
+            console.log(listMenu)
+
+            menu.addEventListener('click', () => {
+                listMenu.classList.toggle('show-swp')
+                icon.classList.toggle('show-swp-icon')
+            })
+
+            items.forEach(item => {
+                console.log(item)
+            })
         </script>
     </body>
 </html>

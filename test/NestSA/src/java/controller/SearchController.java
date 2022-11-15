@@ -35,6 +35,9 @@ public class SearchController extends HttpServlet {
             if (listProduct.size() > 0) {
                 request.setAttribute("VIEW_PRODUCT", listProduct);
                 url = SUCCESS;
+            } else if(listProduct.size()==0){
+                request.setAttribute("NOT_FOUND", "Not found product");
+                url=SUCCESS;
             }
         } catch (Exception e) {
             log("Error at SearchController at: " + e.toString());

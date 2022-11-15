@@ -13,6 +13,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
+import product.ProductDTO;
 import utils.DBUtils;
 
 /**
@@ -21,9 +22,12 @@ import utils.DBUtils;
  */
 public class CommentDAO implements Serializable {
 
-    private static final String VIEW_COMMENT = "SELECT commentId, userId, productId, Comment, status FROM comment WHERE productId = ? AND status = ?";
+    private static final String VIEW_COMMENT = "SELECT commentId, userId, productId, Comment, status FROM comment WHERE productId = ? AND status = 1";
     private static final String CREATE_COMMENT = "Insert Into comment(userId, productId, Comment, status) Values(?, ?, ?, ?)";
     private static final String UPDATE_INFO = "UPDATE users SET fullName=?, address=?, email=?, phone=? WHERE userId=?";
+    private static final String GET_ALL_COMMENT = "SELECT commentId,Comment FROM comment WHERE status = 0";
+    private static final String ACCEPT_COMMENT = "UPDATE comment SET status = 1 WHERE commentId = ?";
+    private static final String DELETE_COMMENT = "DELETE FROM comment WHERE commentId = ?";
 
     private List<CommentDTO> items;
 
@@ -31,7 +35,7 @@ public class CommentDAO implements Serializable {
         return items;
     }
 
-    public void viewComment(int productId, boolean status) throws SQLException, NamingException {
+    public void viewComment(int productId) throws SQLException, NamingException {
         Connection connection = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
@@ -44,12 +48,13 @@ public class CommentDAO implements Serializable {
             if (connection != null) {
                 stm = connection.prepareStatement(VIEW_COMMENT);
                 stm.setInt(1, productId);
-                stm.setBoolean(2, status);
+                
                 rs = stm.executeQuery();
                 while (rs.next()) {
                     int commentId = rs.getInt("commentId");
                     int userId = rs.getInt("userID");
                     String comment = rs.getString("Comment");
+                    int status=rs.getInt("status");
                     result = new CommentDTO(commentId, userId, productId,
                             comment, status);
 
@@ -93,7 +98,7 @@ public class CommentDAO implements Serializable {
                 stm.setInt(1, dto.getUserId());
                 stm.setInt(2, dto.getProductId());
                 stm.setString(3, dto.getComment());
-                stm.setBoolean(4, dto.isStatus());
+                stm.setInt(4, dto.isStatus());
             }
 
             int row = stm.executeUpdate();
@@ -113,5 +118,94 @@ public class CommentDAO implements Serializable {
             }
         }
         return result;
+    }
+    
+    public List<CommentDTO> getAllComment() throws SQLException {
+        List<CommentDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_ALL_COMMENT);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    int id=Integer.parseInt(rs.getString("commentId"));               
+                    String comment = rs.getString("Comment");
+                   
+                    list.add(new CommentDTO(id, comment));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
+    
+     public boolean AcceptComment(int id) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(ACCEPT_COMMENT);
+                ptm.setInt(1, id);
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return check;
+    }
+     public boolean DeleteComment(int id) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(DELETE_COMMENT);
+                ptm.setInt(1, id);
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return check;
     }
 }
