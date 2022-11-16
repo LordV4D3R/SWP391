@@ -124,7 +124,7 @@
                         >
                         <ul class="list-reset flex flex-col">
                             <li
-                                class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
+                                class="w-full h-full py-3 px-2 border-b border-light-border "
                                 >
                                 <a
                                     href="admin.jsp"
@@ -145,7 +145,7 @@
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
                                 <!--href="ViewOrderManagerController"-->
                                 <div id="menu">
                                     <a
@@ -165,7 +165,7 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="#"
+                                    href="GetComment"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fas fa-table float-left mx-2"></i>
@@ -175,9 +175,9 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-<<<<<<< HEAD
-                                    href="GetContact"
-=======
+
+                                    
+
                                     href="ViewBlogManagerController"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
@@ -188,8 +188,8 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="#"
->>>>>>> 2b520af5ac3c0fffa3d21308ba2240f1830eae8e
+                                  href="GetContact"
+
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fab fa-uikit float-left mx-2"></i>
