@@ -239,7 +239,6 @@
                                                             id="grid-last-name"
                                                             type="text"
                                                             name="image"
-                                                            maxlength="50"
                                                             style="width: 700px;"
                                                             value=""
                                                             placeholder="Nhập liên kết đến ảnh của sản phẩm"

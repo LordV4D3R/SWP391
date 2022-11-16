@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/src/java/product/ProductDAO.java</file>
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/src/java/controller/ViewBlogManagerController.java</file>
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/managerblog.jsp</file>
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/blog.jsp</file>
             <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/admin.jsp</file>
-            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/index.jsp</file>
-            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/src/java/controller/ViewProductIndexController.java</file>
-            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/src/java/product/ProductDTO.java</file>
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/createblog.jsp</file>
+            <file>file:/C:/Users/dell/Desktop/SWP391/test/NestSA/web/editblog.jsp</file>
         </group>
     </open-files>
 </project-private>
