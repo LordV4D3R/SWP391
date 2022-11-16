@@ -183,9 +183,9 @@
                                                         class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                         id="grid-password"
                                                         name="postTitle"
-                                                        maxlength="50"
                                                         type="text"
-                                                        placeholder="Nhập tên của bài viết"                         
+                                                        placeholder="Nhập tên của bài viết"
+                                                        required
                                                         />
                                                 </div>
                                                 <div class="w-full md:w-1/5 px-3 mb-6 md:mb-0">
@@ -240,8 +240,8 @@
                                                             type="text"
                                                             name="image"
                                                             style="width: 700px;"
-                                                            value=""
                                                             placeholder="Nhập liên kết đến ảnh của sản phẩm"
+                                                            required
                                                             />
                                                     </div>
                                                 </div>
@@ -263,13 +263,14 @@
                                             <button type="submit" name="btAction" value="EditBlog" 
                                                     style="top: 100%;"
                                                     class="text-white bg-red-700 hover:bg-red-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
-                                                    ><a href="ViewBlogManagerController">
+                                                    ><a href="ViewBlogManagerController"
+                                                    onclick="return confirm('Bạn có muốn huỷ tạo bài viết này không?')">
                                                     Huỷ
                                                 </a>
                                             </button>
                                             <button type="submit" name="btAction" value="CreateBlog" style="position: relative; right: 40%;"
                                                     class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
-                                                    >
+                                                    onclick="return confirm('Bạn có muốn tạo bài viết này không?')">
                                                 Tạo bài viết
                                             </button>
                                         </form>

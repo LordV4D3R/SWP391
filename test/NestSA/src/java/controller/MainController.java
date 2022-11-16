@@ -66,6 +66,8 @@ public class MainController extends HttpServlet {
     private static final String EDIT_BLOG_CONTROLLER = "EditBlogController";
     private static final String REMOVE_BLOG = "RemoveBlog";
     private static final String REMOVE_BLOG_CONTROLLER = "RemoveBlogController";
+    private static final String UNLOCK_BLOG = "UnlockBlog";
+    private static final String UNLOCK_BLOG_CONTROLLER = "UnlockBlogController";
     private static final String EDIT_PRODUCT_MANAGER = "EditProductManager";
     private static final String EDIT_PRODUCT_MANAGER_CONTROLLER = "EditProductManagerController";
     private static final String VIEW_EDIT_PRODUCT_MANAGER = "ViewEditProductManager";
@@ -143,6 +145,8 @@ public class MainController extends HttpServlet {
                 url = EDIT_BLOG_CONTROLLER;
             } else if (REMOVE_BLOG.equals(action)) {
                 url = REMOVE_BLOG_CONTROLLER;
+            } else if (UNLOCK_BLOG.equals(action)) {
+                url = UNLOCK_BLOG_CONTROLLER;
             } else if (EDIT_PRODUCT_MANAGER.equals(action)) {
                 url = EDIT_PRODUCT_MANAGER_CONTROLLER;
             } else if (VIEW_EDIT_PRODUCT_MANAGER.equals(action)) {
