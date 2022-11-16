@@ -15,11 +15,12 @@
         <!-- Css -->
         <link rel="stylesheet" href="./dist/styles.css" />
         <link rel="stylesheet" href="./dist/all.css" />
+        <script src="ckeditor/ckeditor.js" type="text/javascript"></script>
         <link
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
             rel="stylesheet"
             />
-        <title>Forms | Tailwind Admin</title>
+        <title>Quản lý bài viết</title>
         <style>
             .price-curren {
                 top: 50%;
@@ -165,11 +166,7 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
                                         >
-<<<<<<< HEAD
-                                        Sửa blog
-=======
                                         Chỉnh sửa bài viết
->>>>>>> 2b520af5ac3c0fffa3d21308ba2240f1830eae8e
                                     </div>
                                     <div class="p-3">
                                         <form class="w-full" action="MainController" method="GET">
@@ -186,6 +183,7 @@
                                                         class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                         id="grid-password"
                                                         name="postTitle"
+                                                        maxlength="50"
                                                         type="text"
                                                         value="${requestScope.EDIT_BLOG.postTitle}"
                                                         placeholder="Nhập tên của bài viết"                         
@@ -226,9 +224,9 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
+                                                <div class="flex flex-wrap -mx-3 pl-3 w-full mt-4">
 
-                                                    <!--  -->
-                                                    <!-- img -->
                                                     <div class="w-full md:w-2/5 px-3">
                                                         <label
                                                             class="block uppercase tracking-wide text-gray-900 text-sm font-medium mb-1"
@@ -241,6 +239,7 @@
                                                             id="grid-last-name"
                                                             type="text"
                                                             name="image"
+                                                            maxlength="50"
                                                             style="width: 700px;"
                                                             value="${requestScope.EDIT_BLOG.image}"
                                                             placeholder="Nhập liên kết đến ảnh của sản phẩm"
@@ -250,38 +249,32 @@
                                                 <!-- end double input -->
                                             </div>
                                             <div class="flex flex-wrap -mx-3 mb-2 px-3">
-                                                <!-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                                  <label
-                                                    class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
-                                                    for="grid-zip"
-                                                  >
-                                                    Zip
-                                                  </label>
-                                                  <input
-                                                    class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                                                    id="grid-zip"
-                                                    type="text"
-                                                    placeholder="90210"
-                                                  />
-                                                </div> -->
                                                 <label
                                                     for="message"
                                                     class="block mb-2 text-sm font-medium text-gray-900"
                                                     >Mô tả sản phẩm</label
-                                                >
-                                                <textarea
-                                                    name="postContent"
-                                                    id="message"
-                                                    rows="4"
-                                                    class="block p-4 w-full text-sm text-grey-darker bg-gray-200 rounded border border-gray-200 focus:ring-blue-500 focus:border-gray-600 focus:outline-none"
-                                                    placeholder="Your message..."
-                                                    >${requestScope.EDIT_BLOG.postContent}</textarea>
+                                                ><br>
+
                                             </div>
+                                            <textarea
+                                                name="postContent"
+                                                id="editor1"
+                                                placeholder="Your message..."
+                                                >${requestScope.EDIT_BLOG.postContent}</textarea>
                                             <input type ="hidden" name="postId" value="${requestScope.EDIT_BLOG.postId}"/>
-                                            <button type="submit" name="btAction" value="EditBlog"
+
+                                            <button type="submit" name="btAction" value="EditBlog" 
+                                                    style="top: 100%;"
+                                                    class="text-white bg-red-700 hover:bg-red-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
+                                                    ><a href="ViewBlogManagerController">
+                                                    Huỷ
+                                                </a>
+                                            </button>
+
+                                            <button type="submit" name="btAction" value="EditBlog" style="position: relative; right: 40%;"
                                                     class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
                                                     >
-                                                Xác nhận
+                                                Lưu bài viết
                                             </button>
                                         </form>
                                     </div>
@@ -302,18 +295,7 @@
 
         <script src="./main.js"></script>
         <script>
-                                    const items = document.querySelectorAll('#item');
-                                    const menu = document.getElementById('menu')
-                                    const icon = document.getElementById('icon-xoay')
-                                    const listMenu = document.getElementById('list-menu')
-                                    console.log(listMenu)
-
-                                    menu.addEventListener('click', () => {
-                                        listMenu.classList.toggle('show-swp')
-                                        icon.classList.toggle('show-swp-icon')
-                                    })
-
-
+                                    CKEDITOR.replace('editor1');
         </script>
     </body>
 </html>
