@@ -40,7 +40,7 @@ public class CreateBlogController extends HttpServlet {
             String postTitle = request.getParameter("postTitle");
             String image = request.getParameter("image");
             String postContent = request.getParameter("postContent");
-            String category = request.getParameter("category");
+            String category = request.getParameter("categoryName");
             PostDAO pDao = new PostDAO();
             boolean check = pDao.createPost(image, postTitle, postContent, category);
             if(check)
