@@ -119,7 +119,7 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="#"
+                                    href="GetContact"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fab fa-uikit float-left mx-2"></i>
@@ -154,7 +154,7 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
                                         >
-                                        Form Grid
+                                        Chỉnh sửa sản phẩm
                                     </div>
                                     <div class="p-3">
                                         <form class="w-full" action="MainController">

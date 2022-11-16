@@ -114,7 +114,7 @@
                                     <span><i class="fas fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border ">
                                 <a
                                     href="ViewProductManagerController"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
@@ -152,7 +152,7 @@
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
-                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
                                 <a
                                     href="#"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
@@ -204,17 +204,18 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <tr>
-                                                    <td class="border w-1/5 py-2">toi can ho tro</td>
-                                                    <td class="border w-1/5 py-2">tahng@</td>
-                                                    <td class="border w-1/6 py-2">0123</td>
+                                                <c:forEach items="${LIST_CONTACT}" var="o">
+                                                    <tr>
+                                                    <td class="border w-1/5 py-2">${o.senderName}</td>
+                                                    <td class="border w-1/5 py-2">${o.email}</td>
+                                                    <td class="border w-1/6 py-2">${o.phone}</td>
                                                     <td class="border w-1/2 py-2">
-                                                        toi can ho tro
+                                                        ${o.contactContent}
                                                     </td>
                                                     <td class="border  py-2">
                                                         <a
                                                             class="bg-teal-300 rounded p-1 mx-1 text-red-500 block"
-                                                            href="#"
+                                                            href="AproveContact?id=${o.id}"
                                                             >
                                                             Duyệt 
                                                         </a>
@@ -223,13 +224,13 @@
                                                     <td class="border  py-2">
                                                         <a
                                                             class="bg-teal-300 rounded p-1 mx-1 text-red-500 block"
-                                                            href="#"
+                                                            href="DeleteContact?id=${o.id}"
                                                             >
                                                             Xóa 
-                                                        </a>
-                                                      
+                                                        </a>                                                     
                                                     </td>
                                                 </tr>
+                                                </c:forEach>
                                                 
                                             </tbody>
                                         </table>

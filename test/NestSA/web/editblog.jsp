@@ -155,7 +155,7 @@
                                     <div
                                         class="bg-gray-200 px-2 py-3 border-solid border-gray-200 border-b"
                                         >
-                                        Form Grid
+                                        Sửa blog
                                     </div>
                                     <div class="p-3">
                                         <form class="w-full" action="MainController" method="GET">

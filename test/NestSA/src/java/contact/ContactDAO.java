@@ -5,10 +5,13 @@
  */
 package contact;
 
+import comment.CommentDTO;
 import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import javax.naming.NamingException;
 import utils.DBUtils;
@@ -19,7 +22,10 @@ import utils.DBUtils;
  */
 public class ContactDAO implements Serializable {
 
-    private static final String INSERT_INTO_DB = "Insert Into contacts(senderName, email, phone, contactContent) Values(?, ?, ?, ?)";
+    private static final String INSERT_INTO_DB = "Insert Into contacts(senderName, email, phone, contactContent, status) Values(?, ?, ?, ?,0)";
+    private static final String GET_CONTACT = "SELECT * FROM contacts WHERE status = 0";
+    private static final String APROVE_CONTACT = "UPDATE contacts SET status = 1 WHERE contactId = ?";
+    private static final String DELETE_CONTACT = "DELETE FROM contacts WHERE contactId = ?";
 
     public List<ContactDTO> contact;
 
@@ -66,5 +72,98 @@ public class ContactDAO implements Serializable {
             }
         }
         return result;
+    }
+
+    public List<ContactDTO> getAllContact() throws SQLException {
+        List<ContactDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_CONTACT);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    int id = Integer.parseInt(rs.getString("contactId"));
+                    String name = rs.getString("senderName");
+                    String email = rs.getString("email");
+                    String phone = rs.getString("phone");
+                    String contactContent = rs.getString("contactContent");
+
+                    list.add(new ContactDTO(id, name, email, phone, contactContent));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
+
+    public boolean AproveContact(int id) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(APROVE_CONTACT);
+                ptm.setInt(1, id);
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return check;
+    }
+    
+     public boolean DeleteContact(int id) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(DELETE_CONTACT);
+                ptm.setInt(1, id);
+                check = ptm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+            if (rs != null) {
+                rs.close();
+            }
+        }
+        return check;
     }
 }

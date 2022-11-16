@@ -12,7 +12,7 @@ import java.io.Serializable;
  * @author tranq
  */
 public class ContactDTO implements Serializable {
-
+    private int id;
     private String senderName;
     private String email;
     private String phone;
@@ -21,12 +21,30 @@ public class ContactDTO implements Serializable {
     public ContactDTO() {
     }
 
+    public ContactDTO(int id, String senderName, String email, String phone, String contactContent) {
+        this.id = id;
+        this.senderName = senderName;
+        this.email = email;
+        this.phone = phone;
+        this.contactContent = contactContent;
+    }
+
     public ContactDTO(String senderName, String email, String phone, String contactContent) {
         this.senderName = senderName;
         this.email = email;
         this.phone = phone;
         this.contactContent = contactContent;
     }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    
 
     /**
      * @return the senderName
