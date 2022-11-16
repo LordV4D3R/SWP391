@@ -169,7 +169,7 @@
                                         Tạo bài viết
                                     </div>
                                     <div class="p-3">
-                                        <form class="w-full" action="MainController" method="POST">
+                                        <form class="w-full" action="MainController" method="GET">
                                             <div class="flex flex-wrap -mx-3 mb-6">
                                                 <!-- full input -->
                                                 <div class="w-full px-3 mb-2">
@@ -183,8 +183,8 @@
                                                         class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-grey"
                                                         id="grid-password"
                                                         name="postTitle"
+                                                        maxlength="50"
                                                         type="text"
-                                                        value=""
                                                         placeholder="Nhập tên của bài viết"                         
                                                         />
                                                 </div>
@@ -203,7 +203,7 @@
                                                             name="categoryName"
                                                             > 
                                                             <c:forEach var="c" items="${sessionScope.VIEW_CATEGORY}">
-                                                                <option>${c.categoryName}</option>
+                                                                <option value="${c.categoryId}">${c.categoryName}</option>
                                                             </c:forEach>
                                                         </select>
                                                         <div
@@ -239,6 +239,7 @@
                                                             id="grid-last-name"
                                                             type="text"
                                                             name="image"
+                                                            maxlength="50"
                                                             style="width: 700px;"
                                                             value=""
                                                             placeholder="Nhập liên kết đến ảnh của sản phẩm"
@@ -248,38 +249,29 @@
                                                 <!-- end double input -->
                                             </div>
                                             <div class="flex flex-wrap -mx-3 mb-2 px-3">
-                                                <!-- <div class="w-full md:w-1/3 px-3 mb-6 md:mb-0">
-                                                  <label
-                                                    class="block uppercase tracking-wide text-grey-darker text-xs font-light mb-1"
-                                                    for="grid-zip"
-                                                  >
-                                                    Zip
-                                                  </label>
-                                                  <input
-                                                    class="appearance-none block w-full bg-grey-200 text-grey-darker border border-grey-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-grey"
-                                                    id="grid-zip"
-                                                    type="text"
-                                                    placeholder="90210"
-                                                  />
-                                                </div> -->
                                                 <label
                                                     for="message"
                                                     class="block mb-2 text-sm font-medium text-gray-900"
                                                     >Mô tả sản phẩm</label
-                                                >
-                                                <textarea
-                                                    name="postContent"
-                                                    id="message"
-                                                    rows="4"
-                                                    class="block p-4 w-full text-sm text-grey-darker bg-gray-200 rounded border border-gray-200 focus:ring-blue-500 focus:border-gray-600 focus:outline-none"
-                                                    placeholder="Your message..."
-                                                    ></textarea>
-                                            </div>
+                                                ><br>
 
-                                            <button type="submit" name="btAction" value="CreateBlog"
+                                            </div>
+                                            <textarea
+                                                name="postContent"
+                                                id="editor1"
+                                                placeholder="Your message..."
+                                                ></textarea>
+                                            <button type="submit" name="btAction" value="EditBlog" 
+                                                    style="top: 100%;"
+                                                    class="text-white bg-red-700 hover:bg-red-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
+                                                    ><a href="ViewBlogManagerController">
+                                                    Huỷ
+                                                </a>
+                                            </button>
+                                            <button type="submit" name="btAction" value="CreateBlog" style="position: relative; right: 40%;"
                                                     class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded text-sm px-5 py-3 mb-2 block float-right"
                                                     >
-                                                Xác nhận
+                                                Tạo bài viết
                                             </button>
                                         </form>
                                     </div>
@@ -300,18 +292,7 @@
 
         <script src="./main.js"></script>
         <script>
-                                    const items = document.querySelectorAll('#item');
-                                    const menu = document.getElementById('menu')
-                                    const icon = document.getElementById('icon-xoay')
-                                    const listMenu = document.getElementById('list-menu')
-                                    console.log(listMenu)
-
-                                    menu.addEventListener('click', () => {
-                                        listMenu.classList.toggle('show-swp')
-                                        icon.classList.toggle('show-swp-icon')
-                                    })
-
-
+                                    CKEDITOR.replace('editor1');
         </script>
     </body>
 </html>
