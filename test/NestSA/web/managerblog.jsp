@@ -19,7 +19,7 @@
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
             rel="stylesheet"
             />
-        <title>Tables | Tailwind Admin</title>
+        <title>Quản lý bài viết</title>
         <style>
             .handModal {
                 position: fixed;
@@ -144,7 +144,7 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="GetComment"
+                                    href="#"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fas fa-table float-left mx-2"></i>
@@ -164,7 +164,7 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="contact.jsp"
+                                    href="#"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fab fa-uikit float-left mx-2"></i>
@@ -198,9 +198,9 @@
                                         Bài viết
                                         <form class="flex" action="MainController">
                                             <div class="p-2 rounded flex items-center bg-slate-200" style="width: 500px">
-                                                <input type="text" class="p-1 rounded outline-none flex-1" placeholder="m" name="search"/>
+                                                <!--<input type="text" class="p-1 rounded outline-none flex-1" placeholder="" name="search"/>-->
                                             </div>
-                                            <button type="submit" name="btAction" value="SearchProductManager" class="pr-3" style="outline: none"><i class="fas fa-search mr-1"></i></button>
+                                            <!--<button type="submit" name="btAction" value="SearchProductManager" class="pr-3" style="outline: none"><i class="fas fa-search mr-1"></i></button>-->
                                         </form>
                                         <a href="createblog.jsp" class="px-4 py-2 rounded block leading-7" id="add_product_swp" style="background-color: rgb(212 212 216);">Thêm bài viết mới</a>
                                     </div>
