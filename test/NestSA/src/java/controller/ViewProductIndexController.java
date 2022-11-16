@@ -37,7 +37,7 @@ public class ViewProductIndexController extends HttpServlet {
             ProductDAO dao = new ProductDAO();
             while (checkValidation) {
                 checkValidation = true;
-                List<ProductDTO> listProduct = dao.viewProduct();
+                List<ProductDTO> listProduct = dao.viewProductIndex();
                 if (listProduct.size() > 0) {
                     HttpSession session = request.getSession();
                     session.setAttribute("VIEW_PRODUCT_INDEX", listProduct);

@@ -60,6 +60,42 @@ public class ProductDAO {
             + "WHERE productId = ?";
     
     private static final String GET_PRODUCT_QUANTITY="SELECT quantity FROM product WHERE productId= ?";
+    
+    private static final String GET_PRODUCT_INDEX = "SELECT top 4 * FROM product";
+            
+    public List<ProductDTO> viewProductIndex() throws SQLException {
+        List<ProductDTO> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ptm = null;
+        ResultSet rs = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                ptm = conn.prepareStatement(GET_PRODUCT_INDEX);
+                rs = ptm.executeQuery();
+                while (rs.next()) {
+                    String name = rs.getString("name");
+                    String img = rs.getString("image");
+                    list.add(new ProductDTO(name,img));
+                }
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if (rs != null) {
+                rs.close();
+            }
+            if (ptm != null) {
+                ptm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return list;
+    }
+    
      public int getProductQuantity(int id) throws SQLException {
         int check = 0;
         Connection conn = null;

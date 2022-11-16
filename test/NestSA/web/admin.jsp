@@ -8,6 +8,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
@@ -22,6 +23,8 @@
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
             rel="stylesheet"
             />
+        <link type="text/css" rel="Stylesheet" href="css/jqx.base.css" />
+    
         <title>Admin</title>
         <style>
             .show-swp{
@@ -31,6 +34,12 @@
                 transform: rotate(90deg)
             }
         </style>
+        <style type="text/css">
+        .labels {
+            font-size: smaller;
+        }
+    </style>
+    
     </head>
 
     <body>
@@ -224,7 +233,7 @@
                             </div>
 
                             <!-- /Stats Row Ends Here -->
-
+                    <div id='chartContainer' style="width: 860px; height: 600px; margin-bottom: 25px;"></div>
                             <!-- Card Sextion Starts Here -->
                           
                             
@@ -255,5 +264,6 @@
 
                                             
         </script>
+        
     </body>
 </html>
