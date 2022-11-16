@@ -62,7 +62,7 @@
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${checkLogin.fullName}</a></li>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
                                     <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>
@@ -142,7 +142,7 @@
                             <li class="dropdown">
                                 <a href="ViewProductController" class="nav-link">Sản phẩm</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="ViewListBlogController">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>

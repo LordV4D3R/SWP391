@@ -19,7 +19,7 @@
             href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400i,600,600i,700,700i"
             rel="stylesheet"
             />
-        <title>Admin</title>
+        <title>Tables | Tailwind Admin</title>
         <style>
             .handModal {
                 position: fixed;
@@ -59,7 +59,7 @@
                 background-color: rgb(161 161 170) !important;
                 color: #FFFFFF;
             }
-            
+
             .show-swp{
                 display: block;
             }
@@ -103,7 +103,7 @@
                         >
                         <ul class="list-reset flex flex-col">
                             <li
-                                class="w-full h-full py-3 px-2 border-b border-light-border bg-white"
+                                class="w-full h-full py-3 px-2 border-b border-light-border"
                                 >
                                 <a
                                     href="admin.jsp"
@@ -144,7 +144,7 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="#"
+                                    href="GetComment"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fas fa-table float-left mx-2"></i>
@@ -152,9 +152,19 @@
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>
                             </li>
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border bg-white">
+                                <a
+                                    href="ViewBlogManagerController"
+                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                                    >
+                                    <i class="fab fa-uikit float-left mx-2"></i>
+                                    Bài viết
+                                    <span><i class="fa fa-angle-right float-right"></i></span>
+                                </a>
+                            </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
-                                    href="#"
+                                    href="contact.jsp"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fab fa-uikit float-left mx-2"></i>
@@ -202,10 +212,10 @@
                                             <thead>
                                                 <tr>
                                                     <th class="border w-1/2 px-4 py-2">Tên bài viết</th>
-                                                    <th class="border w-96 px-4 py-2">Ngày viết</th>
+                                                    <th class="border w-96 px-10 py-2">Ngày viết</th>
                                                     <th class="border w-1/4 px-4 py-2">Loại bài</th>
-                                                    <th class="border w-96 px-4 py-2">Status</th>
-                                                    <th class="border w-full px-4 py-2"></th>
+                                                    <!--<th class="border w-96 px-4 py-2">Status</th>-->
+                                                    <th class="border w-full px-4 py-2">Tuỳ chọn</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -215,14 +225,14 @@
                                                         <td class="border w-1/2 py-2">${b.postTitle}</td>
                                                         <td class="border w-96 py-2">${b.dateUpload}</td>
                                                         <td class="border w-1/4 py-2">${b.category}</td>
-                                                        <td class="border w-96 py-2">
-                                                            <c:if test="">
-                                                                <i class="fas fa-check text-green-500 mx-2"></i>
-                                                            </c:if>
-                                                            <%--<c:if test="${b.status eq 0}">--%>
-                                                                <!--<i class="fas fa-times text-red-500 mx-2"></i>-->
-                                                            <%--</c:if>--%>
-                                                        </td>
+                                                        <!--                                                        <td class="border w-96 py-2">
+                                                        <c:if test="">
+                                                            <i class="fas fa-check text-green-500 mx-2"></i>
+                                                        </c:if>
+                                                        <%--<c:if test="${b.status eq 0}">--%>
+                                                            <i class="fas fa-times text-red-500 mx-2"></i>
+                                                        <%--</c:if>--%>
+                                                    </td>-->
                                                         <td class="border w-full py-2">
                                                             <a
                                                                 class="bg-teal-300 rounded p-1 mx-1 text-white"
@@ -236,13 +246,13 @@
                                                                 >
                                                                 <i class="fas fa-trash"></i
                                                                 ></a>
-<!--                                                            <a
-                                                                onclick="handalModal('centeredModal', 'block',${p.postId})"
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-red-500"
-                                                                href="#"
-                                                                >
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>-->
+                                                            <!--                                                            <a
+                                                                                                                            onclick="handalModal('centeredModal', 'block',${p.postId})"
+                                                                                                                            class="bg-teal-300 rounded p-1 mx-1 text-red-500"
+                                                                                                                            href="#"
+                                                                                                                            >
+                                                                                                                            <i class="fas fa-trash"></i>
+                                                                                                                        </a>-->
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -279,7 +289,7 @@
                                 <!--href="MainController?btAction=RemoveProductManager&id=${productId}"-->
                                 <!--onclick="handalModal('centeredModal', 'none')"-->
                                 <a id="yes"
-                                     >Có<i class="fas fa-check text-green-500 mx-2"></i>
+                                   >Có<i class="fas fa-check text-green-500 mx-2"></i>
                                 </a>
                                 <a href="#" onclick="handalModal('centeredModal', 'none')"
                                    >Không<i class="fas fa-ban text-red-500 mx-2"></i
@@ -308,22 +318,22 @@
                                         console.log(document.getElementById('yes'))
                                         document.getElementById(id).style.display = display;
                                     }
-                                    
-                                     const items = document.querySelectorAll('#item');
+
+                                    const items = document.querySelectorAll('#item');
                                     const menu = document.getElementById('menu')
-                                    const icon=document.getElementById('icon-xoay')
-                                            const listMenu = document.getElementById('list-menu')
-                                            console.log(listMenu)
+                                    const icon = document.getElementById('icon-xoay')
+                                    const listMenu = document.getElementById('list-menu')
+                                    console.log(listMenu)
 
-                                            menu.addEventListener('click', () => {
-                                                listMenu.classList.toggle('show-swp')
-                                                icon.classList.toggle('show-swp-icon')
-                                            })
+                                    menu.addEventListener('click', () => {
+                                        listMenu.classList.toggle('show-swp')
+                                        icon.classList.toggle('show-swp-icon')
+                                    })
 
-                                            items.forEach(item => {
-                                            console.log(item)
-                                            })
+                                    items.forEach(item => {
+                                        console.log(item)
+                                    })
         </script>
-        
+
     </body>
 </html>

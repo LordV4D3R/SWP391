@@ -53,7 +53,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                <option>$ VND</option>                   
+                                <option>$ VND</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
@@ -83,15 +83,14 @@
                                             Tài khoản
                                         </button>
                                     </li>
-
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="login-box" style="margin-right: 20px">
-                                <a href="login.jsp" style="color: white;font-weight: bold">Đăng nhập/</a>
-                                <a href="register.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
+                                <a href="/NestSA/login" style="color: white;font-weight: bold">Đăng nhập/</a>
+                                <a href="/NestSA/register" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
                                 <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
                                                                 <option>Đăng ký</option>
                                                                 <option>Đăng nhập</option>
@@ -133,20 +132,20 @@
                                                 aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                                                 <i class="fa fa-bars"></i>
                                             </button>-->
-                        <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
+                        <a class="navbar-brand" href="/NestSA/"><img src="images/logo.png" class="logo" alt=""></a>
                     </div>
                     <!-- End Header Navigation -->
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item active"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="/NestSA/">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/NestSA/about">Giới thiệu</a></li>
                             <li class="dropdown">
-                                <a href="ViewProductController" class="nav-link">Sản phẩm</a>
+                                <a href="/NestSA/shop" class="nav-link">Sản phẩm</a>
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="ViewListBlogController">Blog</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/NestSA/blog">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/NestSA/contact-us">Liên hệ</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
@@ -155,7 +154,7 @@
                     <div class="attr-nav">
                         <ul>
                             <li class="side-menu">
-                                <a href="cart.jsp">
+                                <a href="/NestSA/cart">
                                     <i class="fa fa-shopping-cart"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>Giỏ hàng</p>
@@ -179,7 +178,7 @@
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>Chào mừng đến với <br> NestSongAn</strong></h1>
                                 <p class="m-b-40">Yến sào thượng hạng, Thượng đỉnh yến sào, Vì sức khỏe của gia đình</p>
-                                <p><a class="btn hvr-hover" href="gallery.jsp">Blog</a></p>
+                                <p><a class="btn hvr-hover" href="/NestSA/blog">Blog</a></p>
                             </div>
                         </div>
                     </div>
@@ -191,7 +190,7 @@
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>Chào mừng đến với <br> NestSongAn</strong></h1>
                                 <p class="m-b-40">Yến sào thượng hạng, Thượng đỉnh yến sào, Vì sức khỏe của gia đình.</p>
-                                <p><a class="btn hvr-hover" href="gallery.jsp">Blog</a></p>
+                                <p><a class="btn hvr-hover" href="/NestSA/blog">Blog</a></p>
                             </div>
                         </div>
                     </div>
@@ -203,7 +202,7 @@
                             <div class="col-md-12">
                                 <h1 class="m-b-20"><strong>Chào mừng đến với <br> NestSongAn</strong></h1>
                                 <p class="m-b-40">Yến sào thượng hạng, Thượng đỉnh yến sào, Vì sức khỏe của gia đình.</p>
-                                <p><a class="btn hvr-hover" href="gallery.jsp">Blog</a></p>
+                                <p><a class="btn hvr-hover" href="/NestSA/blog">Blog</a></p>
                             </div>
                         </div>
                     </div>
@@ -225,32 +224,32 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/category-01.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Yến chưng sẵn</a>
+                            <img class="img-fluid" style="height: 325px" src="https://yensaohaiphong.net/wp-content/uploads/2021/08/yen-dao-tho-cao-cap-1.png" alt="" />
+                            <a class="btn hvr-hover" href="MainController?btAction=ViewProductByCategory&categoryId=C01">Yến đảo thô nguyên tổ</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/category-02.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Yến thô</a>
+                            <img class="img-fluid" style="height: 325px" src="https://vuayen.vn/wp-content/uploads/2019/05/t%E1%BB%95-y%E1%BA%BFn-%C4%91%E1%BA%A3o-th%C6%B0%E1%BB%A3ng-h%E1%BA%A1ng-2.jpg" alt="" />
+                            <a class="btn hvr-hover" href="MainController?btAction=ViewProductByCategory&categoryId=C02">Yến đảo tinh chế</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/category-03.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Yến tinh chế</a>
+                            <img class="img-fluid" style="height: 325px" src="https://cdn.tgdd.vn/Products/Images/4585/112153/bhx/loc-6-lon-nuoc-yen-sao-khanh-hoa-gold-co-duong-190ml-202001161028030919.jpg" alt="" />
+                            <a class="btn hvr-hover" href="MainController?btAction=ViewProductByCategory&categoryId=C03">Nước yến</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/category-03.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Yến tinh chế</a>
+                            <img class="img-fluid" style="height: 325px" src="https://yensaokhanhhoa.com.vn/img/Products/H12-1.jpg" alt="" />
+                            <a class="btn hvr-hover" href="MainController?btAction=ViewProductByCategory&categoryId=C04">Bánh yến sào</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
                         <div class="shop-cat-box">
-                            <img class="img-fluid" src="images/category-03.jpg" alt="" />
-                            <a class="btn hvr-hover" href="#">Yến tinh chế</a>
+                            <img class="img-fluid" style="height: 325px" src="https://yanyen.vn/wp-content/uploads/2022/02/cach-chung-yen-tao-do-ky-tu-hat-sen-4-scaled.jpg" alt="" />
+                            <a class="btn hvr-hover" href="MainController?btAction=ViewProductByCategory&categoryId=C05">Yến chưng</a>
                         </div>
                     </div>
                 </div>
@@ -333,98 +332,6 @@
         </div>
         <!-- End Products  -->
 
-        <!-- Start Blog  -->
-        <div class="latest-blog">
-            <div class="container">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="title-all text-center">
-                            <h1>Bài viết</h1>
-                            <p>Các thông tin về yến</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-6 col-lg-4 col-xl-4">
-                        <div class="blog-box">
-                            <div class="blog-img">
-                                <img class="img-fluid" src="images/blog-img.jpg" alt="" />
-                            </div>
-                            <div class="blog-content">
-                                <div class="title-blog">
-                                    <h3>Fusce in augue non nisi fringilla</h3>
-                                    <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet
-                                        urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed
-                                        mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                                </div>
-                                <ul class="option-blog">
-                                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-4">
-                        <div class="blog-box">
-                            <div class="blog-img">
-                                <img class="img-fluid" src="images/blog-img-01.jpg" alt="" />
-                            </div>
-                            <div class="blog-content">
-                                <div class="title-blog">
-                                    <h3>Fusce in augue non nisi fringilla</h3>
-                                    <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet
-                                        urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed
-                                        mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                                </div>
-                                <ul class="option-blog">
-                                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4 col-xl-4">
-                        <div class="blog-box">
-                            <div class="blog-img">
-                                <img class="img-fluid" src="images/blog-img-02.jpg" alt="" />
-                            </div>
-                            <div class="blog-content">
-                                <div class="title-blog">
-                                    <h3>Fusce in augue non nisi fringilla</h3>
-                                    <p>Nulla ut urna egestas, porta libero id, suscipit orci. Quisque in lectus sit amet
-                                        urna dignissim feugiat. Mauris molestie egestas pharetra. Ut finibus cursus nunc sed
-                                        mollis. Praesent laoreet lacinia elit id lobortis.</p>
-                                </div>
-                                <ul class="option-blog">
-                                    <li><a href="#"><i class="far fa-heart"></i></a></li>
-                                    <li><a href="#"><i class="fas fa-eye"></i></a></li>
-                                    <li><a href="#"><i class="far fa-comments"></i></a></li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- End Blog  -->
-
-
-        <!-- Start Instagram Feed  -->
-        <div class="instagram-box">
-            <div class="main-instagram owl-carousel owl-theme">
-                <c:forEach items="${sessionScope.VIEW_PRODUCT_INDEX}" var="o">
-                    <div class="item">
-                        <div class="ins-inner-box">
-                            <img style="width: 320px; height: 225px" src="${o.image}" alt="Image" />
-                           
-                        </div>
-                    </div>  
-                </c:forEach>
-            </div>
-        </div>
-        <!-- End Instagram Feed  -->
 
 
         <!-- Start Footer  -->
@@ -440,7 +347,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12">
+<!--                        <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
                                 <h3>Liên hệ</h3>
                                 <form class="newsletter-box">
@@ -451,26 +358,42 @@
                                     <button class="btn hvr-hover" type="submit">Nhập</button>
                                 </form>
                             </div>
+                        </div>-->
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link-contact">
+                                <h4>Liên hệ với chúng tôi</h4>
+                                <ul>
+                                    <li>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
                                 <h3>Mạng xã hội</h3>
                                 <p>Các mạng xã hội chúng tôi đang sử dụng</p>
                                 <ul>
-                                    <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank" ><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+<!--                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>-->
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-lg-4 col-md-12 col-sm-12">
+<!--                        <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-widget">
                                 <h4>THông tin về NestSongAn</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
@@ -488,23 +411,7 @@
                                     <li><a href="#">Thông tin vận chuyển</a></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12">
-                            <div class="footer-link-contact">
-                                <h4>Liên hệ với chúng tôi</h4>
-                                <ul>
-                                    <li>
-                                        <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
-                                    </li>
-                                    <li>
-                                        <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
-                                    </li>
-                                    <li>
-                                        <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>

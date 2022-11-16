@@ -118,16 +118,9 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
+<<<<<<< HEAD
                                     href="GetContact"
-                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
-                                    >
-                                    <i class="fab fa-uikit float-left mx-2"></i>
-                                    Liên hệ
-                                    <span><i class="fa fa-angle-right float-right"></i></span>
-                                </a>
-                            </li>
-<!--                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
-                                <a
+=======
                                     href="ViewBlogManagerController"
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
@@ -135,7 +128,18 @@
                                     Bài viết
                                     <span><i class="fa fa-angle-right float-right"></i></span>
                                 </a>
-                            </li>-->
+                            </li>
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                                <a
+                                    href="contact.jsp"
+>>>>>>> 2b520af5ac3c0fffa3d21308ba2240f1830eae8e
+                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                                    >
+                                    <i class="fab fa-uikit float-left mx-2"></i>
+                                    Liên hệ
+                                    <span><i class="fa fa-angle-right float-right"></i></span>
+                                </a>
+                            </li>
                             <li class="w-full h-full py-3 px-2 border-b border-300-border">
                                 <a
                                     href="MainController?btAction=Logout"
@@ -202,6 +206,18 @@
                                         </a>
                                         <a href="#" class="no-underline text-white text-lg">
                                             Total Products
+                                        </a>
+                                    </div>
+                                </div>
+                                <div
+                                    class="shadow bg-success border-l-8 hover:bg-success-dark border-success-dark mb-2 p-2 md:w-1/4 mx-2"
+                                    >
+                                    <div class="p-4 flex flex-col">
+                                        <a href="#" class="no-underline text-white text-2xl">
+                                            500
+                                        </a>
+                                        <a href="#" class="no-underline text-white text-lg">
+                                            Total Blog
                                         </a>
                                     </div>
                                 </div>

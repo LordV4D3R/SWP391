@@ -1,10 +1,11 @@
 <%-- 
-    Document   : shop-detail
-    Created on : Sep 27, 2022, 12:46:37 PM
-    Author     : thangbv
+Document   : shop-detail
+Created on : Sep 27, 2022, 12:46:37 PM
+Author     : thangbv
 --%>
 
-<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,13 +95,12 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                <option>$ VND</option>                         
+                                <option>$ VND</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
                             <p>Hotline :- <a href="#"> +87378873548</a></p>
                         </div>
-
                         <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
@@ -125,8 +125,7 @@
                                             Tài khoản
                                         </button>
                                     </li>
-
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -186,7 +185,7 @@
                             <li class="dropdown">
                                 <a href="ViewProductController" class="nav-link">Cửa hàng</a>                           
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="ViewListBlogController">Blog</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
                         </ul>
                     </div>
@@ -253,7 +252,11 @@
                     <div class="col-xl-7 col-lg-7 col-md-6">
                         <div class="single-product-details">
                             <h2>${sessionScope.PRODUCT.name}</h2>
-                            <h5>${sessionScope.PRODUCT.price}VNĐ</h5>
+                            <h5>
+                                <c:set var="pri" value="${sessionScope.PRODUCT.price}"/>
+                                <fmt:setLocale value="vi_VN"/>
+                                <fmt:formatNumber value="${pri}" type="currency"/>
+                            </h5>
                             <!--<del>$ 60.00</del>-->
                             <p class="available-stock"><span> More than ${sessionScope.PRODUCT.quantity} available<p>
                                     <h4>Mô tả:</h4>

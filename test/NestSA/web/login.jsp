@@ -18,7 +18,7 @@
         <div class="container" style="width: 460px;height: 640px;">           
             <div class="title-text">
                 <div class="title logo">
-                    <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
+                    <a class="navbar-brand" href="/NestSA/"><img src="images/logo.png" class="logo" alt=""></a>
                     <div class="login">
                         Đăng Nhập
                     </div>
@@ -47,9 +47,6 @@
                     <div class="field">
                         <input type="password" placeholder="Mật Khẩu" name="txtPassword" value="${cookie.cPassword.value}" required>
                     </div>
-                    <div class="pass-link">
-                        <a href="#">Quên Mật Khẩu?</a>
-                    </div>
                     <div>
                         <input type="checkbox" ${(cookie.cRemember != null ? 'checked':'')} name="remember" value="ON"> Ghi nhớ tài khoản</br>
                     </div>
@@ -58,7 +55,7 @@
                         <button style = "color: #fff; height: 100%; width: 100%; z-index: 1; position: relative; background: none; border: none; padding-left: 0; border-radius: 5px; font-size: 20px; font-weight: 500; cursor: pointer" type="submit" value="Login" name="btAction">Đăng Nhập</button>
                     </div>
                     <div class="signup-link">
-                        Chưa Có Tài Khoản? <a href="register.jsp"> Đăng Ký Ngay</a>
+                        Chưa Có Tài Khoản? <a href="/NestSA/register"> Đăng Ký Ngay</a>
                     </div>
                 </form>
 

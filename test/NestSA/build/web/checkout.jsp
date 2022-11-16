@@ -8,6 +8,8 @@
 <%@page import="order.Cart"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html lang="en">
     <!-- Basic -->
@@ -68,7 +70,7 @@
                     <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
-                                <option>VN/EN</option>
+                                <option>$ VND</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
@@ -96,16 +98,20 @@
                                         <button id="swa" style="color: white; background-color: black; text-transform: uppercase; font-weight: bold">
                                             <i class="fa fa-user s_color"></i> 
                                             Tài khoản
-                                        </button>                                        
+                                        </button>
                                     </li>
-                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="login-box" style="margin-right: 20px">
                                 <a href="login.jsp" style="color: white;font-weight: bold">Đăng nhập/</a>
-                                <a href="register.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>                             
+                                <a href="register.jsp" style="color: white; position: absolute;font-weight: bold">Đăng ký</a>
+                                <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
+                                                                <option>Đăng ký</option>
+                                                                <option>Đăng nhập</option>
+                                                            </select>-->
                             </div>
                         </c:if>
                         <div class="text-slid-box">
@@ -154,7 +160,7 @@
                             <li class="dropdown active">
                                 <a href="ViewProductController" class="nav-link">Sản phẩm</a>                               
                             </li>
-                            <li class="nav-item"><a class="nav-link" href="gallery.jsp">BLOG</a></li>
+                            <li class="nav-item"><a class="nav-link" href="ViewListBlogController">BLOG</a></li>
                             <li class="nav-item"><a class="nav-link" href="contact-us.jsp">LIÊN HỆ</a></li>
                         </ul>
                     </div>
@@ -250,7 +256,15 @@
                                     <div class="rounded p-2 bg-light" style="margin-top: -16px;">
                                         <div class="media mb-2 border-bottom">
                                             <div class="media-body"> <a href="shop-detail.jsp"><%= tea.getName()%></a>
-                                                <div class="small text-muted">Price: <%= tea.getPrice()%> VND<span class="mx-2">|</span> Qty: <%= tea.getQuantity()%><span class="mx-2">|</span> <%= tea.getQuantity() * tea.getPrice()%> VND</div>
+                                                <div class="small text-muted">Price: 
+                                                    <c:set var="pri" value="<%= tea.getPrice()%>"/>
+                                                    <fmt:setLocale value="vi_VN"/>
+                                                    <fmt:formatNumber value="${pri}" type="currency"/>
+                                                    <span class="mx-2">|</span> Qty: <%= tea.getQuantity()%>
+                                                    <span class="mx-2">|</span>
+                                                    <c:set var="totalPri" value="<%= tea.getQuantity() * tea.getPrice()%>"/>
+                                                    <fmt:setLocale value="vi_VN"/>
+                                                    <fmt:formatNumber value="${totalPri}" type="currency"/></div>
                                             </div>
                                         </div>
                                     </div>
@@ -272,7 +286,10 @@
 
                                     <div class="d-flex gr-total">
                                         <h5>Tổng Cộng</h5>
-                                        <div class="ml-auto h5"> <%= total%> VND</div>
+                                        <div class="ml-auto h5">
+                                            <c:set var="totalPri" value="<%= total%>"/>
+                                            <fmt:setLocale value="vi_VN"/>
+                                            <fmt:formatNumber value="${totalPri}" type="currency"/></div>
                                         <input type="hidden" name="total" value="<%= total%>">
                                     </div>
                                     <hr> </div>

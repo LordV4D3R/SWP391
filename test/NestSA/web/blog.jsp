@@ -61,8 +61,6 @@
                         <div class="custom-select-box">
                             <select id="basic" class="selectpicker show-tick form-control" data-placeholder="$ USD">
                                 <option>$ VND</option>
-                                <option>$ USD</option>
-                                <option>€ EUR</option>
                             </select>
                         </div>
                         <div class="right-phone-box">
@@ -72,35 +70,58 @@
                         <c:if test="${checkLogin != null}">
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</li>
-                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li><a href="my-account.jsp"><i class="fa fa-user s_color"></i> ${sessionScope.LOGIN_USER.fullName}</a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fas fa-headset"></i> Liên hệ</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="login-box">
 
-                                <a href="MainController?btAction=Logout" style="color: white">Logout</a>
+                                <a href="MainController?btAction=Logout" style="color: #FFFFFF;font-size: 14px;font-weight: 700;text-transform: uppercase">Logout <i class="fas fa-sign-out-alt"></i></a>
                             </div>
                         </c:if>
                         <c:if test="${checkLogin == null}" >
                             <div class="our-link">
                                 <ul>
-                                    <li><a href="#"><i class="fa fa-user s_color"></i> Tài khoản</a></li>
-                                    <li><a href="#"><i class="fas fa-headset"></i> Liên hệ</a></li>
+                                    <li>
+                                        <button id="swa" style="color: white; background-color: black; text-transform: uppercase; font-weight: bold">
+                                            <i class="fa fa-user s_color"></i> 
+                                            Tài khoản
+                                        </button>
+                                    </li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank"><i class="fab fa-facebook"></i> Facebook</a></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                             <div class="login-box" style="margin-right: 20px">
-                                <a href="login.jsp" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
-                                <a href="login.jsp" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>
+                                <a href="/NestSA/login" style="color: white; font-size: 19;font-weight: bold">Đăng nhập/</a>
+                                <a href="/NestSA/register" style="color: white; position: absolute;font-size: 19;font-weight: bold">Đăng ký</a>
                                 <!--                            <select id="basic" class="selectpicker show-tick form-control" data-placeholder="Sign In">
                                                                 <option>Đăng ký</option>
                                                                 <option>Đăng nhập</option>
                                                             </select>-->
                             </div>
                         </c:if>
+                        <div class="text-slid-box">
+                            <div id="offer-box" class="carouselTicker">
+                                <ul class="offer-box">
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Chào mừng NestSongAn
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Ở đây chúng tôi có các loại yến sào
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Giảm giá 10%! đối với yến thô
+                                    </li>
+                                    <li>
+                                        <i class="fab fa-opencart"></i> Giảm giá 5%! đối với yến dạng lọ
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -117,33 +138,34 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-menu" aria-controls="navbars-rs-food" aria-expanded="false" aria-label="Toggle navigation">
                             <i class="fa fa-bars"></i>
                         </button>
-                        <a class="navbar-brand" href="index.jsp"><img src="images/logo.png" class="logo" alt=""></a>
+                        <a class="navbar-brand" href="/NestSA/"><img src="images/logo.png" class="logo" alt=""></a>
                     </div>
                     <!-- End Header Navigation -->
 
                     <!-- Collect the nav links, forms, and other content for toggling -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav ml-auto" data-in="fadeInDown" data-out="fadeOutUp">
-                            <li class="nav-item"><a class="nav-link" href="index.jsp">Trang chủ</a></li>
-                            <li class="nav-item"><a class="nav-link" href="about.jsp">Giới thiệu</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/NestSA/">Trang chủ</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/NestSA/about">Giới thiệu</a></li>
                             <li class="dropdown">
-                                <a href="ViewProductController" class="nav-link">Cửa hàng</a>
+                                <a href="/NestSA/shop" class="nav-link">Cửa hàng</a>
                             </li>
-                            <li class="nav-item active"><a class="nav-link" href="ViewListBlogController">Blog</a></li>
-                            <li class="nav-item"><a class="nav-link" href="contact-us.jsp">Liên hệ</a></li>
+                            <li class="nav-item active"><a class="nav-link" href="/NestSA/blog">Blog</a></li>
+                            <li class="nav-item"><a class="nav-link" href="/NestSA/contact-us">Liên hệ</a></li>
                         </ul>
                     </div>
                     <!-- /.navbar-collapse -->
 
                     <!-- Start Atribute Navigation -->
-                    <div class="attr-nav">
+                     <div class="attr-nav">
                         <ul>
                             <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                            <li class="side-menu"><a href="#">
+                            <li class="side-menu"><a href="/NestSA/cart">
                                     <i class="fa fa-shopping-bag"></i>
                                     <span class="badge">${sessionScope.QUANTITY_IN_CART}</span>
                                     <p>Giỏ hàng</p>
-                                </a></li>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- End Atribute Navigation -->
@@ -200,7 +222,7 @@
                     <div class="col-lg-12">
                         <h2>Blog</h2>
                         <ul class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+                            <li class="breadcrumb-item"><a href="/NestSA/">Trang chủ</a></li>
                             <li class="breadcrumb-item active">Blog</li>
                         </ul>
                     </div>
@@ -219,11 +241,6 @@
                             <!--<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sit amet lacus enim.</p>-->
                             <!--<p class="sale type-lb">Create</p>-->
                         </div>
-                        <a href="CreateBlogController">
-                            <div class="type-lb">
-                                <p class="sale">Create</p>
-                            </div>
-                        </a>
                     </div>
 
                 </div>
@@ -235,7 +252,7 @@
                             <div class="products-single fix">
                                 <div class="box-img-hover">
                                     <div class="type-lb">
-                                        <p class="sale">${b.category}</p>
+                                        <!--<p class="sale">${b.category}</p>-->
                                     </div>
                                         <img src="${b.image}" style="height: 160px; width: 330px;" class="img-fluid" alt="Image">
                                 </div>
@@ -248,17 +265,6 @@
                         </div>
                         
                     </a>
-<!--                    <a href="MainController?btAction=EditBlog&postId=${b.postId}">
-                        <div style="position: relative;
-                                    left: 1100px;
-                                    bottom: 200px;
-                                      right: 150px;  
-                                      width: 50px;
-                                      height: 35px;
-                                      border: 3px solid green; ">
-                            <p class="sale">Update</p>
-                        </div>
-                    </a>-->
                 </c:forEach>
 
                 <!--                    <div class="row special-list">
@@ -388,7 +394,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12">
+<!--                        <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
                                 <h3>Liên hệ</h3>
                                 <form class="newsletter-box">
@@ -399,26 +405,42 @@
                                     <button class="btn hvr-hover" type="submit">Nhập</button>
                                 </form>
                             </div>
+                        </div>-->
+                        <div class="col-lg-4 col-md-12 col-sm-12">
+                            <div class="footer-link-contact">
+                                <h4>Liên hệ với chúng tôi</h4>
+                                <ul>
+                                    <li>
+                                        <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
+                                    </li>
+                                    <li>
+                                        <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
+                                    </li>
+                                </ul>
+                            </div>
                         </div>
                         <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-top-box">
                                 <h3>Mạng xã hội</h3>
                                 <p>Các mạng xã hội chúng tôi đang sử dụng</p>
                                 <ul>
-                                    <li><a href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+                                    <li><a href="https://facebook.com/NestSongAnSWP" target="_blank" ><i class="fab fa-facebook" aria-hidden="true"></i></a></li>
+<!--                                    <li><a href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-linkedin" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-google-plus" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fa fa-rss" aria-hidden="true"></i></a></li>
                                     <li><a href="#"><i class="fab fa-pinterest-p" aria-hidden="true"></i></a></li>
-                                    <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>
+                                    <li><a href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a></li>-->
                                 </ul>
                             </div>
                         </div>
                     </div>
                     <hr>
                     <div class="row">
-                        <div class="col-lg-4 col-md-12 col-sm-12">
+<!--                        <div class="col-lg-4 col-md-12 col-sm-12">
                             <div class="footer-widget">
                                 <h4>THông tin về NestSongAn</h4>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p> 
@@ -436,23 +458,7 @@
                                     <li><a href="#">Thông tin vận chuyển</a></li>
                                 </ul>
                             </div>
-                        </div>
-                        <div class="col-lg-4 col-md-12 col-sm-12">
-                            <div class="footer-link-contact">
-                                <h4>Liên hệ với chúng tôi</h4>
-                                <ul>
-                                    <li>
-                                        <p><i class="fas fa-map-marker-alt"></i>Address: 90 Nguyễn Tất Thành <br>Phường 13, Quận 4,<br> TP. Hồ Chí Minh </p>
-                                    </li>
-                                    <li>
-                                        <p><i class="fas fa-phone-square"></i>Điện thoại: <a href="tel:+1-888705770">870378873548</a></p>
-                                    </li>
-                                    <li>
-                                        <p><i class="fas fa-envelope"></i>Email: <a href="mailto:contactinfo@gmail.com">contactinfo@gmail.com</a></p>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>

@@ -5,6 +5,8 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -205,10 +207,13 @@
                                             <tbody>
                                                 <c:forEach items="${VIEW_ORDER_DETAIL}" var="o">
                                                     <tr class="row-info" id="order" >
-                                                    <td class="border w-3/4 py-2">${o.productName}</td>
-                                                    <td class="border w-fit py-2">${o.quantity}</td>
-                                                    <td class="border w-1/5 py-2">${o.price}</td>
-                                                </tr>
+                                                        <td class="border w-3/4 py-2">${o.productName}</td>
+                                                        <td class="border w-fit py-2">${o.quantity}</td>
+                                                        <td class="border w-1/5 py-2">
+                                                            <c:set var="price" value="${o.price}"/>
+                                                            <fmt:setLocale value="vi_VN"/>
+                                                            <fmt:formatNumber value="${price}" type="currency"/></td>
+                                                    </tr>
                                                 </c:forEach>
                                                 <!--  -->
                                             </tbody>

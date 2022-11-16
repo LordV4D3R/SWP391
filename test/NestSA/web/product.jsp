@@ -5,6 +5,7 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html lang="en">
@@ -59,7 +60,7 @@
                 background-color: rgb(161 161 170) !important;
                 color: #FFFFFF;
             }
-            
+
             .show-swp{
                 display: block;
             }
@@ -154,7 +155,21 @@
                             </li>
                             <li class="w-full h-full py-3 px-2 border-b border-light-border">
                                 <a
+<<<<<<< HEAD
                                     href="GetContact"
+=======
+                                    href="ViewBlogManagerController"
+                                    class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
+                                    >
+                                    <i class="fab fa-uikit float-left mx-2"></i>
+                                    Bài viết
+                                    <span><i class="fa fa-angle-right float-right"></i></span>
+                                </a>
+                            </li>
+                            <li class="w-full h-full py-3 px-2 border-b border-light-border">
+                                <a
+                                    href="contact.jsp"
+>>>>>>> 2b520af5ac3c0fffa3d21308ba2240f1830eae8e
                                     class="font-sans font-hairline hover:font-normal text-sm text-nav-item no-underline"
                                     >
                                     <i class="fab fa-uikit float-left mx-2"></i>
@@ -214,32 +229,37 @@
                                                     <tr>
                                                         <td class="border w-1/2 py-2">${o.name}</td>
                                                         <td class="border w-96 py-2">${o.quantity}</td>
-                                                        <td class="border w-1/4 py-2">${o.price}</td>
-                                                        <td class="border w-96 py-2">
-                                                            <c:if test="${o.status == 1}">
-                                                                <i class="fas fa-check text-green-500 mx-2"></i>
-                                                            </c:if>
-                                                            <c:if test="${o.status == 0}">
-                                                                <i class="fas fa-times text-red-500 mx-2"></i>
-                                                            </c:if>
-                                                        </td>
-                                                        <td class="border w-full py-2">
-                                                            <a
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-white"
-                                                                href="MainController?btAction=ViewEditProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description}&categoryId=${o.categoryId}&categoryName=${o.categoryName}&status=${o.status}"
-                                                                >
-                                                                <i class="fas fa-edit"></i
-                                                                ></a>
-                                                            <a
-                                                                onclick="handalModal('centeredModal', 'block',${o.productId})"
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-red-500"
-                                                                href="#"
-                                                                >
-                                                                <i class="fas fa-trash"></i>
-                                                            </a>
-                                                        </td>
-                                                    </tr>
-                                                </c:forEach>
+                                                        <td class="border w-1/4 py-2">
+                                                            <c:set var="pri" value="${o.price}"/>
+                                                <fmt:setLocale value="vi_VN"/>
+                                                <fmt:formatNumber value="${pri}" type="currency"/>
+                                                
+                                                </td>
+                                                <td class="border w-96 py-2">
+                                                    <c:if test="${o.status == 1}">
+                                                        <i class="fas fa-check text-green-500 mx-2"></i>
+                                                    </c:if>
+                                                    <c:if test="${o.status == 0}">
+                                                        <i class="fas fa-times text-red-500 mx-2"></i>
+                                                    </c:if>
+                                                </td>
+                                                <td class="border w-full py-2">
+                                                    <a
+                                                        class="bg-teal-300 rounded p-1 mx-1 text-white"
+                                                        href="MainController?btAction=ViewEditProductManager&id=${o.productId}&name=${o.name}&quantity=${o.quantity}&price=${o.price}&image=${o.image}&description=${o.description}&categoryId=${o.categoryId}&categoryName=${o.categoryName}&status=${o.status}"
+                                                        >
+                                                        <i class="fas fa-edit"></i
+                                                        ></a>
+                                                    <a
+                                                        onclick="handalModal('centeredModal', 'block',${o.productId})"
+                                                        class="bg-teal-300 rounded p-1 mx-1 text-red-500"
+                                                        href="#"
+                                                        >
+                                                        <i class="fas fa-trash"></i>
+                                                    </a>
+                                                </td>
+                                                </tr>
+                                            </c:forEach>
                                             </tbody>
                                         </table>
                                     </div>
@@ -273,7 +293,7 @@
                                 <!--href="MainController?btAction=RemoveProductManager&id=${productId}"-->
                                 <!--onclick="handalModal('centeredModal', 'none')"-->
                                 <a id="yes"
-                                     >Có<i class="fas fa-check text-green-500 mx-2"></i>
+                                   >Có<i class="fas fa-check text-green-500 mx-2"></i>
                                 </a>
                                 <a href="#" onclick="handalModal('centeredModal', 'none')"
                                    >Không<i class="fas fa-ban text-red-500 mx-2"></i
@@ -302,22 +322,22 @@
                                         console.log(document.getElementById('yes'))
                                         document.getElementById(id).style.display = display;
                                     }
-                                    
-                                     const items = document.querySelectorAll('#item');
+
+                                    const items = document.querySelectorAll('#item');
                                     const menu = document.getElementById('menu')
-                                    const icon=document.getElementById('icon-xoay')
-                                            const listMenu = document.getElementById('list-menu')
-                                            console.log(listMenu)
+                                    const icon = document.getElementById('icon-xoay')
+                                    const listMenu = document.getElementById('list-menu')
+                                    console.log(listMenu)
 
-                                            menu.addEventListener('click', () => {
-                                                listMenu.classList.toggle('show-swp')
-                                                icon.classList.toggle('show-swp-icon')
-                                            })
+                                    menu.addEventListener('click', () => {
+                                        listMenu.classList.toggle('show-swp')
+                                        icon.classList.toggle('show-swp-icon')
+                                    })
 
-                                            items.forEach(item => {
-                                            console.log(item)
-                                            })
+                                    items.forEach(item => {
+                                        console.log(item)
+                                    })
         </script>
-        
+
     </body>
 </html>
