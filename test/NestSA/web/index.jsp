@@ -268,65 +268,19 @@
                         </div>
                     </div>
                 </div>
-
-
                 <div class="row special-list">
+                    <c:forEach items="${sessionScope.VIEW_PRODUCT_INDEX}" var="o">
                     <div class="col-lg-3 col-md-6 special-grid best-seller">
-                        <a href="#">
                             <div class="products-single fix">
                                 <div class="box-img-hover">
-                                    <img src="images/img-pro-01.jpg" class="img-fluid" alt="Image">
+                                    <img src="${o.categoryName}" class="img-fluid" alt="Image">
                                 </div>
                                 <div class="why-text">
-                                    <h4>Lorem ipsum dolor sit amet</h4>
-                                    <h5> $7.79</h5>
+                                    <h4>${o.categoryId}</h4>
                                 </div>
                             </div>
-                        </a>
                     </div>
-
-                    <div class="col-lg-3 col-md-6 special-grid top-featured">
-                        <a href="#">
-                            <div class="products-single fix">
-                                <div class="box-img-hover">                               
-                                    <img src="images/img-pro-02.jpg" class="img-fluid" alt="Image">                           
-                                </div>
-                                <div class="why-text">
-                                    <h4>Lorem ipsum dolor sit amet</h4>
-                                    <h5> $9.79</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 special-grid top-featured">
-                        <a href="#">
-                            <div class="products-single fix">
-                                <div class="box-img-hover">                               
-                                    <img src="images/img-pro-03.jpg" class="img-fluid" alt="Image">                              
-                                </div>
-                                <div class="why-text">
-                                    <h4>Lorem ipsum dolor sit amet</h4>
-                                    <h5> $10.79</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-
-                    <div class="col-lg-3 col-md-6 special-grid best-seller">
-                        <a href="#">
-                            <div class="products-single fix">
-                                <div class="box-img-hover">
-
-                                    <img src="images/img-pro-04.jpg" class="img-fluid" alt="Image">                                
-                                </div>
-                                <div class="why-text">
-                                    <h4>Lorem ipsum dolor sit amet</h4>
-                                    <h5> $15.79</h5>
-                                </div>
-                            </div>
-                        </a>
-                    </div>
+                    </c:forEach>
                 </div>
             </div>
         </div>

@@ -193,7 +193,7 @@
                         <div class="contact-form-right">
                             <h2>Gửi tin nhắn cho chúng tôi</h2>
                             <p>Chúng tôi sẽ giải đáp tất cả thắc mắc của bạn về sản phẩm NestSongAn</p>
-                            <form action="MainController" method="POST">
+                            <form action="MainController">
                                 <c:set var="errors" value="${requestScope.INSERT_CONTACT_ERRORS}"/>
                                 <div class="row">
                                     <c:set var="checkLogin" scope="session" value="${sessionScope.LOGIN_USER}"/>

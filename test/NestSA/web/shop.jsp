@@ -247,33 +247,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-xl-9 col-lg-9 col-sm-12 col-xs-12 shop-content-right">
-                        <div class="right-product-box">
-                            <div class="product-item-filter row">
-                                <div class="col-12 col-sm-8 text-center text-sm-left">
-                                    <div class="toolbar-sorter-right">
-                                        <span>Sắp xếp</span>
-                                        <select id="basic" class="selectpicker show-tick form-control"
-                                                data-placeholder="$ USD">
-                                            <option data-display="Select">Theo</option>
-                                            <option value="1">Từ giá cao → giá thấp</option>
-                                            <option value="2">Từ giá thấp → Giá cao</option>
-                                        </select>
-                                    </div>
-                                    <!--<p>sản phẩm đã thêm vào giỏ hàng thành công, mời bạn tiếp tục mua sắm</p>-->
-                                </div>
-                                <div class="col-12 col-sm-4 text-center text-sm-right">
-                                    <ul class="nav nav-tabs ml-auto">
-                                        <li>
-                                            <a class="nav-link active" href="#grid-view" data-toggle="tab"> <i
-                                                    class="fa fa-th"></i> </a>
-                                        </li>
-                                        <li>
-                                            <a class="nav-link" href="#list-view" data-toggle="tab"> <i
-                                                    class="fa fa-list-ul"></i> </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="right-product-box"> 
                             <div style="text-align: center; margin-top: 68px"><h2>${NOT_FOUND}</h2></div>
                             <div class="product-categorie-box">
                                 <div class="tab-content">

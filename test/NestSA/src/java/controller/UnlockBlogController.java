@@ -5,48 +5,44 @@
  */
 package controller;
 
-import category.CategoryDAO;
-import category.CategoryDTO;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import product.ProductDAO;
-import product.ProductDTO;
+import post.PostDAO;
 
 /**
  *
- * @author dell
+ * @author Loi Lam
  */
-@WebServlet(name = "ViewProductIndexController", urlPatterns = {"/ViewProductIndexController"})
-public class ViewProductIndexController extends HttpServlet {
+@WebServlet(name = "UnlockBlogController", urlPatterns = {"/UnlockBlogController"})
+public class UnlockBlogController extends HttpServlet {
 
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "index.jsp";
+    private static final String SUCCESS = "ViewBlogManagerController";
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-            boolean checkValidation = true;
-            ProductDAO dao = new ProductDAO();
-            while (checkValidation) {
-                checkValidation = true;
-                List<ProductDTO> listProduct = dao.viewProductIndex();
-                if (listProduct.size() > 0) {
-                    HttpSession session = request.getSession();
-                    session.setAttribute("VIEW_PRODUCT_INDEX", listProduct);
-                    checkValidation = false;
-                    url = SUCCESS;
-                }
-            }
-
+            int postId = Integer.parseInt(request.getParameter("postId"));
+            PostDAO pDao = new PostDAO();
+            boolean check = pDao.unlockPost(postId);
+            if(check)
+                url = SUCCESS;
         } catch (Exception e) {
+            e.printStackTrace();
         } finally {
             request.getRequestDispatcher(url).forward(request, response);
         }

@@ -18,7 +18,7 @@ public class PostDTO {
     private String postTitle;
     private String category;
     private Date dateUpload;
-    private boolean status;
+    private int status;
 
     public PostDTO() {
     }
@@ -32,7 +32,7 @@ public class PostDTO {
 
     
     
-    public PostDTO(String image, String postContent, String postTitle, String category, Date dateUpload, boolean status) {
+    public PostDTO(String image, String postContent, String postTitle, String category, Date dateUpload, int status) {
         this.image = image;
         this.postContent = postContent;
         this.postTitle = postTitle;
@@ -49,7 +49,7 @@ public class PostDTO {
         this.dateUpload = dateUpload;
     }
 
-    public PostDTO(int postId, String image, String postContent, String postTitle, String category, Date dateUpload, boolean status) {
+    public PostDTO(int postId, String image, String postContent, String postTitle, String category, Date dateUpload, int status) {
         this.postId = postId;
         this.image = image;
         this.postContent = postContent;
@@ -105,6 +105,14 @@ public class PostDTO {
 
     public void setDateUpload(Date dateUpload) {
         this.dateUpload = dateUpload;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
     }
     
     

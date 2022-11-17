@@ -214,7 +214,7 @@
                                                     <th class="border w-1/2 px-4 py-2">Tên bài viết</th>
                                                     <th class="border w-96 px-10 py-2">Ngày viết</th>
                                                     <th class="border w-1/4 px-4 py-2">Loại bài</th>
-                                                    <!--<th class="border w-96 px-4 py-2">Status</th>-->
+                                                    <th class="border w-96 px-4 py-2">Status</th>
                                                     <th class="border w-full px-4 py-2">Tuỳ chọn</th>
                                                 </tr>
                                             </thead>
@@ -225,14 +225,14 @@
                                                         <td class="border w-1/2 py-2">${b.postTitle}</td>
                                                         <td class="border w-96 py-2">${b.dateUpload}</td>
                                                         <td class="border w-1/4 py-2">${b.category}</td>
-                                                        <!--                                                        <td class="border w-96 py-2">
-                                                        <c:if test="">
-                                                            <i class="fas fa-check text-green-500 mx-2"></i>
-                                                        </c:if>
-                                                        <%--<c:if test="${b.status eq 0}">--%>
-                                                            <i class="fas fa-times text-red-500 mx-2"></i>
-                                                        <%--</c:if>--%>
-                                                    </td>-->
+                                                        <td class="border w-96 py-2">
+                                                            <c:if test="${b.status == 1}">
+                                                                <i class="fas fa-check text-green-500 mx-2"></i>
+                                                            </c:if>
+                                                            <c:if test="${b.status == 0}">
+                                                                <i class="fas fa-times text-red-500 mx-2"></i>
+                                                            </c:if>
+                                                        </td>
                                                         <td class="border w-full py-2">
                                                             <a
                                                                 class="bg-teal-300 rounded p-1 mx-1 text-white"
@@ -240,19 +240,21 @@
                                                                 >
                                                                 <i class="fas fa-edit"></i
                                                                 ></a>
-                                                            <a
-                                                                class="bg-teal-300 rounded p-1 mx-1 text-red-500"
-                                                                href="MainController?btAction=RemoveBlog&postId=${b.postId}"
-                                                                >
-                                                                <i class="fas fa-trash"></i
-                                                                ></a>
-                                                            <!--                                                            <a
-                                                                                                                            onclick="handalModal('centeredModal', 'block',${p.postId})"
-                                                                                                                            class="bg-teal-300 rounded p-1 mx-1 text-red-500"
-                                                                                                                            href="#"
-                                                                                                                            >
-                                                                                                                            <i class="fas fa-trash"></i>
-                                                                                                                        </a>-->
+                                                            
+                                                            <c:if test="${b.status == 1}">
+                                                                <a id="yesRemove" class="bg-teal-300 rounded p-1 mx-1 text-red-500"
+                                                                   href="MainController?btAction=RemoveBlog&postId=${b.postId}"
+                                                                   onclick="return confirm('Bạn có muốn ẩn bài viết này không?')">
+                                                                    <i class="fas fa-lock"></i>
+                                                                </a>
+                                                            </c:if>
+                                                            <c:if test="${b.status == 0}">
+                                                                <a id="yesRemove" class="bg-teal-300 rounded p-1 mx-1 text-green-500"
+                                                                   href="MainController?btAction=UnlockBlog&postId=${b.postId}"
+                                                                   onclick="return confirm('Bạn có muốn hiện bài viết này không?')">
+                                                                    <i class="fas fa-unlock"></i>
+                                                                </a>
+                                                            </c:if>
                                                         </td>
                                                     </tr>
                                                 </c:forEach>
@@ -268,36 +270,7 @@
                 </div>
                 <!-- modal -->
 
-                <div id="centeredModal" class="handModal">
-                    <div class="overlay close-modal"></div>
-                    <div class="modal modal-centered">
-                        <div class="modal-content shadow-lg p-5 content-animation">
-                            <div class="border-b p-2 pb-3 pt-0 mb-4">
-                                <div class="flex justify-between items-center">
-                                    Xác nhận
-                                    <span
-                                        onclick="handalModal('centeredModal', 'none')"
-                                        class="close-modal cursor-pointer px-3 py-1 rounded-full bg-gray-100 hover:bg-gray-200"
-                                        >
-                                        <i class="fas fa-times text-gray-700"></i>
-                                    </span>
-                                </div>
-                            </div>
-                            <!-- Modal content -->
-                            <div class="flex justify-between">
-                                <span>Bạn có muốn xóa blog này không?</span>
-                                <!--href="MainController?btAction=RemoveProductManager&id=${productId}"-->
-                                <!--onclick="handalModal('centeredModal', 'none')"-->
-                                <a id="yes"
-                                   >Có<i class="fas fa-check text-green-500 mx-2"></i>
-                                </a>
-                                <a href="#" onclick="handalModal('centeredModal', 'none')"
-                                   >Không<i class="fas fa-ban text-red-500 mx-2"></i
-                                    ></a>
-                            </div>        
-                        </div>
-                    </div>
-                </div>
+
                 <!-- modal -->
                 <!--Footer-->
                 <footer class="bg-grey-darkest text-white p-2">
@@ -312,27 +285,7 @@
 
         <script src="./main.js"></script>
         <script>
-                                    function handalModal(id, display, pid) {
-                                        console.log(pid)
-                                        document.getElementById('yes').href = 'MainController?btAction=RemoveProductManager&id=' + pid
-                                        console.log(document.getElementById('yes'))
-                                        document.getElementById(id).style.display = display;
-                                    }
 
-                                    const items = document.querySelectorAll('#item');
-                                    const menu = document.getElementById('menu')
-                                    const icon = document.getElementById('icon-xoay')
-                                    const listMenu = document.getElementById('list-menu')
-                                    console.log(listMenu)
-
-                                    menu.addEventListener('click', () => {
-                                        listMenu.classList.toggle('show-swp')
-                                        icon.classList.toggle('show-swp-icon')
-                                    })
-
-                                    items.forEach(item => {
-                                        console.log(item)
-                                    })
         </script>
 
     </body>

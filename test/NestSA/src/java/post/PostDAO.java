@@ -39,7 +39,7 @@ public class PostDAO {
                 String postTitle = rs.getString("postTitle");
                 String category = rs.getString("category");
                 Date dateUpload = rs.getDate("dateUpload");
-                boolean status = rs.getBoolean("status");
+                int status = rs.getInt("status");
                 list.add(new PostDTO(postId, igame, postContent, postTitle, category, dateUpload, status));
             }
         } catch (Exception e) {
@@ -68,7 +68,7 @@ public class PostDAO {
                 String postTitle = rs.getString("postTitle");
                 String category = rs.getString("categoryName");
                 Date dateUpload = rs.getDate("dateUpload");
-                boolean status = rs.getBoolean("status");
+                int status = rs.getInt("status");
                 list.add(new PostDTO(postId, igame, postContent, postTitle, category, dateUpload, status));
             }
         } catch (Exception e) {
@@ -96,7 +96,7 @@ public class PostDAO {
                 String postTitle = rs.getString("postTitle");
                 String category = rs.getString("category");
                 Date dateUpload = rs.getDate("dateUpload");
-                boolean status = rs.getBoolean("status");
+                int status = rs.getInt("status");
                 post = new PostDTO(postId, igame, postContent, postTitle, category, dateUpload, status);
             }
         } catch (Exception e) {
@@ -171,4 +171,21 @@ public class PostDAO {
         return check;
     }
     
+    public boolean unlockPost(int postId) throws SQLException {
+        boolean check = false;
+        try {
+            String sql ="UPDATE post SET status = 1 Where postId = ?";
+            conn = DBUtils.getConnection();
+            pst = conn.prepareStatement(sql);
+            pst.setInt(1, postId);
+            check = pst.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            if(rs != null) rs.close();
+            if(pst != null) pst.close();
+            if(conn != null) conn.close();
+        }
+        return check;
+    }
 }
